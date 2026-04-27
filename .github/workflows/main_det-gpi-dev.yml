@@ -70,7 +70,6 @@ jobs:
         uses: azure/appservice-settings@v1
         with:
           app-name: 'det-gpi-dev'
-          resource-group: 'rg-gpi-dev'
           app-settings-json: |
             [
               {
@@ -95,6 +94,6 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'det-gpi-dev'
-          resource-group: 'rg-gpi-dev'
+          resource-group-name: 'rg-gpi-dev'
           package: site.zip
           startup-command: 'node server.js'
