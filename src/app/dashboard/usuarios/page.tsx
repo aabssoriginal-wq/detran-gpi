@@ -112,23 +112,35 @@ export default function UsuariosPage() {
   const handleChangePapel = async (userId: string, novoPapel: Papel) => {
     if (userId === usuario?.id) { toast.error("Você não pode alterar seu próprio papel."); return; }
     
-    // Regra Hierárquica: Não pode atribuir papel superior ao seu
+    // Regra Hierárquica: Não pode alterar alguém de nível superior ou igual ao seu (exceto Admin Total)
     const hierarchy = { 'admin_total': 4, 'admin_master': 3, 'usuario_master': 2, 'usuario': 1 };
     const myLevel = hierarchy[usuario?.papel as Papel] || 0;
+    
+    const targetUser = users.find(u => u.id === userId);
+    const currentTargetLevel = hierarchy[targetUser?.papel as Papel] || 0;
     const targetLevel = hierarchy[novoPapel] || 0;
     
-    if (myLevel < 4 && targetLevel > myLevel) {
-      toast.error("Você não tem permissão para atribuir um papel superior ao seu.");
-      return;
+    if (myLevel < 4) {
+      if (currentTargetLevel >= myLevel) {
+        toast.error("Você não tem permissão para alterar um usuário de nível igual ou superior.");
+        return;
+      }
+      if (targetLevel > myLevel) {
+        toast.error("Você não tem permissão para atribuir um papel superior ao seu.");
+        return;
+      }
     }
-
-    if (usuario?.papel === 'admin_master' && novoPapel === 'admin_total') { toast.error("Somente o Admin Total pode atribuir este papel."); return; }
     setEditingId(userId);
     try {
       const res = await fetch('/api/users', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: userId, action: 'update_papel', papel: novoPapel }),
+        body: JSON.stringify({ 
+          id: userId, 
+          action: 'update_papel', 
+          papel: novoPapel,
+          requesterPapel: usuario?.papel
+        }),
       });
       if (res.ok) {
         setUsers(prev => prev.map(u => u.id === userId ? { ...u, papel: novoPapel } : u));
@@ -399,39 +411,47 @@ export default function UsuariosPage() {
                     {/* Papel */}
                     <div className="flex flex-col gap-1 shrink-0">
                       <p className="text-xs text-slate-400 font-medium">Papel</p>
-                      {canManageRoles && !isSelf ? (
-                        <div className="flex gap-1">
-                          {PAPEIS.filter(p => {
-                            // Regra Hierárquica: Não pode atribuir papel superior ao seu
-                            const hierarchy = { 'admin_total': 4, 'admin_master': 3, 'usuario_master': 2, 'usuario': 1 };
-                            const myLevel = hierarchy[usuario?.papel as Papel] || 0;
-                            const pLevel = hierarchy[p.value] || 0;
-                            if (myLevel === 4) return true;
-                            return pLevel <= myLevel && p.value !== 'admin_total';
-                          }).map(p => {
-                            const Icon = p.icon;
-                            const active = u.papel === p.value;
-                            return (
-                              <button
-                                key={p.value}
-                                onClick={() => handleChangePapel(u.id, p.value)}
-                                disabled={isEditing}
-                                title={p.label}
-                                className={`flex items-center gap-1 px-2 py-1 rounded-md text-xs font-medium border transition-all ${active ? papelColor[p.value] + ' border-current' : 'border-slate-200 text-slate-400 hover:border-slate-400'}`}
-                              >
-                                <Icon className="h-3 w-3" />
-                                {p.label}
-                              </button>
-                            );
-                          })}
-                          {isEditing && <Loader2 className="h-4 w-4 animate-spin text-blue-500 self-center ml-1" />}
-                        </div>
-                      ) : (
-                        <Badge variant="outline" className={`text-xs ${papelColor[u.papel as keyof typeof papelColor]}`}>
-                          <PapelIcon className="h-3 w-3 mr-1" />
-                          {papelLabel[u.papel as keyof typeof papelLabel]}
-                        </Badge>
-                      )}
+                      {(() => {
+                        const hierarchy = { 'admin_total': 4, 'admin_master': 3, 'usuario_master': 2, 'usuario': 1 };
+                        const myLevel = hierarchy[usuario?.papel as Papel] || 0;
+                        const targetLevel = hierarchy[u.papel as Papel] || 0;
+                        
+                        const canEditThisUser = !isSelf && (myLevel === 4 || myLevel > targetLevel);
+
+                        if (canManageRoles && canEditThisUser) {
+                          return (
+                            <div className="flex gap-1">
+                              {PAPEIS.filter(p => {
+                                const pLevel = hierarchy[p.value] || 0;
+                                if (myLevel === 4) return true;
+                                return pLevel <= myLevel && p.value !== 'admin_total';
+                              }).map(p => {
+                                const Icon = p.icon;
+                                const active = u.papel === p.value;
+                                return (
+                                  <button
+                                    key={p.value}
+                                    onClick={() => handleChangePapel(u.id, p.value)}
+                                    disabled={isEditing}
+                                    title={p.label}
+                                    className={`flex items-center gap-1 px-2 py-1 rounded-md text-xs font-medium border transition-all ${active ? papelColor[p.value] + ' border-current' : 'border-slate-200 text-slate-400 hover:border-slate-400'}`}
+                                  >
+                                    <Icon className="h-3 w-3" />
+                                    {p.label}
+                                  </button>
+                                );
+                              })}
+                              {isEditing && <Loader2 className="h-4 w-4 animate-spin text-blue-500 self-center ml-1" />}
+                            </div>
+                          );
+                        }
+                        return (
+                          <Badge variant="outline" className={`text-xs ${papelColor[u.papel as keyof typeof papelColor]}`}>
+                            <PapelIcon className="h-3 w-3 mr-1" />
+                            {papelLabel[u.papel as keyof typeof papelLabel]}
+                          </Badge>
+                        );
+                      })()}
                     </div>
 
                     {/* Botão Remover */}

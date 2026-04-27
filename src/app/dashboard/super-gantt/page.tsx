@@ -11,6 +11,9 @@ import {
 } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 import Link from "next/link";
+import { 
+  Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle 
+} from "@/components/ui/dialog";
 import { formatarDataBR } from "@/lib/utils";
 
 export default function SuperGanttPage() {
@@ -18,7 +21,8 @@ export default function SuperGanttPage() {
   const [projetos, setProjetos] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [expandedProjects, setExpandedProjects] = useState<Record<number, boolean>>({});
-  const [expandedRepactuations, setExpandedRepactuations] = useState<Record<number, boolean>>({});
+  const [search, setSearch] = useState("");
+  const [selectedProjectRepacts, setSelectedProjectRepacts] = useState<any>(null);
   
   const leftColumnRef = useRef<HTMLDivElement>(null);
   const rightAreaRef = useRef<HTMLDivElement>(null);
@@ -75,8 +79,28 @@ export default function SuperGanttPage() {
     setExpandedProjects(prev => ({ ...prev, [id]: !prev[id] }));
   };
 
-  const toggleRepactuation = (id: number) => {
-    setExpandedRepactuations(prev => ({ ...prev, [id]: !prev[id] }));
+  const handleOpenRepacts = (p: any) => {
+    const repacts = (p.logs || [])
+      .filter((l: any) => l.acao.toLowerCase().includes("repactuação"))
+      .map((l: any) => {
+        // Regex insensível a maiúsculas/minúsculas e mais flexível com espaços
+        const matchInicio = l.acao.match(/\[INÍCIO\]:\s*.*?\s*→\s*([\d\/\-]+)/i);
+        const matchFim = l.acao.match(/\[FIM\]:\s*.*?\s*→\s*([\d\/\-]+)/i);
+        const matchTarefa = l.justificativa.match(/tarefa "(.*?)"/i);
+        
+        return {
+          ...l,
+          novoInicio: matchInicio ? matchInicio[1].trim() : null,
+          novoFim: matchFim ? matchFim[1].trim() : null,
+          tarefaOrigem: matchTarefa ? matchTarefa[1] : null,
+          acaoOriginal: l.acao // Guardar para fallback
+        };
+      });
+
+    setSelectedProjectRepacts({
+      nome: p.nome,
+      logs: repacts
+    });
   };
 
   const filteredProjetos = useMemo(() => {
@@ -127,7 +151,7 @@ export default function SuperGanttPage() {
 
   const getTaskBarColor = (t: any) => {
     if (t.progress === 100) return "bg-emerald-500";
-    if (t.impedimentoAtivo) return "bg-rose-500";
+    if (t.impedimentoAtivo) return "bg-rose-100"; // Base clara para o bloqueio
     const hoje = new Date();
     const dataFim = t.dataFim ? new Date(t.dataFim) : null;
     if (dataFim && hoje > dataFim && t.progress < 100) return "bg-amber-500";
@@ -221,24 +245,7 @@ export default function SuperGanttPage() {
             <div className="flex-1">
               {filteredProjetos.map((p) => {
                 const isExpanded = expandedProjects[p.id];
-                const isRepactExpanded = expandedRepactuations[p.id];
                 const repactuacoes = p.logs?.filter((l: any) => l.acao.includes("Repactuação")) || [];
-                const lastRepact = repactuacoes.length > 0 ? repactuacoes[0] : null;
-
-                let datasAntigas = "";
-                if (lastRepact) {
-                  const matchInicio = lastRepact.acao.match(/\[INÍCIO\]: (.*?) →/);
-                  const matchFim = lastRepact.acao.match(/\[FIM\]: (.*?) →/);
-                  
-                  const partes = [];
-                  if (matchInicio) partes.push(`Início: ${matchInicio[1]}`);
-                  if (matchFim) partes.push(`Fim: ${matchFim[1]}`);
-                  
-                  if (partes.length > 0) {
-                    datasAntigas = `Datas anteriores: ${partes.join(" | ")}`;
-                  }
-                }
-
                 return (
                   <div key={p.id} className="border-b border-slate-100 dark:border-slate-800">
                     <div className="h-[90px] px-4 py-3 flex flex-col justify-center gap-1">
@@ -251,19 +258,16 @@ export default function SuperGanttPage() {
                           {p.nome}
                         </Link>
                       </div>
-                      {lastRepact && (
-                        <div className="ml-7 mt-1">
-                          <button onClick={() => toggleRepactuation(p.id)} className="flex items-center gap-1 text-[7px] font-black text-amber-600 uppercase">
-                            <History className="h-2 w-2" /> {isRepactExpanded ? "Ocultar" : "Ver última repactuação"}
+                      <div className="ml-7 mt-1">
+                        {repactuacoes.length > 0 && (
+                          <button 
+                            onClick={() => handleOpenRepacts(p)} 
+                            className="flex items-center gap-1 text-[8px] font-black text-amber-600 uppercase hover:text-amber-700 transition-colors"
+                          >
+                            <History className="h-2.5 w-2.5" /> Repactuação de datas ({repactuacoes.length})
                           </button>
-                          {isRepactExpanded && (
-                            <div className="mt-1 space-y-1">
-                              {datasAntigas && <p className="text-[9px] font-bold text-slate-500 flex items-center gap-1"><Calendar className="h-2 w-2" /> {datasAntigas}</p>}
-                              <p className="text-[10px] text-amber-700 italic leading-tight border-l-2 border-amber-200 pl-2">"{lastRepact.justificativa}"</p>
-                            </div>
-                          )}
-                        </div>
-                      )}
+                        )}
+                      </div>
                       <div className="ml-7 mt-1 text-[8px] font-bold text-slate-400 uppercase">{p.responsavel}</div>
                     </div>
                     {isExpanded && p.tarefas.map((t: any) => (
@@ -334,11 +338,14 @@ export default function SuperGanttPage() {
                             )}
                             {tStart >= 0 && tWidth > 0 && (
                               <div 
-                                  className={`absolute h-3 rounded-full ${getTaskBarColor(t)} border border-black/5 shadow-inner cursor-help`} 
+                                  className={`absolute h-3 rounded-full ${getTaskBarColor(t)} border border-black/5 shadow-inner cursor-help overflow-hidden`} 
                                   style={{ left: `${tStart}%`, width: `${tWidth}%` }} 
-                                  title={`Tarefa: ${t.titulo}\nInício: ${formatarDataBR(t.dataInicio)}\nFim: ${formatarDataBR(t.dataFim)}\nEvolução: ${t.progress}%`}
+                                  title={`Tarefa: ${t.titulo}\nInício: ${formatarDataBR(t.dataInicio)}\nFim: ${formatarDataBR(t.dataFim)}\nEvolução: ${t.progress}% ${t.impedimentoAtivo ? `(BLOQUEADA: ${t.motivoImpedimento})` : ''}`}
                                 >
-                                <div className="h-full bg-black/10 rounded-full" style={{ width: `${t.progress}%` }} />
+                                <div className="h-full bg-black/10" style={{ width: `${t.progress}%` }} />
+                                {t.impedimentoAtivo && (
+                                  <div className="absolute h-full bg-black right-0 top-0" style={{ width: `${100 - t.progress}%` }} />
+                                )}
                               </div>
                             )}
                           </div>
@@ -352,6 +359,69 @@ export default function SuperGanttPage() {
           </div>
         </div>
       </Card>
+      {/* Modal de Repactuações */}
+      <Dialog open={!!selectedProjectRepacts} onOpenChange={() => setSelectedProjectRepacts(null)}>
+        <DialogContent className="sm:max-w-[550px] max-h-[80vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2">
+              <History className="h-5 w-5 text-amber-600" />
+              Histórico de Repactuação
+            </DialogTitle>
+            <DialogDescription>
+              Cronologia de alterações de datas para: <span className="font-bold text-slate-900">{selectedProjectRepacts?.nome}</span>
+            </DialogDescription>
+          </DialogHeader>
+          
+          <div className="space-y-4 py-4">
+            {selectedProjectRepacts?.logs.map((log: any, idx: number) => (
+              <div key={idx} className="relative pl-6 pb-6 border-l-2 border-amber-100 last:pb-0">
+                <div className="absolute left-[-9px] top-0 h-4 w-4 rounded-full bg-amber-500 border-4 border-white shadow-sm" />
+                <div className="space-y-2">
+                  <div className="flex justify-between items-start">
+                    <span className="text-[10px] font-bold text-slate-400 uppercase">{log.data}</span>
+                    <Badge variant="outline" className="text-[9px] border-amber-200 text-amber-700 bg-amber-50">
+                      Alterado por {log.user}
+                    </Badge>
+                  </div>
+                  
+                  {log.novoInicio || log.novoFim ? (
+                    <div className="grid grid-cols-2 gap-2">
+                      <div className="bg-slate-50 p-2 rounded border border-slate-100">
+                        <p className="text-[9px] text-slate-400 uppercase font-black">Novo Início</p>
+                        <p className="text-xs font-bold text-slate-700">{formatarDataBR(log.novoInicio)}</p>
+                      </div>
+                      <div className="bg-slate-50 p-2 rounded border border-slate-100">
+                        <p className="text-[9px] text-slate-400 uppercase font-black">Novo Fim</p>
+                        <p className="text-xs font-bold text-slate-700">{formatarDataBR(log.novoFim)}</p>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="bg-slate-50 p-2 rounded border border-slate-100 border-l-amber-500 border-l-4">
+                      <p className="text-[9px] text-slate-400 uppercase font-black">Detalhes da Alteração</p>
+                      <p className="text-xs text-slate-600 font-medium leading-relaxed">{log.acaoOriginal}</p>
+                    </div>
+                  )}
+
+                  {log.tarefaOrigem && (
+                    <div className="flex items-center gap-1.5 text-[10px] font-bold text-indigo-600 bg-indigo-50 px-2 py-1 rounded w-fit">
+                      <ShieldAlert className="h-3 w-3" />
+                      Origem: Tarefa "{log.tarefaOrigem}"
+                    </div>
+                  )}
+
+                  <div className="bg-amber-50/50 p-3 rounded-lg border border-amber-100">
+                    <p className="text-[11px] font-semibold text-amber-900 mb-1">Motivo da Repactuação:</p>
+                    <p className="text-xs text-amber-800 italic leading-relaxed">"{log.justificativa}"</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+            {selectedProjectRepacts?.logs.length === 0 && (
+              <div className="text-center py-10 text-slate-400">Nenhum registro de repactuação encontrado.</div>
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

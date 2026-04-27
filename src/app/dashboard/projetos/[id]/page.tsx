@@ -39,6 +39,43 @@ const FASES = [
   { id: "concluido", label: "Concluído", color: "bg-emerald-600" },
 ];
 
+function JustificativaDialogContent({ title, description, onCancel, onConfirm }: any) {
+  const [val, setVal] = useState("");
+  return (
+    <>
+      <DialogHeader>
+        <DialogTitle>{title}</DialogTitle>
+        <DialogDescription>{description}</DialogDescription>
+      </DialogHeader>
+      <div className="grid gap-4 py-4">
+        <div className="space-y-2">
+          <Label className="flex justify-between">
+            <span>Justificativa (Auditoria)</span>
+            <span className="text-[10px] text-rose-500 font-bold uppercase">* Obrigatório</span>
+          </Label>
+          <Textarea 
+            autoFocus
+            placeholder="Descreva detalhadamente o motivo desta ação..." 
+            value={val}
+            onChange={(e) => setVal(e.target.value)}
+            className="min-h-[100px]"
+          />
+        </div>
+      </div>
+      <div className="flex justify-end gap-3">
+        <Button variant="outline" onClick={onCancel}>Cancelar</Button>
+        <Button 
+          disabled={!val.trim()}
+          onClick={() => onConfirm(val)}
+          className="bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50"
+        >
+          Confirmar
+        </Button>
+      </div>
+    </>
+  );
+}
+
 export default function ProjetoDetalhePage(props: { params: Promise<{ id: string }> }) {
   const params = React.use(props.params);
   const { usuario } = useAuth();
@@ -442,6 +479,9 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
     const userObj = usuariosDisponiveis.find(u => u.id === userId);
     if (!userObj) return;
 
+    // Encontrar ID do responsável antigo para remoção
+    const respAntigo = usuariosDisponiveis.find(u => u.nome === projetoData.responsavel);
+
     try {
       // 1. Atualizar o projeto
       const resProj = await fetch(`/api/projects/${params.id}`, {
@@ -458,15 +498,20 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
       });
 
       if (resProj.ok) {
-        // 2. Sincronizar com o usuário (adicionar projeto à lista dele)
+        // 2. Remover do responsável antigo se ele existia
+        if (respAntigo) {
+          await fetch(`/api/users`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ id: respAntigo.id, action: "remove_projeto", projetoId: params.id })
+          });
+        }
+
+        // 3. Adicionar ao novo responsável
         await fetch(`/api/users`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ 
-            id: userId, 
-            action: "add_projeto", 
-            projetoId: params.id 
-          })
+          body: JSON.stringify({ id: userId, action: "add_projeto", projetoId: params.id })
         });
 
         toast.success(`Projeto atribuído a ${userObj.nome}`);
@@ -515,7 +560,7 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
     }
 
     const tarefa = tarefas.find(t => t.id === impedimentoData.tarefaId);
-    const newList = tarefas.map(t => t.id === impedimentoData.tarefaId ? { ...t, impedimentoAtivo: true } : t);
+    const newList = tarefas.map(t => t.id === impedimentoData.tarefaId ? { ...t, impedimentoAtivo: true, motivoImpedimento: impedimentoData.motivo } : t);
     syncTarefas(newList);
 
     addLog(`Impedimento em ${tarefa?.titulo}`, impedimentoData.motivo);
@@ -525,10 +570,21 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
 
   const handleResolverImpedimento = (tarefaId: string) => {
     const tarefa = tarefas.find(t => t.id === tarefaId);
-    const newList = tarefas.map(t => t.id === tarefaId ? { ...t, impedimentoAtivo: false } : t);
-    syncTarefas(newList);
-    addLog(`Impedimento resolvido em ${tarefa?.titulo}`);
-    toast.success("Impedimento resolvido!");
+    if (!tarefa) return;
+
+    setJustificativaDialog({
+      isOpen: true,
+      title: "Resolver Impedimento",
+      description: `Justifique a resolução do bloqueio na tarefa "${tarefa.titulo}":`,
+      value: "",
+      onConfirm: async (just) => {
+        const newList = tarefas.map(t => t.id === tarefaId ? { ...t, impedimentoAtivo: false, justificativaResolucao: just } : t);
+        await syncTarefas(newList);
+        addLog(`Impedimento resolvido em ${tarefa.titulo}`, just);
+        toast.success("Impedimento resolvido!");
+        loadData();
+      }
+    });
   };
 
   const handleAddLancamento = () => {
@@ -776,37 +832,15 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
       {/* Diálogo de Justificativa Reutilizável */}
       <Dialog open={justificativaDialog.isOpen} onOpenChange={(open) => setJustificativaDialog(prev => ({ ...prev, isOpen: open }))}>
         <DialogContent className="sm:max-w-[425px]">
-          <DialogHeader>
-            <DialogTitle>{justificativaDialog.title}</DialogTitle>
-            <DialogDescription>{justificativaDialog.description}</DialogDescription>
-          </DialogHeader>
-          <div className="grid gap-4 py-4">
-            <div className="space-y-2">
-              <Label className="flex justify-between">
-                <span>Justificativa (Auditoria)</span>
-                <span className="text-[10px] text-rose-500 font-bold uppercase">* Obrigatório</span>
-              </Label>
-              <Textarea 
-                placeholder="Descreva detalhadamente o motivo desta ação..." 
-                value={justificativaDialog.value}
-                onChange={(e) => setJustificativaDialog(prev => ({ ...prev, value: e.target.value }))}
-                className="min-h-[100px]"
-              />
-            </div>
-          </div>
-          <div className="flex justify-end gap-3">
-            <Button variant="outline" onClick={() => setJustificativaDialog(prev => ({ ...prev, isOpen: false }))}>Cancelar</Button>
-            <Button 
-              disabled={!justificativaDialog.value.trim()}
-              onClick={() => {
-                justificativaDialog.onConfirm(justificativaDialog.value);
-                setJustificativaDialog(prev => ({ ...prev, isOpen: false, value: "" }));
-              }}
-              className="bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              Confirmar
-            </Button>
-          </div>
+          <JustificativaDialogContent 
+            title={justificativaDialog.title}
+            description={justificativaDialog.description}
+            onCancel={() => setJustificativaDialog(prev => ({ ...prev, isOpen: false }))}
+            onConfirm={(val) => {
+              justificativaDialog.onConfirm(val);
+              setJustificativaDialog(prev => ({ ...prev, isOpen: false }));
+            }}
+          />
         </DialogContent>
       </Dialog>
 
@@ -905,6 +939,24 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                       const temDataAntiga = !!(projetoData.baselineData?.inicio || projetoData.baselineData?.fim);
                       
                       const performUpdate = (just: string) => {
+                        // Validação: Data Fim do projeto deve respeitar a tarefa mais longe
+                        if (tarefas && tarefas.length > 0) {
+                          const datasFimTarefas = tarefas
+                            .filter(t => t.dataFim)
+                            .map(t => new Date(t.dataFim).getTime());
+                          
+                          if (datasFimTarefas.length > 0) {
+                            const maiorDataFimTarefa = Math.max(...datasFimTarefas);
+                            const novaDataFimProjeto = new Date(editBaseline.fim).getTime();
+
+                            if (novaDataFimProjeto < maiorDataFimTarefa) {
+                              const dataMinima = new Date(maiorDataFimTarefa).toLocaleDateString('pt-BR');
+                              toast.error(`A data fim do projeto não pode ser anterior à última tarefa (${dataMinima}).`);
+                              return;
+                            }
+                          }
+                        }
+
                         fetch(`/api/projects/${params.id}`, {
                           method: "PUT",
                           headers: { "Content-Type": "application/json" },
@@ -916,7 +968,10 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                             user: usuario?.nome, 
                             papel: usuario?.papel 
                           })
-                        }).then(() => loadData());
+                        }).then(() => {
+                          toast.success("Cronograma atualizado com sucesso!");
+                          loadData();
+                        });
                       };
 
                       if (temDataAntiga) {
@@ -1157,15 +1212,18 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                           {Array.from({length: 12}).map((_, i) => <div key={i}/>)}
                           {t.dataInicio && t.dataFim && (
                             <div 
-                              className={`absolute top-3 h-6 rounded shadow-sm transition-transform hover:scale-[1.02] ${emAtraso ? 'bg-orange-200' : (FASES.find(f => f.id === t.status)?.color || 'bg-slate-400')}`}
-                              title={`Tarefa: ${t.titulo}\nInício: ${formatarDataBR(t.dataInicio)}\nFim: ${formatarDataBR(t.dataFim)}\nProgresso: ${t.progress}% ${emAtraso ? '(ATRASADA)' : ''}`}
+                              className={`absolute top-3 h-6 rounded shadow-sm transition-transform hover:scale-[1.02] ${t.impedimentoAtivo ? 'bg-rose-100' : emAtraso ? 'bg-orange-200' : (FASES.find(f => f.id === t.status)?.color || 'bg-slate-400')}`}
+                              title={`Tarefa: ${t.titulo}\nInício: ${formatarDataBR(t.dataInicio)}\nFim: ${formatarDataBR(t.dataFim)}\nProgresso: ${t.progress}% ${t.impedimentoAtivo ? `(BLOQUEADA: ${t.motivoImpedimento})` : emAtraso ? '(ATRASADA)' : ''}`}
                               style={{ 
                                 left: `${(new Date(t.dataInicio).getMonth() / 12) * 100}%`,
                                 width: `${((new Date(t.dataFim).getMonth() - new Date(t.dataInicio).getMonth() + 1) / 12) * 100}%`
                               }}
                             >
                               <div className="h-full bg-black/20" style={{ width: `${t.progress}%` }}/>
-                              {emAtraso && <div className="absolute inset-0 border-2 border-orange-500 rounded animate-pulse pointer-events-none"/>}
+                              {t.impedimentoAtivo && (
+                                <div className="absolute h-full bg-black right-0" style={{ width: `${100 - t.progress}%`, borderRadius: '0 4px 4px 0' }} />
+                              )}
+                              {(emAtraso || t.impedimentoAtivo) && <div className={`absolute inset-0 border-2 ${t.impedimentoAtivo ? 'border-black' : 'border-orange-500'} rounded animate-pulse pointer-events-none`}/>}
                             </div>
                           )}
                         </div>
@@ -1265,12 +1323,19 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                 <CardHeader><CardTitle>Bloqueios Ativos</CardTitle></CardHeader>
                 <CardContent className="space-y-4">
                   {tarefas.filter(t => t.impedimentoAtivo).map(t => (
-                    <div key={t.id} className="p-4 bg-rose-50 border border-rose-200 rounded-lg flex items-center justify-between">
-                      <div>
-                        <h4 className="font-bold text-rose-800">{t.titulo}</h4>
-                        <p className="text-xs text-rose-600 italic">Responsável: {t.responsavel}</p>
+                    <div key={t.id} className="p-4 bg-rose-50 border border-rose-200 rounded-lg space-y-3">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <h4 className="font-bold text-rose-800">{t.titulo}</h4>
+                          <p className="text-[10px] text-rose-600 uppercase font-black tracking-tight">Tarefa Bloqueada</p>
+                        </div>
+                        <Button variant="outline" size="sm" className="border-rose-300 text-rose-700 hover:bg-rose-100" onClick={() => handleResolverImpedimento(t.id)}>Resolver</Button>
                       </div>
-                      <Button variant="outline" size="sm" className="border-rose-300 text-rose-700 hover:bg-rose-100" onClick={() => handleResolverImpedimento(t.id)}>Resolver</Button>
+                      <div className="p-2 bg-white rounded border border-rose-100">
+                        <p className="text-[11px] font-semibold text-rose-900 mb-1">Motivo do Bloqueio:</p>
+                        <p className="text-xs text-rose-700 italic">"{t.motivoImpedimento}"</p>
+                      </div>
+                      <p className="text-[10px] text-rose-400 italic text-right">Responsável: {t.responsavel}</p>
                     </div>
                   ))}
                   {tarefas.filter(t => t.impedimentoAtivo).length === 0 && <p className="text-sm text-slate-500 text-center py-10">Nenhum impedimento ativo.</p>}

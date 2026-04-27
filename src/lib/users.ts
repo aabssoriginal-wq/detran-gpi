@@ -105,7 +105,8 @@ export const getUsuarios = (): Usuario[] => {
   const data = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
   cachedUsuarios = data;
   lastReadTime = now;
-  return data;
+  // Ordenação Alfabética por Nome
+  return data.sort((a: any, b: any) => a.nome.localeCompare(b.nome));
 };
 
 export const getUsuarioById = (id: string): Usuario | undefined => {

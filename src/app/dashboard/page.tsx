@@ -4,10 +4,11 @@ import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { FolderKanban, AlertCircle, CheckCircle2, Clock, ShieldAlert, CheckSquare, PlayCircle, User, Loader2, Edit2, Trash2, RefreshCcw } from "lucide-react";
+import { FolderKanban, AlertCircle, CheckCircle2, Clock, ShieldAlert, CheckSquare, PlayCircle, User, Loader2, Edit2, Trash2, RefreshCcw, Plus } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
@@ -36,6 +37,8 @@ export default function DashboardPage() {
     description: string,
     value: string,
     placeholder: string,
+    isRename?: boolean,
+    renameValue?: string,
     onConfirm: (val: string, extra?: string) => void
   }>({
     isOpen: false,
@@ -88,17 +91,17 @@ export default function DashboardPage() {
     loadProjetos();
   }, [usuario]);
 
-  const handleEdit = async (projeto: any) => {
-    const novoNome = window.prompt("Digite o novo nome para o projeto:", projeto.nome);
-    if (!novoNome || novoNome.trim() === projeto.nome) return;
-
+  const handleEdit = (projeto: any) => {
     setJustificativaDialog({
       isOpen: true,
       title: "Renomear Projeto",
-      description: `Alterando nome de "${projeto.nome}" para "${novoNome.trim()}". Por favor, justifique:`,
+      description: `Alteração do nome do projeto "${projeto.nome}":`,
       value: "",
-      placeholder: "Motivo da alteração...",
-      onConfirm: async (just) => {
+      placeholder: "Justificativa da alteração...",
+      isRename: true,
+      renameValue: projeto.nome,
+      onConfirm: async (just, novoNome) => {
+        if (!novoNome?.trim()) return;
         if (!just.trim()) {
           alert("Justificativa obrigatória.");
           return;
@@ -112,7 +115,8 @@ export default function DashboardPage() {
               nome: novoNome.trim(), 
               justificativa: just.trim(),
               user: usuario?.nome,
-              papel: usuario?.papel
+              papel: usuario?.papel,
+              dept: usuario?.departamento
             })
           });
           if (!res.ok) {
@@ -128,12 +132,10 @@ export default function DashboardPage() {
     });
   };
 
-  const handleDelete = async (id: number) => {
-    if (!window.confirm("Atenção! Deseja realmente enviar este projeto para a Lixeira?")) return;
-
+  const handleDelete = (id: number) => {
     setJustificativaDialog({
       isOpen: true,
-      title: "Excluir Projeto",
+      title: "Enviar para Lixeira",
       description: "O projeto será movido para a lixeira. Justifique a exclusão:",
       value: "",
       placeholder: "Motivo da exclusão...",
@@ -149,7 +151,8 @@ export default function DashboardPage() {
             body: JSON.stringify({ 
               justificativa: just.trim(),
               user: usuario?.nome,
-              papel: usuario?.papel
+              papel: usuario?.papel,
+              dept: usuario?.departamento
             })
           });
           if (!res.ok) {
@@ -247,6 +250,16 @@ export default function DashboardPage() {
             <DialogDescription>{justificativaDialog.description}</DialogDescription>
           </DialogHeader>
           <div className="grid gap-4 py-4">
+            {justificativaDialog.isRename && (
+              <div className="space-y-2">
+                <Label>Novo Nome do Projeto</Label>
+                <Input 
+                  value={justificativaDialog.renameValue}
+                  onChange={(e) => setJustificativaDialog(prev => ({ ...prev, renameValue: e.target.value }))}
+                  placeholder="Digite o novo nome..."
+                />
+              </div>
+            )}
             <div className="space-y-2">
               <Label>Justificativa (Auditoria)</Label>
               <Textarea 
@@ -261,7 +274,7 @@ export default function DashboardPage() {
             <Button variant="outline" onClick={() => setJustificativaDialog(prev => ({ ...prev, isOpen: false }))}>Cancelar</Button>
             <Button 
               onClick={() => {
-                justificativaDialog.onConfirm(justificativaDialog.value);
+                justificativaDialog.onConfirm(justificativaDialog.value, justificativaDialog.renameValue);
                 setJustificativaDialog(prev => ({ ...prev, isOpen: false, value: "" }));
               }}
               className="bg-emerald-600 hover:bg-emerald-700"
@@ -271,125 +284,158 @@ export default function DashboardPage() {
           </div>
         </DialogContent>
       </Dialog>
-      <div>
-        <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-50">Visão Geral do Portfólio</h1>
-        <p className="text-slate-500 dark:text-slate-400 mt-2">
-          Acompanhamento consolidado de projetos carregados da base de dados.
-        </p>
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-50">Visão Geral do Portfólio</h1>
+          <p className="text-slate-500 dark:text-slate-400 mt-2">
+            Acompanhamento consolidado de projetos carregados da base de dados.
+          </p>
+        </div>
+        {isMaster && (
+          <Link href="/dashboard/projetos">
+            <Button className="bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-500/20 flex gap-2">
+              <Plus className="h-4 w-4" /> Nova Iniciativa
+            </Button>
+          </Link>
+        )}
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wider">Status Geral</h3>
-        <div className="grid gap-4 md:grid-cols-3">
+        <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wider flex items-center gap-2">
+          <div className="h-1 w-1 rounded-full bg-blue-500" />
+          Status Geral
+        </h3>
+        <div className="grid gap-6 md:grid-cols-3">
           <Card 
             onClick={() => setActiveFilter("all")}
-            className={`cursor-pointer transition-all hover:shadow-md border-l-4 border-l-blue-500 ${activeFilter === "all" ? "ring-2 ring-blue-500 shadow-md bg-blue-50/50 dark:bg-blue-900/10" : "shadow-sm"}`}
+            className={`group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-none bg-gradient-to-br from-white to-blue-50/30 dark:from-slate-900 dark:to-blue-900/10 ${activeFilter === "all" ? "ring-2 ring-blue-500 shadow-blue-200/50 dark:shadow-blue-900/20 shadow-lg" : "shadow-sm"}`}
           >
             <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
-              <CardTitle className="text-sm font-medium text-slate-600 dark:text-slate-400">Total de Projetos</CardTitle>
-              <FolderKanban className="h-4 w-4 text-blue-500" />
+              <CardTitle className="text-sm font-semibold text-slate-600 dark:text-slate-400">Total de Projetos</CardTitle>
+              <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg group-hover:scale-110 transition-transform">
+                <FolderKanban className="h-4 w-4 text-blue-600" />
+              </div>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-slate-900 dark:text-slate-50">{totais.all}</div>
-              <p className="text-xs text-slate-500 mt-1">Registrados no sistema</p>
+              <div className="text-3xl font-bold text-slate-900 dark:text-slate-50">{totais.all}</div>
+              <p className="text-xs text-slate-500 mt-1 flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
+                Registrados no ecossistema
+              </p>
             </CardContent>
           </Card>
 
           <Card 
             onClick={() => setActiveFilter("andamento")}
-            className={`cursor-pointer transition-all hover:shadow-md border-l-4 border-l-indigo-500 ${activeFilter === "andamento" ? "ring-2 ring-indigo-500 shadow-md bg-indigo-50/50 dark:bg-indigo-900/10" : "shadow-sm"}`}
+            className={`group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-none bg-gradient-to-br from-white to-indigo-50/30 dark:from-slate-900 dark:to-indigo-900/10 ${activeFilter === "andamento" ? "ring-2 ring-indigo-500 shadow-indigo-200/50 dark:shadow-indigo-900/20 shadow-lg" : "shadow-sm"}`}
           >
             <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
-              <CardTitle className="text-sm font-medium text-slate-600 dark:text-slate-400">Em Andamento</CardTitle>
-              <PlayCircle className="h-4 w-4 text-indigo-500" />
+              <CardTitle className="text-sm font-semibold text-slate-600 dark:text-slate-400">Em Andamento</CardTitle>
+              <div className="p-2 bg-indigo-100 dark:bg-indigo-900/30 rounded-lg group-hover:scale-110 transition-transform">
+                <PlayCircle className="h-4 w-4 text-indigo-600" />
+              </div>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-slate-900 dark:text-slate-50">{totais.andamento}</div>
-              <p className="text-xs text-slate-500 mt-1">Projetos ativos</p>
+              <div className="text-3xl font-bold text-slate-900 dark:text-slate-50">{totais.andamento}</div>
+              <p className="text-xs text-slate-500 mt-1">Fases ativas de execução</p>
             </CardContent>
           </Card>
 
           <Card 
             onClick={() => setActiveFilter("finalizados")}
-            className={`cursor-pointer transition-all hover:shadow-md border-l-4 border-l-slate-500 ${activeFilter === "finalizados" ? "ring-2 ring-slate-500 shadow-md bg-slate-50/50 dark:bg-slate-800/50" : "shadow-sm"}`}
+            className={`group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-none bg-gradient-to-br from-white to-slate-50/30 dark:from-slate-900 dark:to-slate-800/30 ${activeFilter === "finalizados" ? "ring-2 ring-slate-500 shadow-slate-200/50 dark:shadow-slate-800/50 shadow-lg" : "shadow-sm"}`}
           >
             <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
-              <CardTitle className="text-sm font-medium text-slate-600 dark:text-slate-400">Finalizados</CardTitle>
-              <CheckSquare className="h-4 w-4 text-slate-500" />
+              <CardTitle className="text-sm font-semibold text-slate-600 dark:text-slate-400">Finalizados</CardTitle>
+              <div className="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg group-hover:scale-110 transition-transform">
+                <CheckSquare className="h-4 w-4 text-slate-600" />
+              </div>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-slate-900 dark:text-slate-50">{totais.finalizados}</div>
-              <p className="text-xs text-slate-500 mt-1">Entregues com sucesso</p>
+              <div className="text-3xl font-bold text-slate-900 dark:text-slate-50">{totais.finalizados}</div>
+              <p className="text-xs text-slate-500 mt-1">Entregas concluídas</p>
             </CardContent>
           </Card>
         </div>
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wider">Saúde do Portfólio (Projetos Ativos)</h3>
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wider flex items-center gap-2">
+          <div className="h-1 w-1 rounded-full bg-emerald-500" />
+          Saúde do Portfólio (Projetos Ativos)
+        </h3>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           <Card 
             onClick={() => setActiveFilter("prazo")}
-            className={`cursor-pointer transition-all hover:shadow-md border-l-4 border-l-emerald-500 ${activeFilter === "prazo" ? "ring-2 ring-emerald-500 shadow-md bg-emerald-50/50 dark:bg-emerald-900/10" : "shadow-sm"}`}
+            className={`group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-none bg-gradient-to-br from-white to-emerald-50/30 dark:from-slate-900 dark:to-emerald-900/10 ${activeFilter === "prazo" ? "ring-2 ring-emerald-500 shadow-emerald-200/50 shadow-lg" : "shadow-sm"}`}
           >
             <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
-              <CardTitle className="text-sm font-medium text-slate-600 dark:text-slate-400">No Prazo</CardTitle>
+              <CardTitle className="text-sm font-semibold text-slate-600 dark:text-slate-400">No Prazo</CardTitle>
               <CheckCircle2 className="h-4 w-4 text-emerald-500" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold text-slate-900 dark:text-slate-50">{totais.prazo}</div>
-              <p className="text-xs text-slate-500 mt-1">Sem desvios</p>
+              <div className="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full mt-2 overflow-hidden">
+                <div className="bg-emerald-500 h-full w-[100%] rounded-full" />
+              </div>
             </CardContent>
           </Card>
 
           <Card 
             onClick={() => setActiveFilter("risco")}
-            className={`cursor-pointer transition-all hover:shadow-md border-l-4 border-l-amber-500 ${activeFilter === "risco" ? "ring-2 ring-amber-500 shadow-md bg-amber-50/50 dark:bg-amber-900/10" : "shadow-sm"}`}
+            className={`group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-none bg-gradient-to-br from-white to-amber-50/30 dark:from-slate-900 dark:to-amber-900/10 ${activeFilter === "risco" ? "ring-2 ring-amber-500 shadow-amber-200/50 shadow-lg" : "shadow-sm"}`}
           >
             <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
-              <CardTitle className="text-sm font-medium text-slate-600 dark:text-slate-400">Em Risco</CardTitle>
-              <Clock className="h-4 w-4 text-amber-500" />
+              <CardTitle className="text-sm font-semibold text-slate-600 dark:text-slate-400">Em Risco</CardTitle>
+              <Clock className="h-4 w-4 text-amber-500 animate-pulse" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold text-slate-900 dark:text-slate-50">{totais.risco}</div>
-              <p className="text-xs text-slate-500 mt-1">Atenção Necessária</p>
+              <div className="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full mt-2 overflow-hidden">
+                <div className="bg-amber-500 h-full w-[60%] rounded-full" />
+              </div>
             </CardContent>
           </Card>
 
           <Card 
             onClick={() => setActiveFilter("atrasados")}
-            className={`cursor-pointer transition-all hover:shadow-md border-l-4 border-l-rose-500 ${activeFilter === "atrasados" ? "ring-2 ring-rose-500 shadow-md bg-rose-50/50 dark:bg-rose-900/10" : "shadow-sm"}`}
+            className={`group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-none bg-gradient-to-br from-white to-rose-50/30 dark:from-slate-900 dark:to-rose-900/10 ${activeFilter === "atrasados" ? "ring-2 ring-rose-500 shadow-rose-200/50 shadow-lg" : "shadow-sm"}`}
           >
             <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
-              <CardTitle className="text-sm font-medium text-slate-600 dark:text-slate-400">Atrasados</CardTitle>
+              <CardTitle className="text-sm font-semibold text-slate-600 dark:text-slate-400">Atrasados</CardTitle>
               <AlertCircle className="h-4 w-4 text-rose-500" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold text-slate-900 dark:text-slate-50">{totais.atrasados}</div>
-              <p className="text-xs text-rose-500 mt-1">Fora do Prazo Global</p>
+              <div className="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full mt-2 overflow-hidden">
+                <div className="bg-rose-500 h-full w-[40%] rounded-full" />
+              </div>
             </CardContent>
           </Card>
 
           <Card 
             onClick={() => setActiveFilter("impedimentos")}
-            className={`cursor-pointer transition-all hover:shadow-md border-l-4 border-l-rose-600 ${activeFilter === "impedimentos" ? "ring-2 ring-rose-600 shadow-md bg-rose-100/50 dark:bg-rose-900/30" : "bg-rose-50/30 dark:bg-rose-950/20 shadow-sm border-rose-200 dark:border-rose-900/50"}`}
+            className={`group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-none bg-gradient-to-br from-white to-rose-100/30 dark:from-slate-900 dark:to-rose-950/20 ${activeFilter === "impedimentos" ? "ring-2 ring-rose-600 shadow-rose-300/50 shadow-lg" : "shadow-sm"}`}
           >
             <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
-              <CardTitle className="text-sm font-medium text-rose-800 dark:text-rose-400">Impedimentos Ativos</CardTitle>
+              <CardTitle className="text-sm font-semibold text-rose-800 dark:text-rose-400">Impedimentos</CardTitle>
               <ShieldAlert className="h-4 w-4 text-rose-600" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold text-rose-700 dark:text-rose-300">{totais.impedimentos}</div>
-              <p className="text-xs text-rose-600/80 mt-1">Tarefas bloqueadas</p>
+              <div className="w-full bg-rose-200 dark:bg-rose-900/30 h-1.5 rounded-full mt-2 overflow-hidden">
+                <div className="bg-rose-600 h-full w-[20%] rounded-full" />
+              </div>
             </CardContent>
           </Card>
         </div>
       </div>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <Card className="col-span-2 shadow-sm">
-          <CardHeader>
-            <CardTitle>
+        <Card className="col-span-2 shadow-xl border-slate-100 dark:border-slate-800 overflow-hidden">
+          <CardHeader className="bg-slate-50/50 dark:bg-slate-900/50 border-b border-slate-100 dark:border-slate-800">
+            <CardTitle className="flex items-center gap-2">
+              <div className="h-2 w-2 rounded-full bg-blue-500" />
               {activeFilter === "all" && "Todas as Iniciativas Ativas"}
               {activeFilter === "andamento" && "Iniciativas em Andamento"}
               {activeFilter === "finalizados" && "Iniciativas Finalizadas"}
@@ -451,9 +497,12 @@ export default function DashboardPage() {
                     )}
                     {activeFilter === "impedimentos" && projeto.healthStatus === "impedimentos" && projeto.tarefaBloqueada && (
                       <div className="bg-rose-50 dark:bg-rose-950/30 p-2 rounded border border-rose-100 dark:border-rose-900/50 mt-2 mb-3 text-xs text-rose-800 dark:text-rose-300">
-                        <span className="font-semibold block mb-1">Tarefa Afetada: {projeto.tarefaBloqueada}</span>
+                        <span className="font-semibold block mb-1 underline">Tarefa Bloqueada: {projeto.tarefaBloqueada}</span>
+                        {projeto.motivoBloqueio && (
+                          <p className="italic text-[11px] mb-1">"{(projeto as any).motivoBloqueio}"</p>
+                        )}
                         {projeto.responsavelTecnico && (
-                          <span className="flex items-center gap-1 opacity-80 mt-1"><User className="h-3 w-3" /> Responsável Técnico: {projeto.responsavelTecnico}</span>
+                          <span className="flex items-center gap-1 opacity-80 mt-1 font-medium"><User className="h-3 w-3" /> Responsável: {projeto.responsavelTecnico}</span>
                         )}
                       </div>
                     )}

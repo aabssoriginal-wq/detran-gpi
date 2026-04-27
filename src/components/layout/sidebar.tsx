@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, FolderKanban, BotMessageSquare, Settings, Users, Crown, Shield, LayoutList } from "lucide-react";
+import { LayoutDashboard, FolderKanban, BotMessageSquare, Settings, Users, Crown, Shield, LayoutList, History, BookOpen } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/context/AuthContext";
 
@@ -11,15 +11,19 @@ export default function Sidebar() {
   const { usuario } = useAuth();
 
   const papel = usuario?.papel;
-  const canSeeUsers = papel === 'admin_total' || papel === 'admin_master' || papel === 'usuario_master';
-  const canSeeIA = papel === 'admin_total' || papel === 'admin_master' || papel === 'usuario_master';
+  const isAdmin = papel === 'admin_total' || papel === 'admin_master';
+  const isMaster = isAdmin || papel === 'usuario_master';
+  const canSeeUsers = isMaster;
+  const canSeeIA = isMaster;
 
   const navItems = [
     { name: "Visão Geral", href: "/dashboard", icon: LayoutDashboard, show: true },
     { name: "Projetos", href: "/dashboard/projetos", icon: FolderKanban, show: true },
-    { name: "Super Gantt", href: "/dashboard/super-gantt", icon: LayoutList, show: canSeeIA },
-    { name: "Console IA", href: "/dashboard/ia-console", icon: BotMessageSquare, show: canSeeIA },
+    { name: "Super Gantt", href: "/dashboard/super-gantt", icon: LayoutList, show: isMaster },
+    { name: "Console IA", href: "/dashboard/ia-console", icon: BotMessageSquare, show: isMaster },
+    { name: "Guia do Sistema", href: "/dashboard/guia", icon: BookOpen, show: true },
     { name: "Usuários", href: "/dashboard/usuarios", icon: Users, show: canSeeUsers },
+    { name: "Auditoria Total", href: "/dashboard/auditoria", icon: History, show: isAdmin },
   ].filter(i => i.show);
 
   return (

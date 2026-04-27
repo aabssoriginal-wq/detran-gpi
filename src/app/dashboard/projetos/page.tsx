@@ -74,7 +74,10 @@ export default function ProjetosPage() {
   }, [usuario]);
 
   const handleCreate = async () => {
-    if (!novoProjeto.nome.trim()) return;
+    if (!novoProjeto.nome.trim()) {
+      alert("O nome do projeto é obrigatório.");
+      return;
+    }
     if (!usuario) return;
     
     // Validação Obrigatória: Responsável deve existir no sistema
@@ -85,15 +88,15 @@ export default function ProjetosPage() {
     );
 
     if (!userFound) {
-      alert("Erro: O Responsável Principal deve ser um usuário cadastrado no sistema. Por favor, selecione um da lista.");
+      alert("Erro: O Responsável Principal deve ser selecionado da lista de usuários cadastrados.");
       return;
     }
 
-    // Normaliza para o nome oficial do usuário
+    // Normaliza para o nome oficial do usuário e depto do gestor
     const projetoParaEnviar = {
       ...novoProjeto,
       responsavel: userFound.nome,
-      departamento: usuario.departamento || "Diretoria de Tecnologia da Informação" // Fallback robusto
+      departamento: userFound.departamento // Agora vincula ao depto do responsável, não necessariamente do criador
     };
 
     setIsCreating(true);
@@ -112,7 +115,7 @@ export default function ProjetosPage() {
         alert(err.error || "Erro ao criar projeto");
       }
     } catch (e) {
-      alert("Falha na rede");
+      alert("Falha na rede ou comunicação com o servidor.");
     } finally {
       setIsCreating(false);
     }

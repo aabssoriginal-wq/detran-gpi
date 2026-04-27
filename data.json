@@ -1,8 +1,1337 @@
 [
   {
-    "id": 13,
-    "nome": "Modernização",
+    "id": 5,
+    "nome": "Contratação de Pacote IA",
+    "status": "implantacao",
+    "andamento": true,
+    "progress": 78,
+    "delta": 0,
+    "text": "Prazo",
+    "indicator": "bg-emerald-500",
+    "icon": "Clock",
+    "iconColor": "text-emerald-500",
+    "responsavel": "Fernanda Costa",
+    "excluido": false,
+    "logs": [
+      {
+        "acao": "Atualizou tarefa dev: 70%",
+        "justificativa": "Nenhuma",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 67%",
+        "justificativa": "Nenhuma",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualização de EAP",
+        "justificativa": "Alteração de tarefas",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualização de EAP",
+        "justificativa": "Alteração de tarefas",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 66%",
+        "justificativa": "Nenhuma",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 71%",
+        "justificativa": "Nenhuma",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 77%",
+        "justificativa": "Nenhuma",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 88%",
+        "justificativa": "Nenhuma",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 89%",
+        "justificativa": "Nenhuma",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualização de EAP",
+        "justificativa": "Alteração de tarefas",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualização de EAP",
+        "justificativa": "Alteração de tarefas",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualização de EAP",
+        "justificativa": "Alteração de tarefas",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualização de EAP",
+        "justificativa": "Alteração de tarefas",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualização de EAP",
+        "justificativa": "Alteração de tarefas",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 92%",
+        "justificativa": "Nenhuma",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 89%",
+        "justificativa": "Nenhuma",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualização de EAP",
+        "justificativa": "Alteração de tarefas",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 88%",
+        "justificativa": "Nenhuma",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualização de EAP",
+        "justificativa": "Alteração de tarefas",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 84%",
+        "justificativa": "Nenhuma",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 82%",
+        "justificativa": "Nenhuma",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 81%",
+        "justificativa": "Nenhuma",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 73%",
+        "justificativa": "Nenhuma",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 62%",
+        "justificativa": "Nenhuma",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualização de EAP",
+        "justificativa": "Alteração de tarefas",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualização de EAP",
+        "justificativa": "Alteração de tarefas",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualização de EAP",
+        "justificativa": "Alteração de tarefas",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualização de EAP",
+        "justificativa": "Alteração de tarefas",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualização de EAP",
+        "justificativa": "Alteração de tarefas",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 26%",
+        "justificativa": "Nenhuma",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualização de EAP",
+        "justificativa": "Alteração de tarefas",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 20%",
+        "justificativa": "Nenhuma",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualização de EAP",
+        "justificativa": "Alteração de tarefas",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualização de EAP",
+        "justificativa": "Alteração de tarefas",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 19%",
+        "justificativa": "Nenhuma",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualização de EAP",
+        "justificativa": "Alteração de tarefas",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 27%",
+        "justificativa": "Nenhuma",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 45%",
+        "justificativa": "Nenhuma",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 87%",
+        "justificativa": "Nenhuma",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualização de EAP",
+        "justificativa": "Alteração de tarefas",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualização de EAP",
+        "justificativa": "Alteração de tarefas",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualização de EAP",
+        "justificativa": "Alteração de tarefas",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Alteração de Fase para implantacao",
+        "justificativa": "aeaeaewaewa",
+        "data": "27/04/2026 17:51",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Repactuação: 01/04/2026 - 18/07/2026",
+        "justificativa": "boa",
+        "data": "27/04/2026 17:50",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualização de EAP",
+        "justificativa": "Alteração de tarefas",
+        "data": "27/04/2026 17:43",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Repactuação: 01/04/2026 - 17/07/2026",
+        "justificativa": "Repactuação automática por alteração na tarefa \"dev\"",
+        "data": "27/04/2026 17:43",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Repactuação: 01/04/2026 - 04/07/2026",
+        "justificativa": "testesss",
+        "data": "27/04/2026 17:40",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Repactuação: 01/04/2026 - 01/07/2026",
+        "justificativa": "repactuação necessária",
+        "data": "27/04/2026 17:39",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualização de Cronograma",
+        "justificativa": "Alteração manual de data de término do projeto",
+        "data": "25/04/2026 21:43",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa dev: desenvolvimento",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:08",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 92%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:08",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 88%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:08",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 92%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:08",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 90%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:08",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 85%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:08",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 81%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:08",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 77%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:08",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 54%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:08",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 12%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:08",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 96%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:08",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 97%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:08",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 98%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:08",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 99%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:08",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 88%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:08",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 47%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:08",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 9%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:08",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 10%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 9%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 8%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 10%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 11%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 12%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 13%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 14%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 15%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 18%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 19%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 16%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 21%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 22%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 17%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 23%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 24%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 24%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 25%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 32%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 27%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 33%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 32%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 29%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 31%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 34%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 39%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 43%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 65%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 99%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 10%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 9%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 8%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 10%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 11%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 12%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 13%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 14%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 15%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 16%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 17%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 11%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 9%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 10%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 11%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 13%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 14%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 15%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 18%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 19%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 20%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 29%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 40%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 60%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 80%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 82%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 82%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 81%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 83%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 83%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 80%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 78%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 74%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 70%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 63%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 55%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 49%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:07",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 100%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 96%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 90%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 91%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 89%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 88%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 87%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 85%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 81%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 60%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 52%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 51%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 50%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 49%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 48%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 47%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 46%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 45%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 42%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 44%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 41%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 40%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 38%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 39%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 37%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 36%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 35%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 34%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 33%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 32%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 31%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 28%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 23%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 19%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 17%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 16%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 15%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 11%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa dev: 2%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 52%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 49%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 48%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 45%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:06",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Criou tarefa: dev",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:05",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Repactuação global do projeto para: 01/04/2026 - 16/07/2026",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:05",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualização de Cronograma",
+        "justificativa": "Ajuste de Cronograma",
+        "data": "25/04/2026 17:05",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 30%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:05",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 38%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:05",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 43%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:05",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 29%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:05",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 26%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:05",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 22%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:05",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 15%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:05",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: 12%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:05",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualizou tarefa Projeto: planejamento",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:05",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Atualização de Cronograma",
+        "justificativa": "Alteração manual de data de término do projeto",
+        "data": "25/04/2026 17:04",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Criou tarefa: Projeto",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:04",
+        "user": "Fernanda Costa"
+      },
+      {
+        "acao": "Responsável alterado de 'Daniel Janzen' para 'Fernanda Costa'",
+        "justificativa": "Atribuição de responsabilidade",
+        "data": "24/04/2026 15:09",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Projeto Restaurado",
+        "justificativa": "decisão",
+        "data": "24/04/2026 01:28",
+        "user": "Luiz Wanderley (Master)"
+      },
+      {
+        "acao": "Projeto Excluído (Soft-Delete)",
+        "justificativa": "Projeto duplicado.",
+        "data": "24/04/2026 01:27",
+        "user": "Luiz Wanderley (Master)"
+      }
+    ],
+    "baselineData": {
+      "inicio": "2026-04-01",
+      "fim": "2026-07-18"
+    },
+    "tarefas": [
+      {
+        "id": "j0te8thi4",
+        "titulo": "Projeto",
+        "dataInicio": "2026-04-01",
+        "dataFim": "2026-05-09",
+        "responsavel": "Eu",
+        "parentId": "",
+        "progress": 96,
+        "status": "planejamento",
+        "notas": "",
+        "lancamentos": [],
+        "impedimentoAtivo": false
+      },
+      {
+        "id": "k6u230rto",
+        "titulo": "dev",
+        "dataInicio": "2026-04-23",
+        "dataFim": "2026-07-17",
+        "responsavel": "",
+        "parentId": "",
+        "progress": 70,
+        "status": "desenvolvimento",
+        "notas": "",
+        "lancamentos": [],
+        "impedimentoAtivo": false
+      }
+    ],
+    "healthStatus": "prazo",
+    "healthReason": "No prazo.",
+    "departamento": "Diretoria de Tecnologia da Informação"
+  },
+  {
+    "id": 4,
+    "nome": "Contratação de Pacote IA",
+    "status": "prazo",
+    "andamento": true,
+    "progress": 0,
+    "delta": 0,
+    "text": "Prazo",
+    "indicator": "bg-blue-400",
+    "icon": "FolderKanban",
+    "iconColor": "text-blue-400",
+    "responsavel": "Daniel Janzen",
+    "excluido": true,
+    "logs": [
+      {
+        "acao": "Projeto Excluído (Soft-Delete)",
+        "justificativa": "Duplicado",
+        "data": "24/04/2026 15:05",
+        "user": "Usuário"
+      }
+    ],
+    "baselineData": {
+      "inicio": "",
+      "fim": ""
+    },
+    "tarefas": [],
+    "healthStatus": "prazo",
+    "healthReason": "No prazo.",
+    "departamento": "Diretoria de Tecnologia da Informação"
+  },
+  {
+    "id": 9,
+    "nome": "Contratação de Tablets",
     "status": "ideação",
+    "andamento": true,
+    "progress": 0,
+    "delta": 2,
+    "text": "Atrasados",
+    "indicator": "bg-rose-500",
+    "icon": "AlertCircle",
+    "iconColor": "text-rose-500",
+    "responsavel": "Patricia Oliveira",
+    "excluido": false,
+    "logs": [
+      {
+        "acao": "Repactuação de Cronograma: de [2026-04-07 a Não definida] para [2026-04-07 a 2026-04-25]",
+        "justificativa": "Alteração manual de data de término do projeto",
+        "data": "26/04/2026 00:07",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Repactuação de Cronograma: de [Não definida a Não definida] para [2026-04-07 a Não definida]",
+        "justificativa": "Alteração manual de data de início do projeto",
+        "data": "26/04/2026 00:07",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Criação do Projeto",
+        "justificativa": "Projeto criado.",
+        "data": "25/04/2026 22:51",
+        "user": "Usuário"
+      }
+    ],
+    "baselineData": {
+      "inicio": "2026-04-07",
+      "fim": "2026-04-25"
+    },
+    "tarefas": [],
+    "healthStatus": "atrasados",
+    "healthReason": "Projeto atrasado há 2 dias.",
+    "departamento": "Diretoria de Tecnologia da Informação"
+  },
+  {
+    "id": 8,
+    "nome": "Contratação de Tablets 1",
+    "status": "ideacao",
+    "andamento": true,
+    "progress": 0,
+    "delta": 0,
+    "text": "Prazo",
+    "indicator": "bg-blue-400",
+    "icon": "FolderKanban",
+    "iconColor": "text-blue-400",
+    "responsavel": "Ana Paula Ferreira",
+    "excluido": true,
+    "logs": [
+      {
+        "acao": "Projeto Excluído (Soft-Delete)",
+        "justificativa": "bug",
+        "data": "25/04/2026 22:51",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Renomeado de 'Contratação de Tablets' para 'Contratação de Tablets 1'",
+        "justificativa": "ae",
+        "data": "25/04/2026 21:46",
+        "user": "Ana Paula Ferreira"
+      },
+      {
+        "acao": "Responsável alterado de 'a' para 'Ana Paula Ferreira'",
+        "justificativa": "Atribuição de responsabilidade",
+        "data": "25/04/2026 21:27",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Criação do Projeto",
+        "justificativa": "Projeto criado.",
+        "data": "25/04/2026 21:04",
+        "user": "Usuário"
+      }
+    ],
+    "baselineData": {
+      "inicio": "",
+      "fim": ""
+    },
+    "tarefas": [],
+    "healthStatus": "prazo",
+    "healthReason": "No prazo.",
+    "departamento": "Diretoria de Tecnologia da Informação"
+  },
+  {
+    "id": 7,
+    "nome": "Criança Dormir",
+    "status": "prazo",
     "andamento": true,
     "progress": 0,
     "delta": 0,
@@ -11,100 +1340,672 @@
     "icon": "FolderKanban",
     "iconColor": "text-blue-400",
     "responsavel": "Patricia Oliveira",
-    "excluido": false,
+    "excluido": true,
     "logs": [
       {
-        "acao": "Diretoria alterada: Diretoria de Tecnologia da Informação → Diretoria de Fiscalização de Trânsito",
-        "justificativa": "erro cadastro.",
-        "data": "26/04/2026 11:57",
-        "user": "Anderson"
+        "acao": "Responsável alterado de 'Anderson' para 'Patricia Oliveira'",
+        "justificativa": "Atribuição de responsabilidade",
+        "data": "25/04/2026 15:20",
+        "user": "Luiz Wanderley"
       },
       {
-        "acao": "Repactuação de Cronograma: [FIM]: 16/05/2026 → 23/05/2026",
-        "justificativa": "a",
-        "data": "26/04/2026 03:11",
-        "user": "Anderson Soares"
+        "acao": "Projeto Excluído (Soft-Delete)",
+        "justificativa": "FOI",
+        "data": "24/04/2026 03:52",
+        "user": "Luiz Wanderley (Master)"
       },
       {
-        "acao": "Repactuação de Cronograma: [FIM]: 09/05/2026 → 16/05/2026",
-        "justificativa": "Ajuste de Cronograma",
-        "data": "26/04/2026 03:01",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Definição de Cronograma: [INÍCIO]: Não definida → 2026-04-02 | [FIM]: Não definida → 2026-05-09",
-        "justificativa": "Definição inicial de cronograma",
-        "data": "26/04/2026 01:18",
-        "user": "Anderson Soares"
+        "acao": "Atribuição de Responsável Técnico (Bruna)",
+        "justificativa": "Vinculado à tarefa: Levantamento de Requisitos",
+        "data": "24/04/2026 03:51",
+        "user": "Luiz Wanderley (Master)"
       },
       {
         "acao": "Criação do Projeto",
-        "justificativa": "Projeto criado.",
-        "data": "26/04/2026 01:18",
-        "user": "Usuário"
+        "justificativa": "Nenhuma",
+        "data": "24/04/2026 03:50",
+        "user": "Luiz Wanderley (Master)"
       }
     ],
     "baselineData": {
-      "inicio": "2026-04-02",
-      "fim": "2026-05-23"
+      "inicio": "",
+      "fim": ""
     },
     "tarefas": [],
     "healthStatus": "prazo",
     "healthReason": "No prazo.",
-    "departamento": "Diretoria de Fiscalização de Trânsito"
+    "departamento": "Diretoria de Tecnologia da Informação"
   },
   {
-    "id": 12,
-    "nome": "Programação em IA",
-    "status": "ideação",
+    "id": 1,
+    "nome": "Identidade Digital (SSO)",
+    "status": "atrasados",
     "andamento": true,
     "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-blue-400",
-    "icon": "FolderKanban",
-    "iconColor": "text-blue-400",
-    "responsavel": "Anderson Soares",
+    "delta": 2,
+    "text": "Atrasados",
+    "indicator": "bg-rose-500",
+    "icon": "AlertCircle",
+    "iconColor": "text-rose-500",
+    "responsavel": "Luiz Wanderley",
     "excluido": false,
     "logs": [
       {
-        "acao": "Repactuação de Cronograma: [INÍCIO]: 2026-04-26 → 2026-04-08 | [FIM]: 2026-06-06 → 2026-06-20",
-        "justificativa": "aaa",
-        "data": "26/04/2026 01:06",
+        "acao": "Criou tarefa: Kickoff",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 23:24",
         "user": "Anderson Soares"
       },
       {
-        "acao": "Repactuação de Cronograma: [FIM]: 2026-05-26 → 2026-06-06",
+        "acao": "Atualização de Tarefas (EAP)",
+        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
+        "data": "25/04/2026 23:24",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Repactuação global do projeto para: 30/03/2026 - 25/04/2026",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 23:24",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Repactuação de Cronograma: de [2026-03-30 a 2026-04-10] para [2026-03-30 a 2026-04-25]",
         "justificativa": "Ajuste de Cronograma",
-        "data": "26/04/2026 00:39",
+        "data": "25/04/2026 23:24",
         "user": "Anderson Soares"
       },
       {
-        "acao": "Definição de Cronograma: [FIM]: Não definida → 2026-05-26",
-        "justificativa": "Definição inicial de cronograma",
-        "data": "26/04/2026 00:39",
+        "acao": "Repactuação de Cronograma: de [2026-03-30 a 2026-04-07] para [2026-03-30 a 2026-04-10]",
+        "justificativa": "Alteração manual de data de término do projeto",
+        "data": "25/04/2026 23:23",
         "user": "Anderson Soares"
       },
       {
-        "acao": "Definição de Cronograma: [INÍCIO]: Não definida → 2026-04-26",
-        "justificativa": "Definição inicial de cronograma",
-        "data": "26/04/2026 00:39",
+        "acao": "Repactuação de Cronograma: de [2026-03-30 a 2026-04-08] para [2026-03-30 a 2026-04-07]",
+        "justificativa": "Alteração manual de data de término do projeto",
+        "data": "25/04/2026 23:22",
         "user": "Anderson Soares"
       },
       {
-        "acao": "Criação do Projeto",
-        "justificativa": "Projeto criado.",
-        "data": "26/04/2026 00:39",
-        "user": "Usuário"
+        "acao": "Removeu tarefa: Task A",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 21:59",
+        "user": "Ana Paula Ferreira"
+      },
+      {
+        "acao": "Atualização de Tarefas (EAP)",
+        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
+        "data": "25/04/2026 21:59",
+        "user": "Ana Paula Ferreira"
+      },
+      {
+        "acao": "Removeu tarefa: Task B",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 21:59",
+        "user": "Ana Paula Ferreira"
+      },
+      {
+        "acao": "Atualização de Tarefas (EAP)",
+        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
+        "data": "25/04/2026 21:59",
+        "user": "Ana Paula Ferreira"
+      },
+      {
+        "acao": "Atualizou tarefa Task A: homologacao",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:56",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Atualizou tarefa Task B: homologacao",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:56",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Criou tarefa: Task B",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:24",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Repactuação global do projeto para: ??/??/???? - ??/??/????",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:24",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa Task A: 100%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:23",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa Task A: 50%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:23",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Criou tarefa: Task A",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:23",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Repactuação global do projeto para: ??/??/???? - ??/??/????",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:23",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Removeu tarefa: Kickoff",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 17:23",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Impedimento resolvido em Ass Contrato",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 16:50",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Impedimento em Ass Contrato",
+        "justificativa": "Orcamento pendente",
+        "data": "25/04/2026 16:49",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Impedimento resolvido em Ass Contrato",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 16:48",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Impedimento em Ass Contrato",
+        "justificativa": "Orcamento pendente",
+        "data": "25/04/2026 16:45",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Datas da tarefa \"Ass Contrato\" alteradas",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:59",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Repactuação de datas da tarefa \"Kickoff\" devido à subtarefa \"Ass Contrato\"",
+        "justificativa": "Ajuste automático de hierarquia",
+        "data": "25/04/2026 15:59",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Datas da tarefa \"Kickoff\" alteradas",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:59",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Datas da tarefa \"Ass Contrato\" alteradas",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:59",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Repactuação de datas da tarefa \"Kickoff\" devido à subtarefa \"Ass Contrato\"",
+        "justificativa": "Ajuste automático de hierarquia",
+        "data": "25/04/2026 15:59",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Datas da tarefa \"Kickoff\" alteradas",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:59",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Datas da tarefa \"Kickoff\" alteradas",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:58",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Datas da tarefa \"Kickoff\" alteradas",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:58",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Criou tarefa: Ass Contrato",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:57",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Repactuação de datas da tarefa \"Kickoff\" devido à nova subtarefa \"Ass Contrato\"",
+        "justificativa": "Ajuste automático de hierarquia",
+        "data": "25/04/2026 15:57",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Datas da tarefa \"Kickoff\" alteradas",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:57",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Datas da tarefa \"Kickoff\" alteradas",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:55",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Datas da tarefa \"Kickoff\" alteradas",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:55",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Removeu tarefa: kickoff 2",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:55",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Removeu tarefa: Subtask Alert Test",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:55",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Removeu tarefa: Alert Subtask",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:55",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Removeu tarefa: Subtarefa Repactuacao V2",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:55",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Removeu tarefa: SUBTASK ALERT FINAL TEST",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:55",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Removeu tarefa: Repactuation Task Final V2",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:55",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Removeu tarefa: Subtarefa Alerta Final",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:55",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Removeu tarefa: Subtask Alert",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:55",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Removeu tarefa: Alert Subtask Proper",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:55",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Removeu tarefa: FINAL TEST REPACTUATION SUCCESS",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:55",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Removeu tarefa: Subtask Alert 2",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:55",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Removeu tarefa: Subtarefa Alerta Final Validation",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:55",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Removeu tarefa: Subtask Alert Proper",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:54",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Removeu tarefa: REPACTUATION SUCCESS TEST",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:54",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Removeu tarefa: SUCCESSFUL REPACTUATION TASK",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:54",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Removeu tarefa: Subtarefa Repactuacao",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:54",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Removeu tarefa: Subtarefa Alerta 3",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:54",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Removeu tarefa: Final Validation Task",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:54",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Removeu tarefa: Real Subtask Alert",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:54",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Criou tarefa: SUCCESSFUL REPACTUATION TASK",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:53",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Repactuação de datas da tarefa \"kickoff 2\" devido à nova subtarefa \"SUCCESSFUL REPACTUATION TASK\"",
+        "justificativa": "Ajuste automático de hierarquia",
+        "data": "25/04/2026 15:53",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Criou tarefa: Subtarefa Alerta Final Validation",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:52",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Criou tarefa: FINAL TEST REPACTUATION SUCCESS",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:51",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Criou tarefa: REPACTUATION SUCCESS TEST",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:50",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Repactuação de datas da tarefa \"kickoff 2\" devido à nova subtarefa \"REPACTUATION SUCCESS TEST\"",
+        "justificativa": "Ajuste automático de hierarquia",
+        "data": "25/04/2026 15:50",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Criou tarefa: Subtarefa Alerta Final",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:49",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Criou tarefa: Repactuation Task Final V2",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:49",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Criou tarefa: Final Validation Task",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:48",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Criou tarefa: Subtarefa Alerta 3",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:46",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Criou tarefa: SUBTASK ALERT FINAL TEST",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:45",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Criou tarefa: Subtarefa Repactuacao V2",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:43",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Criou tarefa: Subtarefa Repactuacao",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:42",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Criou tarefa: Real Subtask Alert",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:40",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Criou tarefa: Subtask Alert Proper",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:40",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Criou tarefa: Subtask Alert 2",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:40",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Criou tarefa: Alert Subtask Proper",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:39",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Criou tarefa: Subtask Alert",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:38",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Criou tarefa: Alert Subtask",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:37",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Criou tarefa: Subtask Alert Test",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:37",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Atualizou tarefa kickoff 2: 73%",
+        "justificativa": "Nenhuma",
+        "data": "24/04/2026 21:36",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa kickoff 2: 100%",
+        "justificativa": "Nenhuma",
+        "data": "24/04/2026 21:36",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa kickoff 2: 74%",
+        "justificativa": "Nenhuma",
+        "data": "24/04/2026 21:36",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa kickoff 2: 76%",
+        "justificativa": "Nenhuma",
+        "data": "24/04/2026 21:36",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa kickoff 2: 72%",
+        "justificativa": "Nenhuma",
+        "data": "24/04/2026 21:36",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa kickoff 2: 80%",
+        "justificativa": "Nenhuma",
+        "data": "24/04/2026 21:36",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa kickoff 2: 93%",
+        "justificativa": "Nenhuma",
+        "data": "24/04/2026 21:36",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa kickoff 2: 100%",
+        "justificativa": "Nenhuma",
+        "data": "24/04/2026 21:36",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa kickoff 2: 92%",
+        "justificativa": "Nenhuma",
+        "data": "24/04/2026 21:36",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa kickoff 2: 98%",
+        "justificativa": "Nenhuma",
+        "data": "24/04/2026 21:36",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa kickoff 2: 95%",
+        "justificativa": "Nenhuma",
+        "data": "24/04/2026 21:36",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa kickoff 2: 94%",
+        "justificativa": "Nenhuma",
+        "data": "24/04/2026 21:36",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa kickoff 2: 90%",
+        "justificativa": "Nenhuma",
+        "data": "24/04/2026 21:36",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa kickoff 2: 84%",
+        "justificativa": "Nenhuma",
+        "data": "24/04/2026 21:36",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa kickoff 2: 68%",
+        "justificativa": "Nenhuma",
+        "data": "24/04/2026 21:36",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa kickoff 2: 67%",
+        "justificativa": "Nenhuma",
+        "data": "24/04/2026 21:36",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa kickoff 2: 62%",
+        "justificativa": "Nenhuma",
+        "data": "24/04/2026 21:36",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa kickoff 2: 37%",
+        "justificativa": "Nenhuma",
+        "data": "24/04/2026 21:36",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa kickoff 2: 11%",
+        "justificativa": "Nenhuma",
+        "data": "24/04/2026 21:36",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Criou tarefa: kickoff 2",
+        "justificativa": "Nenhuma",
+        "data": "24/04/2026 21:35",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa Kickoff: ideacao",
+        "justificativa": "Nenhuma",
+        "data": "24/04/2026 21:34",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa Kickoff: ideacao",
+        "justificativa": "Nenhuma",
+        "data": "24/04/2026 21:34",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Criou a tarefa: Kickoff",
+        "justificativa": "Sem justificativa",
+        "data": "24/04/2026 13:58",
+        "user": "Carlos Eduardo Lima"
+      },
+      {
+        "acao": "Atualização de Status (No Prazo) e Progresso (66%)",
+        "justificativa": "aa",
+        "data": "24/04/2026 13:56",
+        "user": "Carlos Eduardo Lima"
       }
     ],
     "baselineData": {
-      "inicio": "2026-04-08",
-      "fim": "2026-06-20"
+      "inicio": "2026-03-30",
+      "fim": "2026-04-25"
     },
-    "tarefas": [],
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
+    "tarefas": [
+      {
+        "id": "22so8jrh1",
+        "titulo": "Kickoff",
+        "dataInicio": "2026-04-01",
+        "dataFim": "2026-04-25",
+        "responsavel": "",
+        "parentId": "",
+        "progress": 0,
+        "status": "ideacao",
+        "notas": "",
+        "lancamentos": [],
+        "impedimentoAtivo": false
+      }
+    ],
+    "healthStatus": "atrasados",
+    "healthReason": "Projeto atrasado há 2 dias.",
     "departamento": "Diretoria de Tecnologia da Informação"
   },
   {
@@ -113,14 +2014,26 @@
     "status": "implantacao",
     "andamento": true,
     "progress": 14,
-    "delta": 2,
-    "text": "Risco",
-    "indicator": "bg-amber-500",
-    "icon": "Clock",
-    "iconColor": "text-amber-500",
+    "delta": 0,
+    "text": "Impedimentos",
+    "indicator": "bg-rose-600",
+    "icon": "ShieldAlert",
+    "iconColor": "text-rose-600",
     "responsavel": "Ricardo Mendes",
     "excluido": false,
     "logs": [
+      {
+        "acao": "Impedimento em laalal",
+        "justificativa": "hummmm",
+        "data": "27/04/2026 17:17",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualização de EAP",
+        "justificativa": "Alteração de tarefas",
+        "data": "27/04/2026 17:17",
+        "user": "Anderson"
+      },
       {
         "acao": "Criou tarefa: sdadad",
         "justificativa": "Nenhuma",
@@ -763,7 +2676,8 @@
         "status": "ideacao",
         "notas": "",
         "lancamentos": [],
-        "impedimentoAtivo": false
+        "impedimentoAtivo": true,
+        "motivoImpedimento": "hummmm"
       },
       {
         "id": "0s677x1d1",
@@ -805,17 +2719,333 @@
         "impedimentoAtivo": false
       }
     ],
+    "healthStatus": "impedimentos",
+    "healthReason": "Bloqueado: hummmm",
+    "departamento": "Diretoria de Tecnologia da Informação",
+    "tarefaBloqueada": "laalal",
+    "motivoBloqueio": "hummmm",
+    "responsavelTecnico": "Chico"
+  },
+  {
+    "id": 2,
+    "nome": "Migração para Azure Cloud",
+    "status": "homologacao",
+    "andamento": true,
+    "progress": 67,
+    "delta": 19,
+    "text": "Risco",
+    "indicator": "bg-amber-500",
+    "icon": "Clock",
+    "iconColor": "text-amber-500",
+    "responsavel": "Patricia Oliveira",
+    "excluido": false,
+    "logs": [
+      {
+        "acao": "Atualizou tarefa Publicação do contrato: 89%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 18:44",
+        "user": "Patricia Oliveira"
+      },
+      {
+        "acao": "Atualizou tarefa Publicação do contrato: 88%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 18:44",
+        "user": "Patricia Oliveira"
+      },
+      {
+        "acao": "Atualizou tarefa Publicação do contrato: 71%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 18:44",
+        "user": "Patricia Oliveira"
+      },
+      {
+        "acao": "Atualizou tarefa Publicação do contrato: 62%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 18:44",
+        "user": "Patricia Oliveira"
+      },
+      {
+        "acao": "Atualizou tarefa Publicação do contrato: 53%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 18:44",
+        "user": "Patricia Oliveira"
+      },
+      {
+        "acao": "Atualizou tarefa Publicação do contrato: 49%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 18:44",
+        "user": "Patricia Oliveira"
+      },
+      {
+        "acao": "Atualizou tarefa Publicação do contrato: 53%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 18:44",
+        "user": "Patricia Oliveira"
+      },
+      {
+        "acao": "Atualizou tarefa Publicação do contrato: 63%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 18:44",
+        "user": "Patricia Oliveira"
+      },
+      {
+        "acao": "Atualizou tarefa Publicação do contrato: 66%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 18:44",
+        "user": "Patricia Oliveira"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 2%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 18:44",
+        "user": "Patricia Oliveira"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 4%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 18:44",
+        "user": "Patricia Oliveira"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 5%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 18:44",
+        "user": "Patricia Oliveira"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 11%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 18:44",
+        "user": "Patricia Oliveira"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 14%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 18:44",
+        "user": "Patricia Oliveira"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 20%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 18:44",
+        "user": "Patricia Oliveira"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 27%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 18:44",
+        "user": "Patricia Oliveira"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 33%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 18:44",
+        "user": "Patricia Oliveira"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 41%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 18:44",
+        "user": "Patricia Oliveira"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 40%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 18:44",
+        "user": "Patricia Oliveira"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 37%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 18:44",
+        "user": "Patricia Oliveira"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 32%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 18:44",
+        "user": "Patricia Oliveira"
+      },
+      {
+        "acao": "Alteração de Fase: Homologação",
+        "justificativa": "Alteração de fase",
+        "data": "25/04/2026 18:24",
+        "user": "Patricia Oliveira"
+      },
+      {
+        "acao": "Alteração de Fase: Desenvolvimento (Progresso: 0%)",
+        "justificativa": "Alteração de fase",
+        "data": "25/04/2026 17:39",
+        "user": "Patricia Oliveira"
+      },
+      {
+        "acao": "Atualização de Cronograma",
+        "justificativa": "Alteração manual de data de término do projeto",
+        "data": "25/04/2026 17:39",
+        "user": "Patricia Oliveira"
+      },
+      {
+        "acao": "Atualizou tarefa Publicação do contrato: 100%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:25",
+        "user": "Patricia Oliveira"
+      },
+      {
+        "acao": "Atualizou tarefa Publicação do contrato: 99%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:25",
+        "user": "Patricia Oliveira"
+      },
+      {
+        "acao": "Atualizou tarefa Publicação do contrato: 51%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:25",
+        "user": "Patricia Oliveira"
+      },
+      {
+        "acao": "Atualizou tarefa Publicação do contrato: 9%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:25",
+        "user": "Patricia Oliveira"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 31%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:25",
+        "user": "Patricia Oliveira"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 25%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:25",
+        "user": "Patricia Oliveira"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 24%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:25",
+        "user": "Patricia Oliveira"
+      },
+      {
+        "acao": "Criou tarefa: Publicação do contrato",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:24",
+        "user": "Patricia Oliveira"
+      },
+      {
+        "acao": "Criou tarefa: Assinatura de contrato",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 15:23",
+        "user": "Patricia Oliveira"
+      },
+      {
+        "acao": "Alteração de Fase: Desenvolvimento (Progresso: 53%)",
+        "justificativa": "decisao",
+        "data": "25/04/2026 14:44",
+        "user": "Patricia Oliveira"
+      },
+      {
+        "acao": "Responsável alterado de 'Equipe Infra' para 'Patricia Oliveira'",
+        "justificativa": "Atribuição de responsabilidade",
+        "data": "24/04/2026 15:09",
+        "user": "Luiz Wanderley"
+      }
+    ],
+    "baselineData": {
+      "inicio": "2026-04-07",
+      "fim": "2026-05-01"
+    },
+    "tarefas": [
+      {
+        "id": "jwi4jj4fb",
+        "titulo": "Assinatura de contrato",
+        "dataInicio": "2026-04-07",
+        "dataFim": "2026-04-08",
+        "responsavel": "Juca Teles",
+        "parentId": "",
+        "progress": 2,
+        "status": "ideacao",
+        "notas": "ae",
+        "impedimentoAtivo": false
+      },
+      {
+        "id": "6rg512p54",
+        "titulo": "Publicação do contrato",
+        "dataInicio": "2026-04-25",
+        "dataFim": "2026-04-30",
+        "responsavel": "Juca Teles",
+        "parentId": "jwi4jj4fb",
+        "progress": 89,
+        "status": "ideacao",
+        "notas": "",
+        "impedimentoAtivo": false
+      }
+    ],
     "healthStatus": "risco",
-    "healthReason": "Tarefa \"laalal\" atrasada.",
+    "healthReason": "Tarefa \"Assinatura de contrato\" atrasada.",
     "departamento": "Diretoria de Tecnologia da Informação"
   },
   {
-    "id": 10,
-    "nome": "Troca cor gabinete",
+    "id": 13,
+    "nome": "Modernização",
     "status": "ideação",
     "andamento": true,
     "progress": 0,
-    "delta": 3,
+    "delta": 0,
+    "text": "Prazo",
+    "indicator": "bg-blue-400",
+    "icon": "FolderKanban",
+    "iconColor": "text-blue-400",
+    "responsavel": "Patricia Oliveira",
+    "excluido": false,
+    "logs": [
+      {
+        "acao": "Diretoria alterada: Diretoria de Tecnologia da Informação → Diretoria de Fiscalização de Trânsito",
+        "justificativa": "erro cadastro.",
+        "data": "26/04/2026 11:57",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Repactuação de Cronograma: [FIM]: 16/05/2026 → 23/05/2026",
+        "justificativa": "a",
+        "data": "26/04/2026 03:11",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Repactuação de Cronograma: [FIM]: 09/05/2026 → 16/05/2026",
+        "justificativa": "Ajuste de Cronograma",
+        "data": "26/04/2026 03:01",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Definição de Cronograma: [INÍCIO]: Não definida → 2026-04-02 | [FIM]: Não definida → 2026-05-09",
+        "justificativa": "Definição inicial de cronograma",
+        "data": "26/04/2026 01:18",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Criação do Projeto",
+        "justificativa": "Projeto criado.",
+        "data": "26/04/2026 01:18",
+        "user": "Usuário"
+      }
+    ],
+    "baselineData": {
+      "inicio": "2026-04-02",
+      "fim": "2026-05-23"
+    },
+    "tarefas": [],
+    "healthStatus": "prazo",
+    "healthReason": "No prazo.",
+    "departamento": "Diretoria de Fiscalização de Trânsito"
+  },
+  {
+    "id": 3,
+    "nome": "Novo Portal do Cliente",
+    "status": "planejamento",
+    "andamento": true,
+    "progress": 96,
+    "delta": 2,
     "text": "Atrasados",
     "indicator": "bg-rose-500",
     "icon": "AlertCircle",
@@ -824,129 +3054,478 @@
     "excluido": false,
     "logs": [
       {
-        "acao": "Repactuação de Cronograma: de [2026-04-01 a 2026-04-24] para [2026-04-01 a 2026-04-23]",
-        "justificativa": "Alteração manual de data de término do projeto",
-        "data": "26/04/2026 00:06",
+        "acao": "Atualizou tarefa Assinatura de contrato: 86%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 21:29",
         "user": "Anderson Soares"
       },
       {
-        "acao": "Repactuação de Cronograma: de [2026-04-01 a 2026-04-25] para [2026-04-01 a 2026-04-24]",
-        "justificativa": "Alteração manual de data de término do projeto",
-        "data": "25/04/2026 23:45",
+        "acao": "Atualizou tarefa Assinatura de contrato: 94%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 21:29",
         "user": "Anderson Soares"
       },
       {
-        "acao": "Repactuação de Cronograma: de [2026-04-01 a Não definida] para [2026-04-01 a 2026-04-25]",
-        "justificativa": "Alteração manual de data de término do projeto",
-        "data": "25/04/2026 23:45",
+        "acao": "Atualização de Tarefas (EAP)",
+        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
+        "data": "25/04/2026 21:29",
         "user": "Anderson Soares"
       },
       {
-        "acao": "Repactuação de Cronograma: de [Não definida a Não definida] para [2026-04-01 a Não definida]",
-        "justificativa": "Alteração manual de data de início do projeto",
-        "data": "25/04/2026 23:45",
+        "acao": "Atualizou tarefa Assinatura de contrato: 91%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 21:29",
         "user": "Anderson Soares"
       },
       {
-        "acao": "Criação do Projeto",
-        "justificativa": "Projeto criado.",
-        "data": "25/04/2026 23:21",
-        "user": "Usuário"
+        "acao": "Atualizou tarefa Assinatura de contrato: 89%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 93%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 85%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 92%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 90%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualização de Tarefas (EAP)",
+        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualização de Tarefas (EAP)",
+        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 83%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualização de Tarefas (EAP)",
+        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 87%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 76%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualização de Tarefas (EAP)",
+        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualização de Tarefas (EAP)",
+        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 84%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualização de Tarefas (EAP)",
+        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualização de Tarefas (EAP)",
+        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 88%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 80%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualização de Tarefas (EAP)",
+        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualização de Tarefas (EAP)",
+        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualização de Tarefas (EAP)",
+        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualização de Tarefas (EAP)",
+        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualização de Tarefas (EAP)",
+        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 77%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualização de Tarefas (EAP)",
+        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualização de Tarefas (EAP)",
+        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 75%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 74%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualização de Tarefas (EAP)",
+        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 72%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 61%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 45%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 29%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 18%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 13%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualização de Tarefas (EAP)",
+        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa Assinatura de contrato: 1%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualização de Tarefas (EAP)",
+        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualização de Tarefas (EAP)",
+        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualização de Tarefas (EAP)",
+        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualização de Tarefas (EAP)",
+        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualização de Tarefas (EAP)",
+        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualização de Tarefas (EAP)",
+        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualização de Tarefas (EAP)",
+        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa Kickoff: 100%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa Kickoff: 91%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa Kickoff: 44%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualizou tarefa Kickoff: 6%",
+        "justificativa": "Nenhuma",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualização de Tarefas (EAP)",
+        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualização de Tarefas (EAP)",
+        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualização de Tarefas (EAP)",
+        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Atualização de Tarefas (EAP)",
+        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
+        "data": "25/04/2026 21:29",
+        "user": "Anderson Soares"
+      },
+      {
+        "acao": "Alteração de Fase: Planejamento",
+        "justificativa": "Alteração de fase",
+        "data": "25/04/2026 18:24",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Alteração de Fase: Ideação (Progresso: 3%)",
+        "justificativa": "Ajuste de fase",
+        "data": "24/04/2026 22:08",
+        "user": "Carlos Eduardo Lima"
+      },
+      {
+        "acao": "Responsável alterado de 'Equipe Front' para 'Carlos Eduardo Lima'",
+        "justificativa": "Atribuição de responsabilidade",
+        "data": "24/04/2026 15:10",
+        "user": "Luiz Wanderley"
+      },
+      {
+        "acao": "Criou tarefa: Assinatura de contrato",
+        "justificativa": "Nenhuma",
+        "data": "24/04/2026 14:22",
+        "user": "Carlos Eduardo Lima"
+      },
+      {
+        "acao": "Atualizou tarefa Kickoff: ideacao",
+        "justificativa": "Nenhuma",
+        "data": "24/04/2026 14:21",
+        "user": "Carlos Eduardo Lima"
+      },
+      {
+        "acao": "Criou tarefa: Kickoff",
+        "justificativa": "Nenhuma",
+        "data": "24/04/2026 14:21",
+        "user": "Carlos Eduardo Lima"
+      },
+      {
+        "acao": "Alteração de Fase: Implantação (Progresso: 98%)",
+        "justificativa": "Ajuste de fase",
+        "data": "24/04/2026 14:20",
+        "user": "Carlos Eduardo Lima"
+      },
+      {
+        "acao": "Alteração de Fase: Concluído (Progresso: 100%)",
+        "justificativa": "Ajuste de fase",
+        "data": "24/04/2026 14:20",
+        "user": "Carlos Eduardo Lima"
+      },
+      {
+        "acao": "Alteração de Fase: Concluído (Progresso: 100%)",
+        "justificativa": "Ajuste de fase",
+        "data": "24/04/2026 14:20",
+        "user": "Carlos Eduardo Lima"
       }
     ],
     "baselineData": {
-      "inicio": "2026-04-01",
-      "fim": "2026-04-23"
+      "inicio": "2026-04-24",
+      "fim": "2026-04-25"
     },
-    "tarefas": [],
+    "tarefas": [
+      {
+        "id": "5ai6bniza",
+        "titulo": "Kickoff",
+        "dataInicio": "2026-04-24",
+        "dataFim": "2026-04-24",
+        "responsavel": "Amador",
+        "parentId": "none",
+        "progress": 100,
+        "status": "ideacao",
+        "notas": "",
+        "impedimentoAtivo": false
+      },
+      {
+        "id": "64k867zso",
+        "titulo": "Assinatura de contrato",
+        "dataInicio": "2026-04-24",
+        "dataFim": "2026-04-25",
+        "responsavel": "",
+        "parentId": "5ai6bniza",
+        "progress": 94,
+        "status": "ideacao",
+        "notas": "",
+        "impedimentoAtivo": false
+      }
+    ],
     "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 3 dias.",
+    "healthReason": "Projeto atrasado há 2 dias.",
     "departamento": "Diretoria de Tecnologia da Informação"
   },
   {
-    "id": 9,
-    "nome": "Contratação de Tablets",
+    "id": 12,
+    "nome": "Programação em IA",
     "status": "ideação",
     "andamento": true,
     "progress": 0,
-    "delta": 1,
-    "text": "Atrasados",
-    "indicator": "bg-rose-500",
-    "icon": "AlertCircle",
-    "iconColor": "text-rose-500",
-    "responsavel": "Patricia Oliveira",
+    "delta": 0,
+    "text": "Prazo",
+    "indicator": "bg-blue-400",
+    "icon": "FolderKanban",
+    "iconColor": "text-blue-400",
+    "responsavel": "Anderson Soares",
     "excluido": false,
     "logs": [
       {
-        "acao": "Repactuação de Cronograma: de [2026-04-07 a Não definida] para [2026-04-07 a 2026-04-25]",
-        "justificativa": "Alteração manual de data de término do projeto",
-        "data": "26/04/2026 00:07",
+        "acao": "Repactuação de Cronograma: [INÍCIO]: 2026-04-26 → 2026-04-08 | [FIM]: 2026-06-06 → 2026-06-20",
+        "justificativa": "aaa",
+        "data": "26/04/2026 01:06",
         "user": "Anderson Soares"
       },
       {
-        "acao": "Repactuação de Cronograma: de [Não definida a Não definida] para [2026-04-07 a Não definida]",
-        "justificativa": "Alteração manual de data de início do projeto",
-        "data": "26/04/2026 00:07",
+        "acao": "Repactuação de Cronograma: [FIM]: 2026-05-26 → 2026-06-06",
+        "justificativa": "Ajuste de Cronograma",
+        "data": "26/04/2026 00:39",
         "user": "Anderson Soares"
       },
       {
-        "acao": "Criação do Projeto",
-        "justificativa": "Projeto criado.",
-        "data": "25/04/2026 22:51",
-        "user": "Usuário"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2026-04-07",
-      "fim": "2026-04-25"
-    },
-    "tarefas": [],
-    "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 1 dias.",
-    "departamento": "Diretoria de Tecnologia da Informação"
-  },
-  {
-    "id": 8,
-    "nome": "Contratação de Tablets 1",
-    "status": "ideacao",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-blue-400",
-    "icon": "FolderKanban",
-    "iconColor": "text-blue-400",
-    "responsavel": "Ana Paula Ferreira",
-    "excluido": true,
-    "logs": [
-      {
-        "acao": "Projeto Excluído (Soft-Delete)",
-        "justificativa": "bug",
-        "data": "25/04/2026 22:51",
-        "user": "Luiz Wanderley"
+        "acao": "Definição de Cronograma: [FIM]: Não definida → 2026-05-26",
+        "justificativa": "Definição inicial de cronograma",
+        "data": "26/04/2026 00:39",
+        "user": "Anderson Soares"
       },
       {
-        "acao": "Renomeado de 'Contratação de Tablets' para 'Contratação de Tablets 1'",
-        "justificativa": "ae",
-        "data": "25/04/2026 21:46",
-        "user": "Ana Paula Ferreira"
-      },
-      {
-        "acao": "Responsável alterado de 'a' para 'Ana Paula Ferreira'",
-        "justificativa": "Atribuição de responsabilidade",
-        "data": "25/04/2026 21:27",
+        "acao": "Definição de Cronograma: [INÍCIO]: Não definida → 2026-04-26",
+        "justificativa": "Definição inicial de cronograma",
+        "data": "26/04/2026 00:39",
         "user": "Anderson Soares"
       },
       {
         "acao": "Criação do Projeto",
         "justificativa": "Projeto criado.",
-        "data": "25/04/2026 21:04",
+        "data": "26/04/2026 00:39",
         "user": "Usuário"
       }
     ],
     "baselineData": {
-      "inicio": "",
-      "fim": ""
+      "inicio": "2026-04-08",
+      "fim": "2026-06-20"
     },
     "tarefas": [],
     "healthStatus": "prazo",
@@ -954,9 +3533,9 @@
     "departamento": "Diretoria de Tecnologia da Informação"
   },
   {
-    "id": 7,
-    "nome": "Criança Dormir",
-    "status": "prazo",
+    "id": 14,
+    "nome": "Projeto Teste 1",
+    "status": "ideação",
     "andamento": true,
     "progress": 0,
     "delta": 0,
@@ -964,32 +3543,15 @@
     "indicator": "bg-blue-400",
     "icon": "FolderKanban",
     "iconColor": "text-blue-400",
-    "responsavel": "Patricia Oliveira",
-    "excluido": true,
+    "responsavel": "Anderson",
+    "departamento": "Diretoria de Tecnologia da Informação",
+    "excluido": false,
     "logs": [
-      {
-        "acao": "Responsável alterado de 'Anderson' para 'Patricia Oliveira'",
-        "justificativa": "Atribuição de responsabilidade",
-        "data": "25/04/2026 15:20",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Projeto Excluído (Soft-Delete)",
-        "justificativa": "FOI",
-        "data": "24/04/2026 03:52",
-        "user": "Luiz Wanderley (Master)"
-      },
-      {
-        "acao": "Atribuição de Responsável Técnico (Bruna)",
-        "justificativa": "Vinculado à tarefa: Levantamento de Requisitos",
-        "data": "24/04/2026 03:51",
-        "user": "Luiz Wanderley (Master)"
-      },
       {
         "acao": "Criação do Projeto",
         "justificativa": "Nenhuma",
-        "data": "24/04/2026 03:50",
-        "user": "Luiz Wanderley (Master)"
+        "data": "27/04/2026 13:37",
+        "user": "Usuário"
       }
     ],
     "baselineData": {
@@ -998,8 +3560,7 @@
     },
     "tarefas": [],
     "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "departamento": "Diretoria de Tecnologia da Informação"
+    "healthReason": "No prazo."
   },
   {
     "id": 6,
@@ -1007,7 +3568,7 @@
     "status": "testes",
     "andamento": true,
     "progress": 63,
-    "delta": 4,
+    "delta": 5,
     "text": "Risco",
     "indicator": "bg-amber-500",
     "icon": "Clock",
@@ -3433,1854 +5994,12 @@
     "departamento": "Diretoria de Tecnologia da Informação"
   },
   {
-    "id": 5,
-    "nome": "Contratação de Pacote IA",
-    "status": "prazo",
-    "andamento": true,
-    "progress": 94,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-blue-400",
-    "icon": "FolderKanban",
-    "iconColor": "text-blue-400",
-    "responsavel": "Fernanda Costa",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Atualização de Cronograma",
-        "justificativa": "Alteração manual de data de término do projeto",
-        "data": "25/04/2026 21:43",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa dev: desenvolvimento",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:08",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 92%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:08",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 88%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:08",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 92%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:08",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 90%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:08",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 85%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:08",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 81%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:08",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 77%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:08",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 54%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:08",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 12%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:08",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 96%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:08",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 97%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:08",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 98%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:08",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 99%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:08",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 88%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:08",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 47%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:08",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 9%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:08",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 10%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 9%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 8%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 10%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 11%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 12%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 13%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 14%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 15%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 18%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 19%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 16%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 21%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 22%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 17%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 23%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 24%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 24%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 25%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 32%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 27%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 33%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 32%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 29%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 31%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 34%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 39%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 43%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 65%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 99%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 10%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 9%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 8%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 10%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 11%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 12%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 13%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 14%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 15%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 16%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 17%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 11%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 9%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 10%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 11%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 13%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 14%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 15%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 18%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 19%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 20%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 29%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 40%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 60%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 80%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 82%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 82%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 81%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 83%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 83%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 80%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 78%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 74%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 70%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 63%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 55%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 49%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:07",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 100%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 96%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 90%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 91%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 89%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 88%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 87%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 85%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 81%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 60%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 52%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 51%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 50%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 49%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 48%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 47%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 46%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 45%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 42%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 44%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 41%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 40%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 38%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 39%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 37%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 36%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 35%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 34%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 33%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 32%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 31%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 28%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 23%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 19%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 17%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 16%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 15%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 11%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa dev: 2%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 52%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 49%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 48%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 45%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:06",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Criou tarefa: dev",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:05",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Repactuação global do projeto para: 01/04/2026 - 16/07/2026",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:05",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualização de Cronograma",
-        "justificativa": "Ajuste de Cronograma",
-        "data": "25/04/2026 17:05",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 30%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:05",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 38%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:05",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 43%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:05",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 29%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:05",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 26%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:05",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 22%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:05",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 15%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:05",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: 12%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:05",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualizou tarefa Projeto: planejamento",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:05",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Atualização de Cronograma",
-        "justificativa": "Alteração manual de data de término do projeto",
-        "data": "25/04/2026 17:04",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Criou tarefa: Projeto",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:04",
-        "user": "Fernanda Costa"
-      },
-      {
-        "acao": "Responsável alterado de 'Daniel Janzen' para 'Fernanda Costa'",
-        "justificativa": "Atribuição de responsabilidade",
-        "data": "24/04/2026 15:09",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Projeto Restaurado",
-        "justificativa": "decisão",
-        "data": "24/04/2026 01:28",
-        "user": "Luiz Wanderley (Master)"
-      },
-      {
-        "acao": "Projeto Excluído (Soft-Delete)",
-        "justificativa": "Projeto duplicado.",
-        "data": "24/04/2026 01:27",
-        "user": "Luiz Wanderley (Master)"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2026-04-01",
-      "fim": "2026-07-23"
-    },
-    "tarefas": [
-      {
-        "id": "j0te8thi4",
-        "titulo": "Projeto",
-        "dataInicio": "2026-04-01",
-        "dataFim": "2026-05-09",
-        "responsavel": "Eu",
-        "parentId": "",
-        "progress": 96,
-        "status": "planejamento",
-        "notas": "",
-        "lancamentos": [],
-        "impedimentoAtivo": false
-      },
-      {
-        "id": "k6u230rto",
-        "titulo": "dev",
-        "dataInicio": "2026-04-23",
-        "dataFim": "2026-07-16",
-        "responsavel": "",
-        "parentId": "",
-        "progress": 92,
-        "status": "desenvolvimento",
-        "notas": "",
-        "lancamentos": [],
-        "impedimentoAtivo": false
-      }
-    ],
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "departamento": "Diretoria de Tecnologia da Informação"
-  },
-  {
-    "id": 4,
-    "nome": "Contratação de Pacote IA",
-    "status": "prazo",
+    "id": 10,
+    "nome": "Troca cor gabinete",
+    "status": "ideação",
     "andamento": true,
     "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-blue-400",
-    "icon": "FolderKanban",
-    "iconColor": "text-blue-400",
-    "responsavel": "Daniel Janzen",
-    "excluido": true,
-    "logs": [
-      {
-        "acao": "Projeto Excluído (Soft-Delete)",
-        "justificativa": "Duplicado",
-        "data": "24/04/2026 15:05",
-        "user": "Usuário"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "departamento": "Diretoria de Tecnologia da Informação"
-  },
-  {
-    "id": 1,
-    "nome": "Identidade Digital (SSO)",
-    "status": "atrasados",
-    "andamento": true,
-    "progress": 0,
-    "delta": 1,
-    "text": "Atrasados",
-    "indicator": "bg-rose-500",
-    "icon": "AlertCircle",
-    "iconColor": "text-rose-500",
-    "responsavel": "Luiz Wanderley",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Criou tarefa: Kickoff",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 23:24",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualização de Tarefas (EAP)",
-        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
-        "data": "25/04/2026 23:24",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Repactuação global do projeto para: 30/03/2026 - 25/04/2026",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 23:24",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Repactuação de Cronograma: de [2026-03-30 a 2026-04-10] para [2026-03-30 a 2026-04-25]",
-        "justificativa": "Ajuste de Cronograma",
-        "data": "25/04/2026 23:24",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Repactuação de Cronograma: de [2026-03-30 a 2026-04-07] para [2026-03-30 a 2026-04-10]",
-        "justificativa": "Alteração manual de data de término do projeto",
-        "data": "25/04/2026 23:23",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Repactuação de Cronograma: de [2026-03-30 a 2026-04-08] para [2026-03-30 a 2026-04-07]",
-        "justificativa": "Alteração manual de data de término do projeto",
-        "data": "25/04/2026 23:22",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Removeu tarefa: Task A",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 21:59",
-        "user": "Ana Paula Ferreira"
-      },
-      {
-        "acao": "Atualização de Tarefas (EAP)",
-        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
-        "data": "25/04/2026 21:59",
-        "user": "Ana Paula Ferreira"
-      },
-      {
-        "acao": "Removeu tarefa: Task B",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 21:59",
-        "user": "Ana Paula Ferreira"
-      },
-      {
-        "acao": "Atualização de Tarefas (EAP)",
-        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
-        "data": "25/04/2026 21:59",
-        "user": "Ana Paula Ferreira"
-      },
-      {
-        "acao": "Atualizou tarefa Task A: homologacao",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:56",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Atualizou tarefa Task B: homologacao",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:56",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Criou tarefa: Task B",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:24",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Repactuação global do projeto para: ??/??/???? - ??/??/????",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:24",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa Task A: 100%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:23",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa Task A: 50%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:23",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Criou tarefa: Task A",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:23",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Repactuação global do projeto para: ??/??/???? - ??/??/????",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:23",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Removeu tarefa: Kickoff",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 17:23",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Impedimento resolvido em Ass Contrato",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 16:50",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Impedimento em Ass Contrato",
-        "justificativa": "Orcamento pendente",
-        "data": "25/04/2026 16:49",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Impedimento resolvido em Ass Contrato",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 16:48",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Impedimento em Ass Contrato",
-        "justificativa": "Orcamento pendente",
-        "data": "25/04/2026 16:45",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Datas da tarefa \"Ass Contrato\" alteradas",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:59",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Repactuação de datas da tarefa \"Kickoff\" devido à subtarefa \"Ass Contrato\"",
-        "justificativa": "Ajuste automático de hierarquia",
-        "data": "25/04/2026 15:59",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Datas da tarefa \"Kickoff\" alteradas",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:59",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Datas da tarefa \"Ass Contrato\" alteradas",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:59",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Repactuação de datas da tarefa \"Kickoff\" devido à subtarefa \"Ass Contrato\"",
-        "justificativa": "Ajuste automático de hierarquia",
-        "data": "25/04/2026 15:59",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Datas da tarefa \"Kickoff\" alteradas",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:59",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Datas da tarefa \"Kickoff\" alteradas",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:58",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Datas da tarefa \"Kickoff\" alteradas",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:58",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Criou tarefa: Ass Contrato",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:57",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Repactuação de datas da tarefa \"Kickoff\" devido à nova subtarefa \"Ass Contrato\"",
-        "justificativa": "Ajuste automático de hierarquia",
-        "data": "25/04/2026 15:57",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Datas da tarefa \"Kickoff\" alteradas",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:57",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Datas da tarefa \"Kickoff\" alteradas",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:55",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Datas da tarefa \"Kickoff\" alteradas",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:55",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Removeu tarefa: kickoff 2",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:55",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Removeu tarefa: Subtask Alert Test",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:55",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Removeu tarefa: Alert Subtask",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:55",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Removeu tarefa: Subtarefa Repactuacao V2",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:55",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Removeu tarefa: SUBTASK ALERT FINAL TEST",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:55",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Removeu tarefa: Repactuation Task Final V2",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:55",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Removeu tarefa: Subtarefa Alerta Final",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:55",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Removeu tarefa: Subtask Alert",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:55",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Removeu tarefa: Alert Subtask Proper",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:55",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Removeu tarefa: FINAL TEST REPACTUATION SUCCESS",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:55",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Removeu tarefa: Subtask Alert 2",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:55",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Removeu tarefa: Subtarefa Alerta Final Validation",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:55",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Removeu tarefa: Subtask Alert Proper",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:54",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Removeu tarefa: REPACTUATION SUCCESS TEST",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:54",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Removeu tarefa: SUCCESSFUL REPACTUATION TASK",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:54",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Removeu tarefa: Subtarefa Repactuacao",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:54",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Removeu tarefa: Subtarefa Alerta 3",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:54",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Removeu tarefa: Final Validation Task",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:54",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Removeu tarefa: Real Subtask Alert",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:54",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Criou tarefa: SUCCESSFUL REPACTUATION TASK",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:53",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Repactuação de datas da tarefa \"kickoff 2\" devido à nova subtarefa \"SUCCESSFUL REPACTUATION TASK\"",
-        "justificativa": "Ajuste automático de hierarquia",
-        "data": "25/04/2026 15:53",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Criou tarefa: Subtarefa Alerta Final Validation",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:52",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Criou tarefa: FINAL TEST REPACTUATION SUCCESS",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:51",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Criou tarefa: REPACTUATION SUCCESS TEST",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:50",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Repactuação de datas da tarefa \"kickoff 2\" devido à nova subtarefa \"REPACTUATION SUCCESS TEST\"",
-        "justificativa": "Ajuste automático de hierarquia",
-        "data": "25/04/2026 15:50",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Criou tarefa: Subtarefa Alerta Final",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:49",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Criou tarefa: Repactuation Task Final V2",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:49",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Criou tarefa: Final Validation Task",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:48",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Criou tarefa: Subtarefa Alerta 3",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:46",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Criou tarefa: SUBTASK ALERT FINAL TEST",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:45",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Criou tarefa: Subtarefa Repactuacao V2",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:43",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Criou tarefa: Subtarefa Repactuacao",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:42",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Criou tarefa: Real Subtask Alert",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:40",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Criou tarefa: Subtask Alert Proper",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:40",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Criou tarefa: Subtask Alert 2",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:40",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Criou tarefa: Alert Subtask Proper",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:39",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Criou tarefa: Subtask Alert",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:38",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Criou tarefa: Alert Subtask",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:37",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Criou tarefa: Subtask Alert Test",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:37",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Atualizou tarefa kickoff 2: 73%",
-        "justificativa": "Nenhuma",
-        "data": "24/04/2026 21:36",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa kickoff 2: 100%",
-        "justificativa": "Nenhuma",
-        "data": "24/04/2026 21:36",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa kickoff 2: 74%",
-        "justificativa": "Nenhuma",
-        "data": "24/04/2026 21:36",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa kickoff 2: 76%",
-        "justificativa": "Nenhuma",
-        "data": "24/04/2026 21:36",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa kickoff 2: 72%",
-        "justificativa": "Nenhuma",
-        "data": "24/04/2026 21:36",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa kickoff 2: 80%",
-        "justificativa": "Nenhuma",
-        "data": "24/04/2026 21:36",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa kickoff 2: 93%",
-        "justificativa": "Nenhuma",
-        "data": "24/04/2026 21:36",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa kickoff 2: 100%",
-        "justificativa": "Nenhuma",
-        "data": "24/04/2026 21:36",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa kickoff 2: 92%",
-        "justificativa": "Nenhuma",
-        "data": "24/04/2026 21:36",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa kickoff 2: 98%",
-        "justificativa": "Nenhuma",
-        "data": "24/04/2026 21:36",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa kickoff 2: 95%",
-        "justificativa": "Nenhuma",
-        "data": "24/04/2026 21:36",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa kickoff 2: 94%",
-        "justificativa": "Nenhuma",
-        "data": "24/04/2026 21:36",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa kickoff 2: 90%",
-        "justificativa": "Nenhuma",
-        "data": "24/04/2026 21:36",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa kickoff 2: 84%",
-        "justificativa": "Nenhuma",
-        "data": "24/04/2026 21:36",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa kickoff 2: 68%",
-        "justificativa": "Nenhuma",
-        "data": "24/04/2026 21:36",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa kickoff 2: 67%",
-        "justificativa": "Nenhuma",
-        "data": "24/04/2026 21:36",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa kickoff 2: 62%",
-        "justificativa": "Nenhuma",
-        "data": "24/04/2026 21:36",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa kickoff 2: 37%",
-        "justificativa": "Nenhuma",
-        "data": "24/04/2026 21:36",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa kickoff 2: 11%",
-        "justificativa": "Nenhuma",
-        "data": "24/04/2026 21:36",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Criou tarefa: kickoff 2",
-        "justificativa": "Nenhuma",
-        "data": "24/04/2026 21:35",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa Kickoff: ideacao",
-        "justificativa": "Nenhuma",
-        "data": "24/04/2026 21:34",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa Kickoff: ideacao",
-        "justificativa": "Nenhuma",
-        "data": "24/04/2026 21:34",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Criou a tarefa: Kickoff",
-        "justificativa": "Sem justificativa",
-        "data": "24/04/2026 13:58",
-        "user": "Carlos Eduardo Lima"
-      },
-      {
-        "acao": "Atualização de Status (No Prazo) e Progresso (66%)",
-        "justificativa": "aa",
-        "data": "24/04/2026 13:56",
-        "user": "Carlos Eduardo Lima"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2026-03-30",
-      "fim": "2026-04-25"
-    },
-    "tarefas": [
-      {
-        "id": "22so8jrh1",
-        "titulo": "Kickoff",
-        "dataInicio": "2026-04-01",
-        "dataFim": "2026-04-25",
-        "responsavel": "",
-        "parentId": "",
-        "progress": 0,
-        "status": "ideacao",
-        "notas": "",
-        "lancamentos": [],
-        "impedimentoAtivo": false
-      }
-    ],
-    "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 1 dias.",
-    "departamento": "Diretoria de Tecnologia da Informação"
-  },
-  {
-    "id": 2,
-    "nome": "Migração para Azure Cloud",
-    "status": "homologacao",
-    "andamento": true,
-    "progress": 67,
-    "delta": 18,
-    "text": "Risco",
-    "indicator": "bg-amber-500",
-    "icon": "Clock",
-    "iconColor": "text-amber-500",
-    "responsavel": "Patricia Oliveira",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Atualizou tarefa Publicação do contrato: 89%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 18:44",
-        "user": "Patricia Oliveira"
-      },
-      {
-        "acao": "Atualizou tarefa Publicação do contrato: 88%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 18:44",
-        "user": "Patricia Oliveira"
-      },
-      {
-        "acao": "Atualizou tarefa Publicação do contrato: 71%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 18:44",
-        "user": "Patricia Oliveira"
-      },
-      {
-        "acao": "Atualizou tarefa Publicação do contrato: 62%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 18:44",
-        "user": "Patricia Oliveira"
-      },
-      {
-        "acao": "Atualizou tarefa Publicação do contrato: 53%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 18:44",
-        "user": "Patricia Oliveira"
-      },
-      {
-        "acao": "Atualizou tarefa Publicação do contrato: 49%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 18:44",
-        "user": "Patricia Oliveira"
-      },
-      {
-        "acao": "Atualizou tarefa Publicação do contrato: 53%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 18:44",
-        "user": "Patricia Oliveira"
-      },
-      {
-        "acao": "Atualizou tarefa Publicação do contrato: 63%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 18:44",
-        "user": "Patricia Oliveira"
-      },
-      {
-        "acao": "Atualizou tarefa Publicação do contrato: 66%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 18:44",
-        "user": "Patricia Oliveira"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 2%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 18:44",
-        "user": "Patricia Oliveira"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 4%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 18:44",
-        "user": "Patricia Oliveira"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 5%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 18:44",
-        "user": "Patricia Oliveira"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 11%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 18:44",
-        "user": "Patricia Oliveira"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 14%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 18:44",
-        "user": "Patricia Oliveira"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 20%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 18:44",
-        "user": "Patricia Oliveira"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 27%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 18:44",
-        "user": "Patricia Oliveira"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 33%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 18:44",
-        "user": "Patricia Oliveira"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 41%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 18:44",
-        "user": "Patricia Oliveira"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 40%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 18:44",
-        "user": "Patricia Oliveira"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 37%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 18:44",
-        "user": "Patricia Oliveira"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 32%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 18:44",
-        "user": "Patricia Oliveira"
-      },
-      {
-        "acao": "Alteração de Fase: Homologação",
-        "justificativa": "Alteração de fase",
-        "data": "25/04/2026 18:24",
-        "user": "Patricia Oliveira"
-      },
-      {
-        "acao": "Alteração de Fase: Desenvolvimento (Progresso: 0%)",
-        "justificativa": "Alteração de fase",
-        "data": "25/04/2026 17:39",
-        "user": "Patricia Oliveira"
-      },
-      {
-        "acao": "Atualização de Cronograma",
-        "justificativa": "Alteração manual de data de término do projeto",
-        "data": "25/04/2026 17:39",
-        "user": "Patricia Oliveira"
-      },
-      {
-        "acao": "Atualizou tarefa Publicação do contrato: 100%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:25",
-        "user": "Patricia Oliveira"
-      },
-      {
-        "acao": "Atualizou tarefa Publicação do contrato: 99%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:25",
-        "user": "Patricia Oliveira"
-      },
-      {
-        "acao": "Atualizou tarefa Publicação do contrato: 51%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:25",
-        "user": "Patricia Oliveira"
-      },
-      {
-        "acao": "Atualizou tarefa Publicação do contrato: 9%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:25",
-        "user": "Patricia Oliveira"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 31%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:25",
-        "user": "Patricia Oliveira"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 25%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:25",
-        "user": "Patricia Oliveira"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 24%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:25",
-        "user": "Patricia Oliveira"
-      },
-      {
-        "acao": "Criou tarefa: Publicação do contrato",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:24",
-        "user": "Patricia Oliveira"
-      },
-      {
-        "acao": "Criou tarefa: Assinatura de contrato",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 15:23",
-        "user": "Patricia Oliveira"
-      },
-      {
-        "acao": "Alteração de Fase: Desenvolvimento (Progresso: 53%)",
-        "justificativa": "decisao",
-        "data": "25/04/2026 14:44",
-        "user": "Patricia Oliveira"
-      },
-      {
-        "acao": "Responsável alterado de 'Equipe Infra' para 'Patricia Oliveira'",
-        "justificativa": "Atribuição de responsabilidade",
-        "data": "24/04/2026 15:09",
-        "user": "Luiz Wanderley"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2026-04-07",
-      "fim": "2026-05-01"
-    },
-    "tarefas": [
-      {
-        "id": "jwi4jj4fb",
-        "titulo": "Assinatura de contrato",
-        "dataInicio": "2026-04-07",
-        "dataFim": "2026-04-08",
-        "responsavel": "Juca Teles",
-        "parentId": "",
-        "progress": 2,
-        "status": "ideacao",
-        "notas": "ae",
-        "impedimentoAtivo": false
-      },
-      {
-        "id": "6rg512p54",
-        "titulo": "Publicação do contrato",
-        "dataInicio": "2026-04-25",
-        "dataFim": "2026-04-30",
-        "responsavel": "Juca Teles",
-        "parentId": "jwi4jj4fb",
-        "progress": 89,
-        "status": "ideacao",
-        "notas": "",
-        "impedimentoAtivo": false
-      }
-    ],
-    "healthStatus": "risco",
-    "healthReason": "Tarefa \"Assinatura de contrato\" atrasada.",
-    "departamento": "Diretoria de Tecnologia da Informação"
-  },
-  {
-    "id": 3,
-    "nome": "Novo Portal do Cliente",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 96,
-    "delta": 1,
+    "delta": 4,
     "text": "Atrasados",
     "indicator": "bg-rose-500",
     "icon": "AlertCircle",
@@ -5289,428 +6008,43 @@
     "excluido": false,
     "logs": [
       {
-        "acao": "Atualizou tarefa Assinatura de contrato: 86%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 21:29",
+        "acao": "Repactuação de Cronograma: de [2026-04-01 a 2026-04-24] para [2026-04-01 a 2026-04-23]",
+        "justificativa": "Alteração manual de data de término do projeto",
+        "data": "26/04/2026 00:06",
         "user": "Anderson Soares"
       },
       {
-        "acao": "Atualizou tarefa Assinatura de contrato: 94%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 21:29",
+        "acao": "Repactuação de Cronograma: de [2026-04-01 a 2026-04-25] para [2026-04-01 a 2026-04-24]",
+        "justificativa": "Alteração manual de data de término do projeto",
+        "data": "25/04/2026 23:45",
         "user": "Anderson Soares"
       },
       {
-        "acao": "Atualização de Tarefas (EAP)",
-        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
-        "data": "25/04/2026 21:29",
+        "acao": "Repactuação de Cronograma: de [2026-04-01 a Não definida] para [2026-04-01 a 2026-04-25]",
+        "justificativa": "Alteração manual de data de término do projeto",
+        "data": "25/04/2026 23:45",
         "user": "Anderson Soares"
       },
       {
-        "acao": "Atualizou tarefa Assinatura de contrato: 91%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 21:29",
+        "acao": "Repactuação de Cronograma: de [Não definida a Não definida] para [2026-04-01 a Não definida]",
+        "justificativa": "Alteração manual de data de início do projeto",
+        "data": "25/04/2026 23:45",
         "user": "Anderson Soares"
       },
       {
-        "acao": "Atualizou tarefa Assinatura de contrato: 89%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 93%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 85%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 92%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 90%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualização de Tarefas (EAP)",
-        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualização de Tarefas (EAP)",
-        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 83%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualização de Tarefas (EAP)",
-        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 87%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 76%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualização de Tarefas (EAP)",
-        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualização de Tarefas (EAP)",
-        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 84%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualização de Tarefas (EAP)",
-        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualização de Tarefas (EAP)",
-        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 88%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 80%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualização de Tarefas (EAP)",
-        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualização de Tarefas (EAP)",
-        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualização de Tarefas (EAP)",
-        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualização de Tarefas (EAP)",
-        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualização de Tarefas (EAP)",
-        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 77%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualização de Tarefas (EAP)",
-        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualização de Tarefas (EAP)",
-        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 75%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 74%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualização de Tarefas (EAP)",
-        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 72%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 61%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 45%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 29%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 18%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 13%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualização de Tarefas (EAP)",
-        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa Assinatura de contrato: 1%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualização de Tarefas (EAP)",
-        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualização de Tarefas (EAP)",
-        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualização de Tarefas (EAP)",
-        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualização de Tarefas (EAP)",
-        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualização de Tarefas (EAP)",
-        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualização de Tarefas (EAP)",
-        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualização de Tarefas (EAP)",
-        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa Kickoff: 100%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa Kickoff: 91%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa Kickoff: 44%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualizou tarefa Kickoff: 6%",
-        "justificativa": "Nenhuma",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualização de Tarefas (EAP)",
-        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualização de Tarefas (EAP)",
-        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualização de Tarefas (EAP)",
-        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Atualização de Tarefas (EAP)",
-        "justificativa": "Alteração na estrutura ou progresso das tarefas.",
-        "data": "25/04/2026 21:29",
-        "user": "Anderson Soares"
-      },
-      {
-        "acao": "Alteração de Fase: Planejamento",
-        "justificativa": "Alteração de fase",
-        "data": "25/04/2026 18:24",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Alteração de Fase: Ideação (Progresso: 3%)",
-        "justificativa": "Ajuste de fase",
-        "data": "24/04/2026 22:08",
-        "user": "Carlos Eduardo Lima"
-      },
-      {
-        "acao": "Responsável alterado de 'Equipe Front' para 'Carlos Eduardo Lima'",
-        "justificativa": "Atribuição de responsabilidade",
-        "data": "24/04/2026 15:10",
-        "user": "Luiz Wanderley"
-      },
-      {
-        "acao": "Criou tarefa: Assinatura de contrato",
-        "justificativa": "Nenhuma",
-        "data": "24/04/2026 14:22",
-        "user": "Carlos Eduardo Lima"
-      },
-      {
-        "acao": "Atualizou tarefa Kickoff: ideacao",
-        "justificativa": "Nenhuma",
-        "data": "24/04/2026 14:21",
-        "user": "Carlos Eduardo Lima"
-      },
-      {
-        "acao": "Criou tarefa: Kickoff",
-        "justificativa": "Nenhuma",
-        "data": "24/04/2026 14:21",
-        "user": "Carlos Eduardo Lima"
-      },
-      {
-        "acao": "Alteração de Fase: Implantação (Progresso: 98%)",
-        "justificativa": "Ajuste de fase",
-        "data": "24/04/2026 14:20",
-        "user": "Carlos Eduardo Lima"
-      },
-      {
-        "acao": "Alteração de Fase: Concluído (Progresso: 100%)",
-        "justificativa": "Ajuste de fase",
-        "data": "24/04/2026 14:20",
-        "user": "Carlos Eduardo Lima"
-      },
-      {
-        "acao": "Alteração de Fase: Concluído (Progresso: 100%)",
-        "justificativa": "Ajuste de fase",
-        "data": "24/04/2026 14:20",
-        "user": "Carlos Eduardo Lima"
+        "acao": "Criação do Projeto",
+        "justificativa": "Projeto criado.",
+        "data": "25/04/2026 23:21",
+        "user": "Usuário"
       }
     ],
     "baselineData": {
-      "inicio": "2026-04-24",
-      "fim": "2026-04-25"
+      "inicio": "2026-04-01",
+      "fim": "2026-04-23"
     },
-    "tarefas": [
-      {
-        "id": "5ai6bniza",
-        "titulo": "Kickoff",
-        "dataInicio": "2026-04-24",
-        "dataFim": "2026-04-24",
-        "responsavel": "Amador",
-        "parentId": "none",
-        "progress": 100,
-        "status": "ideacao",
-        "notas": "",
-        "impedimentoAtivo": false
-      },
-      {
-        "id": "64k867zso",
-        "titulo": "Assinatura de contrato",
-        "dataInicio": "2026-04-24",
-        "dataFim": "2026-04-25",
-        "responsavel": "",
-        "parentId": "5ai6bniza",
-        "progress": 94,
-        "status": "ideacao",
-        "notas": "",
-        "impedimentoAtivo": false
-      }
-    ],
+    "tarefas": [],
     "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 1 dias.",
+    "healthReason": "Projeto atrasado há 4 dias.",
     "departamento": "Diretoria de Tecnologia da Informação"
   }
 ]

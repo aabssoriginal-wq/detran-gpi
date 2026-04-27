@@ -92,6 +92,10 @@ export async function PUT(request: Request, context: any) {
     if (action === "update_responsavel") {
       const { responsavelId, responsavelNome, user: currentUser } = body;
       if (!responsavelId || !responsavelNome) return NextResponse.json({ error: "Responsável é obrigatório" }, { status: 400 });
+      
+      // 1. Encontrar o responsável antigo para removê-lo (opcional, mas bom para consistência)
+      // Nota: o sistema usa 'nome' para o campo responsavel no projeto.
+      
       const proj = updateResponsavel(id, responsavelId, responsavelNome, currentUser || "Usuário");
       return NextResponse.json(proj);
     }
@@ -124,9 +128,14 @@ export async function DELETE(request: Request, context: any) {
     const params = await context.params;
     const id = parseInt(params.id);
     
-    // Ler o corpo do DELETE para capturar a justificativa
+    // Ler o corpo do DELETE para capturar a justificativa e papel
     const body = await request.json();
-    const { justificativa, user } = body;
+    const { justificativa, user, papel, dept } = body;
+
+    const isAdmin = papel === "admin_total" || papel === "admin_master";
+    if (!isAdmin) {
+      return NextResponse.json({ error: "Apenas administradores podem excluir projetos." }, { status: 403 });
+    }
 
     if (!justificativa) {
       return NextResponse.json({ error: "Justificativa obrigatória para exclusão" }, { status: 400 });

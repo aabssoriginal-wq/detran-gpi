@@ -32,6 +32,8 @@ export interface Tarefa {
   notas?: string;
   lancamentos?: NotaTarefa[];
   impedimentoAtivo?: boolean;
+  motivoImpedimento?: string;
+  justificativaResolucao?: string;
 }
 
 export interface BaselineData {
@@ -143,7 +145,12 @@ export const getProjetos = (userDept?: string, papel?: string): Projeto[] => {
     let deltaTrafAtras = 0;
 
     for (const t of proj.tarefas) {
-      if (t.impedimentoAtivo) temImped = true;
+      if (t.impedimentoAtivo) {
+        temImped = true;
+        (proj as any).tarefaBloqueada = t.titulo;
+        (proj as any).motivoBloqueio = t.motivoImpedimento;
+        (proj as any).responsavelTecnico = t.responsavel;
+      }
       if (t.dataFim && t.progress < 100) {
         const pT = t.dataFim.split("-");
         const dfT = new Date(parseInt(pT[0]), parseInt(pT[1]) - 1, parseInt(pT[2]));
@@ -161,7 +168,7 @@ export const getProjetos = (userDept?: string, papel?: string): Projeto[] => {
       finalIcon = "ShieldAlert";
       finalColor = "text-rose-600";
       finalIndicator = "bg-rose-600";
-      finalReason = "Impedimento ativo.";
+      finalReason = `Bloqueado: ${(proj as any).motivoBloqueio || "Sem motivo"}`;
     } else if (atrasoGlobal) {
       finalHealth = "atrasados";
       finalIcon = "AlertCircle";
@@ -197,12 +204,53 @@ export const getProjetos = (userDept?: string, papel?: string): Projeto[] => {
     };
   });
 
-  // Filtragem por Departamento (RBAC)
+  // Admin Total: Visão global e absoluta.
+  // Admin Master: Visão total da sua unidade (Diretoria).
+  // Demais perfis (Usuário Master / Usuário): Apenas sua diretoria ou projetos atribuídos.
   if (papel && papel !== 'admin_total') {
-    return list.filter((p: Projeto) => p.departamento === userDept);
+    list = list.filter((p: Projeto) => {
+      // Regra: Sempre restrito ao departamento do usuário (exceto Admin Total)
+      if (p.departamento !== userDept) return false;
+
+      // Se for Admin Master ou Usuário Master, vê tudo do depto
+      if (papel === 'admin_master' || papel === 'usuario_master') return true;
+
+      // Se for Usuário Comum:
+      // Vê se for o responsável OU se o projeto está atribuído OU se o projeto é ORFAN (Não Definido)
+      const isOrphan = p.responsavel === "Não Definido" || !p.responsavel;
+      return isOrphan || p.responsavel === userDept || (p as any).isAtribuido; // Nota: o isAtribuido é checado no Dashboard
+    });
   }
 
-  return list;
+  // Ordenação Alfabética por Nome do Projeto
+  return list.sort((a, b) => a.nome.localeCompare(b.nome));
+};
+
+export const getAuditoria = (userDept?: string, papel?: string): any[] => {
+  const projetos = getProjetos(userDept, papel);
+  const allLogs: any[] = [];
+  
+  projetos.forEach(p => {
+    p.logs.forEach(l => {
+      allLogs.push({
+        ...l,
+        projetoId: p.id,
+        projetoNome: p.nome,
+        departamento: p.departamento
+      });
+    });
+  });
+
+  // Ordenação: Mais recente para mais antigo
+  return allLogs.sort((a, b) => {
+    const parseDate = (d: string) => {
+      const [date, time] = d.split(' ');
+      const [day, month, year] = date.split('/');
+      const [hour, min] = time.split(':');
+      return new Date(parseInt(year), parseInt(month) - 1, parseInt(day), parseInt(hour), parseInt(min)).getTime();
+    };
+    return parseDate(b.data) - parseDate(a.data);
+  });
 };
 
 export const getProjetoById = (id: number, userDept?: string, papel?: string): Projeto => {

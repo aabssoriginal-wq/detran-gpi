@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { getUsuarios, updateUsuarioPapel, updateUsuarioProjetosAtribuidos, addUsuario, removeUsuario, type Papel } from '@/lib/users';
-import { getProjetos, updateTarefas } from '@/lib/db';
+import { getProjetos, updateTarefas, updateResponsavel } from '@/lib/db';
+
+const HIERARCHY = { 'admin_total': 4, 'admin_master': 3, 'usuario_master': 2, 'usuario': 1 };
 
 export async function GET() {
   try {
@@ -31,15 +33,29 @@ export async function DELETE(request: Request) {
     const id = searchParams.get('id');
     if (!id) return NextResponse.json({ error: 'ID obrigatório' }, { status: 400 });
 
-    // Remove usuário dos projetos em que está atribuído
+    // Remove usuário dos projetos em que está responsável ou atribuído
+    const usuarios = getUsuarios();
+    const userParaDeletar = usuarios.find(u => u.id === id);
+    if (!userParaDeletar) return NextResponse.json({ error: 'Usuário não encontrado' }, { status: 404 });
+
     const projetos = getProjetos();
     for (const projeto of projetos) {
-      const tarefasAtualizadas = projeto.tarefas.map((t: any) => ({
-        ...t,
-        responsavel: t.responsavel === id ? '' : t.responsavel
-      }));
-      if (JSON.stringify(tarefasAtualizadas) !== JSON.stringify(projeto.tarefas)) {
-        updateTarefas(projeto.id, tarefasAtualizadas);
+      let changed = false;
+      // 1. Limpar se for o responsável pelo projeto
+      if (projeto.responsavel === userParaDeletar.nome) {
+        updateResponsavel(projeto.id, '', 'Não Definido', 'Sistema (Remoção de Usuário)');
+        changed = true;
+      }
+      // 2. Limpar tarefas
+      const tarefasAtualizadas = projeto.tarefas.map((t: any) => {
+        if (t.responsavel === userParaDeletar.nome) {
+          changed = true;
+          return { ...t, responsavel: '' };
+        }
+        return t;
+      });
+      if (changed) {
+        updateTarefas(projeto.id, tarefasAtualizadas, 'Sistema (Remoção de Usuário)');
       }
     }
 
@@ -53,12 +69,26 @@ export async function DELETE(request: Request) {
 export async function PUT(request: Request) {
   try {
     const body = await request.json();
-    const { id, action, papel, projetosAtribuidos } = body;
+    const { id, action, papel, projetosAtribuidos, requesterPapel } = body;
 
     if (!id) return NextResponse.json({ error: 'ID obrigatório' }, { status: 400 });
 
     if (action === 'update_papel') {
       if (!papel) return NextResponse.json({ error: 'Papel obrigatório' }, { status: 400 });
+      
+      // Validação Hierárquica
+      if (requesterPapel) {
+        const myLevel = HIERARCHY[requesterPapel as keyof typeof HIERARCHY] || 0;
+        const targetUser = getUsuarios().find(u => u.id === id);
+        const currentTargetLevel = HIERARCHY[targetUser?.papel as keyof typeof HIERARCHY] || 0;
+        const newTargetLevel = HIERARCHY[papel as keyof typeof HIERARCHY] || 0;
+
+        if (myLevel < 4) {
+          if (currentTargetLevel >= myLevel) return NextResponse.json({ error: 'Permissão negada: Usuário alvo tem nível superior ou igual.' }, { status: 403 });
+          if (newTargetLevel > myLevel) return NextResponse.json({ error: 'Permissão negada: Não pode atribuir nível superior ao seu.' }, { status: 403 });
+        }
+      }
+
       const updated = updateUsuarioPapel(id, papel as Papel);
       return NextResponse.json(updated);
     }
@@ -72,10 +102,20 @@ export async function PUT(request: Request) {
     if (action === 'add_projeto') {
       const { projetoId } = body;
       if (!projetoId) return NextResponse.json({ error: 'Projeto ID obrigatório' }, { status: 400 });
-      const usuarios = getUsuarios();
-      const u = usuarios.find(x => x.id === id);
+      const u = getUsuarios().find(x => x.id === id);
       if (u) {
         const novosIds = Array.from(new Set([...u.projetosAtribuidos, parseInt(projetoId)]));
+        const updated = updateUsuarioProjetosAtribuidos(id, novosIds);
+        return NextResponse.json(updated);
+      }
+    }
+
+    if (action === 'remove_projeto') {
+      const { projetoId } = body;
+      if (!projetoId) return NextResponse.json({ error: 'Projeto ID obrigatório' }, { status: 400 });
+      const u = getUsuarios().find(x => x.id === id);
+      if (u) {
+        const novosIds = u.projetosAtribuidos.filter(pid => pid !== parseInt(projetoId));
         const updated = updateUsuarioProjetosAtribuidos(id, novosIds);
         return NextResponse.json(updated);
       }
