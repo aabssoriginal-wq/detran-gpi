@@ -67,4 +67,5 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'det-gpi-dev'
+          resource-group: 'rg-gpi-dev'
           package: .
