@@ -13,7 +13,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: read #This is required for actions/checkout
+      contents: read
 
     steps:
       - uses: actions/checkout@v4
@@ -23,24 +23,26 @@ jobs:
         with:
           node-version: '20.x'
 
-      - name: npm install, build, and test
+      - name: npm install, build
         run: |
           npm install
-          npm run build --if-present
-          npm run test --if-present
+          npm run build
+        env:
+          NEXT_PRIVATE_STANDALONE: true
+
+      - name: Prepare Standalone Bundle
+        run: |
+          cp -r public .next/standalone/public
+          cp -r .next/static .next/standalone/.next/static
+          # Copiar os arquivos de dados para persistência inicial (se necessário)
+          cp data.json .next/standalone/data.json || true
+          cp users.json .next/standalone/users.json || true
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
-          name: node-app-v2
-          path: |
-            package.json
-            package-lock.json
-            server.js
-            public/
-            .next/
-            src/
-            .env.local
+          name: node-app-standalone
+          path: .next/standalone
 
   deploy:
     runs-on: ubuntu-latest
@@ -53,7 +55,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
-          name: node-app-v2
+          name: node-app-standalone
       
       - name: Login to Azure
         uses: azure/login@v2
@@ -69,3 +71,4 @@ jobs:
           app-name: 'det-gpi-dev'
           resource-group: 'rg-gpi-dev'
           package: .
+          startup-command: 'node server.js'

@@ -9,6 +9,8 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
   output: 'standalone',
+  // Otimização para o Azure
+  compress: true,
 };
 
 export default nextConfig;
