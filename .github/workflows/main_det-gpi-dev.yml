@@ -63,6 +63,5 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'det-gpi-dev'
-          slot-name: 'Production'
+          app-name: 'det-gpi-dev-c9ctfxejhkb0d6c3'
           package: .
