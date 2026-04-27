@@ -112,7 +112,7 @@ export default function GuiaPage() {
           <p className="text-xs text-slate-500 mt-2 max-w-[250px]">
             Se você não encontrou a resposta aqui, utilize o Assistente IA no Console ou contate o administrador do sistema.
           </p>
-          <Badge variant="outline" className="mt-4 border-slate-300 text-slate-500">Versão 2.5.0 - Atualizado em Abr/2026</Badge>
+          <Badge variant="outline" className="mt-4 border-slate-300 text-slate-500">Versão 2.5.1 - Atualizado em 27/04/2026 18:40</Badge>
         </Card>
       </div>
 
