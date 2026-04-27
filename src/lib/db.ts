@@ -3,7 +3,20 @@ import fs from 'fs';
 import path from 'path';
 import { formatarDataBR } from "./utils";
 
-const dataFilePath = path.join(process.cwd(), 'data.json');
+// No Azure, a raiz do site montada via Run From Package é somente leitura.
+const getDBPath = () => {
+  const isAzure = process.env.WEBSITE_INSTANCE_ID !== undefined;
+  if (isAzure) {
+    const azureDataDir = path.join('/home/site/data');
+    if (!fs.existsSync(azureDataDir)) {
+      try { fs.mkdirSync(azureDataDir, { recursive: true }); } catch(e) {}
+    }
+    return path.join(azureDataDir, 'data.json');
+  }
+  return path.join(process.cwd(), 'data.json');
+};
+
+const dataFilePath = getDBPath();
 
 export interface LogEntry {
   acao: string;
@@ -34,6 +47,7 @@ export interface Tarefa {
   impedimentoAtivo?: boolean;
   motivoImpedimento?: string;
   justificativaResolucao?: string;
+  responsavelTecnico?: string;
 }
 
 export interface BaselineData {
@@ -116,8 +130,6 @@ export const getProjetos = (userDept?: string, papel?: string): Projeto[] => {
       tarefas: p.tarefas || []
     };
     
-    // ... (mesma lógica de health status abaixo)
-
     const meta = statusMap[proj.status] || statusMap["ideacao"];
     let finalHealth = "prazo";
     let finalIcon = meta.icon;
@@ -204,25 +216,15 @@ export const getProjetos = (userDept?: string, papel?: string): Projeto[] => {
     };
   });
 
-  // Admin Total: Visão global e absoluta.
-  // Admin Master: Visão total da sua unidade (Diretoria).
-  // Demais perfis (Usuário Master / Usuário): Apenas sua diretoria ou projetos atribuídos.
   if (papel && papel !== 'admin_total') {
     list = list.filter((p: Projeto) => {
-      // Regra: Sempre restrito ao departamento do usuário (exceto Admin Total)
       if (p.departamento !== userDept) return false;
-
-      // Se for Admin Master ou Usuário Master, vê tudo do depto
       if (papel === 'admin_master' || papel === 'usuario_master') return true;
-
-      // Se for Usuário Comum:
-      // Vê se for o responsável OU se o projeto está atribuído OU se o projeto é ORFAN (Não Definido)
       const isOrphan = p.responsavel === "Não Definido" || !p.responsavel;
-      return isOrphan || p.responsavel === userDept || (p as any).isAtribuido; // Nota: o isAtribuido é checado no Dashboard
+      return isOrphan || p.responsavel === userDept || (p as any).isAtribuido;
     });
   }
 
-  // Ordenação Alfabética por Nome do Projeto
   return list.sort((a, b) => a.nome.localeCompare(b.nome));
 };
 
@@ -241,7 +243,6 @@ export const getAuditoria = (userDept?: string, papel?: string): any[] => {
     });
   });
 
-  // Ordenação: Mais recente para mais antigo
   return allLogs.sort((a, b) => {
     const parseDate = (d: string) => {
       const [date, time] = d.split(' ');
@@ -270,7 +271,7 @@ export const addLogToProjeto = (id: number, log: LogEntry): void => {
 };
 
 export const createProjeto = (nome: string, responsavel: string, departamento: string = "Diretoria de Tecnologia da Informação", inicio: string = "", fim: string = ""): Projeto => {
-  const projetos = getProjetos(); // Aqui pegamos todos sem filtro para gerar ID
+  const projetos = getProjetos(); 
   const novoId = projetos.length > 0 ? Math.max(...projetos.map(p => p.id)) + 1 : 1;
   const novoProjeto: Projeto = {
     id: novoId,
@@ -284,7 +285,7 @@ export const createProjeto = (nome: string, responsavel: string, departamento: s
     icon: "FolderKanban", 
     iconColor: "text-blue-400",
     responsavel,
-    departamento, // Novo
+    departamento, 
     excluido: false,
     logs: [createLog("Criação do Projeto")],
     baselineData: { inicio, fim },

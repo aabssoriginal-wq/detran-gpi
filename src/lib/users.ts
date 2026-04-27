@@ -1,7 +1,20 @@
 import fs from 'fs';
 import path from 'path';
 
-const usersFilePath = path.join(process.cwd(), 'users.json');
+// No Azure, a raiz do site montada via Run From Package é somente leitura.
+const getUsersPath = () => {
+  const isAzure = process.env.WEBSITE_INSTANCE_ID !== undefined;
+  if (isAzure) {
+    const azureDataDir = path.join('/home/site/data');
+    if (!fs.existsSync(azureDataDir)) {
+      try { fs.mkdirSync(azureDataDir, { recursive: true }); } catch(e) {}
+    }
+    return path.join(azureDataDir, 'users.json');
+  }
+  return path.join(process.cwd(), 'users.json');
+};
+
+const usersFilePath = getUsersPath();
 
 export type Papel = 'admin_total' | 'admin_master' | 'usuario_master' | 'usuario';
 

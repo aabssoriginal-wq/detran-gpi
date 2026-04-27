@@ -34,15 +34,17 @@ jobs:
         run: |
           cp -r public .next/standalone/public
           cp -r .next/static .next/standalone/.next/static
-          # Copiar os arquivos de dados para persistência inicial (se necessário)
           cp data.json .next/standalone/data.json || true
           cp users.json .next/standalone/users.json || true
+          # Criar um zip do bundle standalone
+          cd .next/standalone
+          zip -r ../../site.zip .
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
-          name: node-app-standalone
-          path: .next/standalone
+          name: node-app-package
+          path: site.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -55,7 +57,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
-          name: node-app-standalone
+          name: node-app-package
       
       - name: Login to Azure
         uses: azure/login@v2
@@ -64,11 +66,35 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_BB6183D6ED65499A9EE4562A3CEBEF87 }}
           subscription-id: 'cd58ce2c-2e37-4240-bede-df2585b0113a'
 
+      - name: Set Azure Web App Settings (Clean & Mount)
+        uses: azure/appservice-settings@v1
+        with:
+          app-name: 'det-gpi-dev'
+          resource-group: 'rg-gpi-dev'
+          app-settings-json: |
+            [
+              {
+                "name": "WEBSITE_RUN_FROM_PACKAGE",
+                "value": "1",
+                "slotSetting": false
+              },
+              {
+                "name": "SCM_DO_BUILD_DURING_DEPLOYMENT",
+                "value": "false",
+                "slotSetting": false
+              },
+              {
+                "name": "NODE_ENV",
+                "value": "production",
+                "slotSetting": false
+              }
+            ]
+
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'det-gpi-dev'
           resource-group: 'rg-gpi-dev'
-          package: .
+          package: site.zip
           startup-command: 'node server.js'
