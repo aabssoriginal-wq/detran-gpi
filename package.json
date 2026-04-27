@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start -p 8080",
-    "lint": "eslint"
+    "dev": "./node_modules/.bin/next dev",
+    "build": "./node_modules/.bin/next build",
+    "start": "./node_modules/.bin/next start -p 8080",
+    "lint": "./node_modules/.bin/eslint"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.1",
