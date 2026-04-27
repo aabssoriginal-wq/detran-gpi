@@ -221,7 +221,7 @@ export const addLogToProjeto = (id: number, log: LogEntry): void => {
   }
 };
 
-export const createProjeto = (nome: string, responsavel: string, departamento: string, inicio: string = "", fim: string = ""): Projeto => {
+export const createProjeto = (nome: string, responsavel: string, departamento: string = "Diretoria de Tecnologia da Informação", inicio: string = "", fim: string = ""): Projeto => {
   const projetos = getProjetos(); // Aqui pegamos todos sem filtro para gerar ID
   const novoId = projetos.length > 0 ? Math.max(...projetos.map(p => p.id)) + 1 : 1;
   const novoProjeto: Projeto = {
