@@ -63,16 +63,6 @@
     "projetosAtribuidos": []
   },
   {
-    "id": "u001",
-    "nome": "Luiz Wanderley",
-    "email": "luiz.wanderley@detran.sp.gov.br",
-    "cargo": "Diretor de TI",
-    "avatar": "https://i.pravatar.cc/150?img=11",
-    "papel": "admin_master",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
-  },
-  {
     "id": "u007",
     "nome": "Marcos Silveira",
     "email": "marcos.silveira@detran.sp.gov.br",
@@ -80,6 +70,8 @@
     "avatar": "https://i.pravatar.cc/150?img=8",
     "papel": "admin_master",
     "departamento": "Diretoria de Fiscalização de Trânsito",
-    "projetosAtribuidos": []
+    "projetosAtribuidos": [
+      1
+    ]
   }
 ]

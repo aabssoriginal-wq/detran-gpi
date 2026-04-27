@@ -1387,9 +1387,27 @@
     "indicator": "bg-rose-500",
     "icon": "AlertCircle",
     "iconColor": "text-rose-500",
-    "responsavel": "Luiz Wanderley",
+    "responsavel": "Marcos Silveira",
     "excluido": false,
     "logs": [
+      {
+        "acao": "Responsável alterado para Marcos Silveira",
+        "justificativa": "Atribuição",
+        "data": "27/04/2026 18:02",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualização de EAP",
+        "justificativa": "Alteração de tarefas",
+        "data": "27/04/2026 18:02",
+        "user": "Sistema (Remoção de Usuário)"
+      },
+      {
+        "acao": "Responsável alterado para Não Definido",
+        "justificativa": "Atribuição",
+        "data": "27/04/2026 18:02",
+        "user": "Sistema (Remoção de Usuário)"
+      },
       {
         "acao": "Criou tarefa: Kickoff",
         "justificativa": "Nenhuma",
@@ -3548,6 +3566,12 @@
     "excluido": false,
     "logs": [
       {
+        "acao": "Repactuação: 02/04/2026 - 30/04/2026",
+        "justificativa": "Definição inicial de cronograma",
+        "data": "27/04/2026 17:58",
+        "user": "Anderson"
+      },
+      {
         "acao": "Criação do Projeto",
         "justificativa": "Nenhuma",
         "data": "27/04/2026 13:37",
@@ -3555,8 +3579,8 @@
       }
     ],
     "baselineData": {
-      "inicio": "",
-      "fim": ""
+      "inicio": "2026-04-02",
+      "fim": "2026-04-30"
     },
     "tarefas": [],
     "healthStatus": "prazo",
