@@ -57,11 +57,11 @@ jobs:
         with:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_0779E801B7C941BF91B9A5A8465EF218 }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_BB6183D6ED65499A9EE4562A3CEBEF87 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_337E6BF1847D4105B71B07D50241E626 }}
+          subscription-id: 'cd58ce2c-2e37-4240-bede-df2585b0113a'
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'det-gpi-dev-c9ctfxejhkb0d6c3'
+          app-name: 'det-gpi-dev'
           package: .
