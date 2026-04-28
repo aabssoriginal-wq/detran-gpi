@@ -81,6 +81,20 @@ let lastReadTime: number = 0;
 const CACHE_TTL = 5000;
 
 const initializeDB = () => {
+  // Se estiver no Azure e o arquivo persistente não existir, tenta copiar do pacote original
+  if (process.env.WEBSITE_INSTANCE_ID !== undefined && !fs.existsSync(dataFilePath)) {
+    const packageDataPath = path.join(process.cwd(), 'data.json');
+    if (fs.existsSync(packageDataPath)) {
+      try {
+        const initialContent = fs.readFileSync(packageDataPath, 'utf-8');
+        fs.writeFileSync(dataFilePath, initialContent);
+        console.log("Banco de dados inicializado a partir do pacote de deploy.");
+      } catch (e) {
+        console.error("Erro ao copiar banco de dados inicial:", e);
+      }
+    }
+  }
+
   if (!fs.existsSync(dataFilePath)) {
     const initialData: Projeto[] = [
       { id: 1, nome: "Identidade Digital (SSO)", status: "prazo", andamento: true, progress: 85, delta: 0, text: "No Prazo", indicator: "bg-emerald-500", icon: "CheckCircle2", iconColor: "text-emerald-500", responsavel: "Luiz Wanderley", departamento: "Diretoria de Tecnologia da Informação", excluido: false, logs: [], baselineData: { inicio: "2026-05-01", fim: "2026-12-15" }, tarefas: [] },
