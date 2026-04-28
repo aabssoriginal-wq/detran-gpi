@@ -1012,120 +1012,123 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
             </div>
           ) : (
             <div className="space-y-6">
-              <Card>
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-lg flex items-center gap-2 text-indigo-800">
-                    <CalendarIcon className="h-5 w-5" /> Cronograma do Projeto
-                  </CardTitle>
-                  <CardDescription>Defina o período global da iniciativa.</CardDescription>
-                </CardHeader>
-                <CardContent className="flex items-end gap-4">
-                  <div className="flex-1 space-y-2">
-                    <Label>Início do Projeto</Label>
-                    <Input 
-                      type="date" 
-                      value={editBaseline.inicio} 
-                      onChange={(e) => setEditBaseline({ ...editBaseline, inicio: e.target.value })}
-                      disabled={isBlocked}
-                    />
-                  </div>
-                  <div className="flex-1 space-y-2">
-                    <Label>Fim do Projeto</Label>
-                    <Input 
-                      type="date" 
-                      value={editBaseline.fim} 
-                      onChange={(e) => setEditBaseline({ ...editBaseline, fim: e.target.value })}
-                      disabled={isBlocked}
-                    />
-                  </div>
-                  <Button 
-                    variant="outline"
-                    className="bg-blue-50 hover:bg-blue-100 border-blue-200 text-blue-700"
-                    disabled={isBlocked || (editBaseline.inicio === projetoData.baselineData?.inicio && editBaseline.fim === projetoData.baselineData?.fim)}
-                    onClick={() => {
-                      const temDataAntiga = !!(projetoData.baselineData?.inicio || projetoData.baselineData?.fim);
-                      
-                      const performUpdate = (just: string) => {
-                        // Validação: Data Fim do projeto deve respeitar a tarefa mais longe
-                        if (tarefas && tarefas.length > 0) {
-                          const datasFimTarefas = tarefas
-                            .filter(t => t.dataFim)
-                            .map(t => new Date(t.dataFim).getTime());
-                          
-                          if (datasFimTarefas.length > 0) {
-                            const maiorDataFimTarefa = Math.max(...datasFimTarefas);
-                            const novaDataFimProjeto = new Date(editBaseline.fim).getTime();
+              {isPowerUser && (
+                <Card>
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-lg flex items-center gap-2 text-indigo-800">
+                      <CalendarIcon className="h-5 w-5" /> Cronograma do Projeto
+                    </CardTitle>
+                    <CardDescription>Defina o período global da iniciativa.</CardDescription>
+                  </CardHeader>
+                  <CardContent className="flex items-end gap-4">
+                    <div className="flex-1 space-y-2">
+                      <Label>Início do Projeto</Label>
+                      <Input 
+                        type="date" 
+                        value={editBaseline.inicio} 
+                        onChange={(e) => setEditBaseline({ ...editBaseline, inicio: e.target.value })}
+                        disabled={isBlocked}
+                      />
+                    </div>
+                    <div className="flex-1 space-y-2">
+                      <Label>Fim do Projeto</Label>
+                      <Input 
+                        type="date" 
+                        value={editBaseline.fim} 
+                        onChange={(e) => setEditBaseline({ ...editBaseline, fim: e.target.value })}
+                        disabled={isBlocked}
+                      />
+                    </div>
+                    <Button 
+                      variant="outline"
+                      className="bg-blue-50 hover:bg-blue-100 border-blue-200 text-blue-700"
+                      disabled={isBlocked || (editBaseline.inicio === projetoData.baselineData?.inicio && editBaseline.fim === projetoData.baselineData?.fim)}
+                      onClick={() => {
+                        const temDataAntiga = !!(projetoData.baselineData?.inicio || projetoData.baselineData?.fim);
+                        
+                        const performUpdate = (just: string) => {
+                          if (tarefas && tarefas.length > 0) {
+                            const datasFimTarefas = tarefas
+                              .filter(t => t.dataFim)
+                              .map(t => new Date(t.dataFim).getTime());
+                            
+                            if (datasFimTarefas.length > 0) {
+                              const maiorDataFimTarefa = Math.max(...datasFimTarefas);
+                              const novaDataFimProjeto = new Date(editBaseline.fim).getTime();
 
-                            if (novaDataFimProjeto < maiorDataFimTarefa) {
-                              const dataMinima = new Date(maiorDataFimTarefa).toLocaleDateString('pt-BR');
-                              toast.error(`A data fim do projeto não pode ser anterior à última tarefa (${dataMinima}).`);
-                              return;
+                              if (novaDataFimProjeto < maiorDataFimTarefa) {
+                                const dataMinima = new Date(maiorDataFimTarefa).toLocaleDateString('pt-BR');
+                                toast.error(`A data fim do projeto não pode ser anterior à última tarefa (${dataMinima}).`);
+                                return;
+                              }
                             }
                           }
+
+                          fetch(`/api/projects/${params.id}`, {
+                            method: "PUT",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ 
+                              action: "update_baseline", 
+                              inicio: editBaseline.inicio, 
+                              fim: editBaseline.fim, 
+                              justificativa: just, 
+                              user: usuario?.nome, 
+                              papel: usuario?.papel 
+                            })
+                          }).then(() => {
+                            toast.success("Cronograma atualizado com sucesso!");
+                            loadData();
+                          });
+                        };
+
+                        if (temDataAntiga) {
+                          setJustificativaDialog({
+                            isOpen: true,
+                            title: "Confirmar Repactuação de Cronograma",
+                            description: `Você está alterando o cronograma oficial da iniciativa. Por favor, justifique esta repactuação:`,
+                            value: "",
+                            onConfirm: performUpdate
+                          });
+                        } else {
+                          performUpdate("Definição inicial de cronograma");
                         }
-
-                        fetch(`/api/projects/${params.id}`, {
-                          method: "PUT",
-                          headers: { "Content-Type": "application/json" },
-                          body: JSON.stringify({ 
-                            action: "update_baseline", 
-                            inicio: editBaseline.inicio, 
-                            fim: editBaseline.fim, 
-                            justificativa: just, 
-                            user: usuario?.nome, 
-                            papel: usuario?.papel 
-                          })
-                        }).then(() => {
-                          toast.success("Cronograma atualizado com sucesso!");
-                          loadData();
-                        });
-                      };
-
-                      if (temDataAntiga) {
-                        setJustificativaDialog({
-                          isOpen: true,
-                          title: "Confirmar Repactuação de Cronograma",
-                          description: `Você está alterando o cronograma oficial da iniciativa. Por favor, justifique esta repactuação:`,
-                          value: "",
-                          onConfirm: performUpdate
-                        });
-                      } else {
-                        performUpdate("Definição inicial de cronograma");
-                      }
-                    }}
-                  >
-                    <Save className="mr-2 h-4 w-4" /> Salvar Cronograma
-                  </Button>
-                  <div className="text-[10px] text-slate-400 bg-slate-50 p-2 rounded border max-w-[200px]">
-                    Alterações em cronograma existente exigem justificativa e geram repactuação.
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader><CardTitle>Status da Iniciativa</CardTitle></CardHeader>
-                <CardContent className="flex items-end gap-6">
-                  <div className="flex-[2] space-y-2">
-                    <Label>Fase Atual</Label>
-                    <Select value={projetoStatus} onValueChange={setProjetoStatus}>
-                      <SelectTrigger><SelectValue placeholder="Selecione a fase..."/></SelectTrigger>
-                      <SelectContent>
-                        {FASES.map(f => <SelectItem key={f.id} value={f.id}>{f.label}</SelectItem>)}
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div className="flex-1 space-y-2">
-                    <Label>Evolução Atual</Label>
-                    <div className="h-10 flex items-center px-3 border rounded-md bg-slate-50 text-slate-700 font-bold text-sm">
-                      {projetoData.progress}%
+                      }}
+                    >
+                      <Save className="mr-2 h-4 w-4" /> Salvar Cronograma
+                    </Button>
+                    <div className="text-[10px] text-slate-400 bg-slate-50 p-2 rounded border max-w-[200px]">
+                      Alterações em cronograma existente exigem justificativa e geram repactuação.
                     </div>
-                  </div>
-                  <Button onClick={handleSaveStatusGeral} className="bg-emerald-600 hover:bg-emerald-700"><Save className="mr-2 h-4 w-4"/> Gravar</Button>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              )}
+
+              {isPowerUser && (
+                <Card>
+                  <CardHeader><CardTitle>Status da Iniciativa</CardTitle></CardHeader>
+                  <CardContent className="flex items-end gap-6">
+                    <div className="flex-[2] space-y-2">
+                      <Label>Fase Atual</Label>
+                      <Select value={projetoStatus} onValueChange={setProjetoStatus}>
+                        <SelectTrigger><SelectValue placeholder="Selecione a fase..."/></SelectTrigger>
+                        <SelectContent>
+                          {FASES.map(f => <SelectItem key={f.id} value={f.id}>{f.label}</SelectItem>)}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div className="flex-1 space-y-2">
+                      <Label>Evolução Atual</Label>
+                      <div className="h-10 flex items-center px-3 border rounded-md bg-slate-50 text-slate-700 font-bold text-sm">
+                        {projetoData.progress}%
+                      </div>
+                    </div>
+                    <Button onClick={handleSaveStatusGeral} className="bg-emerald-600 hover:bg-emerald-700"><Save className="mr-2 h-4 w-4"/> Gravar</Button>
+                  </CardContent>
+                </Card>
+              )}
 
               {isAdmin && (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className={`grid grid-cols-1 ${isAdminTotal ? 'md:grid-cols-2' : ''} gap-6`}>
                   <Card className="border-blue-200 bg-blue-50/20">
                     <CardHeader className="pb-3">
                       <CardTitle className="text-lg flex items-center gap-2 text-blue-800">
