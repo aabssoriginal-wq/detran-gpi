@@ -76,9 +76,9 @@ export async function PUT(request: Request, context: any) {
     }
 
     if (action === "update_tarefas") {
-      const { tarefas, user } = body;
+      const { tarefas, user, acao, justificativa: justUpdate } = body;
       if (!tarefas) return NextResponse.json({ error: "Lista de tarefas é obrigatória" }, { status: 400 });
-      const proj = updateTarefas(id, tarefas, user || "Usuário");
+      const proj = updateTarefas(id, tarefas, user || "Usuário", acao, justUpdate);
       return NextResponse.json(proj);
     }
 

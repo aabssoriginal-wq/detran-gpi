@@ -27,7 +27,9 @@
     "avatar": "https://i.pravatar.cc/150?u=u018",
     "papel": "usuario",
     "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
+    "projetosAtribuidos": [
+      39
+    ]
   },
   {
     "id": "u052",
@@ -37,7 +39,19 @@
     "avatar": "https://i.pravatar.cc/150?u=u052",
     "papel": "usuario",
     "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
+    "projetosAtribuidos": [
+      5000,
+      4000,
+      3000,
+      2000,
+      1000,
+      78,
+      20,
+      18,
+      19,
+      29,
+      10
+    ]
   },
   {
     "id": "u003",
@@ -47,7 +61,26 @@
     "avatar": "https://i.pravatar.cc/150?u=u003",
     "papel": "admin_total",
     "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
+    "projetosAtribuidos": [
+      82
+    ]
+  },
+  {
+    "id": "u669774",
+    "nome": "Bruno Zaia Boneto",
+    "email": "bruno.boneto@detran.sp.gov.br",
+    "cargo": "Diretor",
+    "avatar": "https://i.pravatar.cc/150?u=u669774",
+    "papel": "admin_master",
+    "departamento": "Diretoria de Tecnologia da Informação",
+    "projetosAtribuidos": [
+      61,
+      42,
+      65,
+      41,
+      52,
+      64
+    ]
   },
   {
     "id": "u033",
@@ -67,7 +100,14 @@
     "avatar": "https://i.pravatar.cc/150?u=u005",
     "papel": "usuario",
     "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
+    "projetosAtribuidos": [
+      80,
+      38,
+      56,
+      70,
+      69,
+      68
+    ]
   },
   {
     "id": "u010",
@@ -77,7 +117,20 @@
     "avatar": "https://i.pravatar.cc/150?u=u010",
     "papel": "usuario_master",
     "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
+    "projetosAtribuidos": [
+      94,
+      96,
+      36,
+      35,
+      92,
+      93,
+      95,
+      84,
+      58,
+      97,
+      34,
+      90
+    ]
   },
   {
     "id": "u009",
@@ -87,7 +140,15 @@
     "avatar": "https://i.pravatar.cc/150?u=u009",
     "papel": "usuario",
     "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
+    "projetosAtribuidos": [
+      66,
+      50,
+      48,
+      46,
+      24,
+      67,
+      60
+    ]
   },
   {
     "id": "u050",
@@ -107,7 +168,17 @@
     "avatar": "https://i.pravatar.cc/150?u=u006",
     "papel": "usuario",
     "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
+    "projetosAtribuidos": [
+      44,
+      54,
+      13,
+      57,
+      91,
+      51,
+      53,
+      55,
+      47
+    ]
   },
   {
     "id": "u021",
@@ -147,7 +218,18 @@
     "avatar": "https://i.pravatar.cc/150?u=u007",
     "papel": "usuario_master",
     "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
+    "projetosAtribuidos": [
+      37,
+      14,
+      45,
+      40,
+      79,
+      75,
+      17,
+      83,
+      73,
+      33
+    ]
   },
   {
     "id": "u008",
@@ -157,7 +239,13 @@
     "avatar": "https://i.pravatar.cc/150?u=u008",
     "papel": "usuario",
     "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
+    "projetosAtribuidos": [
+      98,
+      81,
+      74,
+      86,
+      88
+    ]
   },
   {
     "id": "u037",
@@ -187,7 +275,9 @@
     "avatar": "https://i.pravatar.cc/150?u=u039",
     "papel": "usuario",
     "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
+    "projetosAtribuidos": [
+      15
+    ]
   },
   {
     "id": "u031",
@@ -247,7 +337,9 @@
     "avatar": "https://i.pravatar.cc/150?u=u056",
     "papel": "usuario",
     "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
+    "projetosAtribuidos": [
+      43
+    ]
   },
   {
     "id": "u040",
@@ -267,7 +359,12 @@
     "avatar": "https://i.pravatar.cc/150?u=u002",
     "papel": "usuario",
     "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
+    "projetosAtribuidos": [
+      62,
+      85,
+      63,
+      87
+    ]
   },
   {
     "id": "u023",
@@ -287,7 +384,12 @@
     "avatar": "https://i.pravatar.cc/150?u=u036",
     "papel": "usuario",
     "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
+    "projetosAtribuidos": [
+      59,
+      26,
+      27,
+      28
+    ]
   },
   {
     "id": "u032",
@@ -327,7 +429,13 @@
     "avatar": "https://i.pravatar.cc/150?u=u001",
     "papel": "admin_master",
     "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
+    "projetosAtribuidos": [
+      72,
+      16,
+      12,
+      11,
+      71
+    ]
   },
   {
     "id": "u053",
@@ -357,7 +465,9 @@
     "avatar": "https://i.pravatar.cc/150?u=u048",
     "papel": "usuario",
     "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
+    "projetosAtribuidos": [
+      21
+    ]
   },
   {
     "id": "u044",
@@ -367,7 +477,11 @@
     "avatar": "https://i.pravatar.cc/150?u=u044",
     "papel": "usuario",
     "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
+    "projetosAtribuidos": [
+      5,
+      49,
+      89
+    ]
   },
   {
     "id": "u034",
@@ -437,7 +551,9 @@
     "avatar": "https://i.pravatar.cc/150?u=u054",
     "papel": "usuario",
     "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
+    "projetosAtribuidos": [
+      25
+    ]
   },
   {
     "id": "u051",
@@ -467,7 +583,12 @@
     "avatar": "https://i.pravatar.cc/150?u=u011",
     "papel": "usuario",
     "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
+    "projetosAtribuidos": [
+      30,
+      22,
+      32,
+      31
+    ]
   },
   {
     "id": "u041",
@@ -497,7 +618,9 @@
     "avatar": "https://i.pravatar.cc/150?u=u046",
     "papel": "usuario",
     "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
+    "projetosAtribuidos": [
+      23
+    ]
   },
   {
     "id": "u016",
@@ -540,6 +663,16 @@
     "projetosAtribuidos": []
   },
   {
+    "id": "u671542",
+    "nome": "Vinicius Novaes",
+    "email": "vicinius.novaes@detran.sp.gov.br",
+    "cargo": "Diretor",
+    "avatar": "https://i.pravatar.cc/150?u=u671542",
+    "papel": "admin_master",
+    "departamento": "Diretoria de Veículos Automotores",
+    "projetosAtribuidos": []
+  },
+  {
     "id": "u042",
     "nome": "Wagner Silva Vieira",
     "email": "wagner.vieira@detran.sp.gov.br",
@@ -557,16 +690,9 @@
     "avatar": "https://i.pravatar.cc/150?u=u055",
     "papel": "usuario",
     "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
-  },
-  {
-    "id": "u669774",
-    "nome": "Bruno Zaia Boneto",
-    "email": "bruno.boneto@detran.sp.gov.br",
-    "cargo": "Diretor",
-    "avatar": "https://i.pravatar.cc/150?u=u669774",
-    "papel": "admin_master",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
+    "projetosAtribuidos": [
+      77,
+      76
+    ]
   }
 ]

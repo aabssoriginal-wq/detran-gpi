@@ -11,7 +11,7 @@ import {
   Save, History, FileSpreadsheet, Calendar as CalendarIcon, ArrowLeft, 
   ShieldAlert, FileText, Lock, Plus, UserPlus, User, Trash2, Loader2, 
   CheckCircle2, AlertCircle, Clock, FolderKanban, RotateCcw, PenLine, 
-  ChevronRight, ChevronDown, MessageSquare, Send, Sparkles
+  ChevronRight, ChevronDown, MessageSquare
 } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 import Link from "next/link";
@@ -95,7 +95,7 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
     dataInicio: "", 
     dataFim: "", 
     responsavel: "",
-    parentId: "" 
+    parentId: "none" 
   });
 
   const [editBaseline, setEditBaseline] = useState({ inicio: "", fim: "" });
@@ -107,9 +107,6 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
     dataPrevisao: ""
   });
 
-  const [aiPrompt, setAiPrompt] = useState("");
-  const [isAiLoading, setIsAiLoading] = useState(false);
-  const [aiMessages, setAiMessages] = useState<{role: 'user'|'assistant', content: string}[]>([]);
   const [usuariosDisponiveis, setUsuariosDisponiveis] = useState<any[]>([]);
 
 
@@ -154,11 +151,17 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
     parentTitle: ""
   });
 
+  const [escolhaExclusao, setEscolhaExclusao] = useState<{
+    isOpen: boolean,
+    tarefa: any,
+    temFilhos: boolean
+  }>({ isOpen: false, tarefa: null, temFilhos: false });
+
   const loadData = () => {
     if (!usuario) return;
     Promise.all([
       fetch(`/api/projects/${params.id}?dept=${encodeURIComponent(usuario.departamento)}&role=${usuario.papel}`).then(res => res.json()),
-      fetch(`/api/users`).then(res => res.json())
+      fetch(`/api/users?dept=${encodeURIComponent(usuario.departamento)}&role=${usuario.papel}`).then(res => res.json())
     ])
       .then(([data, users]) => {
         if (data.error) {
@@ -212,7 +215,7 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
     }
   };
 
-  const syncTarefas = async (list: any[]) => {
+  const syncTarefas = async (list: any[], acao?: string, justificativa?: string) => {
     setTarefas(list);
     await fetch(`/api/projects/${params.id}`, {
       method: "PUT",
@@ -222,7 +225,9 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
         tarefas: list, 
         user: usuario?.nome || "Usuário", 
         papel: usuario?.papel,
-        dept: usuario?.departamento
+        dept: usuario?.departamento,
+        acao,
+        justificativa
       })
     });
   };
@@ -348,7 +353,7 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
     currentTarefas.push(tarefa);
     await syncTarefas(currentTarefas);
     if (!taskOverride) {
-      setNovaTarefa({ titulo: "", dataInicio: "", dataFim: "", responsavel: "", parentId: "" });
+      setNovaTarefa({ titulo: "", dataInicio: "", dataFim: "", responsavel: "", parentId: "none" });
     }
     addLog(`Criou tarefa: ${tarefa.titulo}`);
     toast.success("Tarefa criada com sucesso!");
@@ -476,10 +481,11 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
       finalTarefas = finalTarefas.map(t => t.id === id ? { ...t, progress: 100 } : t);
     }
 
-    await syncTarefas(finalTarefas);
-    if (updates.status || updates.progress !== undefined) {
-      addLog(`Atualizou tarefa ${tarefa.titulo}: ${updates.status || updates.progress + '%'}`);
-    }
+    const acaoLog = (updates.status || updates.progress !== undefined) 
+      ? `Atualizou tarefa ${tarefa.titulo}: ${updates.status || (updates.progress + '%')}` 
+      : undefined;
+
+    await syncTarefas(finalTarefas, acaoLog, "Atualização de progresso/status via painel");
     loadData();
   };
 
@@ -497,9 +503,65 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
 
   const handleRemoverTarefa = async (id: string) => {
     const t = tarefas.find(x => x.id === id);
-    const newList = tarefas.filter(x => x.id !== id && x.parentId !== id);
-    await syncTarefas(newList);
-    addLog(`Removeu tarefa: ${t?.titulo}`);
+    if (!t) return;
+
+    if (t.impedimentoAtivo) {
+      toast.error(`Não é possível excluir a tarefa "${t.titulo}" pois ela possui um IMPEDIMENTO ATIVO.`);
+      return;
+    }
+
+    const filhos = tarefas.filter(x => x.parentId === id);
+    if (filhos.length > 0) {
+      setEscolhaExclusao({ isOpen: true, tarefa: t, temFilhos: true });
+    } else {
+      // Se não tem filhos, segue o fluxo normal de justificativa
+      setJustificativaDialog({
+        isOpen: true,
+        title: "Confirmar Exclusão",
+        description: `Deseja excluir a tarefa "${t.titulo}"?`,
+        value: "",
+        onConfirm: async (just) => {
+          const newList = tarefas.filter(x => x.id !== id);
+          await syncTarefas(newList);
+          addLog(`Excluiu tarefa: ${t.titulo}`, just);
+          toast.success("Tarefa excluída.");
+          loadData();
+        }
+      });
+    }
+  };
+
+  const handleConfirmarExclusaoComOpcao = (opcao: 'tudo' | 'readequar', justificativa: string) => {
+    const t = escolhaExclusao.tarefa;
+    if (!t) return;
+
+    let newList = [...tarefas];
+    let acaoLog = "";
+
+    if (opcao === 'tudo') {
+      const findDescendants = (parentId: string): string[] => {
+        const children = tarefas.filter(x => x.parentId === parentId);
+        let ids = children.map(c => c.id);
+        children.forEach(c => { ids = [...ids, ...findDescendants(c.id)]; });
+        return ids;
+      };
+      const idsParaRemover = [t.id, ...findDescendants(t.id)];
+      newList = tarefas.filter(x => !idsParaRemover.includes(x.id));
+      acaoLog = `Excluiu tarefa e toda hierarquia: ${t.titulo} (${idsParaRemover.length} itens)`;
+    } else {
+      // Readequação: Promoção de herdeiros
+      const novoParentId = t.parentId || "none";
+      newList = tarefas
+        .map(item => item.parentId === t.id ? { ...item, parentId: novoParentId } : item)
+        .filter(item => item.id !== t.id);
+      acaoLog = `Excluiu tarefa "${t.titulo}" e READEQUOU família (subtarefas promovidas para nível superior)`;
+    }
+
+    syncTarefas(newList, acaoLog, justificativa).then(() => {
+      toast.success(opcao === 'tudo' ? "Hierarquia excluída" : "Tarefa excluída e subtarefas readequadas");
+      setEscolhaExclusao({ isOpen: false, tarefa: null, temFilhos: false });
+      loadData();
+    });
   };
 
   const handleUpdateResponsavel = async (userId: string) => {
@@ -588,11 +650,11 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
 
     const tarefa = tarefas.find(t => t.id === impedimentoData.tarefaId);
     const newList = tarefas.map(t => t.id === impedimentoData.tarefaId ? { ...t, impedimentoAtivo: true, motivoImpedimento: impedimentoData.motivo } : t);
-    syncTarefas(newList);
-
-    addLog(`Impedimento em ${tarefa?.titulo}`, impedimentoData.motivo);
-    toast.success("Impedimento registrado e tarefa bloqueada.");
-    setImpedimentoData({ tarefaId: "", motivo: "", dataBloqueio: "", dataPrevisao: "" });
+    
+    syncTarefas(newList, `Impedimento em ${tarefa?.titulo}`, impedimentoData.motivo).then(() => {
+      toast.success("Impedimento registrado e tarefa bloqueada.");
+      setImpedimentoData({ tarefaId: "", motivo: "", dataBloqueio: "", dataPrevisao: "" });
+    });
   };
 
   const handleResolverImpedimento = (tarefaId: string) => {
@@ -606,8 +668,7 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
       value: "",
       onConfirm: async (just) => {
         const newList = tarefas.map(t => t.id === tarefaId ? { ...t, impedimentoAtivo: false, justificativaResolucao: just } : t);
-        await syncTarefas(newList);
-        addLog(`Impedimento resolvido em ${tarefa.titulo}`, just);
+        await syncTarefas(newList, `Impedimento resolvido em ${tarefa.titulo}`, just);
         toast.success("Impedimento resolvido!");
         loadData();
       }
@@ -657,30 +718,6 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
     }
   };
 
-  const handleSendAiMessage = async () => {
-    if (!aiPrompt.trim()) return;
-    const userMsg = { role: 'user' as const, content: aiPrompt };
-    setAiMessages(prev => [...prev, userMsg]);
-    setAiPrompt("");
-    setIsAiLoading(true);
-
-    try {
-      const res = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          messages: [...aiMessages, userMsg],
-          context: `Projeto: ${projetoData.nome}. Fase: ${projetoData.text}. Progresso: ${projetoData.progress}%. EAP: ${JSON.stringify(tarefas)}`
-        })
-      });
-      const data = await res.json();
-      setAiMessages(prev => [...prev, { role: 'assistant', content: data.content }]);
-    } catch (e) {
-      toast.error("Erro IA");
-    } finally {
-      setIsAiLoading(false);
-    }
-  };
 
   if (loading || !projetoData) return <div className="p-10 text-center"><Loader2 className="animate-spin mx-auto"/></div>;
 
@@ -974,8 +1011,7 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
               <p className="text-xs text-rose-500 mt-1">Apenas administradores podem editar projetos excluídos. Reative o projeto para liberar alterações.</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div className="lg:col-span-2 space-y-6">
+            <div className="space-y-6">
               <Card>
                 <CardHeader className="pb-3">
                   <CardTitle className="text-lg flex items-center gap-2 text-indigo-800">
@@ -1098,14 +1134,16 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                       <CardDescription>Defina quem será o responsável por esta iniciativa.</CardDescription>
                     </CardHeader>
                     <CardContent className="flex items-end gap-4">
-                      <div className="flex-1 space-y-2">
+                      <div className="flex-1 space-y-2 min-w-[300px]">
                         <Label>Selecionar Usuário</Label>
                         <Select 
                           value={usuariosDisponiveis.find(u => u.nome === projetoData.responsavel)?.id || ""} 
                           onValueChange={handleUpdateResponsavel}
                         >
-                          <SelectTrigger className="bg-white">
-                            <SelectValue placeholder="Selecione um colaborador..." />
+                          <SelectTrigger className="bg-white h-10 w-full">
+                            <SelectValue placeholder="Selecione um colaborador...">
+                              {usuariosDisponiveis.find(u => u.nome === projetoData.responsavel)?.nome || projetoData.responsavel || "Selecione..."}
+                            </SelectValue>
                           </SelectTrigger>
                           <SelectContent>
                             {usuariosDisponiveis.map(u => (
@@ -1192,10 +1230,14 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                       <Label>Responsável</Label>
                       <Input placeholder="Nome" value={novaTarefa.responsavel} onChange={e => setNovaTarefa({...novaTarefa, responsavel: e.target.value})}/>
                     </div>
-                    <div className="space-y-2">
+                    <div className="space-y-2 min-w-[200px]">
                       <Label>Hierarquia (Parent)</Label>
                       <Select value={novaTarefa.parentId} onValueChange={val => setNovaTarefa({...novaTarefa, parentId: val})}>
-                        <SelectTrigger><SelectValue placeholder="Raiz"/></SelectTrigger>
+                        <SelectTrigger className="h-10 w-full">
+                          <SelectValue placeholder="Raiz">
+                            {novaTarefa.parentId === "none" || !novaTarefa.parentId ? "Raiz (Nível 1)" : tarefas.find(t => t.id === novaTarefa.parentId)?.titulo || novaTarefa.parentId}
+                          </SelectValue>
+                        </SelectTrigger>
                         <SelectContent>
                           <SelectItem value="none">Raiz (Nível 1)</SelectItem>
                           {tarefas.map(t => <SelectItem key={t.id} value={t.id}>{t.titulo}</SelectItem>)}
@@ -1221,27 +1263,6 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                 </CardContent>
               </Card>
             </div>
-
-            <div className="space-y-6">
-              <Card className="h-[600px] flex flex-col border-blue-100">
-                <CardHeader className="bg-blue-50/50 pb-4">
-                  <CardTitle className="text-sm flex items-center gap-2"><Sparkles className="h-4 w-4 text-blue-600"/> Assistente IA</CardTitle>
-                </CardHeader>
-                <CardContent className="flex-1 overflow-y-auto p-4 space-y-4">
-                  {aiMessages.map((m, i) => (
-                    <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                      <div className={`p-3 rounded-lg text-xs ${m.role === 'user' ? 'bg-blue-600 text-white' : 'bg-slate-100 dark:bg-slate-800'}`}>{m.content}</div>
-                    </div>
-                  ))}
-                  {isAiLoading && <div className="text-xs text-slate-400 animate-pulse">Assistente escrevendo...</div>}
-                </CardContent>
-                <CardFooter className="p-4 border-t gap-2">
-                  <Input placeholder="Pergunte algo..." value={aiPrompt} onChange={e => setAiPrompt(e.target.value)} onKeyDown={e => e.key === 'Enter' && handleSendAiMessage()}/>
-                  <Button size="icon" onClick={handleSendAiMessage}><Send className="h-4 w-4"/></Button>
-                </CardFooter>
-              </Card>
-            </div>
-          </div>
         )}
       </TabsContent>
 
@@ -1467,6 +1488,63 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
+      
+      {/* Diálogo de Escolha de Exclusão (Tudo vs Readequar) */}
+      <Dialog open={escolhaExclusao.isOpen} onOpenChange={(open) => setEscolhaExclusao(prev => ({ ...prev, isOpen: open }))}>
+        <DialogContent className="sm:max-w-[500px]">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2">
+              <Trash2 className="h-5 w-5 text-rose-600" />
+              Opções de Exclusão
+            </DialogTitle>
+            <DialogDescription>
+              A tarefa <strong>{escolhaExclusao.tarefa?.titulo}</strong> possui subtarefas vinculadas. Como deseja prosseguir?
+            </DialogDescription>
+          </DialogHeader>
+          
+          <div className="py-6 space-y-6">
+            <div className="grid grid-cols-2 gap-4">
+              <button 
+                onClick={() => {
+                  const just = window.prompt("Justifique a exclusão de TODA a hierarquia:");
+                  if (just) handleConfirmarExclusaoComOpcao('tudo', just);
+                }}
+                className="flex flex-col items-center gap-3 p-4 border-2 border-rose-100 rounded-xl hover:border-rose-500 hover:bg-rose-50 transition-all group"
+              >
+                <div className="h-12 w-12 rounded-full bg-rose-100 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Trash2 className="h-6 w-6 text-rose-600" />
+                </div>
+                <div className="text-center">
+                  <p className="font-bold text-rose-900 text-sm">Excluir Tudo</p>
+                  <p className="text-[10px] text-rose-600 mt-1">Remove a tarefa e todos os seus descendentes permanentemente.</p>
+                </div>
+              </button>
+
+              <button 
+                onClick={() => {
+                  const just = window.prompt("Justifique a READEQUAÇÃO da família (promoção de subtarefas):");
+                  if (just) handleConfirmarExclusaoComOpcao('readequar', just);
+                }}
+                className="flex flex-col items-center gap-3 p-4 border-2 border-blue-100 rounded-xl hover:border-blue-500 hover:bg-blue-50 transition-all group"
+              >
+                <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <FolderKanban className="h-6 w-6 text-blue-600" />
+                </div>
+                <div className="text-center">
+                  <p className="font-bold text-blue-900 text-sm">Readequar Família</p>
+                  <p className="text-[10px] text-blue-600 mt-1">Remove apenas esta tarefa. As subtarefas serão promovidas ao nível superior.</p>
+                </div>
+              </button>
+            </div>
+          </div>
+          
+          <DialogFooter>
+            <Button variant="ghost" onClick={() => setEscolhaExclusao({ isOpen: false, tarefa: null, temFilhos: false })}>
+              Cancelar
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
 
       {/* Modal de Lançamentos e Anotações */}
       <Dialog open={!!selectedTarefaParaNotas} onOpenChange={(open) => !open && setSelectedTarefaParaNotas(null)}>

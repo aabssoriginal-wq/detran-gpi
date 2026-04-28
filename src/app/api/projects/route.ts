@@ -1,14 +1,30 @@
 import { NextResponse } from 'next/server';
 import { getProjetos, createProjeto } from '@/lib/db';
+import { getUsuarios } from '@/lib/users';
 
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const userDept = searchParams.get('dept') || undefined;
     const papel = searchParams.get('role') || undefined;
+    const userName = searchParams.get('userName') || undefined;
 
-    const projetos = getProjetos(userDept || undefined, papel || undefined);
+    let projetos = getProjetos(userDept || undefined, papel || undefined);
     
+    // Regra de Ouro: Se for usuário comum, filtramos por atribuição real no servidor
+    if (papel === 'usuario' && userName) {
+      const allUsers = getUsuarios();
+      const currentUser = allUsers.find(u => u.nome.trim() === userName.trim());
+      
+      if (currentUser) {
+        const IDsAtribuidos = currentUser.projetosAtribuidos || [];
+        projetos = projetos.filter(p => 
+          IDsAtribuidos.includes(p.id) || 
+          (p.responsavel && p.responsavel.trim().toLowerCase() === userName.trim().toLowerCase())
+        );
+      }
+    }
+
     const summary = projetos.map(({ logs, tarefas, ...rest }) => ({
       ...rest,
       tarefaBloqueada: tarefas?.find(t => t.impedimentoAtivo)?.titulo || null,

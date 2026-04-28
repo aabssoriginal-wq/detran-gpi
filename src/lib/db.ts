@@ -262,10 +262,8 @@ export const getProjetos = (userDept?: string, papel?: string): Projeto[] => {
 
   if (papel && papel !== 'admin_total') {
     list = list.filter((p: Projeto) => {
-      if (p.departamento !== userDept) return false;
-      if (papel === 'admin_master' || papel === 'usuario_master') return true;
-      const isOrphan = p.responsavel === "Não Definido" || !p.responsavel;
-      return isOrphan || p.responsavel === userDept || (p as any).isAtribuido;
+      // Filtro básico de segurança por diretoria
+      return p.departamento === userDept;
     });
   }
 
@@ -380,12 +378,15 @@ export const updateBaseline = (id: number, inicio: string, fim: string, justific
   return projetos[idx];
 };
 
-export const updateTarefas = (id: number, tarefas: Tarefa[], user: string = "Usuário"): Projeto => {
+export const updateTarefas = (id: number, tarefas: Tarefa[], user: string = "Usuário", acaoCustomizada?: string, justificativa?: string): Projeto => {
   const projetos = getProjetos();
   const idx = projetos.findIndex(p => p.id === id);
   if (idx === -1) throw new Error("Projeto não encontrado.");
   projetos[idx].tarefas = tarefas;
-  projetos[idx].logs.unshift(createLog("Atualização de EAP", "Alteração de tarefas", user));
+  
+  const logAcao = acaoCustomizada || "Atualização de EAP";
+  const logJust = justificativa || "Alteração de tarefas";
+  projetos[idx].logs.unshift(createLog(logAcao, logJust, user));
 
   if (tarefas.length > 0) {
     let totalPond = 0;

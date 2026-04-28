@@ -58,10 +58,13 @@ export default function UsuariosPage() {
   const [deletingId, setDeletingId] = useState<string | null>(null);
 
   const fetchUsers = () => {
-    fetch('/api/users').then(r => r.json()).then(u => {
-      setUsers(u);
-      setLoading(false);
-    });
+    if (!usuario) return;
+    fetch(`/api/users?dept=${encodeURIComponent(usuario.departamento)}&role=${usuario.papel}`)
+      .then(r => r.json())
+      .then(u => {
+        setUsers(Array.isArray(u) ? u : []);
+        setLoading(false);
+      });
   };
 
   useEffect(() => { fetchUsers(); }, []);

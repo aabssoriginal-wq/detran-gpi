@@ -63,7 +63,7 @@ export default function DashboardPage() {
     if (!usuario) return;
     setLoading(true);
     // Passar departamento e papel para filtragem no servidor
-    const url = `/api/projects?dept=${encodeURIComponent(usuario.departamento)}&role=${usuario.papel}`;
+    const url = `/api/projects?dept=${encodeURIComponent(usuario.departamento)}&role=${usuario.papel}&userName=${encodeURIComponent(usuario.nome)}`;
     fetch(url)
       .then(res => res.json())
       .then(data => {
@@ -72,14 +72,7 @@ export default function DashboardPage() {
           setLoading(false);
           return;
         }
-        let filtered = data;
-        // Regra Adicional: Usuário Comum vê apenas seus projetos atribuídos (dentro do seu depto)
-        if (usuario?.papel === 'usuario') {
-          // Se projetosAtribuidos for nulo ou vazio, ele não vê nada ou vê tudo? 
-          // Geralmente usuário vê apenas o que lhe é atribuído.
-          filtered = data.filter((p: any) => usuario.projetosAtribuidos?.includes(p.id));
-        }
-        setProjetos(filtered);
+        setProjetos(data);
         setLoading(false);
       })
       .catch(err => {

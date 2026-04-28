@@ -4,9 +4,20 @@ import { getProjetos, updateTarefas, updateResponsavel } from '@/lib/db';
 
 const HIERARCHY = { 'admin_total': 4, 'admin_master': 3, 'usuario_master': 2, 'usuario': 1 };
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
-    const usuarios = getUsuarios();
+    const { searchParams } = new URL(request.url);
+    const dept = searchParams.get('dept');
+    const role = searchParams.get('role');
+
+    let usuarios = getUsuarios();
+
+    // Regra de Isolamento: Apenas admin_total vê usuários de todas as diretorias.
+    // admin_master, usuario_master e usuario comum veem apenas sua própria diretoria.
+    if (role !== 'admin_total' && dept) {
+      usuarios = usuarios.filter(u => u.departamento === dept);
+    }
+
     return NextResponse.json(usuarios);
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
