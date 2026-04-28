@@ -8,12 +8,41 @@ const getDBPath = () => {
   const isAzure = process.env.WEBSITE_INSTANCE_ID !== undefined;
   if (isAzure) {
     const azureDataDir = path.join('/home/site/data');
+    
+    // FORÇAR LIMPEZA SE SOLICITADO PELO DEPLOY
+    if (process.env.FORCE_CLEAN === 'true') {
+      try {
+        if (fs.existsSync(azureDataDir)) {
+          fs.rmSync(azureDataDir, { recursive: true, force: true });
+        }
+      } catch(e) {}
+    }
+
     if (!fs.existsSync(azureDataDir)) {
       try { fs.mkdirSync(azureDataDir, { recursive: true }); } catch(e) {}
     }
     return path.join(azureDataDir, 'data.json');
   }
   return path.join(process.cwd(), 'data.json');
+};
+
+const getUsersPath = () => {
+  const isAzure = process.env.WEBSITE_INSTANCE_ID !== undefined;
+  if (isAzure) {
+    const azureDataDir = path.join('/home/site/data');
+    
+    // O db.ts já deve ter limpado a pasta se FORCE_CLEAN estiver true, 
+    // mas garantimos aqui também.
+    if (process.env.FORCE_CLEAN === 'true') {
+       // Apenas garantimos a existência após a possível limpeza no db.ts
+    }
+
+    if (!fs.existsSync(azureDataDir)) {
+      try { fs.mkdirSync(azureDataDir, { recursive: true }); } catch(e) {}
+    }
+    return path.join(azureDataDir, 'users.json');
+  }
+  return path.join(process.cwd(), 'users.json');
 };
 
 const dataFilePath = getDBPath();
