@@ -1,20 +1,40 @@
 [
   {
-    "id": "u001",
-    "nome": "Lucas Rodrigues Jose Cesario",
-    "email": "lucas.cesario@detran.sp.gov.br",
-    "cargo": "Assessor Especial II",
-    "avatar": "https://i.pravatar.cc/150?u=u001",
-    "papel": "admin_master",
+    "id": "u049",
+    "nome": "Adalberto Lefort Junior",
+    "email": "adalberto.junior@detran.sp.gov.br",
+    "cargo": "Assistente Técnico III",
+    "avatar": "https://i.pravatar.cc/150?u=u049",
+    "papel": "usuario",
     "departamento": "Diretoria de Tecnologia da Informação",
     "projetosAtribuidos": []
   },
   {
-    "id": "u002",
-    "nome": "Leandro Almeida Batista da Silva",
-    "email": "leandro.silva@detran.sp.gov.br",
+    "id": "u015",
+    "nome": "Adriana Menegati Mingucci",
+    "email": "adriana.mingucci@detran.sp.gov.br",
     "cargo": "Assistente Técnico III",
-    "avatar": "https://i.pravatar.cc/150?u=u002",
+    "avatar": "https://i.pravatar.cc/150?u=u015",
+    "papel": "usuario",
+    "departamento": "Diretoria de Tecnologia da Informação",
+    "projetosAtribuidos": []
+  },
+  {
+    "id": "u018",
+    "nome": "Alex Felipe da Silva",
+    "email": "alex.fsilva@detran.sp.gov.br",
+    "cargo": "Chefe de Divisão",
+    "avatar": "https://i.pravatar.cc/150?u=u018",
+    "papel": "usuario",
+    "departamento": "Diretoria de Tecnologia da Informação",
+    "projetosAtribuidos": []
+  },
+  {
+    "id": "u052",
+    "nome": "Amanda Guedes Gomes",
+    "email": "amanda.gomes@detran.sp.gov.br",
+    "cargo": "Chefe de Divisão",
+    "avatar": "https://i.pravatar.cc/150?u=u052",
     "papel": "usuario",
     "departamento": "Diretoria de Tecnologia da Informação",
     "projetosAtribuidos": []
@@ -30,11 +50,11 @@
     "projetosAtribuidos": []
   },
   {
-    "id": "u004",
-    "nome": "Diana Vieira dos Santos",
-    "email": "diana.santos@detran.sp.gov.br",
-    "cargo": "Assistente IV",
-    "avatar": "https://i.pravatar.cc/150?u=u004",
+    "id": "u033",
+    "nome": "Carla Pozitano Paiva Carnauba",
+    "email": "carla.carnauba@detran.sp.gov.br",
+    "cargo": "Assistente Técnico III",
+    "avatar": "https://i.pravatar.cc/150?u=u033",
     "papel": "usuario",
     "departamento": "Diretoria de Tecnologia da Informação",
     "projetosAtribuidos": []
@@ -50,11 +70,71 @@
     "projetosAtribuidos": []
   },
   {
+    "id": "u010",
+    "nome": "Claudio Xavier Matos",
+    "email": "claudio.matos@detran.sp.gov.br",
+    "cargo": "Coordenador Geral",
+    "avatar": "https://i.pravatar.cc/150?u=u010",
+    "papel": "usuario_master",
+    "departamento": "Diretoria de Tecnologia da Informação",
+    "projetosAtribuidos": []
+  },
+  {
+    "id": "u009",
+    "nome": "Clayton Rodrigues do Carmo",
+    "email": "clayton.carmo@detran.sp.gov.br",
+    "cargo": "Coordenador",
+    "avatar": "https://i.pravatar.cc/150?u=u009",
+    "papel": "usuario",
+    "departamento": "Diretoria de Tecnologia da Informação",
+    "projetosAtribuidos": []
+  },
+  {
+    "id": "u050",
+    "nome": "Cristiana Venâncio de Lima Ferreira",
+    "email": "cristiana.lima@detran.sp.gov.br",
+    "cargo": "Assistente Técnico III",
+    "avatar": "https://i.pravatar.cc/150?u=u050",
+    "papel": "usuario",
+    "departamento": "Diretoria de Tecnologia da Informação",
+    "projetosAtribuidos": []
+  },
+  {
     "id": "u006",
     "nome": "Daniel André Janzen",
     "email": "daniel.janzen@detran.sp.gov.br",
     "cargo": "Coordenador",
     "avatar": "https://i.pravatar.cc/150?u=u006",
+    "papel": "usuario",
+    "departamento": "Diretoria de Tecnologia da Informação",
+    "projetosAtribuidos": []
+  },
+  {
+    "id": "u021",
+    "nome": "Daniele Silva De Jesus",
+    "email": "daniele.jesus@detran.sp.gov.br",
+    "cargo": "Assistente Técnico III",
+    "avatar": "https://i.pravatar.cc/150?u=u021",
+    "papel": "usuario",
+    "departamento": "Diretoria de Tecnologia da Informação",
+    "projetosAtribuidos": []
+  },
+  {
+    "id": "u004",
+    "nome": "Diana Vieira dos Santos",
+    "email": "diana.santos@detran.sp.gov.br",
+    "cargo": "Assistente IV",
+    "avatar": "https://i.pravatar.cc/150?u=u004",
+    "papel": "usuario",
+    "departamento": "Diretoria de Tecnologia da Informação",
+    "projetosAtribuidos": []
+  },
+  {
+    "id": "u028",
+    "nome": "Edgar Moreno Rosa",
+    "email": "edgar.rosa@detran.sp.gov.br",
+    "cargo": "Assistente Técnico III",
+    "avatar": "https://i.pravatar.cc/150?u=u028",
     "papel": "usuario",
     "departamento": "Diretoria de Tecnologia da Informação",
     "projetosAtribuidos": []
@@ -80,171 +160,11 @@
     "projetosAtribuidos": []
   },
   {
-    "id": "u009",
-    "nome": "Clayton Rodrigues do Carmo",
-    "email": "clayton.carmo@detran.sp.gov.br",
-    "cargo": "Coordenador",
-    "avatar": "https://i.pravatar.cc/150?u=u009",
-    "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
-  },
-  {
-    "id": "u010",
-    "nome": "Claudio Xavier Matos",
-    "email": "claudio.matos@detran.sp.gov.br",
-    "cargo": "Coordenador Geral",
-    "avatar": "https://i.pravatar.cc/150?u=u010",
-    "papel": "usuario_master",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
-  },
-  {
-    "id": "u011",
-    "nome": "Ricardo Mores Zafra Junior",
-    "email": "ricardo.junior@detran.sp.gov.br",
-    "cargo": "Coordenador",
-    "avatar": "https://i.pravatar.cc/150?u=u011",
-    "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
-  },
-  {
-    "id": "u012",
-    "nome": "Matheus Venâncio Fernandes",
-    "email": "matheus.fernandes@detran.sp.gov.br",
+    "id": "u037",
+    "nome": "Fernando Antonio de Lima Neto",
+    "email": "fernando.neto@detran.sp.gov.br",
     "cargo": "Chefe de Divisão",
-    "avatar": "https://i.pravatar.cc/150?u=u012",
-    "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
-  },
-  {
-    "id": "u013",
-    "nome": "Norberto Constancio Gomes Neto",
-    "email": "norberto.neto@detran.sp.gov.br",
-    "cargo": "Chefe de Divisão",
-    "avatar": "https://i.pravatar.cc/150?u=u013",
-    "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
-  },
-  {
-    "id": "u014",
-    "nome": "Tifanny Morrissey dos Santos Lima",
-    "email": "tifanny.lima@detran.sp.gov.br",
-    "cargo": "Chefe de Divisão",
-    "avatar": "https://i.pravatar.cc/150?u=u014",
-    "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
-  },
-  {
-    "id": "u015",
-    "nome": "Adriana Menegati Mingucci",
-    "email": "adriana.mingucci@detran.sp.gov.br",
-    "cargo": "Assistente Técnico III",
-    "avatar": "https://i.pravatar.cc/150?u=u015",
-    "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
-  },
-  {
-    "id": "u016",
-    "nome": "Tatiane Rivas Aroni",
-    "email": "tatiane.aroni@detran.sp.gov.br",
-    "cargo": "Assistente Técnico III",
-    "avatar": "https://i.pravatar.cc/150?u=u016",
-    "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
-  },
-  {
-    "id": "u017",
-    "nome": "Lucas de Santana Zacarias",
-    "email": "lucas.zacarias@detran.sp.gov.br",
-    "cargo": "Assistente Técnico III",
-    "avatar": "https://i.pravatar.cc/150?u=u017",
-    "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
-  },
-  {
-    "id": "u018",
-    "nome": "Alex Felipe da Silva",
-    "email": "alex.fsilva@detran.sp.gov.br",
-    "cargo": "Chefe de Divisão",
-    "avatar": "https://i.pravatar.cc/150?u=u018",
-    "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
-  },
-  {
-    "id": "u019",
-    "nome": "Vera Lucia Lopes de Oliveira",
-    "email": "vera.oliveira@detran.sp.gov.br",
-    "cargo": "Assistente Técnico III",
-    "avatar": "https://i.pravatar.cc/150?u=u019",
-    "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
-  },
-  {
-    "id": "u020",
-    "nome": "Karen Cristina Gestal Ferreira",
-    "email": "karen.ferreira@detran.sp.gov.br",
-    "cargo": "Chefe de Divisão",
-    "avatar": "https://i.pravatar.cc/150?u=u020",
-    "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
-  },
-  {
-    "id": "u021",
-    "nome": "Daniele Silva De Jesus",
-    "email": "daniele.jesus@detran.sp.gov.br",
-    "cargo": "Assistente Técnico III",
-    "avatar": "https://i.pravatar.cc/150?u=u021",
-    "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
-  },
-  {
-    "id": "u022",
-    "nome": "Thaisy Leão dos Santos Conceicao",
-    "email": "thaisy.conceicao@detran.sp.gov.br",
-    "cargo": "Chefe de Divisão",
-    "avatar": "https://i.pravatar.cc/150?u=u022",
-    "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
-  },
-  {
-    "id": "u023",
-    "nome": "Leidiane Silva de Sousa",
-    "email": "leidiane.sousa@detran.sp.gov.br",
-    "cargo": "Assistente Técnico III",
-    "avatar": "https://i.pravatar.cc/150?u=u023",
-    "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
-  },
-  {
-    "id": "u024",
-    "nome": "Lilian do Nascimento de Araujo",
-    "email": "lilian.araujo@detran.sp.gov.br",
-    "cargo": "Chefe de Divisão",
-    "avatar": "https://i.pravatar.cc/150?u=u024",
-    "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
-  },
-  {
-    "id": "u025",
-    "nome": "Mariane Daniele Santana Silva",
-    "email": "mariane.dsilva@detran.sp.gov.br",
-    "cargo": "Assistente Técnico III",
-    "avatar": "https://i.pravatar.cc/150?u=u025",
+    "avatar": "https://i.pravatar.cc/150?u=u037",
     "papel": "usuario",
     "departamento": "Diretoria de Tecnologia da Informação",
     "projetosAtribuidos": []
@@ -260,41 +180,11 @@
     "projetosAtribuidos": []
   },
   {
-    "id": "u027",
-    "nome": "Kelly Viviane Costa Inocencio",
-    "email": "kelly.inocencio@detran.sp.gov.br",
+    "id": "u039",
+    "nome": "Gustavo De Camargo Costa",
+    "email": "gustavo.costa@detran.sp.gov.br",
     "cargo": "Chefe de Divisão",
-    "avatar": "https://i.pravatar.cc/150?u=u027",
-    "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
-  },
-  {
-    "id": "u028",
-    "nome": "Edgar Moreno Rosa",
-    "email": "edgar.rosa@detran.sp.gov.br",
-    "cargo": "Assistente Técnico III",
-    "avatar": "https://i.pravatar.cc/150?u=u028",
-    "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
-  },
-  {
-    "id": "u029",
-    "nome": "Renato Pereira de Oliveira",
-    "email": "renato.oliveira@detran.sp.gov.br",
-    "cargo": "Chefe de Divisão",
-    "avatar": "https://i.pravatar.cc/150?u=u029",
-    "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
-  },
-  {
-    "id": "u030",
-    "nome": "Julio Cesar Oliveira Santana Santos",
-    "email": "julio.santos@detran.sp.gov.br",
-    "cargo": "Assistente Técnico III",
-    "avatar": "https://i.pravatar.cc/150?u=u030",
+    "avatar": "https://i.pravatar.cc/150?u=u039",
     "papel": "usuario",
     "departamento": "Diretoria de Tecnologia da Informação",
     "projetosAtribuidos": []
@@ -310,6 +200,96 @@
     "projetosAtribuidos": []
   },
   {
+    "id": "u043",
+    "nome": "Josias Dias Mesquita",
+    "email": "josias.mesquita@detran.sp.gov.br",
+    "cargo": "Assistente Técnico III",
+    "avatar": "https://i.pravatar.cc/150?u=u043",
+    "papel": "usuario",
+    "departamento": "Diretoria de Tecnologia da Informação",
+    "projetosAtribuidos": []
+  },
+  {
+    "id": "u030",
+    "nome": "Julio Cesar Oliveira Santana Santos",
+    "email": "julio.santos@detran.sp.gov.br",
+    "cargo": "Assistente Técnico III",
+    "avatar": "https://i.pravatar.cc/150?u=u030",
+    "papel": "usuario",
+    "departamento": "Diretoria de Tecnologia da Informação",
+    "projetosAtribuidos": []
+  },
+  {
+    "id": "u020",
+    "nome": "Karen Cristina Gestal Ferreira",
+    "email": "karen.ferreira@detran.sp.gov.br",
+    "cargo": "Chefe de Divisão",
+    "avatar": "https://i.pravatar.cc/150?u=u020",
+    "papel": "usuario",
+    "departamento": "Diretoria de Tecnologia da Informação",
+    "projetosAtribuidos": []
+  },
+  {
+    "id": "u027",
+    "nome": "Kelly Viviane Costa Inocencio",
+    "email": "kelly.inocencio@detran.sp.gov.br",
+    "cargo": "Chefe de Divisão",
+    "avatar": "https://i.pravatar.cc/150?u=u027",
+    "papel": "usuario",
+    "departamento": "Diretoria de Tecnologia da Informação",
+    "projetosAtribuidos": []
+  },
+  {
+    "id": "u056",
+    "nome": "Laisa Cristina Capodifoglio",
+    "email": "laisa.andrade@detran.sp.gov.br",
+    "cargo": "Assistente Técnico III",
+    "avatar": "https://i.pravatar.cc/150?u=u056",
+    "papel": "usuario",
+    "departamento": "Diretoria de Tecnologia da Informação",
+    "projetosAtribuidos": []
+  },
+  {
+    "id": "u040",
+    "nome": "Larissa Gomes Coelho",
+    "email": "larissa.coelho@detran.sp.gov.br",
+    "cargo": "Assistente Técnico III",
+    "avatar": "https://i.pravatar.cc/150?u=u040",
+    "papel": "usuario",
+    "departamento": "Diretoria de Tecnologia da Informação",
+    "projetosAtribuidos": []
+  },
+  {
+    "id": "u002",
+    "nome": "Leandro Almeida Batista da Silva",
+    "email": "leandro.silva@detran.sp.gov.br",
+    "cargo": "Assistente Técnico III",
+    "avatar": "https://i.pravatar.cc/150?u=u002",
+    "papel": "usuario",
+    "departamento": "Diretoria de Tecnologia da Informação",
+    "projetosAtribuidos": []
+  },
+  {
+    "id": "u023",
+    "nome": "Leidiane Silva de Sousa",
+    "email": "leidiane.sousa@detran.sp.gov.br",
+    "cargo": "Assistente Técnico III",
+    "avatar": "https://i.pravatar.cc/150?u=u023",
+    "papel": "usuario",
+    "departamento": "Diretoria de Tecnologia da Informação",
+    "projetosAtribuidos": []
+  },
+  {
+    "id": "u036",
+    "nome": "Leonardo José Ramos Botelho",
+    "email": "leonardo.botelho@detran.sp.gov.br",
+    "cargo": "Assistente Técnico III",
+    "avatar": "https://i.pravatar.cc/150?u=u036",
+    "papel": "usuario",
+    "departamento": "Diretoria de Tecnologia da Informação",
+    "projetosAtribuidos": []
+  },
+  {
     "id": "u032",
     "nome": "Levi Roberto de Oliveira de Paula",
     "email": "levi.paula@detran.sp.gov.br",
@@ -320,11 +300,71 @@
     "projetosAtribuidos": []
   },
   {
-    "id": "u033",
-    "nome": "Carla Pozitano Paiva Carnauba",
-    "email": "carla.carnauba@detran.sp.gov.br",
+    "id": "u024",
+    "nome": "Lilian do Nascimento de Araujo",
+    "email": "lilian.araujo@detran.sp.gov.br",
+    "cargo": "Chefe de Divisão",
+    "avatar": "https://i.pravatar.cc/150?u=u024",
+    "papel": "usuario",
+    "departamento": "Diretoria de Tecnologia da Informação",
+    "projetosAtribuidos": []
+  },
+  {
+    "id": "u017",
+    "nome": "Lucas de Santana Zacarias",
+    "email": "lucas.zacarias@detran.sp.gov.br",
     "cargo": "Assistente Técnico III",
-    "avatar": "https://i.pravatar.cc/150?u=u033",
+    "avatar": "https://i.pravatar.cc/150?u=u017",
+    "papel": "usuario",
+    "departamento": "Diretoria de Tecnologia da Informação",
+    "projetosAtribuidos": []
+  },
+  {
+    "id": "u001",
+    "nome": "Lucas Rodrigues Jose Cesario",
+    "email": "lucas.cesario@detran.sp.gov.br",
+    "cargo": "Assessor Especial II",
+    "avatar": "https://i.pravatar.cc/150?u=u001",
+    "papel": "admin_master",
+    "departamento": "Diretoria de Tecnologia da Informação",
+    "projetosAtribuidos": []
+  },
+  {
+    "id": "u053",
+    "nome": "Luis Augusto Freire Calixto",
+    "email": "luis.calixto@detran.sp.gov.br",
+    "cargo": "Assistente Técnico III",
+    "avatar": "https://i.pravatar.cc/150?u=u053",
+    "papel": "usuario",
+    "departamento": "Diretoria de Tecnologia da Informação",
+    "projetosAtribuidos": []
+  },
+  {
+    "id": "u038",
+    "nome": "Luiz Felipe Rufino Pepe",
+    "email": "luiz.pepe@detran.sp.gov.br",
+    "cargo": "Assistente Técnico III",
+    "avatar": "https://i.pravatar.cc/150?u=u038",
+    "papel": "usuario",
+    "departamento": "Diretoria de Tecnologia da Informação",
+    "projetosAtribuidos": []
+  },
+  {
+    "id": "u048",
+    "nome": "Maila Fernandes Chagas",
+    "email": "maila.chagas@detran.sp.gov.br",
+    "cargo": "Chefe de Divisão",
+    "avatar": "https://i.pravatar.cc/150?u=u048",
+    "papel": "usuario",
+    "departamento": "Diretoria de Tecnologia da Informação",
+    "projetosAtribuidos": []
+  },
+  {
+    "id": "u044",
+    "nome": "Marcela Ramos Alexandre",
+    "email": "marcela.alexandre@detran.sp.gov.br",
+    "cargo": "Chefe de Divisão",
+    "avatar": "https://i.pravatar.cc/150?u=u044",
     "papel": "usuario",
     "departamento": "Diretoria de Tecnologia da Informação",
     "projetosAtribuidos": []
@@ -350,51 +390,81 @@
     "projetosAtribuidos": []
   },
   {
-    "id": "u036",
-    "nome": "Leonardo José Ramos Botelho",
-    "email": "leonardo.botelho@detran.sp.gov.br",
+    "id": "u025",
+    "nome": "Mariane Daniele Santana Silva",
+    "email": "mariane.dsilva@detran.sp.gov.br",
     "cargo": "Assistente Técnico III",
-    "avatar": "https://i.pravatar.cc/150?u=u036",
+    "avatar": "https://i.pravatar.cc/150?u=u025",
     "papel": "usuario",
     "departamento": "Diretoria de Tecnologia da Informação",
     "projetosAtribuidos": []
   },
   {
-    "id": "u037",
-    "nome": "Fernando Antonio de Lima Neto",
-    "email": "fernando.neto@detran.sp.gov.br",
+    "id": "u047",
+    "nome": "Marianna Falcão de Paula Campos",
+    "email": "marianna.campos@detran.sp.gov.br",
+    "cargo": "Assistente Técnico III",
+    "avatar": "https://i.pravatar.cc/150?u=u047",
+    "papel": "usuario",
+    "departamento": "Diretoria de Tecnologia da Informação",
+    "projetosAtribuidos": []
+  },
+  {
+    "id": "u012",
+    "nome": "Matheus Venâncio Fernandes",
+    "email": "matheus.fernandes@detran.sp.gov.br",
     "cargo": "Chefe de Divisão",
-    "avatar": "https://i.pravatar.cc/150?u=u037",
+    "avatar": "https://i.pravatar.cc/150?u=u012",
     "papel": "usuario",
     "departamento": "Diretoria de Tecnologia da Informação",
     "projetosAtribuidos": []
   },
   {
-    "id": "u038",
-    "nome": "Luiz Felipe Rufino Pepe",
-    "email": "luiz.pepe@detran.sp.gov.br",
-    "cargo": "Assistente Técnico III",
-    "avatar": "https://i.pravatar.cc/150?u=u038",
-    "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
-  },
-  {
-    "id": "u039",
-    "nome": "Gustavo De Camargo Costa",
-    "email": "gustavo.costa@detran.sp.gov.br",
+    "id": "u013",
+    "nome": "Norberto Constancio Gomes Neto",
+    "email": "norberto.neto@detran.sp.gov.br",
     "cargo": "Chefe de Divisão",
-    "avatar": "https://i.pravatar.cc/150?u=u039",
+    "avatar": "https://i.pravatar.cc/150?u=u013",
     "papel": "usuario",
     "departamento": "Diretoria de Tecnologia da Informação",
     "projetosAtribuidos": []
   },
   {
-    "id": "u040",
-    "nome": "Larissa Gomes Coelho",
-    "email": "larissa.coelho@detran.sp.gov.br",
-    "cargo": "Assistente Técnico III",
-    "avatar": "https://i.pravatar.cc/150?u=u040",
+    "id": "u054",
+    "nome": "Rafael Ribeiro da Silva",
+    "email": "rafael.ribeiro@detran.sp.gov.br",
+    "cargo": "Chefe de Divisão",
+    "avatar": "https://i.pravatar.cc/150?u=u054",
+    "papel": "usuario",
+    "departamento": "Diretoria de Tecnologia da Informação",
+    "projetosAtribuidos": []
+  },
+  {
+    "id": "u051",
+    "nome": "Raissa Benocci Thibes",
+    "email": "raissa.thibes@detran.sp.gov.br",
+    "cargo": "Chefe de Divisão",
+    "avatar": "https://i.pravatar.cc/150?u=u051",
+    "papel": "usuario",
+    "departamento": "Diretoria de Tecnologia da Informação",
+    "projetosAtribuidos": []
+  },
+  {
+    "id": "u029",
+    "nome": "Renato Pereira de Oliveira",
+    "email": "renato.oliveira@detran.sp.gov.br",
+    "cargo": "Chefe de Divisão",
+    "avatar": "https://i.pravatar.cc/150?u=u029",
+    "papel": "usuario",
+    "departamento": "Diretoria de Tecnologia da Informação",
+    "projetosAtribuidos": []
+  },
+  {
+    "id": "u011",
+    "nome": "Ricardo Mores Zafra Junior",
+    "email": "ricardo.junior@detran.sp.gov.br",
+    "cargo": "Coordenador",
+    "avatar": "https://i.pravatar.cc/150?u=u011",
     "papel": "usuario",
     "departamento": "Diretoria de Tecnologia da Informação",
     "projetosAtribuidos": []
@@ -405,36 +475,6 @@
     "email": "roberto.barros@detran.sp.gov.br",
     "cargo": "Assistente Técnico III",
     "avatar": "https://i.pravatar.cc/150?u=u041",
-    "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
-  },
-  {
-    "id": "u042",
-    "nome": "Wagner Silva Vieira",
-    "email": "wagner.vieira@detran.sp.gov.br",
-    "cargo": "Chefe de Divisão",
-    "avatar": "https://i.pravatar.cc/150?u=u042",
-    "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
-  },
-  {
-    "id": "u043",
-    "nome": "Josias Dias Mesquita",
-    "email": "josias.mesquita@detran.sp.gov.br",
-    "cargo": "Assistente Técnico III",
-    "avatar": "https://i.pravatar.cc/150?u=u043",
-    "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
-  },
-  {
-    "id": "u044",
-    "nome": "Marcela Ramos Alexandre",
-    "email": "marcela.alexandre@detran.sp.gov.br",
-    "cargo": "Chefe de Divisão",
-    "avatar": "https://i.pravatar.cc/150?u=u044",
     "papel": "usuario",
     "departamento": "Diretoria de Tecnologia da Informação",
     "projetosAtribuidos": []
@@ -460,81 +500,51 @@
     "projetosAtribuidos": []
   },
   {
-    "id": "u047",
-    "nome": "Marianna Falcão de Paula Campos",
-    "email": "marianna.campos@detran.sp.gov.br",
+    "id": "u016",
+    "nome": "Tatiane Rivas Aroni",
+    "email": "tatiane.aroni@detran.sp.gov.br",
     "cargo": "Assistente Técnico III",
-    "avatar": "https://i.pravatar.cc/150?u=u047",
+    "avatar": "https://i.pravatar.cc/150?u=u016",
     "papel": "usuario",
     "departamento": "Diretoria de Tecnologia da Informação",
     "projetosAtribuidos": []
   },
   {
-    "id": "u048",
-    "nome": "Maila Fernandes Chagas",
-    "email": "maila.chagas@detran.sp.gov.br",
+    "id": "u022",
+    "nome": "Thaisy Leão dos Santos Conceicao",
+    "email": "thaisy.conceicao@detran.sp.gov.br",
     "cargo": "Chefe de Divisão",
-    "avatar": "https://i.pravatar.cc/150?u=u048",
+    "avatar": "https://i.pravatar.cc/150?u=u022",
     "papel": "usuario",
     "departamento": "Diretoria de Tecnologia da Informação",
     "projetosAtribuidos": []
   },
   {
-    "id": "u049",
-    "nome": "Adalberto Lefort Junior",
-    "email": "adalberto.junior@detran.sp.gov.br",
+    "id": "u014",
+    "nome": "Tifanny Morrissey dos Santos Lima",
+    "email": "tifanny.lima@detran.sp.gov.br",
+    "cargo": "Chefe de Divisão",
+    "avatar": "https://i.pravatar.cc/150?u=u014",
+    "papel": "usuario",
+    "departamento": "Diretoria de Tecnologia da Informação",
+    "projetosAtribuidos": []
+  },
+  {
+    "id": "u019",
+    "nome": "Vera Lucia Lopes de Oliveira",
+    "email": "vera.oliveira@detran.sp.gov.br",
     "cargo": "Assistente Técnico III",
-    "avatar": "https://i.pravatar.cc/150?u=u049",
+    "avatar": "https://i.pravatar.cc/150?u=u019",
     "papel": "usuario",
     "departamento": "Diretoria de Tecnologia da Informação",
     "projetosAtribuidos": []
   },
   {
-    "id": "u050",
-    "nome": "Cristiana Venâncio de Lima Ferreira",
-    "email": "cristiana.lima@detran.sp.gov.br",
-    "cargo": "Assistente Técnico III",
-    "avatar": "https://i.pravatar.cc/150?u=u050",
-    "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
-  },
-  {
-    "id": "u051",
-    "nome": "Raissa Benocci Thibes",
-    "email": "raissa.thibes@detran.sp.gov.br",
+    "id": "u042",
+    "nome": "Wagner Silva Vieira",
+    "email": "wagner.vieira@detran.sp.gov.br",
     "cargo": "Chefe de Divisão",
-    "avatar": "https://i.pravatar.cc/150?u=u051",
-    "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
-  },
-  {
-    "id": "u052",
-    "nome": "Amanda Guedes Gomes",
-    "email": "amanda.gomes@detran.sp.gov.br",
-    "cargo": "Chefe de Divisão",
-    "avatar": "https://i.pravatar.cc/150?u=u052",
-    "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
-  },
-  {
-    "id": "u053",
-    "nome": "Luis Augusto Freire Calixto",
-    "email": "luis.calixto@detran.sp.gov.br",
-    "cargo": "Assistente Técnico III",
-    "avatar": "https://i.pravatar.cc/150?u=u053",
-    "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
-  },
-  {
-    "id": "u054",
-    "nome": "Rafael Ribeiro da Silva",
-    "email": "rafael.ribeiro@detran.sp.gov.br",
-    "cargo": "Chefe de Divisão",
-    "avatar": "https://i.pravatar.cc/150?u=u054",
+    "avatar": "https://i.pravatar.cc/150?u=u042",
     "papel": "usuario",
     "departamento": "Diretoria de Tecnologia da Informação",
     "projetosAtribuidos": []
@@ -550,12 +560,12 @@
     "projetosAtribuidos": []
   },
   {
-    "id": "u056",
-    "nome": "Laisa Cristina Capodifoglio",
-    "email": "laisa.andrade@detran.sp.gov.br",
-    "cargo": "Assistente Técnico III",
-    "avatar": "https://i.pravatar.cc/150?u=u056",
-    "papel": "usuario",
+    "id": "u669774",
+    "nome": "Bruno Zaia Boneto",
+    "email": "bruno.boneto@detran.sp.gov.br",
+    "cargo": "Diretor",
+    "avatar": "https://i.pravatar.cc/150?u=u669774",
+    "papel": "admin_master",
     "departamento": "Diretoria de Tecnologia da Informação",
     "projetosAtribuidos": []
   }

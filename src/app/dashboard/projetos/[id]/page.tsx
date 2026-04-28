@@ -227,6 +227,33 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
     });
   };
 
+  const handleSaveEscopo = async () => {
+    if (escopo.length > 350) {
+      toast.error("O escopo deve ter no máximo 350 caracteres.");
+      return;
+    }
+    
+    try {
+      const res = await fetch(`/api/projects/${params.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ 
+          action: "update_escopo", 
+          escopo: escopo.trim(), 
+          user: usuario?.nome || "Usuário", 
+          papel: usuario?.papel,
+          dept: usuario?.departamento
+        })
+      });
+      if (res.ok) {
+        toast.success("Escopo salvo com sucesso!");
+        loadData();
+      }
+    } catch (e) {
+      toast.error("Erro ao salvar escopo.");
+    }
+  };
+
   const handleAdicionarTarefa = async (forceRepactuacao: boolean = false, taskOverride?: any) => {
     const taskSource = taskOverride || novaTarefa;
     
@@ -890,10 +917,54 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
       <Tabs defaultValue="gestao">
         <TabsList className="w-full justify-start h-12 bg-slate-100 dark:bg-slate-800 p-1">
           <TabsTrigger value="gestao" className="flex-1">Lançamento</TabsTrigger>
+          <TabsTrigger value="escopo" className="flex-1">Escopo</TabsTrigger>
           <TabsTrigger value="gantt" className="flex-1">Cronograma</TabsTrigger>
           <TabsTrigger value="impedimentos" className="flex-1">Impedimentos</TabsTrigger>
           <TabsTrigger value="logs" className="flex-1">Auditoria</TabsTrigger>
         </TabsList>
+
+        <TabsContent value="escopo" className="mt-6">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg flex items-center gap-2 text-blue-800">
+                <FileText className="h-5 w-5" /> Definição de Escopo
+              </CardTitle>
+              <CardDescription>
+                Descreva detalhadamente os objetivos e limites deste projeto. 
+                O escopo ajuda na tomada de decisão e evita desvios de finalidade.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-2">
+                <div className="flex justify-between items-center">
+                  <Label>Texto do Escopo</Label>
+                  <span className={`text-[10px] font-mono ${escopo.length > 350 ? 'text-rose-500 font-bold' : 'text-slate-400'}`}>
+                    {escopo.length}/350 caracteres
+                  </span>
+                </div>
+                <Textarea 
+                  placeholder="Ex: Este projeto visa a implementação do sistema de biometria facial para renovação de CNH..." 
+                  value={escopo}
+                  onChange={(e) => setEscopo(e.target.value.slice(0, 400))} // permitimos passar um pouco para o contador ficar vermelho
+                  className="min-h-[200px] text-sm leading-relaxed"
+                  disabled={isBlocked}
+                />
+              </div>
+            </CardContent>
+            <CardFooter className="flex justify-between border-t bg-slate-50/50 p-4">
+              <p className="text-[10px] text-slate-500 max-w-[400px]">
+                Nota: O cadastro inicial será registrado como "Cadastro inicial de escopo". Alterações posteriores serão registradas como "Alteração de escopo".
+              </p>
+              <Button 
+                onClick={handleSaveEscopo}
+                disabled={isBlocked || escopo.length > 350 || escopo === (projetoData.escopo || "")}
+                className="bg-blue-600 hover:bg-blue-700"
+              >
+                <Save className="mr-2 h-4 w-4" /> Salvar Escopo
+              </Button>
+            </CardFooter>
+          </Card>
+        </TabsContent>
 
         <TabsContent value="gestao" className="mt-6 space-y-6">
           {isBlocked ? (

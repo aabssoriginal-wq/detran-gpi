@@ -11,6 +11,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const getIconComponent = (iconName: string) => {
   switch(iconName) {
@@ -461,9 +462,23 @@ export default function DashboardPage() {
                     <div className="flex items-center justify-between text-sm mb-1">
                       <div className="flex items-center gap-2">
                         <span className="font-medium text-slate-800 dark:text-slate-100 flex items-center gap-2">
-                          <Link href={`/dashboard/projetos/${projeto.id}`} className="hover:text-blue-600 dark:hover:text-blue-400 hover:underline transition-colors">
-                            {projeto.nome}
-                          </Link>
+                          <TooltipProvider>
+                            <Tooltip>
+                              <TooltipTrigger asChild>
+                                <Link href={`/dashboard/projetos/${projeto.id}`} className="hover:text-blue-600 dark:hover:text-blue-400 hover:underline transition-colors">
+                                  {projeto.nome}
+                                </Link>
+                              </TooltipTrigger>
+                              <TooltipContent className="max-w-[300px] p-3 bg-white dark:bg-slate-900 border shadow-xl">
+                                <div className="space-y-1.5">
+                                  <p className="text-[10px] font-bold text-blue-600 uppercase tracking-wider">Escopo do Projeto</p>
+                                  <p className="text-xs leading-relaxed text-slate-600 dark:text-slate-300">
+                                    {projeto.escopo || "Nenhum escopo cadastrado para este projeto."}
+                                  </p>
+                                </div>
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
                           {projeto.departamento && (
                             <span className="text-[9px] font-black bg-blue-50 text-blue-600 px-1.5 py-0.5 rounded border border-blue-100 uppercase tracking-tighter">
                               {projeto.departamento.replace("Diretoria de ", "")}

@@ -101,6 +101,7 @@ export interface Projeto {
   logs: LogEntry[];
   baselineData: BaselineData;
   tarefas: Tarefa[];
+  escopo?: string; // NOVO: Escopo do projeto (limite 350 chars)
 }
 
 const defaultBaseline = { inicio: "2026-01-01", fim: "2026-12-31" };
@@ -417,8 +418,15 @@ export const updateEscopo = (id: number, escopo: string, user: string = "Usuári
   const projetos = getProjetos();
   const idx = projetos.findIndex(p => p.id === id);
   if (idx === -1) throw new Error("Projeto não encontrado.");
+  
+  const antigoEscopo = (projetos[idx] as any).escopo;
+  const isInicial = !antigoEscopo || antigoEscopo.trim() === "";
+  
   (projetos[idx] as any).escopo = escopo;
-  projetos[idx].logs.unshift(createLog("Escopo Atualizado", "Revisão", user));
+  
+  const acaoLog = isInicial ? "Cadastro inicial de escopo" : "Alteração de escopo";
+  projetos[idx].logs.unshift(createLog(acaoLog, isInicial ? "Definição do escopo" : "Atualização de diretrizes", user));
+  
   saveDB(projetos);
   return projetos[idx];
 };
