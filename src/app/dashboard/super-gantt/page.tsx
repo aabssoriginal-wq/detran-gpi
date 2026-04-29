@@ -15,6 +15,7 @@ import {
   Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle 
 } from "@/components/ui/dialog";
 import { formatarDataBR } from "@/lib/utils";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 export default function SuperGanttPage() {
   const { usuario } = useAuth();
@@ -254,9 +255,23 @@ export default function SuperGanttPage() {
                           {isExpanded ? <ChevronDown className="h-3.5 w-3.5 text-blue-600" /> : <ChevronRight className="h-3.5 w-3.5 text-slate-400" />}
                         </button>
                         {repactuacoes.length > 0 && <Badge className="bg-amber-100 text-amber-700 text-[8px] h-4 px-1.5 font-black">{repactuacoes.length}x</Badge>}
-                        <Link href={`/dashboard/projetos/${p.id}`} className="font-bold text-xs text-slate-800 dark:text-slate-100 truncate hover:text-blue-600 transition-colors">
-                          {p.nome}
-                        </Link>
+                        <TooltipProvider>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <Link href={`/dashboard/projetos/${p.id}`} className="font-bold text-xs text-slate-800 dark:text-slate-100 truncate hover:text-blue-600 transition-colors">
+                                {p.nome}
+                              </Link>
+                            </TooltipTrigger>
+                            <TooltipContent className="max-w-[300px] p-3 bg-white dark:bg-slate-900 border shadow-xl">
+                              <div className="space-y-1.5">
+                                <p className="text-[10px] font-bold text-blue-600 uppercase tracking-wider">Escopo do Projeto</p>
+                                <p className="text-xs leading-relaxed text-slate-600 dark:text-slate-300">
+                                  {p.escopo || "Nenhum escopo cadastrado para este projeto."}
+                                </p>
+                              </div>
+                            </TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
                       </div>
                       <div className="ml-7 mt-1">
                         {repactuacoes.length > 0 && (

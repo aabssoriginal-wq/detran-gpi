@@ -5,15 +5,33 @@
     "status": "desenvolvimento",
     "andamento": true,
     "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-amber-500",
-    "icon": "Clock",
-    "iconColor": "text-amber-500",
+    "delta": 1,
+    "text": "Impedimentos",
+    "indicator": "bg-rose-600",
+    "icon": "ShieldAlert",
+    "iconColor": "text-rose-600",
     "responsavel": "Clayton Rodrigues do Carmo",
     "departamento": "Diretoria de Tecnologia da Informação",
     "excluido": false,
     "logs": [
+      {
+        "acao": "Impedimento em a",
+        "justificativa": "a",
+        "data": "29/04/2026 00:00",
+        "user": "Bruno Zaia Boneto"
+      },
+      {
+        "acao": "Criou tarefa: a",
+        "justificativa": "Nenhuma",
+        "data": "28/04/2026 23:54",
+        "user": "Bruno Zaia Boneto"
+      },
+      {
+        "acao": "Atualização de EAP",
+        "justificativa": "Alteração de tarefas",
+        "data": "28/04/2026 23:54",
+        "user": "Bruno Zaia Boneto"
+      },
       {
         "acao": "Excluiu tarefa e toda hierarquia: Início (3 itens)",
         "justificativa": ".",
@@ -101,12 +119,30 @@
     ],
     "baselineData": {
       "inicio": "2026-03-02",
-      "fim": ""
+      "fim": "2026-04-28"
     },
-    "tarefas": [],
+    "tarefas": [
+      {
+        "id": "j3lkprdns",
+        "titulo": "a",
+        "dataInicio": "2026-02-13",
+        "dataFim": "2026-04-28",
+        "responsavel": "",
+        "parentId": "none",
+        "progress": 0,
+        "status": "ideacao",
+        "notas": "",
+        "lancamentos": [],
+        "impedimentoAtivo": true,
+        "motivoImpedimento": "a"
+      }
+    ],
     "escopo": "Substituição completa dos racks de comunicação localizados nas alas BV e JB do 11º andar.",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthStatus": "impedimentos",
+    "healthReason": "Bloqueado: a",
+    "tarefaBloqueada": "a",
+    "motivoBloqueio": "a",
+    "responsavelTecnico": ""
   },
   {
     "id": 37,
@@ -145,7 +181,7 @@
     "status": "desenvolvimento",
     "andamento": true,
     "progress": 99,
-    "delta": 29,
+    "delta": 30,
     "text": "Atrasados",
     "indicator": "bg-rose-500",
     "icon": "AlertCircle",
@@ -168,7 +204,7 @@
     "tarefas": [],
     "escopo": "Migração do AVA Moodle para a nuvem do DETRAN para ampliar o controle e a governança da infraestrutura.",
     "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 29 dias."
+    "healthReason": "Projeto atrasado há 30 dias."
   },
   {
     "id": 30,
@@ -299,8 +335,8 @@
     "nome": "CNH Paulista",
     "status": "desenvolvimento",
     "andamento": true,
-    "progress": 72,
-    "delta": 40,
+    "progress": 82,
+    "delta": 41,
     "text": "Risco",
     "indicator": "bg-amber-500",
     "icon": "Clock",
@@ -310,6 +346,66 @@
     "excluido": false,
     "logs": [
       {
+        "acao": "Excluiu tarefa: Az",
+        "justificativa": ".",
+        "data": "29/04/2026 00:35",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualização de EAP",
+        "justificativa": "Alteração de tarefas",
+        "data": "29/04/2026 00:35",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Renomeação de tarefa: \"A\" para \"Az\"",
+        "justificativa": "Alteração manual de registro",
+        "data": "29/04/2026 00:35",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualização de EAP",
+        "justificativa": "Atualização de progresso/status via painel",
+        "data": "29/04/2026 00:29",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualização de EAP",
+        "justificativa": "Atualização de progresso/status via painel",
+        "data": "29/04/2026 00:29",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualização de EAP",
+        "justificativa": "Atualização de progresso/status via painel",
+        "data": "29/04/2026 00:29",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualização de EAP",
+        "justificativa": "Atualização de progresso/status via painel",
+        "data": "29/04/2026 00:29",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Criou tarefa: A",
+        "justificativa": "Nenhuma",
+        "data": "29/04/2026 00:29",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualização de EAP",
+        "justificativa": "Alteração de tarefas",
+        "data": "29/04/2026 00:29",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Atualizou tarefa 05 – PRJ0014255 – DMND0001412 – CNH somente versão digital: 68%",
+        "justificativa": "Atualização de progresso/status via painel",
+        "data": "29/04/2026 00:27",
+        "user": "Anderson"
+      },
+      {
         "acao": "Carga de Projeto e EAP Hierárquica",
         "data": "28/04/2026 16:05",
         "justificativa": "Importação de planilha estruturada",
@@ -317,8 +413,8 @@
       }
     ],
     "baselineData": {
-      "inicio": "",
-      "fim": ""
+      "inicio": "2025-11-01",
+      "fim": "2026-04-29"
     },
     "tarefas": [
       {
@@ -347,7 +443,7 @@
         "id": "1003",
         "titulo": "05 – PRJ0014255 – DMND0001412 – CNH somente versão digital",
         "status": "em_andamento",
-        "progress": 50,
+        "progress": 68,
         "responsavel": "Amanda Guedes Gomes",
         "dataInicio": "2025-12-23",
         "dataFim": "2026-03-19",
@@ -365,7 +461,7 @@
     "status": "desenvolvimento",
     "andamento": true,
     "progress": 49,
-    "delta": 206,
+    "delta": 207,
     "text": "Atrasados",
     "indicator": "bg-rose-500",
     "icon": "AlertCircle",
@@ -388,7 +484,7 @@
     "tarefas": [],
     "escopo": "Adequação dos sistemas do programa CNH Paulista às novas diretrizes estabelecidas pela Resolução CONTRAN nº 1.020/2025.",
     "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 206 dias."
+    "healthReason": "Projeto atrasado há 207 dias."
   },
   {
     "id": 32,
@@ -489,7 +585,7 @@
     "status": "planejamento",
     "andamento": true,
     "progress": 0,
-    "delta": 117,
+    "delta": 118,
     "text": "Atrasados",
     "indicator": "bg-rose-500",
     "icon": "AlertCircle",
@@ -512,7 +608,7 @@
     "tarefas": [],
     "escopo": "Dashboard para análise, insights e suporte à decisões estratégicas sobre exames práticos da CNH.",
     "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 117 dias."
+    "healthReason": "Projeto atrasado há 118 dias."
   },
   {
     "id": 42,
@@ -551,7 +647,7 @@
     "status": "planejamento",
     "andamento": true,
     "progress": 0,
-    "delta": 112,
+    "delta": 113,
     "text": "Atrasados",
     "indicator": "bg-rose-500",
     "icon": "AlertCircle",
@@ -574,7 +670,7 @@
     "tarefas": [],
     "escopo": "Previsão de exames práticos, visando obter o número médio previsto de exames por local nas próximas 4 semanas.",
     "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 112 dias."
+    "healthReason": "Projeto atrasado há 113 dias."
   },
   {
     "id": 14,
@@ -613,7 +709,7 @@
     "status": "planejamento",
     "andamento": true,
     "progress": 0,
-    "delta": 40,
+    "delta": 41,
     "text": "Atrasados",
     "indicator": "bg-rose-500",
     "icon": "AlertCircle",
@@ -636,7 +732,7 @@
     "tarefas": [],
     "escopo": "Ingestão dos dados da LIVE /SN via conector nativo no ambiente Databricks.",
     "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 40 dias."
+    "healthReason": "Projeto atrasado há 41 dias."
   },
   {
     "id": 28,
@@ -786,7 +882,7 @@
     ],
     "baselineData": {
       "inicio": "2025-12-03",
-      "fim": "2026-04-30"
+      "fim": "2026-05-02"
     },
     "tarefas": [],
     "escopo": "Automatizar o envio de notificações de trânsito via Correios em fluxo digital, com acompanhamento de status e cumprimento de prazos legais no sistema SIM.",
@@ -1202,7 +1298,7 @@
     "status": "desenvolvimento",
     "andamento": true,
     "progress": 85,
-    "delta": 12,
+    "delta": 13,
     "text": "Atrasados",
     "indicator": "bg-rose-500",
     "icon": "AlertCircle",
@@ -1225,7 +1321,7 @@
     "tarefas": [],
     "escopo": "Aquisição de licenças Gemini e Kiro para suporte ao desenvolvimento em Power Apps e exploração de capacidades de LLM.",
     "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 12 dias."
+    "healthReason": "Projeto atrasado há 13 dias."
   },
   {
     "id": 98,
@@ -1760,7 +1856,7 @@
     "status": "desenvolvimento",
     "andamento": true,
     "progress": 90,
-    "delta": 363,
+    "delta": 364,
     "text": "Atrasados",
     "indicator": "bg-rose-500",
     "icon": "AlertCircle",
@@ -1783,7 +1879,7 @@
     "tarefas": [],
     "escopo": "Adequação de sistemas para permitir a realização de exames práticos em municípios diversos da residência, conforme a Portaria nº 33/2024.",
     "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 363 dias."
+    "healthReason": "Projeto atrasado há 364 dias."
   },
   {
     "id": 82,
@@ -2053,7 +2149,7 @@
     "status": "desenvolvimento",
     "andamento": true,
     "progress": 99,
-    "delta": 100,
+    "delta": 101,
     "text": "Atrasados",
     "indicator": "bg-rose-500",
     "icon": "AlertCircle",
@@ -2076,7 +2172,7 @@
     "tarefas": [],
     "escopo": "Criação de página Wiki para centralização dos aplicativos ativos do Detran-SP, facilitando a consulta e disseminação do conhecimento.",
     "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 100 dias."
+    "healthReason": "Projeto atrasado há 101 dias."
   },
   {
     "id": 43,
@@ -2332,7 +2428,7 @@
     "status": "planejamento",
     "andamento": true,
     "progress": 0,
-    "delta": 23,
+    "delta": 24,
     "text": "Atrasados",
     "indicator": "bg-rose-500",
     "icon": "AlertCircle",
@@ -2355,7 +2451,7 @@
     "tarefas": [],
     "escopo": "Desenvolvimento de Prova Prática (digitalização de exames), Normas (gestão de regras) e SEV (automação de vistorias).",
     "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 23 dias."
+    "healthReason": "Projeto atrasado há 24 dias."
   },
   {
     "id": 63,
@@ -2425,7 +2521,7 @@
     "status": "planejamento",
     "andamento": true,
     "progress": 0,
-    "delta": 20,
+    "delta": 21,
     "text": "Atrasados",
     "indicator": "bg-rose-500",
     "icon": "AlertCircle",
@@ -2448,7 +2544,7 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 20 dias."
+    "healthReason": "Projeto atrasado há 21 dias."
   },
   {
     "id": 4000,
@@ -2456,7 +2552,7 @@
     "status": "desenvolvimento",
     "andamento": true,
     "progress": 72,
-    "delta": 25,
+    "delta": 26,
     "text": "Risco",
     "indicator": "bg-amber-500",
     "icon": "Clock",
@@ -2943,7 +3039,7 @@
     "status": "desenvolvimento",
     "andamento": true,
     "progress": 10,
-    "delta": 106,
+    "delta": 107,
     "text": "Atrasados",
     "indicator": "bg-rose-500",
     "icon": "AlertCircle",
@@ -2966,7 +3062,7 @@
     "tarefas": [],
     "escopo": "Plataforma integrada ao STJ/SEI para automatizar tratamento de processos judiciais via IA, incluindo jurimetria e dashboards para gestão estratégica.",
     "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 106 dias."
+    "healthReason": "Projeto atrasado há 107 dias."
   },
   {
     "id": 97,
@@ -3098,7 +3194,7 @@
     "status": "desenvolvimento",
     "andamento": true,
     "progress": 99,
-    "delta": 32,
+    "delta": 33,
     "text": "Atrasados",
     "indicator": "bg-rose-500",
     "icon": "AlertCircle",
@@ -3121,7 +3217,7 @@
     "tarefas": [],
     "escopo": "Modernização da conexão sem fio nas Superintendências e unidades Poupatempo.",
     "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 32 dias."
+    "healthReason": "Projeto atrasado há 33 dias."
   },
   {
     "id": 47,
@@ -3201,6 +3297,18 @@
     "excluido": false,
     "logs": [
       {
+        "acao": "Repactuação: 28/04/2026 - 30/04/2026",
+        "justificativa": ".",
+        "data": "29/04/2026 00:55",
+        "user": "Anderson"
+      },
+      {
+        "acao": "Repactuação: 29/04/2026 - 30/04/2026",
+        "justificativa": "Definição inicial de cronograma",
+        "data": "29/04/2026 00:55",
+        "user": "Anderson"
+      },
+      {
         "acao": "Carga Inicial de Massa de Dados",
         "data": "28/04/2026 15:35",
         "justificativa": "Migração solicitada pelo usuário",
@@ -3208,8 +3316,8 @@
       }
     ],
     "baselineData": {
-      "inicio": "",
-      "fim": ""
+      "inicio": "2026-04-28",
+      "fim": "2026-04-30"
     },
     "tarefas": [],
     "escopo": "",

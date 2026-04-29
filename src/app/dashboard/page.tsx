@@ -213,6 +213,16 @@ export default function DashboardPage() {
     return { projetosAtivos: ativos, projetosExcluidos: excluidos, totais: stats };
   }, [projetos]);
 
+  const percents = useMemo(() => {
+    const total = totais.andamento || 1;
+    return {
+      prazo: (totais.prazo / total) * 100,
+      risco: (totais.risco / total) * 100,
+      atrasados: (totais.atrasados / total) * 100,
+      impedimentos: (totais.impedimentos / total) * 100
+    };
+  }, [totais]);
+
   const filteredProjetos = useMemo(() => {
     return projetosAtivos.filter(p => {
       if (activeFilter === "all") return true;
@@ -370,7 +380,7 @@ export default function DashboardPage() {
             <CardContent>
               <div className="text-2xl font-bold text-slate-900 dark:text-slate-50">{totais.prazo}</div>
               <div className="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full mt-2 overflow-hidden">
-                <div className="bg-emerald-500 h-full w-[100%] rounded-full" />
+                <div className="bg-emerald-500 h-full rounded-full transition-all duration-500" style={{ width: `${percents.prazo}%` }} />
               </div>
             </CardContent>
           </Card>
@@ -386,7 +396,7 @@ export default function DashboardPage() {
             <CardContent>
               <div className="text-2xl font-bold text-slate-900 dark:text-slate-50">{totais.risco}</div>
               <div className="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full mt-2 overflow-hidden">
-                <div className="bg-amber-500 h-full w-[60%] rounded-full" />
+                <div className="bg-amber-500 h-full rounded-full transition-all duration-500" style={{ width: `${percents.risco}%` }} />
               </div>
             </CardContent>
           </Card>
@@ -402,7 +412,7 @@ export default function DashboardPage() {
             <CardContent>
               <div className="text-2xl font-bold text-slate-900 dark:text-slate-50">{totais.atrasados}</div>
               <div className="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full mt-2 overflow-hidden">
-                <div className="bg-rose-500 h-full w-[40%] rounded-full" />
+                <div className="bg-rose-500 h-full rounded-full transition-all duration-500" style={{ width: `${percents.atrasados}%` }} />
               </div>
             </CardContent>
           </Card>
@@ -418,7 +428,7 @@ export default function DashboardPage() {
             <CardContent>
               <div className="text-2xl font-bold text-rose-700 dark:text-rose-300">{totais.impedimentos}</div>
               <div className="w-full bg-rose-200 dark:bg-rose-900/30 h-1.5 rounded-full mt-2 overflow-hidden">
-                <div className="bg-rose-600 h-full w-[20%] rounded-full" />
+                <div className="bg-rose-600 h-full rounded-full transition-all duration-500" style={{ width: `${percents.impedimentos}%` }} />
               </div>
             </CardContent>
           </Card>
@@ -555,9 +565,23 @@ export default function DashboardPage() {
                   {projetosExcluidos.map(p => (
                     <div key={p.id} className="flex items-center justify-between p-2 bg-white dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 text-sm">
                       <div className="truncate flex-1 max-w-[200px]">
-                        <Link href={`/dashboard/projetos/${p.id}`} className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 hover:underline truncate block">
-                          {p.nome}
-                        </Link>
+                        <TooltipProvider>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <Link href={`/dashboard/projetos/${p.id}`} className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 hover:underline truncate block">
+                                {p.nome}
+                              </Link>
+                            </TooltipTrigger>
+                            <TooltipContent className="max-w-[300px] p-3 bg-white dark:bg-slate-900 border shadow-xl">
+                              <div className="space-y-1.5">
+                                <p className="text-[10px] font-bold text-blue-600 uppercase tracking-wider">Escopo do Projeto</p>
+                                <p className="text-xs leading-relaxed text-slate-600 dark:text-slate-300">
+                                  {p.escopo || "Nenhum escopo cadastrado."}
+                                </p>
+                              </div>
+                            </TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
                       </div>
                       <button 
                         onClick={() => handleRestore(p.id)} 

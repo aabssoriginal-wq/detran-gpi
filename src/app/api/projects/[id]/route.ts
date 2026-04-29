@@ -23,9 +23,28 @@ export async function PUT(request: Request, context: any) {
     
     const body = await request.json();
     const { action, nome, justificativa, user, papel, dept } = body;
+    console.log(`API PUT [${action}] - User: ${user} (${papel}) - Project ID: ${id}`);
+    
+    let finalDept = dept;
+    if (!finalDept && user) {
+      const fs = require('fs');
+      const path = require('path');
+      const usersPath = path.join(process.cwd(), 'users.json');
+      try {
+        const users = JSON.parse(fs.readFileSync(usersPath, 'utf8'));
+        const found = users.find(u => u.nome === user || u.email === user);
+        if (found) {
+          finalDept = found.departamento;
+          console.log(`Dept recuperado do banco para ${user}: [${finalDept}]`);
+        }
+      } catch (e) {
+        console.error("Erro ao recuperar dept do banco:", e);
+      }
+    }
 
     // Carrega o projeto para verificar permissões básicas
-    const projetoAtual = getProjetoById(id, dept, papel);
+    const projetoAtual = getProjetoById(id, finalDept, papel);
+    console.log(`Projeto encontrado! Dept no banco: [${projetoAtual.departamento}] (len: ${projetoAtual.departamento?.length})`);
     
     const isPowerUser = papel === "admin_total" || papel === "admin_master" || papel === "usuario_master";
     const isAdmin = papel === "admin_total" || papel === "admin_master";

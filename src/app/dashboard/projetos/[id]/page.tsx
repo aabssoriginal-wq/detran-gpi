@@ -138,12 +138,8 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
     onConfirm: () => {}
   });
 
-  const [novaSubTarefa, setNovaSubTarefa] = useState({
-    titulo: "",
-    responsavel: "",
-    dataInicio: "",
-    dataFim: ""
-  });
+  const [novaSubTarefa, setNovaSubTarefa] = useState({ titulo: "", responsavel: "", dataInicio: "", dataFim: "" });
+  const [editingTaskName, setEditingTaskName] = useState<{id: string, current: string, original: string} | null>(null);
 
   const [subTarefaModal, setSubTarefaModal] = useState({
     isOpen: false,
@@ -409,7 +405,7 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
     return { tarefas: updatedTarefas, baseline: updatedBaseline, needsBaselineUpdate: needsUpdate };
   };
 
-  const handleUpdateTarefa = async (id: string, updates: any, forceRepactuacao: boolean = false) => {
+  const handleUpdateTarefa = async (id: string, updates: any, forceRepactuacao: boolean = false, customLog?: string) => {
     const tarefa = tarefas.find(t => t.id === id);
     if (!tarefa) return;
 
@@ -481,11 +477,11 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
       finalTarefas = finalTarefas.map(t => t.id === id ? { ...t, progress: 100 } : t);
     }
 
-    const acaoLog = (updates.status || updates.progress !== undefined) 
+    const acaoLog = customLog || ((updates.status || updates.progress !== undefined) 
       ? `Atualizou tarefa ${tarefa.titulo}: ${updates.status || (updates.progress + '%')}` 
-      : undefined;
+      : undefined);
 
-    await syncTarefas(finalTarefas, acaoLog, "Atualização de progresso/status via painel");
+    await syncTarefas(finalTarefas, acaoLog, customLog ? "Alteração manual de registro" : "Atualização de progresso/status via painel");
     loadData();
   };
 
@@ -731,6 +727,8 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
   const isBlocked = isDeleted && !canEditDeleted;
   const canRestore = isAdmin;
 
+
+
   const handleRestoreProjeto = async () => {
     setJustificativaDialog({
       isOpen: true,
@@ -802,7 +800,29 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
         <div className={`flex items-center gap-4 p-3 border rounded-lg bg-white dark:bg-slate-900 group ${t.impedimentoAtivo ? 'border-rose-300 bg-rose-50/30' : ''}`} style={{ marginLeft: `${level * 20}px` }}>
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2">
-              <span className="font-medium truncate">{t.titulo}</span>
+              {editingTaskName?.id === t.id ? (
+                <input 
+                  autoFocus
+                  type="text"
+                  className="font-medium bg-blue-50 border-blue-300 border focus:outline-none rounded px-1 flex-1 min-w-0"
+                  value={editingTaskName.current}
+                  onChange={(e) => setEditingTaskName({...editingTaskName, current: e.target.value})}
+                  onBlur={() => {
+                    if (editingTaskName.current !== editingTaskName.original && editingTaskName.current.trim() !== "") {
+                      if (window.confirm(`Deseja alterar o nome de "${editingTaskName.original}" para "${editingTaskName.current}"?`)) {
+                        handleUpdateTarefa(t.id, { titulo: editingTaskName.current }, false, `Renomeação de tarefa: "${editingTaskName.original}" para "${editingTaskName.current}"`);
+                      }
+                    }
+                    setEditingTaskName(null);
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') e.currentTarget.blur();
+                    if (e.key === 'Escape') setEditingTaskName(null);
+                  }}
+                />
+              ) : (
+                <span className="font-medium truncate">{t.titulo}</span>
+              )}
               {t.impedimentoAtivo && <Badge variant="destructive" className="h-5 text-[10px] animate-pulse">BLOQUEADA</Badge>}
             </div>
             <div className="flex items-center gap-4 mt-1 text-[11px] text-slate-500">
@@ -837,9 +857,18 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
             <div className="flex items-center gap-2 flex-1">
               <input 
                 type="range" min="0" max="100" 
-                value={t.progress} 
-                onChange={(e) => handleUpdateTarefa(t.id, { progress: parseInt(e.target.value) })}
-                className="w-full h-1 accent-blue-500"
+                defaultValue={t.progress} 
+                onMouseUp={(e: any) => {
+                  const val = parseInt(e.target.value);
+                  if (val !== t.progress) {
+                    if (window.confirm(`Deseja salvar o novo progresso de ${val}% para esta tarefa?`)) {
+                      handleUpdateTarefa(t.id, { progress: val });
+                    } else {
+                      e.target.value = t.progress;
+                    }
+                  }
+                }}
+                className="w-full h-1 accent-blue-500 cursor-pointer"
                 disabled={t.impedimentoAtivo || isBlocked}
               />
               <span className="text-[10px] font-mono w-8">{t.progress}%</span>
@@ -848,6 +877,15 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
 
           {!isBlocked && (
             <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="h-8 w-8 text-blue-500" 
+                onClick={() => setEditingTaskName({ id: t.id, current: t.titulo, original: t.titulo })}
+                title="Editar Nome"
+              >
+                <PenLine className="h-4 w-4"/>
+              </Button>
               <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => setNovaTarefa({...novaTarefa, parentId: t.id})} title="Adicionar Sub-tarefa"><Plus className="h-4 w-4"/></Button>
               <Button variant="ghost" size="icon" className="h-8 w-8 text-rose-500" onClick={() => handleRemoverTarefa(t.id)}><Trash2 className="h-4 w-4"/></Button>
             </div>
@@ -1012,8 +1050,8 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
             </div>
           ) : (
             <div className="space-y-6">
-              {isPowerUser && (
-                <Card>
+              {/* Card de Cronograma liberado para todos os papéis com permissão de visualização */}
+              <Card>
                   <CardHeader className="pb-3">
                     <CardTitle className="text-lg flex items-center gap-2 text-indigo-800">
                       <CalendarIcon className="h-5 w-5" /> Cronograma do Projeto
@@ -1027,7 +1065,7 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                         type="date" 
                         value={editBaseline.inicio} 
                         onChange={(e) => setEditBaseline({ ...editBaseline, inicio: e.target.value })}
-                        disabled={isBlocked}
+                        className="bg-white"
                       />
                     </div>
                     <div className="flex-1 space-y-2">
@@ -1036,29 +1074,38 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                         type="date" 
                         value={editBaseline.fim} 
                         onChange={(e) => setEditBaseline({ ...editBaseline, fim: e.target.value })}
-                        disabled={isBlocked}
+                        className="bg-white"
                       />
                     </div>
                     <Button 
                       variant="outline"
                       className="bg-blue-50 hover:bg-blue-100 border-blue-200 text-blue-700"
-                      disabled={isBlocked || (editBaseline.inicio === projetoData.baselineData?.inicio && editBaseline.fim === projetoData.baselineData?.fim)}
+                      disabled={editBaseline.inicio === projetoData.baselineData?.inicio && editBaseline.fim === projetoData.baselineData?.fim}
                       onClick={() => {
                         const temDataAntiga = !!(projetoData.baselineData?.inicio || projetoData.baselineData?.fim);
                         
                         const performUpdate = (just: string) => {
                           if (tarefas && tarefas.length > 0) {
-                            const datasFimTarefas = tarefas
-                              .filter(t => t.dataFim)
-                              .map(t => new Date(t.dataFim).getTime());
+                            const datasInicioTarefas = tarefas.filter(t => t.dataInicio).map(t => new Date(t.dataInicio).getTime());
+                            const datasFimTarefas = tarefas.filter(t => t.dataFim).map(t => new Date(t.dataFim).getTime());
                             
+                            const novaDataInicioProjeto = new Date(editBaseline.inicio).getTime();
+                            const novaDataFimProjeto = new Date(editBaseline.fim).getTime();
+
+                            if (datasInicioTarefas.length > 0) {
+                              const menorDataInicioTarefa = Math.min(...datasInicioTarefas);
+                              if (novaDataInicioProjeto > menorDataInicioTarefa) {
+                                const dataMinima = new Date(menorDataInicioTarefa).toLocaleDateString('pt-BR');
+                                toast.error(`Início do projeto não pode ser após o início da primeira tarefa (${dataMinima}).`);
+                                return;
+                              }
+                            }
+
                             if (datasFimTarefas.length > 0) {
                               const maiorDataFimTarefa = Math.max(...datasFimTarefas);
-                              const novaDataFimProjeto = new Date(editBaseline.fim).getTime();
-
                               if (novaDataFimProjeto < maiorDataFimTarefa) {
                                 const dataMinima = new Date(maiorDataFimTarefa).toLocaleDateString('pt-BR');
-                                toast.error(`A data fim do projeto não pode ser anterior à última tarefa (${dataMinima}).`);
+                                toast.error(`Fim do projeto não pode ser anterior à última tarefa (${dataMinima}).`);
                                 return;
                               }
                             }
@@ -1073,7 +1120,8 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                               fim: editBaseline.fim, 
                               justificativa: just, 
                               user: usuario?.nome, 
-                              papel: usuario?.papel 
+                              papel: usuario?.papel,
+                              dept: usuario?.departamento
                             })
                           }).then(() => {
                             toast.success("Cronograma atualizado com sucesso!");
@@ -1101,7 +1149,6 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                     </div>
                   </CardContent>
                 </Card>
-              )}
 
               {isPowerUser && (
                 <Card>
@@ -1387,22 +1434,23 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
         </TabsContent>
 
         <TabsContent value="impedimentos">
-          {isBlocked ? (
-            <div className="rounded-lg border border-dashed border-rose-200 bg-rose-50/40 p-10 text-center">
-              <Lock className="h-8 w-8 text-rose-300 mx-auto mb-3" />
-              <p className="text-sm font-medium text-rose-700">Registro de impedimentos desabilitado para projetos excluídos.</p>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <Card className="border-l-4 border-l-rose-500">
                 <CardHeader><CardTitle>Reportar Impedimento</CardTitle></CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="space-y-2">
+                  <div className="md:col-span-1 space-y-2">
                     <Label>Tarefa Bloqueada</Label>
-                    <Select value={impedimentoData.tarefaId} onValueChange={val => setImpedimentoData({...impedimentoData, tarefaId: val})}>
-                      <SelectTrigger><SelectValue placeholder="Selecione..."/></SelectTrigger>
+                    <Select 
+                      value={impedimentoData.tarefaId} 
+                      onValueChange={val => setImpedimentoData({...impedimentoData, tarefaId: val})}
+                    >
+                      <SelectTrigger className="w-full min-w-[250px] bg-white">
+                        <SelectValue placeholder="Selecione a tarefa..." />
+                      </SelectTrigger>
                       <SelectContent>
-                        {tarefas.filter(t => !t.impedimentoAtivo).map(t => <SelectItem key={t.id} value={t.id}>{t.titulo}</SelectItem>)}
+                        {tarefas.map(t => (
+                          <SelectItem key={t.id} value={t.id}>{t.titulo}</SelectItem>
+                        ))}
                       </SelectContent>
                     </Select>
                   </div>
@@ -1437,7 +1485,6 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                 </CardContent>
               </Card>
             </div>
-          )}
         </TabsContent>
 
         <TabsContent value="logs">

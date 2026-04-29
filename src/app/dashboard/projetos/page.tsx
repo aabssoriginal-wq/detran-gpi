@@ -13,6 +13,7 @@ import { Loader2 } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 export default function ProjetosPage() {
   const { usuario } = useAuth();
@@ -159,25 +160,26 @@ export default function ProjetosPage() {
           <Table>
             <TableHeader className="bg-slate-50 dark:bg-slate-900">
               <TableRow>
-                <TableHead className="w-[280px]">Nome do Projeto</TableHead>
-                <TableHead>Diretoria</TableHead>
-                <TableHead>Responsável</TableHead>
-                <TableHead>Fim</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead className="text-right">Progresso</TableHead>
-                <TableHead className="text-right">Ação</TableHead>
+                <TableHead className="w-[280px] whitespace-nowrap">Nome do Projeto</TableHead>
+                <TableHead className="whitespace-nowrap">Diretoria</TableHead>
+                <TableHead className="whitespace-nowrap">Responsável</TableHead>
+                <TableHead className="text-center whitespace-nowrap">Início</TableHead>
+                <TableHead className="text-center whitespace-nowrap">Fim</TableHead>
+                <TableHead className="text-center whitespace-nowrap">Status</TableHead>
+                <TableHead className="text-right whitespace-nowrap">Progresso</TableHead>
+                <TableHead className="text-right whitespace-nowrap">Ação</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {loading ? (
                 <TableRow>
-                  <TableCell colSpan={7} className="text-center h-32">
+                  <TableCell colSpan={8} className="text-center h-32">
                     <Loader2 className="h-6 w-6 animate-spin text-blue-500 mx-auto" />
                   </TableCell>
                 </TableRow>
               ) : projetos.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={7} className="text-center h-32 text-slate-500">
+                  <TableCell colSpan={8} className="text-center h-32 text-slate-500">
                     Nenhum projeto registrado.
                   </TableCell>
                 </TableRow>
@@ -185,9 +187,23 @@ export default function ProjetosPage() {
                 projetos.map((projeto) => (
                   <TableRow key={projeto.id} className="hover:bg-slate-50 dark:hover:bg-slate-900/50">
                     <TableCell className="font-medium">
-                      <Link href={`/dashboard/projetos/${projeto.id}`} className="hover:underline text-blue-600 dark:text-blue-400">
-                        {projeto.nome}
-                      </Link>
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Link href={`/dashboard/projetos/${projeto.id}`} className="hover:underline text-blue-600 dark:text-blue-400">
+                              {projeto.nome}
+                            </Link>
+                          </TooltipTrigger>
+                          <TooltipContent className="max-w-[300px] p-3 bg-white dark:bg-slate-900 border shadow-xl">
+                            <div className="space-y-1.5">
+                              <p className="text-[10px] font-bold text-blue-600 uppercase tracking-wider">Escopo do Projeto</p>
+                              <p className="text-xs leading-relaxed text-slate-600 dark:text-slate-300">
+                                {projeto.escopo || "Nenhum escopo cadastrado para este projeto."}
+                              </p>
+                            </div>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
                     </TableCell>
                     <TableCell>
                       <Badge variant="outline" className="text-[10px] bg-blue-50 text-blue-700 border-blue-200">
@@ -195,8 +211,9 @@ export default function ProjetosPage() {
                       </Badge>
                     </TableCell>
                     <TableCell>{projeto.responsavel || "Não Definido"}</TableCell>
-                    <TableCell className="text-xs text-slate-500">{formatarDataDisplay(projeto.baselineData?.fim)}</TableCell>
-                    <TableCell>
+                    <TableCell className="text-center text-xs text-slate-500 whitespace-nowrap">{formatarDataDisplay(projeto.baselineData?.inicio)}</TableCell>
+                    <TableCell className="text-center text-xs text-slate-500 whitespace-nowrap">{formatarDataDisplay(projeto.baselineData?.fim)}</TableCell>
+                    <TableCell className="text-center">
                       <Badge variant="outline" className={
                         projeto.status === "concluído" ? "bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-900/20 dark:text-emerald-400" :
                         "bg-slate-50 text-slate-700 border-slate-200 dark:bg-slate-900/20 dark:text-slate-400"
