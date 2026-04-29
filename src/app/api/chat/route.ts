@@ -57,8 +57,8 @@ Caso contrário, responda em texto normal Markdown.`;
       }
     };
 
-    // Usando gemini-2.0-flash para máxima velocidade e compatibilidade
-    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
+    // Usando gemini-2.5-flash para máxima velocidade e compatibilidade (Versão Estável 2026)
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)

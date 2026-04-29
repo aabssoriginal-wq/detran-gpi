@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getProjetoById, renameProjeto, deleteProjeto, restoreProjeto, addLogToProjeto, createLog, updateBaseline, updateTarefas, updateProjetoStatus, updateEscopo, updateResponsavel, updateProjetoDepartamento } from '@/lib/db';
+import { getProjetoById, renameProjeto, deleteProjeto, restoreProjeto, addLogToProjeto, createLog, updateBaseline, updateTarefas, updateProjetoStatus, updateEscopo, updateResponsavel, updateProjetoDepartamento, toggleFavorite } from '@/lib/db';
 
 export async function GET(request: Request, context: any) {
   try {
@@ -71,6 +71,12 @@ export async function PUT(request: Request, context: any) {
       if (!justificativa) return NextResponse.json({ error: "Justificativa obrigatória" }, { status: 400 });
       restoreProjeto(id, justificativa, user || "Usuário");
       return NextResponse.json({ success: true });
+    }
+
+    if (action === 'toggle_favorite') {
+      const { user } = body;
+      const updated = toggleFavorite(id, user);
+      return NextResponse.json(updated);
     }
 
     if (action === "update_diretoria") {

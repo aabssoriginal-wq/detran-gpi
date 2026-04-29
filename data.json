@@ -142,7 +142,12 @@
     "healthReason": "Bloqueado: a",
     "tarefaBloqueada": "a",
     "motivoBloqueio": "a",
-    "responsavelTecnico": ""
+    "responsavelTecnico": "",
+    "favorito": true,
+    "favoritos": [
+      "Anderson",
+      "Bruno Zaia Boneto"
+    ]
   },
   {
     "id": 37,
@@ -173,7 +178,11 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favorito": true,
+    "favoritos": [
+      "Bruno Zaia Boneto"
+    ]
   },
   {
     "id": 72,
@@ -204,7 +213,11 @@
     "tarefas": [],
     "escopo": "Migração do AVA Moodle para a nuvem do DETRAN para ampliar o controle e a governança da infraestrutura.",
     "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 30 dias."
+    "healthReason": "Projeto atrasado há 30 dias.",
+    "favorito": true,
+    "favoritos": [
+      "Bruno Zaia Boneto"
+    ]
   },
   {
     "id": 30,
@@ -235,7 +248,11 @@
     "tarefas": [],
     "escopo": "Integração do e-CNH com API b-Cadastro para validação de CPF/CNPJ junto à Receita Federal, garantindo integridade e rastreabilidade.",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favorito": true,
+    "favoritos": [
+      "Bruno Zaia Boneto"
+    ]
   },
   {
     "id": 61,
@@ -266,7 +283,11 @@
     "tarefas": [],
     "escopo": "Orquestração de exames e fiscalização via Databricks, integrando CFTV e análise geoespacial para monitoramento em tempo real.",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favorito": true,
+    "favoritos": [
+      "Bruno Zaia Boneto"
+    ]
   },
   {
     "id": 77,
@@ -297,7 +318,11 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favorito": true,
+    "favoritos": [
+      "Bruno Zaia Boneto"
+    ]
   },
   {
     "id": 50,
@@ -328,7 +353,11 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favorito": true,
+    "favoritos": [
+      "Bruno Zaia Boneto"
+    ]
   },
   {
     "id": 1000,
@@ -453,7 +482,11 @@
     ],
     "escopo": "",
     "healthStatus": "risco",
-    "healthReason": "Tarefa \"05 – PRJ0014255 – DMND0001412 – CNH somente versão digital\" atrasada."
+    "healthReason": "Tarefa \"05 – PRJ0014255 – DMND0001412 – CNH somente versão digital\" atrasada.",
+    "favorito": true,
+    "favoritos": [
+      "Bruno Zaia Boneto"
+    ]
   },
   {
     "id": 22,
@@ -484,7 +517,9 @@
     "tarefas": [],
     "escopo": "Adequação dos sistemas do programa CNH Paulista às novas diretrizes estabelecidas pela Resolução CONTRAN nº 1.020/2025.",
     "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 207 dias."
+    "healthReason": "Projeto atrasado há 207 dias.",
+    "favorito": false,
+    "favoritos": []
   },
   {
     "id": 32,
@@ -515,7 +550,9 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favorito": true,
+    "favoritos": []
   },
   {
     "id": 44,
@@ -546,7 +583,9 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favorito": true,
+    "favoritos": []
   },
   {
     "id": 94,
@@ -577,7 +616,9 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favorito": true,
+    "favoritos": []
   },
   {
     "id": 59,
@@ -608,7 +649,8 @@
     "tarefas": [],
     "escopo": "Dashboard para análise, insights e suporte à decisões estratégicas sobre exames práticos da CNH.",
     "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 118 dias."
+    "healthReason": "Projeto atrasado há 118 dias.",
+    "favoritos": []
   },
   {
     "id": 42,
@@ -639,7 +681,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 26,
@@ -670,7 +713,8 @@
     "tarefas": [],
     "escopo": "Previsão de exames práticos, visando obter o número médio previsto de exames por local nas próximas 4 semanas.",
     "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 113 dias."
+    "healthReason": "Projeto atrasado há 113 dias.",
+    "favoritos": []
   },
   {
     "id": 14,
@@ -701,7 +745,8 @@
     "tarefas": [],
     "escopo": "Estudo de viabilidade e implementação de controles de acesso identitário, conectividade Databricks & CyberArk para rastreabilidade e segmentação de acesso.",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 27,
@@ -732,7 +777,8 @@
     "tarefas": [],
     "escopo": "Ingestão dos dados da LIVE /SN via conector nativo no ambiente Databricks.",
     "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 41 dias."
+    "healthReason": "Projeto atrasado há 41 dias.",
+    "favoritos": []
   },
   {
     "id": 28,
@@ -763,7 +809,8 @@
     "tarefas": [],
     "escopo": "Ingestão dos dados da TDV via conector nativo no ambiente Databricks.",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 16,
@@ -794,7 +841,9 @@
     "tarefas": [],
     "escopo": "Plataforma omnichannel com comunicação ativa e acesso personalizado aos serviços do Detran para o cidadão.",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favorito": true,
+    "favoritos": []
   },
   {
     "id": 49,
@@ -825,7 +874,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 96,
@@ -856,7 +906,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 15,
@@ -887,7 +938,8 @@
     "tarefas": [],
     "escopo": "Automatizar o envio de notificações de trânsito via Correios em fluxo digital, com acompanhamento de status e cumprimento de prazos legais no sistema SIM.",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 76,
@@ -918,7 +970,8 @@
     "tarefas": [],
     "escopo": "Solução própria de encurtamento de links para centralizar a gestão de ativos digitais com resiliência em nuvem.",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 54,
@@ -949,7 +1002,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 48,
@@ -980,7 +1034,8 @@
     "tarefas": [],
     "escopo": "Pilar de modernização das salas de reunião, avaliando a unificação com o estudo da plenária.",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 46,
@@ -1011,7 +1066,8 @@
     "tarefas": [],
     "escopo": "Melhoria de áudio e vídeo para a sala da plenária e demais salas de reunião (Pilar de Modernização).",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 45,
@@ -1042,7 +1098,8 @@
     "tarefas": [],
     "escopo": "Entrega de celulares corporativos e desativação de telefones fixos para padronização da comunicação institucional via WhatsApp.",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 13,
@@ -1073,7 +1130,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 12,
@@ -1104,7 +1162,8 @@
     "tarefas": [],
     "escopo": "Contratação de um Service Desk para atendimento de suporte aos usuários de TI do DETRAN-SP.",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 57,
@@ -1135,7 +1194,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 62,
@@ -1166,7 +1226,8 @@
     "tarefas": [],
     "escopo": "App digital para registro de sinistros, com fotos, vídeos, OCR de placas e funcionamento offline, otimizando o processo de ocorrências.",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 65,
@@ -1197,7 +1258,8 @@
     "tarefas": [],
     "escopo": "Infraestrutura tecnológica para monitoramento e colaboração, utilizando Dockstations para organização do ambiente.",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 40,
@@ -1228,7 +1290,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 78,
@@ -1259,7 +1322,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 11,
@@ -1290,7 +1354,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 41,
@@ -1321,7 +1386,8 @@
     "tarefas": [],
     "escopo": "Aquisição de licenças Gemini e Kiro para suporte ao desenvolvimento em Power Apps e exploração de capacidades de LLM.",
     "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 13 dias."
+    "healthReason": "Projeto atrasado há 13 dias.",
+    "favoritos": []
   },
   {
     "id": 98,
@@ -1352,7 +1418,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 79,
@@ -1383,7 +1450,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 80,
@@ -1414,7 +1482,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 36,
@@ -1445,7 +1514,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 75,
@@ -1476,7 +1546,8 @@
     "tarefas": [],
     "escopo": "Mapeamento estruturado do ciclo de vida dos dados em todas as diretorias para garantir conformidade com a LGPD.",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 39,
@@ -1507,7 +1578,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 38,
@@ -1538,7 +1610,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 56,
@@ -1569,7 +1642,8 @@
     "tarefas": [],
     "escopo": "Implementação de ITSM único para uso de todo o Detran e áreas de atendimento Prodesp.",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 91,
@@ -1600,7 +1674,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 70,
@@ -1631,7 +1706,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 35,
@@ -1662,7 +1738,8 @@
     "tarefas": [],
     "escopo": "Ingestão de dados do SIM, eVistoria, eCNH, eCRV, SISPL, SISFIN e ServiceNow no Databricks (aproximadamente 50 projetos).",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 92,
@@ -1693,7 +1770,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 93,
@@ -1724,7 +1802,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 17,
@@ -1755,7 +1834,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 81,
@@ -1786,7 +1866,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 74,
@@ -1817,7 +1898,8 @@
     "tarefas": [],
     "escopo": "Centralização do acesso aos sistemas corporativos com autenticação integrada e gestão unificada de credenciais.",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 95,
@@ -1848,7 +1930,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 25,
@@ -1879,7 +1962,8 @@
     "tarefas": [],
     "escopo": "Adequação de sistemas para permitir a realização de exames práticos em municípios diversos da residência, conforme a Portaria nº 33/2024.",
     "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 364 dias."
+    "healthReason": "Projeto atrasado há 364 dias.",
+    "favoritos": []
   },
   {
     "id": 82,
@@ -1910,7 +1994,8 @@
     "tarefas": [],
     "escopo": "Framework centralizado para gerenciar governança normativa de SP (leis, decretos, CONTRAN/SENATRAN) com suporte de IA.",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 5000,
@@ -1986,7 +2071,8 @@
     ],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 83,
@@ -2017,7 +2103,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 51,
@@ -2048,7 +2135,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 53,
@@ -2079,7 +2167,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 84,
@@ -2110,7 +2199,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 52,
@@ -2141,7 +2231,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 21,
@@ -2172,7 +2263,8 @@
     "tarefas": [],
     "escopo": "Criação de página Wiki para centralização dos aplicativos ativos do Detran-SP, facilitando a consulta e disseminação do conhecimento.",
     "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 101 dias."
+    "healthReason": "Projeto atrasado há 101 dias.",
+    "favoritos": []
   },
   {
     "id": 43,
@@ -2203,7 +2295,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 71,
@@ -2234,7 +2327,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 20,
@@ -2265,7 +2359,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 55,
@@ -2296,7 +2391,8 @@
     "tarefas": [],
     "escopo": "Elaboração, implementação e monitoramento das políticas corporativas aplicáveis a todas as unidades organizacionais.",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 69,
@@ -2327,7 +2423,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 85,
@@ -2358,7 +2455,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 64,
@@ -2389,7 +2487,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 58,
@@ -2420,7 +2519,8 @@
     "tarefas": [],
     "escopo": "Contratação de sistema 100% digital e remoto para exames teóricos, visando escalabilidade, segurança e redução de filas presenciais.",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 18,
@@ -2451,7 +2551,8 @@
     "tarefas": [],
     "escopo": "Desenvolvimento de Prova Prática (digitalização de exames), Normas (gestão de regras) e SEV (automação de vistorias).",
     "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 24 dias."
+    "healthReason": "Projeto atrasado há 24 dias.",
+    "favoritos": []
   },
   {
     "id": 63,
@@ -2482,7 +2583,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 86,
@@ -2513,7 +2615,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 19,
@@ -2544,7 +2647,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 21 dias."
+    "healthReason": "Projeto atrasado há 21 dias.",
+    "favoritos": []
   },
   {
     "id": 4000,
@@ -2620,7 +2724,8 @@
     ],
     "escopo": "",
     "healthStatus": "risco",
-    "healthReason": "Tarefa \"17 - Desenvolvimento de FrontEnd - Auxiliar\" atrasada."
+    "healthReason": "Tarefa \"17 - Desenvolvimento de FrontEnd - Auxiliar\" atrasada.",
+    "favoritos": []
   },
   {
     "id": 87,
@@ -2651,7 +2756,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 68,
@@ -2682,7 +2788,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 2000,
@@ -2769,7 +2876,8 @@
     ],
     "escopo": "",
     "healthStatus": "concluído",
-    "healthReason": "Concluído."
+    "healthReason": "Concluído.",
+    "favoritos": []
   },
   {
     "id": 24,
@@ -2800,7 +2908,8 @@
     "tarefas": [],
     "escopo": "Implantação do novo Data Center do Detran-SP.",
     "healthStatus": "concluído",
-    "healthReason": "Concluído."
+    "healthReason": "Concluído.",
+    "favoritos": []
   },
   {
     "id": 67,
@@ -2831,7 +2940,8 @@
     "tarefas": [],
     "escopo": "Alteração do método de escaneamento para possibilitar o envio direto por e-mail.",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 88,
@@ -2862,7 +2972,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 89,
@@ -2893,7 +3004,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 3000,
@@ -2969,7 +3081,8 @@
     ],
     "escopo": "",
     "healthStatus": "concluído",
-    "healthReason": "Concluído."
+    "healthReason": "Concluído.",
+    "favoritos": []
   },
   {
     "id": 23,
@@ -3000,7 +3113,8 @@
     "tarefas": [],
     "escopo": "Sistema Integrated de Autuações de Trânsito para operacionalizar lavratura de autuações e penalidades, modernizando e automatizando processos para segurança viária.",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 31,
@@ -3031,7 +3145,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 29,
@@ -3062,7 +3177,8 @@
     "tarefas": [],
     "escopo": "Plataforma integrada ao STJ/SEI para automatizar tratamento de processos judiciais via IA, incluindo jurimetria e dashboards para gestão estratégica.",
     "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 107 dias."
+    "healthReason": "Projeto atrasado há 107 dias.",
+    "favoritos": []
   },
   {
     "id": 97,
@@ -3093,7 +3209,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 73,
@@ -3124,7 +3241,8 @@
     "tarefas": [],
     "escopo": "Estrutura de monitoramento 24x7 centralizada para detecção e mitigação de ameaças cibernéticas em tempo real.",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 34,
@@ -3155,7 +3273,8 @@
     "tarefas": [],
     "escopo": "Atualização do Auto de Infração e Termo de Recolhimento de Veículo para formato eletrônico.",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 33,
@@ -3186,7 +3305,8 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   },
   {
     "id": 60,
@@ -3217,7 +3337,8 @@
     "tarefas": [],
     "escopo": "Modernização da conexão sem fio nas Superintendências e unidades Poupatempo.",
     "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 33 dias."
+    "healthReason": "Projeto atrasado há 33 dias.",
+    "favoritos": []
   },
   {
     "id": 47,
@@ -3248,7 +3369,10 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": [
+      "Bruno Zaia Boneto"
+    ]
   },
   {
     "id": 90,
@@ -3279,7 +3403,10 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": [
+      "Bruno Zaia Boneto"
+    ]
   },
   {
     "id": 10,
@@ -3322,6 +3449,7 @@
     "tarefas": [],
     "escopo": "",
     "healthStatus": "prazo",
-    "healthReason": "No prazo."
+    "healthReason": "No prazo.",
+    "favoritos": []
   }
 ]

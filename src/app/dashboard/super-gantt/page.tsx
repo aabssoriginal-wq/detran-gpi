@@ -7,8 +7,10 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { 
-  LayoutList, ListTree, Loader2, Search, User, Clock, ChevronDown, ChevronRight, Filter, ShieldAlert, History, Calendar
+  LayoutList, ListTree, Loader2, Search, User, Clock, ChevronDown, ChevronRight, Filter, ShieldAlert, History, Calendar, Star
 } from "lucide-react";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
 import { useAuth } from "@/context/AuthContext";
 import Link from "next/link";
 import { 
@@ -24,6 +26,7 @@ export default function SuperGanttPage() {
   const [expandedProjects, setExpandedProjects] = useState<Record<number, boolean>>({});
   const [search, setSearch] = useState("");
   const [selectedProjectRepacts, setSelectedProjectRepacts] = useState<any>(null);
+  const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);
   
   const leftColumnRef = useRef<HTMLDivElement>(null);
   const rightAreaRef = useRef<HTMLDivElement>(null);
@@ -111,9 +114,10 @@ export default function SuperGanttPage() {
       const matchStatus = filterStatus === "all" || p.status === filterStatus;
       const matchResp = filterResp === "all" || p.responsavel === filterResp;
       const matchDept = filterDept === "all" || p.departamento === filterDept;
-      return matchNome && matchStatus && matchResp && matchDept;
+      const matchFav = !showOnlyFavorites || p.favoritos?.includes(usuario?.nome);
+      return matchNome && matchStatus && matchResp && matchDept && matchFav;
     });
-  }, [projetos, filterNome, filterStatus, filterResp, filterDept]);
+  }, [projetos, filterNome, filterStatus, filterResp, filterDept, showOnlyFavorites]);
 
   const timelineRange = useMemo(() => {
     const today = new Date();
@@ -224,9 +228,21 @@ export default function SuperGanttPage() {
               </SelectContent>
             </Select>
           </div>
-          <Button variant="outline" className="h-9 mt-5 gap-2 text-xs font-bold" onClick={() => {setFilterNome(""); setFilterStatus("all"); setFilterResp("all"); setFilterDept("all");}}>
+          <Button variant="outline" className="h-9 mt-5 gap-2 text-xs font-bold" onClick={() => {setFilterNome(""); setFilterStatus("all"); setFilterResp("all"); setFilterDept("all"); setShowOnlyFavorites(false);}}>
             <Filter className="h-3 w-3" /> Limpar
           </Button>
+
+          {(usuario?.papel === "admin_total" || usuario?.papel === "admin_master" || usuario?.papel === "usuario_master") && (
+            <div className="flex items-center space-x-2 bg-white dark:bg-slate-900 px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm mt-4 ml-auto">
+              <Star className={`h-4 w-4 ${showOnlyFavorites ? 'text-amber-500 fill-amber-500' : 'text-slate-400'}`} />
+              <Label htmlFor="fav-filter-gantt" className="text-xs font-bold cursor-pointer">Favoritos</Label>
+              <Switch 
+                id="fav-filter-gantt" 
+                checked={showOnlyFavorites} 
+                onCheckedChange={setShowOnlyFavorites}
+              />
+            </div>
+          )}
         </CardContent>
       </Card>
 

@@ -1,13 +1,16 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { FolderKanban, AlertCircle, CheckCircle2, Clock, ShieldAlert, CheckSquare, PlayCircle, User, Loader2, Edit2, Trash2, RefreshCcw, Plus } from "lucide-react";
+import { FolderKanban, AlertCircle, CheckCircle2, Clock, ShieldAlert, CheckSquare, PlayCircle, User, Loader2, Edit2, Trash2, RefreshCcw, Plus, Star, FileText, FileClock, X, History, TrendingUp, BarChart3, ChevronRight } from "lucide-react";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
+import { toast } from "sonner";
 import { useAuth } from "@/context/AuthContext";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -27,9 +30,34 @@ const getIconComponent = (iconName: string) => {
 
 export default function DashboardPage() {
   const { usuario } = useAuth();
+  const router = useRouter();
   const [activeFilter, setActiveFilter] = useState("all");
   const [projetos, setProjetos] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);
+  const [showHistory, setShowHistory] = useState(false);
+  const [history, setHistory] = useState<any[]>([]);
+  const [loadingHistory, setLoadingHistory] = useState(false);
+
+  const fetchHistory = async () => {
+    if (!usuario) return;
+    setLoadingHistory(true);
+    try {
+      const res = await fetch(`/api/report/history?dept=${encodeURIComponent(usuario.departamento)}&role=${usuario.papel}`);
+      if (res.ok) {
+        const data = await res.json();
+        setHistory(data);
+      }
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setLoadingHistory(false);
+    }
+  };
+
+  useEffect(() => {
+    if (showHistory) fetchHistory();
+  }, [showHistory]);
 
   // Estado para Diálogo de Justificativa (Substituindo window.prompt)
   const [justificativaDialog, setJustificativaDialog] = useState<{
@@ -198,9 +226,27 @@ export default function DashboardPage() {
     });
   };
 
+  const displayProjetos = useMemo(() => {
+    let list = projetos.filter(p => {
+      if (activeFilter === "all") return true;
+      if (activeFilter === "andamento") return p.andamento;
+      if (activeFilter === "finalizados") return !p.andamento;
+      if (activeFilter === "prazo") return p.healthStatus === "prazo" && p.andamento;
+      if (activeFilter === "risco") return p.healthStatus === "risco" && p.andamento;
+      if (activeFilter === "atrasados") return p.healthStatus === "atrasados" && p.andamento;
+      if (activeFilter === "impedimentos") return p.healthStatus === "impedimentos" && p.andamento;
+      return true;
+    });
+
+    if (showOnlyFavorites && usuario) {
+      list = list.filter(p => p.favoritos?.includes(usuario.nome));
+    }
+    return list;
+  }, [projetos, activeFilter, showOnlyFavorites]);
+
   const { projetosAtivos, projetosExcluidos, totais } = useMemo(() => {
-    const ativos = projetos.filter(p => !p.excluido);
-    const excluidos = projetos.filter(p => p.excluido);
+    const ativos = displayProjetos.filter(p => !p.excluido);
+    const excluidos = projetos.filter(p => p.excluido); // Lixeira mostra tudo
     const stats = {
       all: ativos.length,
       andamento: ativos.filter(p => p.andamento).length,
@@ -211,7 +257,7 @@ export default function DashboardPage() {
       impedimentos: ativos.filter(p => p.healthStatus === "impedimentos" && p.andamento).length
     };
     return { projetosAtivos: ativos, projetosExcluidos: excluidos, totais: stats };
-  }, [projetos]);
+  }, [displayProjetos, projetos]);
 
   const percents = useMemo(() => {
     const total = totais.andamento || 1;
@@ -222,19 +268,6 @@ export default function DashboardPage() {
       impedimentos: (totais.impedimentos / total) * 100
     };
   }, [totais]);
-
-  const filteredProjetos = useMemo(() => {
-    return projetosAtivos.filter(p => {
-      if (activeFilter === "all") return true;
-      if (activeFilter === "andamento") return p.andamento;
-      if (activeFilter === "finalizados") return !p.andamento;
-      if (activeFilter === "prazo") return p.healthStatus === "prazo" && p.andamento;
-      if (activeFilter === "risco") return p.healthStatus === "risco" && p.andamento;
-      if (activeFilter === "atrasados") return p.healthStatus === "atrasados" && p.andamento;
-      if (activeFilter === "impedimentos") return p.healthStatus === "impedimentos" && p.andamento;
-      return true;
-    });
-  }, [projetosAtivos, activeFilter]);
 
   if (loading) {
     return (
@@ -295,13 +328,50 @@ export default function DashboardPage() {
             Acompanhamento consolidado de projetos carregados da base de dados.
           </p>
         </div>
-        {isMaster && (
-          <Link href="/dashboard/projetos">
-            <Button className="bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-500/20 flex gap-2">
-              <Plus className="h-4 w-4" /> Nova Iniciativa
-            </Button>
-          </Link>
-        )}
+        <div className="flex flex-wrap items-center gap-3">
+          {(usuario?.papel === "admin_total" || usuario?.papel === "admin_master" || usuario?.papel === "usuario_master") && (
+            <div className="flex items-center space-x-2 bg-white dark:bg-slate-900 px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm">
+              <Star className={`h-4 w-4 ${showOnlyFavorites ? 'text-amber-500 fill-amber-500' : 'text-slate-400'}`} />
+              <Label htmlFor="fav-filter" className="text-xs font-bold cursor-pointer">Favoritos</Label>
+              <Switch 
+                id="fav-filter" 
+                checked={showOnlyFavorites} 
+                onCheckedChange={setShowOnlyFavorites}
+              />
+            </div>
+          )}
+
+            {(usuario?.papel === "admin_master" || usuario?.papel === "admin_total") && (
+              <div className="flex gap-2">
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="gap-2 border-slate-200 text-slate-700 hover:bg-slate-50"
+                  onClick={() => setShowHistory(true)}
+                >
+                  <FileClock className="h-4 w-4" />
+                  Histórico
+                </Button>
+                <Button 
+                  variant="default" 
+                  size="sm" 
+                  className="bg-blue-600 text-white hover:bg-blue-700 hover:text-white border-none flex gap-2"
+                  onClick={() => router.push(`/dashboard/relatorio?dept=${encodeURIComponent(usuario?.departamento || "")}`)}
+                >
+                  <TrendingUp className="h-4 w-4" />
+                  Gerar Relatório
+                </Button>
+              </div>
+            )}
+
+          {isMaster && (
+            <Link href="/dashboard/projetos">
+              <Button className="bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-500/20 flex gap-2">
+                <Plus className="h-4 w-4" /> Nova Iniciativa
+              </Button>
+            </Link>
+          )}
+        </div>
       </div>
 
       <div className="space-y-4">
@@ -449,16 +519,16 @@ export default function DashboardPage() {
               {activeFilter === "impedimentos" && "Iniciativas com Impedimentos"}
             </CardTitle>
             <CardDescription>
-              {filteredProjetos.length} projeto(s) ativo(s) encontrado(s).
+              {projetosAtivos.length} projeto(s) ativo(s) encontrado(s).
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
-            {filteredProjetos.length === 0 ? (
+            {projetosAtivos.length === 0 ? (
               <div className="text-center py-8 text-slate-500">
                 Nenhum projeto encontrado para este filtro.
               </div>
             ) : (
-              filteredProjetos.map((projeto) => {
+              projetosAtivos.map((projeto) => {
                 const Icon = getIconComponent(projeto.icon);
                 return (
                   <div key={projeto.id} className="space-y-2 group">
@@ -598,6 +668,66 @@ export default function DashboardPage() {
           </Card>
         </div>
       </div>
+      {/* Modal de Histórico de Relatórios */}
+      {showHistory && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
+          <div className="bg-white dark:bg-slate-900 rounded-xl shadow-2xl w-full max-w-2xl max-h-[80vh] flex flex-col overflow-hidden">
+            <div className="p-6 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center bg-blue-900 text-white">
+              <div className="flex items-center gap-3">
+                <FileClock className="h-5 w-5" />
+                <h2 className="font-bold text-lg">Histórico de Relatórios Executivos</h2>
+              </div>
+              <button onClick={() => setShowHistory(false)} className="p-1 hover:bg-white/10 rounded">
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+            
+            <div className="flex-1 overflow-y-auto p-6">
+              {loadingHistory ? (
+                <div className="flex flex-col items-center justify-center py-12 gap-3">
+                  <Loader2 className="h-8 w-8 animate-spin text-blue-600" />
+                  <p className="text-sm text-slate-500">Carregando histórico...</p>
+                </div>
+              ) : history.length === 0 ? (
+                <div className="text-center py-12">
+                  <div className="bg-slate-50 dark:bg-slate-800 h-16 w-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <FileClock className="h-8 w-8 text-slate-300" />
+                  </div>
+                  <p className="text-slate-500 font-medium">Nenhum relatório salvo no histórico.</p>
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  {history.map((rel) => (
+                    <div 
+                      key={rel.id}
+                      className="group p-4 border border-slate-100 dark:border-slate-800 rounded-lg hover:border-blue-300 dark:hover:border-blue-700 transition-all cursor-pointer flex justify-between items-center"
+                      onClick={() => router.push(`/dashboard/relatorio?id=${rel.id}`)}
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className="h-10 w-10 rounded-lg bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-blue-600">
+                          <BarChart3 className="h-5 w-5" />
+                        </div>
+                        <div>
+                          <p className="font-bold text-slate-800 dark:text-slate-200">{rel.nome || "Relatório Executivo"}</p>
+                          <div className="flex items-center gap-3 text-[10px] text-slate-400 font-medium">
+                            <span className="flex items-center gap-1"><Calendar className="h-3 w-3" /> {rel.dataGeracao}</span>
+                            <span className="flex items-center gap-1 uppercase tracking-tighter"><User className="h-3 w-3" /> {rel.autor}</span>
+                          </div>
+                        </div>
+                      </div>
+                      <ChevronRight className="h-5 w-5 text-slate-300 group-hover:text-blue-500 transition-colors" />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+            
+            <div className="p-6 bg-slate-50 dark:bg-slate-800/50 text-center">
+              <p className="text-[10px] text-slate-400">Os relatórios salvos não consomem créditos de Inteligência Artificial para serem visualizados.</p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

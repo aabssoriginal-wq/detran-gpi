@@ -30,13 +30,6 @@ const getUsersPath = () => {
   const isAzure = process.env.WEBSITE_INSTANCE_ID !== undefined;
   if (isAzure) {
     const azureDataDir = path.join('/home/site/data');
-    
-    // O db.ts já deve ter limpado a pasta se FORCE_CLEAN estiver true, 
-    // mas garantimos aqui também.
-    if (process.env.FORCE_CLEAN === 'true') {
-       // Apenas garantimos a existência após a possível limpeza no db.ts
-    }
-
     if (!fs.existsSync(azureDataDir)) {
       try { fs.mkdirSync(azureDataDir, { recursive: true }); } catch(e) {}
     }
@@ -96,12 +89,28 @@ export interface Projeto {
   icon: string;
   iconColor: string;
   responsavel?: string;
-  departamento?: string; // NOVO: Departamento vinculado ao projeto
+  departamento?: string;
   excluido: boolean;
   logs: LogEntry[];
   baselineData: BaselineData;
   tarefas: Tarefa[];
-  escopo?: string; // NOVO: Escopo do projeto (limite 350 chars)
+  escopo?: string;
+  favoritos: string[];
+}
+
+export interface Relatorio {
+  id: string;
+  nome: string; 
+  dataGeracao: string;
+  autor: string;
+  diretoria: string; // Governança por diretoria
+  panorama: any[]; 
+  detalhes: any[]; 
+}
+
+export interface DB {
+  projetos: Projeto[];
+  relatorios: Relatorio[];
 }
 
 const defaultBaseline = { inicio: "2026-01-01", fim: "2026-12-31" };
@@ -111,33 +120,43 @@ let lastReadTime: number = 0;
 const CACHE_TTL = 5000;
 
 const initializeDB = () => {
-  // Se estiver no Azure e o arquivo persistente não existir, tenta copiar do pacote original
-  if (process.env.WEBSITE_INSTANCE_ID !== undefined && !fs.existsSync(dataFilePath)) {
-    const packageDataPath = path.join(process.cwd(), 'data.json');
-    if (fs.existsSync(packageDataPath)) {
-      try {
-        const initialContent = fs.readFileSync(packageDataPath, 'utf-8');
-        fs.writeFileSync(dataFilePath, initialContent);
-        console.log("Banco de dados inicializado a partir do pacote de deploy.");
-      } catch (e) {
-        console.error("Erro ao copiar banco de dados inicial:", e);
-      }
-    }
-  }
-
   if (!fs.existsSync(dataFilePath)) {
-    const initialData: Projeto[] = [
-      { id: 1, nome: "Identidade Digital (SSO)", status: "prazo", andamento: true, progress: 85, delta: 0, text: "No Prazo", indicator: "bg-emerald-500", icon: "CheckCircle2", iconColor: "text-emerald-500", responsavel: "Luiz Wanderley", departamento: "Diretoria de Tecnologia da Informação", excluido: false, logs: [], baselineData: { inicio: "2026-05-01", fim: "2026-12-15" }, tarefas: [] },
-      { id: 2, nome: "Migração para Azure Cloud", status: "atrasados", andamento: true, progress: 45, delta: 18, text: "Delta: +18 dias", indicator: "bg-rose-500", icon: "AlertCircle", iconColor: "text-rose-500", responsavel: "Equipe Infra", departamento: "Diretoria de Tecnologia da Informação", excluido: false, logs: [], baselineData: { inicio: "2026-03-01", fim: "2026-10-30" }, tarefas: [] },
-      { id: 3, nome: "Novo Portal do Cliente", status: "risco", andamento: true, progress: 30, delta: 5, text: "Delta: +5 dias", indicator: "bg-amber-500", icon: "Clock", iconColor: "text-amber-500", responsavel: "Equipe Front", departamento: "Diretoria de Tecnologia da Informação", excluido: false, logs: [], baselineData: { inicio: "2026-06-01", fim: "2026-11-20" }, tarefas: [] }
-    ];
+    const initialData: DB = {
+      projetos: [
+        { id: 1, nome: "Identidade Digital (SSO)", status: "prazo", andamento: true, progress: 85, delta: 0, text: "No Prazo", indicator: "bg-emerald-500", icon: "CheckCircle2", iconColor: "text-emerald-500", responsavel: "Luiz Wanderley", departamento: "Diretoria de Tecnologia da Informação", excluido: false, logs: [], baselineData: { inicio: "2026-05-01", fim: "2026-12-15" }, tarefas: [], favoritos: [] },
+        { id: 2, nome: "Migração para Azure Cloud", status: "atrasados", andamento: true, progress: 45, delta: 18, text: "Delta: +18 dias", indicator: "bg-rose-500", icon: "AlertCircle", iconColor: "text-rose-500", responsavel: "Equipe Infra", departamento: "Diretoria de Tecnologia da Informação", excluido: false, logs: [], baselineData: { inicio: "2026-03-01", fim: "2026-10-30" }, tarefas: [], favoritos: [] },
+        { id: 3, nome: "Novo Portal do Cliente", status: "risco", andamento: true, progress: 30, delta: 5, text: "Delta: +5 dias", indicator: "bg-amber-500", icon: "Clock", iconColor: "text-amber-500", responsavel: "Equipe Front", departamento: "Diretoria de Tecnologia da Informação", excluido: false, logs: [], baselineData: { inicio: "2026-06-01", fim: "2026-11-20" }, tarefas: [], favoritos: [] }
+      ],
+      relatorios: []
+    };
     fs.writeFileSync(dataFilePath, JSON.stringify(initialData, null, 2));
   }
 };
 
+const getDB = (): DB => {
+  initializeDB();
+  const fileData = fs.readFileSync(dataFilePath, 'utf-8');
+  let data = JSON.parse(fileData);
+  if (Array.isArray(data)) {
+    return { projetos: data, relatorios: [] };
+  }
+  return {
+    projetos: data.projetos || [],
+    relatorios: data.relatorios || []
+  };
+};
+
 const saveDB = (projetos: Projeto[]) => {
-  fs.writeFileSync(dataFilePath, JSON.stringify(projetos, null, 2));
+  const db = getDB();
+  db.projetos = projetos;
+  fs.writeFileSync(dataFilePath, JSON.stringify(db, null, 2));
   cachedProjetos = projetos;
+  lastReadTime = Date.now();
+};
+
+const saveFullDB = (db: DB) => {
+  fs.writeFileSync(dataFilePath, JSON.stringify(db, null, 2));
+  cachedProjetos = db.projetos;
   lastReadTime = Date.now();
 };
 
@@ -158,20 +177,20 @@ const statusMap: Record<string, { text: string; indicator: string; icon: string;
 };
 
 export const getProjetos = (userDept?: string, papel?: string): Projeto[] => {
-  initializeDB();
-  const fileData = fs.readFileSync(dataFilePath, 'utf-8');
-  let data = JSON.parse(fileData);
+  const db = getDB();
+  const data = db.projetos;
   const hoje = new Date();
   hoje.setHours(0, 0, 0, 0);
 
   let list = data.map((p: any) => {
     const proj = {
       ...p,
-      departamento: p.departamento || "Diretoria de Tecnologia da Informação", // Migração legada
+      departamento: p.departamento || "Diretoria de Tecnologia da Informação",
       excluido: p.excluido || false,
       logs: p.logs || [],
       baselineData: p.baselineData || { inicio: "", fim: "" },
-      tarefas: p.tarefas || []
+      tarefas: p.tarefas || [],
+      favoritos: p.favoritos || []
     };
     
     const meta = statusMap[proj.status] || statusMap["ideacao"];
@@ -182,40 +201,24 @@ export const getProjetos = (userDept?: string, papel?: string): Projeto[] => {
     let finalDelta = 0;
     let finalReason = "No prazo.";
 
-    // 1. Verificação de Atraso Global
-    let atrasoGlobal = false;
     if (proj.baselineData.fim && proj.progress < 100) {
       const parts = proj.baselineData.fim.split("-");
       const dFim = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
       dFim.setHours(0,0,0,0);
       if (dFim < hoje) {
-        atrasoGlobal = true;
         finalDelta = Math.ceil((hoje.getTime() - dFim.getTime()) / (1000 * 3600 * 24));
+        finalHealth = "atrasados";
+        finalIcon = "AlertCircle";
+        finalColor = "text-rose-500";
+        finalIndicator = "bg-rose-500";
+        finalReason = `Projeto atrasado há ${finalDelta} dias.`;
       }
     }
 
-    // 2. Verificação Interna
     let temImped = false;
-    let temTrafAtras = false;
-    let nomeTrafAtras = "";
-    let deltaTrafAtras = 0;
-
     for (const t of proj.tarefas) {
       if (t.impedimentoAtivo) {
         temImped = true;
-        (proj as any).tarefaBloqueada = t.titulo;
-        (proj as any).motivoBloqueio = t.motivoImpedimento;
-        (proj as any).responsavelTecnico = t.responsavel;
-      }
-      if (t.dataFim && t.progress < 100) {
-        const pT = t.dataFim.split("-");
-        const dfT = new Date(parseInt(pT[0]), parseInt(pT[1]) - 1, parseInt(pT[2]));
-        dfT.setHours(0,0,0,0);
-        if (dfT < hoje) {
-          temTrafAtras = true;
-          nomeTrafAtras = t.titulo;
-          deltaTrafAtras = Math.ceil((hoje.getTime() - dfT.getTime()) / (1000 * 3600 * 24));
-        }
       }
     }
 
@@ -224,24 +227,11 @@ export const getProjetos = (userDept?: string, papel?: string): Projeto[] => {
       finalIcon = "ShieldAlert";
       finalColor = "text-rose-600";
       finalIndicator = "bg-rose-600";
-      finalReason = `Bloqueado: ${(proj as any).motivoBloqueio || "Sem motivo"}`;
-    } else if (atrasoGlobal) {
-      finalHealth = "atrasados";
-      finalIcon = "AlertCircle";
-      finalColor = "text-rose-500";
-      finalIndicator = "bg-rose-500";
-      finalReason = `Projeto atrasado há ${finalDelta} dias.`;
-    } else if (temTrafAtras) {
-      finalHealth = "risco";
-      finalIcon = "Clock";
-      finalColor = "text-amber-500";
-      finalIndicator = "bg-amber-500";
-      finalDelta = deltaTrafAtras;
-      finalReason = `Tarefa "${nomeTrafAtras}" atrasada.`;
+      finalReason = "Existem impedimentos ativos.";
     }
 
-    if (proj.status === "concluído" || proj.progress >= 100) {
-      finalHealth = "concluído";
+    if (proj.status === "concluido" || proj.progress >= 100) {
+      finalHealth = "concluido";
       finalIcon = "CheckCircle2";
       finalColor = "text-emerald-600";
       finalIndicator = "bg-emerald-600";
@@ -261,10 +251,7 @@ export const getProjetos = (userDept?: string, papel?: string): Projeto[] => {
   });
 
   if (papel && papel !== 'admin_total') {
-    list = list.filter((p: Projeto) => {
-      // Filtro básico de segurança por diretoria
-      return p.departamento === userDept;
-    });
+    list = list.filter((p: Projeto) => p.departamento === userDept);
   }
 
   return list.sort((a, b) => a.nome.localeCompare(b.nome));
@@ -273,79 +260,32 @@ export const getProjetos = (userDept?: string, papel?: string): Projeto[] => {
 export const getAuditoria = (userDept?: string, papel?: string): any[] => {
   const projetos = getProjetos(userDept, papel);
   const allLogs: any[] = [];
-  
   projetos.forEach(p => {
     p.logs.forEach(l => {
-      allLogs.push({
-        ...l,
-        projetoId: p.id,
-        projetoNome: p.nome,
-        departamento: p.departamento
-      });
+      allLogs.push({ ...l, projetoId: p.id, projetoNome: p.nome, departamento: p.departamento });
     });
   });
-
-  return allLogs.sort((a, b) => {
-    const parseDate = (d: string) => {
-      const [date, time] = d.split(' ');
-      const [day, month, year] = date.split('/');
-      const [hour, min] = time.split(':');
-      return new Date(parseInt(year), parseInt(month) - 1, parseInt(day), parseInt(hour), parseInt(min)).getTime();
-    };
-    return parseDate(b.data) - parseDate(a.data);
-  });
+  return allLogs.sort((a, b) => b.data.localeCompare(a.data));
 };
 
 export const getProjetoById = (id: number, userDept?: string, papel?: string): Projeto => {
   const projetos = getProjetos(userDept, papel);
   const projeto = projetos.find(p => p.id === id);
-  if (!projeto) throw new Error("Projeto não encontrado ou acesso negado.");
+  if (!projeto) throw new Error("Projeto não encontrado.");
   return projeto;
-};
-
-export const addLogToProjeto = (id: number, log: LogEntry): void => {
-  const projetos = getProjetos();
-  const index = projetos.findIndex(p => p.id === id);
-  if (index !== -1) {
-    projetos[index].logs.unshift(log);
-    saveDB(projetos);
-  }
 };
 
 export const createProjeto = (nome: string, responsavel: string, departamento: string = "Diretoria de Tecnologia da Informação", inicio: string = "", fim: string = ""): Projeto => {
   const projetos = getProjetos(); 
   const novoId = projetos.length > 0 ? Math.max(...projetos.map(p => p.id)) + 1 : 1;
   const novoProjeto: Projeto = {
-    id: novoId,
-    nome,
-    status: "ideação",
-    andamento: true,
-    progress: 0,
-    delta: 0,
-    text: "Ideação",
-    indicator: "bg-blue-400",
-    icon: "FolderKanban", 
-    iconColor: "text-blue-400",
-    responsavel,
-    departamento, 
-    excluido: false,
-    logs: [createLog("Criação do Projeto")],
-    baselineData: { inicio, fim },
-    tarefas: []
+    id: novoId, nome, status: "ideação", andamento: true, progress: 0, delta: 0, text: "Ideação",
+    indicator: "bg-blue-400", icon: "FolderKanban", iconColor: "text-blue-400", responsavel, departamento,
+    excluido: false, logs: [createLog("Criação do Projeto")], baselineData: { inicio, fim }, tarefas: [], favoritos: []
   };
   projetos.unshift(novoProjeto);
   saveDB(projetos);
   return novoProjeto;
-};
-
-export const renameProjeto = (id: number, novoNome: string, justificativa: string, user: string = "Usuário"): Projeto => {
-  const projetos = getProjetos();
-  const idx = projetos.findIndex(p => p.id === id);
-  if (idx === -1) throw new Error("Projeto não encontrado.");
-  projetos[idx].nome = novoNome;
-  projetos[idx].logs.unshift(createLog(`Renomeado`, justificativa, user));
-  saveDB(projetos);
-  return projetos[idx];
 };
 
 export const deleteProjeto = (id: number, justificativa: string, user: string = "Usuário"): void => {
@@ -354,16 +294,6 @@ export const deleteProjeto = (id: number, justificativa: string, user: string = 
   if (idx !== -1) {
     projetos[idx].excluido = true;
     projetos[idx].logs.unshift(createLog("Excluído", justificativa, user));
-    saveDB(projetos);
-  }
-};
-
-export const restoreProjeto = (id: number, justificativa: string, user: string = "Usuário"): void => {
-  const projetos = getProjetos();
-  const idx = projetos.findIndex(p => p.id === id);
-  if (idx !== -1) {
-    projetos[idx].excluido = false;
-    projetos[idx].logs.unshift(createLog("Restaurado", justificativa, user));
     saveDB(projetos);
   }
 };
@@ -378,77 +308,58 @@ export const updateBaseline = (id: number, inicio: string, fim: string, justific
   return projetos[idx];
 };
 
-export const updateTarefas = (id: number, tarefas: Tarefa[], user: string = "Usuário", acaoCustomizada?: string, justificativa?: string): Projeto => {
+export const updateTarefas = (id: number, tarefas: Tarefa[], user: string = "Usuário", acao?: string, just?: string): Projeto => {
   const projetos = getProjetos();
   const idx = projetos.findIndex(p => p.id === id);
   if (idx === -1) throw new Error("Projeto não encontrado.");
   projetos[idx].tarefas = tarefas;
+  projetos[idx].logs.unshift(createLog(acao || "Atualização de EAP", just || "Alteração de tarefas", user));
   
-  const logAcao = acaoCustomizada || "Atualização de EAP";
-  const logJust = justificativa || "Alteração de tarefas";
-  projetos[idx].logs.unshift(createLog(logAcao, logJust, user));
-
   if (tarefas.length > 0) {
-    let totalPond = 0;
-    let totalDias = 0;
+    let totalPond = 0, totalDias = 0;
     tarefas.forEach(t => {
       const i = t.dataInicio ? new Date(t.dataInicio) : new Date();
       const f = t.dataFim ? new Date(t.dataFim) : i;
-      const d = Math.ceil(Math.abs(f.getTime() - i.getTime()) / (1000 * 60 * 60 * 24)) + 1;
+      const d = Math.ceil(Math.abs(f.getTime() - i.getTime()) / (1000 * 3600 * 24)) + 1;
       totalPond += (t.progress || 0) * d;
       totalDias += d;
     });
     projetos[idx].progress = totalDias > 0 ? Math.round(totalPond / totalDias) : 0;
   }
-  
   saveDB(projetos);
   return projetos[idx];
 };
 
-export const updateProjetoStatus = (id: number, status: string, justificativa: string, user: string = "Usuário"): Projeto => {
+export const toggleFavorite = (id: number, userName: string): Projeto => {
   const projetos = getProjetos();
   const idx = projetos.findIndex(p => p.id === id);
   if (idx === -1) throw new Error("Projeto não encontrado.");
-  projetos[idx].status = status;
-  projetos[idx].logs.unshift(createLog(`Alteração de Fase para ${status}`, justificativa, user));
+  if (!projetos[idx].favoritos) projetos[idx].favoritos = [];
+  const favIndex = projetos[idx].favoritos.indexOf(userName);
+  if (favIndex === -1) projetos[idx].favoritos.push(userName);
+  else projetos[idx].favoritos.splice(favIndex, 1);
   saveDB(projetos);
   return projetos[idx];
 };
 
-export const updateEscopo = (id: number, escopo: string, user: string = "Usuário"): Projeto => {
-  const projetos = getProjetos();
-  const idx = projetos.findIndex(p => p.id === id);
-  if (idx === -1) throw new Error("Projeto não encontrado.");
-  
-  const antigoEscopo = (projetos[idx] as any).escopo;
-  const isInicial = !antigoEscopo || antigoEscopo.trim() === "";
-  
-  (projetos[idx] as any).escopo = escopo;
-  
-  const acaoLog = isInicial ? "Cadastro inicial de escopo" : "Alteração de escopo";
-  projetos[idx].logs.unshift(createLog(acaoLog, isInicial ? "Definição do escopo" : "Atualização de diretrizes", user));
-  
-  saveDB(projetos);
-  return projetos[idx];
+export const saveRelatorio = (relatorio: Relatorio) => {
+  const db = getDB();
+  db.relatorios.unshift(relatorio);
+  saveFullDB(db);
 };
 
-export const updateResponsavel = (id: number, userId: string, nomeResponsavel: string, user: string = "Usuário"): Projeto => {
-  const projetos = getProjetos();
-  const idx = projetos.findIndex(p => p.id === id);
-  if (idx === -1) throw new Error("Projeto não encontrado.");
-  projetos[idx].responsavel = nomeResponsavel;
-  projetos[idx].logs.unshift(createLog(`Responsável alterado para ${nomeResponsavel}`, "Atribuição", user));
-  saveDB(projetos);
-  return projetos[idx];
+export const getRelatorios = (userDept?: string, papel?: string): Relatorio[] => {
+  const db = getDB();
+  let list = db.relatorios || [];
+  
+  if (papel && papel !== 'admin_total') {
+    list = list.filter(r => r.diretoria === userDept);
+  }
+  
+  return list;
 };
 
-export const updateProjetoDepartamento = (id: number, novoDept: string, justificativa: string, user: string = "Usuário"): Projeto => {
-  const projetos = getProjetos();
-  const idx = projetos.findIndex(p => p.id === id);
-  if (idx === -1) throw new Error("Projeto não encontrado.");
-  const antigo = projetos[idx].departamento;
-  projetos[idx].departamento = novoDept;
-  projetos[idx].logs.unshift(createLog(`Diretoria alterada: ${antigo} → ${novoDept}`, justificativa, user));
-  saveDB(projetos);
-  return projetos[idx];
+export const getRelatorioById = (id: string): Relatorio | undefined => {
+  const db = getDB();
+  return db.relatorios.find(r => r.id === id);
 };

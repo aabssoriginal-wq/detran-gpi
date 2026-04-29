@@ -9,8 +9,9 @@ import { FolderKanban, Plus, Search, Filter } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
 import { useState, useEffect } from "react";
-import { Loader2 } from "lucide-react";
+import { Loader2, Star } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
+import { toast } from "sonner";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
@@ -160,6 +161,9 @@ export default function ProjetosPage() {
           <Table>
             <TableHeader className="bg-slate-50 dark:bg-slate-900">
               <TableRow>
+                {isMaster && (
+                  <TableHead className="text-center w-[60px]">Fav</TableHead>
+                )}
                 <TableHead className="w-[280px] whitespace-nowrap">Nome do Projeto</TableHead>
                 <TableHead className="whitespace-nowrap">Diretoria</TableHead>
                 <TableHead className="whitespace-nowrap">Responsável</TableHead>
@@ -173,19 +177,46 @@ export default function ProjetosPage() {
             <TableBody>
               {loading ? (
                 <TableRow>
-                  <TableCell colSpan={8} className="text-center h-32">
+                  <TableCell colSpan={isMaster ? 9 : 8} className="text-center h-32">
                     <Loader2 className="h-6 w-6 animate-spin text-blue-500 mx-auto" />
                   </TableCell>
                 </TableRow>
               ) : projetos.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={8} className="text-center h-32 text-slate-500">
+                  <TableCell colSpan={isMaster ? 9 : 8} className="text-center h-32 text-slate-500">
                     Nenhum projeto registrado.
                   </TableCell>
                 </TableRow>
               ) : (
                 projetos.map((projeto) => (
                   <TableRow key={projeto.id} className="hover:bg-slate-50 dark:hover:bg-slate-900/50">
+                    {isMaster && (
+                      <TableCell className="text-center">
+                        <button
+                          onClick={async (e) => {
+                            e.preventDefault();
+                            try {
+                              const res = await fetch(`/api/projects/${projeto.id}`, {
+                                method: 'PUT',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ action: 'toggle_favorite', user: usuario?.nome })
+                              });
+                              if (res.ok) {
+                                const updated = await res.json();
+                                setProjetos(prev => prev.map(p => p.id === updated.id ? { ...p, favoritos: updated.favoritos } : p));
+                                const isNowFav = updated.favoritos?.includes(usuario?.nome);
+                                toast.success(isNowFav ? "Adicionado aos favoritos" : "Removido dos favoritos");
+                              }
+                            } catch (e) {
+                              toast.error("Erro ao favoritar projeto");
+                            }
+                          }}
+                          className={`p-1 rounded-full transition-all ${projeto.favoritos?.includes(usuario?.nome) ? 'text-amber-500 fill-amber-500 bg-amber-50' : 'text-slate-300 hover:text-amber-400 hover:bg-slate-100'}`}
+                        >
+                          <Star className={`h-4 w-4 ${projeto.favoritos?.includes(usuario?.nome) ? 'fill-current' : ''}`} />
+                        </button>
+                      </TableCell>
+                    )}
                     <TableCell className="font-medium">
                       <TooltipProvider>
                         <Tooltip>
