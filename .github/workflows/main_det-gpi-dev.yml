@@ -50,7 +50,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     permissions:
-      id-token: write
       contents: read
 
     steps:
@@ -59,26 +58,11 @@ jobs:
         with:
           name: node-app-package
       
-      - name: Login to Azure
-        uses: azure/login@v2
-        with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_0779E801B7C941BF91B9A5A8465EF218 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_BB6183D6ED65499A9EE4562A3CEBEF87 }}
-          subscription-id: 'cd58ce2c-2e37-4240-bede-df2585b0113a'
-
-      - name: Clean Persistent Data
-        uses: azure/CLI@v2
-        with:
-          inlineScript: |
-            az webapp config appsettings set --resource-group rg-gpi-dev --name det-gpi-dev --settings FORCE_CLEAN=true
-            # O comando abaixo tenta remover os arquivos se a pasta existir
-            az webapp deployment source config-zip --resource-group rg-gpi-dev --name det-gpi-dev --src /dev/null --clear || true
-
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'det-gpi-dev'
-          resource-group-name: 'rg-gpi-dev'
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: site.zip
           startup-command: 'node server.js'
