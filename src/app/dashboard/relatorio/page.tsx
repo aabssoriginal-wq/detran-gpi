@@ -117,7 +117,7 @@ export default function RelatorioPage() {
           </div>
           <div className="text-right">
             <Badge className="bg-blue-900 text-white hover:bg-blue-900 mb-2">RELATÓRIO EXECUTIVO IA</Badge>
-            <p className="text-xs font-bold text-slate-600">Data de Emissão: {data?.geradoEm}</p>
+            <p className="text-xs font-bold text-slate-600">Data de Emissão: {data?.geradoEm || data?.dataGeracao}</p>
             <p className="text-[10px] text-slate-400 uppercase font-medium">Documento Gerado por {usuario?.nome}</p>
           </div>
         </div>

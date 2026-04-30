@@ -34,8 +34,8 @@ export async function GET(request: Request) {
       status: p.status,
       progresso: p.progress,
       atraso: p.delta,
-      logs: p.logs.slice(0, 5).map(l => `${l.data}: ${l.acao}`),
-      tarefasAtrasadas: p.tarefas.filter(t => t.status !== 'concluído' && t.dataFim && new Date(t.dataFim) < new Date()).map(t => t.titulo)
+      logs: (p.logs || []).slice(0, 5).map(l => `${l.data}: ${l.acao}`),
+      tarefasAtrasadas: (p.tarefas || []).filter(t => t.status !== 'concluído' && t.dataFim && new Date(t.dataFim) < new Date()).map(t => t.titulo)
     }));
 
     const prompt = `Gere um JSON para um Relatório Executivo do DETRAN-SP.
@@ -61,7 +61,7 @@ export async function GET(request: Request) {
     }`;
 
     const apiKey = process.env.GEMINI_API_KEY;
-    const model = "gemini-1.5-flash"; 
+    const model = "gemini-2.5-flash"; 
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
 
     const response = await fetch(apiUrl, {
@@ -74,7 +74,26 @@ export async function GET(request: Request) {
     });
 
     const result = await response.json();
-    const reportData = JSON.parse(result.candidates[0].content.parts[0].text);
+    
+    // Validação ultra-robusta da resposta do Gemini
+    let rawText = result?.candidates?.[0]?.content?.parts?.[0]?.text;
+    
+    if (!rawText) {
+      console.error("Gemini API - Resposta Sem Conteúdo:", JSON.stringify(result, null, 2));
+      const errorMsg = result?.error?.message || "A IA não retornou um conteúdo válido.";
+      throw new Error(errorMsg);
+    }
+
+    // Limpeza de Markdown (caso a IA envie ```json ... ```)
+    rawText = rawText.replace(/```json/g, "").replace(/```/g, "").trim();
+
+    let reportData;
+    try {
+      reportData = JSON.parse(rawText);
+    } catch (e) {
+      console.error("Erro ao parsear JSON da IA. Texto bruto:", rawText);
+      throw new Error("O formato do relatório gerado pela IA é inválido.");
+    }
 
     // SALVAR NO HISTÓRICO
     const agora = new Date();
@@ -84,6 +103,7 @@ export async function GET(request: Request) {
     const novoRelatorio = {
       id: `REL-${Date.now()}`,
       nome: nomeFormatado,
+      geradoEm: agora.toLocaleString('pt-BR'),
       dataGeracao: agora.toLocaleString('pt-BR'),
       autor: userName || "Sistema",
       diretoria: userDept || "Geral",

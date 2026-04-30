@@ -87,6 +87,7 @@ export interface Relatorio {
   id: string;
   nome: string;
   dataGeracao: string;
+  geradoEm?: string; // Para exibição no documento
   autor: string;
   diretoria: string;
   panorama: any[]; 
