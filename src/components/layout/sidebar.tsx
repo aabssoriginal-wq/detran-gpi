@@ -32,6 +32,7 @@ export default function Sidebar() {
         <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400">
           <FolderKanban className="h-6 w-6" />
           <span className="font-bold text-lg tracking-tight">GPI</span>
+          <span className="text-[10px] font-medium text-slate-400 mt-1 ml-1 opacity-70 italic">v2.5.1</span>
         </div>
       </div>
 
