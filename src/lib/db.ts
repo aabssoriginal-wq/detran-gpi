@@ -8,8 +8,6 @@ const getDBPath = () => {
   const isAzure = process.env.WEBSITE_INSTANCE_ID !== undefined;
   if (isAzure) {
     const azureDataDir = path.join('/home/site/data');
-    
-    // FORÇAR LIMPEZA SE SOLICITADO PELO DEPLOY
     if (process.env.FORCE_CLEAN === 'true') {
       try {
         if (fs.existsSync(azureDataDir)) {
@@ -17,25 +15,12 @@ const getDBPath = () => {
         }
       } catch(e) {}
     }
-
     if (!fs.existsSync(azureDataDir)) {
       try { fs.mkdirSync(azureDataDir, { recursive: true }); } catch(e) {}
     }
     return path.join(azureDataDir, 'data.json');
   }
   return path.join(process.cwd(), 'data.json');
-};
-
-const getUsersPath = () => {
-  const isAzure = process.env.WEBSITE_INSTANCE_ID !== undefined;
-  if (isAzure) {
-    const azureDataDir = path.join('/home/site/data');
-    if (!fs.existsSync(azureDataDir)) {
-      try { fs.mkdirSync(azureDataDir, { recursive: true }); } catch(e) {}
-    }
-    return path.join(azureDataDir, 'users.json');
-  }
-  return path.join(process.cwd(), 'users.json');
 };
 
 const dataFilePath = getDBPath();
@@ -100,10 +85,10 @@ export interface Projeto {
 
 export interface Relatorio {
   id: string;
-  nome: string; 
+  nome: string;
   dataGeracao: string;
   autor: string;
-  diretoria: string; // Governança por diretoria
+  diretoria: string;
   panorama: any[]; 
   detalhes: any[]; 
 }
@@ -112,12 +97,6 @@ export interface DB {
   projetos: Projeto[];
   relatorios: Relatorio[];
 }
-
-const defaultBaseline = { inicio: "2026-01-01", fim: "2026-12-31" };
-
-let cachedProjetos: Projeto[] | null = null;
-let lastReadTime: number = 0;
-const CACHE_TTL = 5000;
 
 const initializeDB = () => {
   if (!fs.existsSync(dataFilePath)) {
@@ -146,23 +125,20 @@ const getDB = (): DB => {
   };
 };
 
+const saveFullDB = (db: DB) => {
+  fs.writeFileSync(dataFilePath, JSON.stringify(db, null, 2));
+};
+
 const saveDB = (projetos: Projeto[]) => {
   const db = getDB();
   db.projetos = projetos;
-  fs.writeFileSync(dataFilePath, JSON.stringify(db, null, 2));
-  cachedProjetos = projetos;
-  lastReadTime = Date.now();
-};
-
-const saveFullDB = (db: DB) => {
-  fs.writeFileSync(dataFilePath, JSON.stringify(db, null, 2));
-  cachedProjetos = db.projetos;
-  lastReadTime = Date.now();
+  saveFullDB(db);
 };
 
 export const createLog = (acao: string, justificativa: string = "Nenhuma", user: string = "Usuário"): LogEntry => {
   const now = new Date();
-  const dataFormatada = `${now.getDate().toString().padStart(2, '0')}/${(now.getMonth()+1).toString().padStart(2, '0')}/${now.getFullYear()} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+  const pad = (n: number) => n.toString().padStart(2, '0');
+  const dataFormatada = `${pad(now.getDate())}/${pad(now.getMonth()+1)}/${now.getFullYear()} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
   return { acao, justificativa, data: dataFormatada, user };
 };
 
@@ -217,9 +193,7 @@ export const getProjetos = (userDept?: string, papel?: string): Projeto[] => {
 
     let temImped = false;
     for (const t of proj.tarefas) {
-      if (t.impedimentoAtivo) {
-        temImped = true;
-      }
+      if (t.impedimentoAtivo) temImped = true;
     }
 
     if (temImped) {
@@ -227,7 +201,7 @@ export const getProjetos = (userDept?: string, papel?: string): Projeto[] => {
       finalIcon = "ShieldAlert";
       finalColor = "text-rose-600";
       finalIndicator = "bg-rose-600";
-      finalReason = "Existem impedimentos ativos.";
+      finalReason = "Bloqueado por impedimento.";
     }
 
     if (proj.status === "concluido" || proj.progress >= 100) {
@@ -279,7 +253,7 @@ export const createProjeto = (nome: string, responsavel: string, departamento: s
   const projetos = getProjetos(); 
   const novoId = projetos.length > 0 ? Math.max(...projetos.map(p => p.id)) + 1 : 1;
   const novoProjeto: Projeto = {
-    id: novoId, nome, status: "ideação", andamento: true, progress: 0, delta: 0, text: "Ideação",
+    id: novoId, nome, status: "ideacao", andamento: true, progress: 0, delta: 0, text: "Ideação",
     indicator: "bg-blue-400", icon: "FolderKanban", iconColor: "text-blue-400", responsavel, departamento,
     excluido: false, logs: [createLog("Criação do Projeto")], baselineData: { inicio, fim }, tarefas: [], favoritos: []
   };
@@ -288,12 +262,32 @@ export const createProjeto = (nome: string, responsavel: string, departamento: s
   return novoProjeto;
 };
 
+export const renameProjeto = (id: number, novoNome: string, justificativa: string, user: string = "Usuário"): Projeto => {
+  const projetos = getProjetos();
+  const idx = projetos.findIndex(p => p.id === id);
+  if (idx === -1) throw new Error("Projeto não encontrado.");
+  projetos[idx].nome = novoNome;
+  projetos[idx].logs.unshift(createLog(`Renomeado`, justificativa, user));
+  saveDB(projetos);
+  return projetos[idx];
+};
+
 export const deleteProjeto = (id: number, justificativa: string, user: string = "Usuário"): void => {
   const projetos = getProjetos();
   const idx = projetos.findIndex(p => p.id === id);
   if (idx !== -1) {
     projetos[idx].excluido = true;
     projetos[idx].logs.unshift(createLog("Excluído", justificativa, user));
+    saveDB(projetos);
+  }
+};
+
+export const restoreProjeto = (id: number, justificativa: string, user: string = "Usuário"): void => {
+  const projetos = getProjetos();
+  const idx = projetos.findIndex(p => p.id === id);
+  if (idx !== -1) {
+    projetos[idx].excluido = false;
+    projetos[idx].logs.unshift(createLog("Restaurado", justificativa, user));
     saveDB(projetos);
   }
 };
@@ -330,6 +324,56 @@ export const updateTarefas = (id: number, tarefas: Tarefa[], user: string = "Usu
   return projetos[idx];
 };
 
+export const updateProjetoStatus = (id: number, status: string, justificativa: string, user: string = "Usuário"): Projeto => {
+  const projetos = getProjetos();
+  const idx = projetos.findIndex(p => p.id === id);
+  if (idx === -1) throw new Error("Projeto não encontrado.");
+  projetos[idx].status = status;
+  projetos[idx].logs.unshift(createLog(`Alteração de Fase para ${status}`, justificativa, user));
+  saveDB(projetos);
+  return projetos[idx];
+};
+
+export const updateEscopo = (id: number, escopo: string, user: string = "Usuário"): Projeto => {
+  const projetos = getProjetos();
+  const idx = projetos.findIndex(p => p.id === id);
+  if (idx === -1) throw new Error("Projeto não encontrado.");
+  projetos[idx].escopo = escopo;
+  projetos[idx].logs.unshift(createLog("Atualização de Escopo", "Edição manual", user));
+  saveDB(projetos);
+  return projetos[idx];
+};
+
+export const updateResponsavel = (id: number, userId: string, nome: string, user: string = "Usuário"): Projeto => {
+  const projetos = getProjetos();
+  const idx = projetos.findIndex(p => p.id === id);
+  if (idx === -1) throw new Error("Projeto não encontrado.");
+  projetos[idx].responsavel = nome;
+  projetos[idx].logs.unshift(createLog(`Responsável alterado para ${nome}`, "Atribuição", user));
+  saveDB(projetos);
+  return projetos[idx];
+};
+
+export const updateProjetoDepartamento = (id: number, novoDept: string, justificativa: string, user: string = "Usuário"): Projeto => {
+  const projetos = getProjetos();
+  const idx = projetos.findIndex(p => p.id === id);
+  if (idx === -1) throw new Error("Projeto não encontrado.");
+  const antigo = projetos[idx].departamento;
+  projetos[idx].departamento = novoDept;
+  projetos[idx].logs.unshift(createLog(`Diretoria alterada: ${antigo} → ${novoDept}`, justificativa, user));
+  saveDB(projetos);
+  return projetos[idx];
+};
+
+export const addLogToProjeto = (id: number, log: LogEntry): void => {
+  const projetos = getProjetos();
+  const index = projetos.findIndex(p => p.id === id);
+  if (index !== -1) {
+    projetos[index].logs.unshift(log);
+    saveDB(projetos);
+  }
+};
+
 export const toggleFavorite = (id: number, userName: string): Projeto => {
   const projetos = getProjetos();
   const idx = projetos.findIndex(p => p.id === id);
@@ -351,11 +395,9 @@ export const saveRelatorio = (relatorio: Relatorio) => {
 export const getRelatorios = (userDept?: string, papel?: string): Relatorio[] => {
   const db = getDB();
   let list = db.relatorios || [];
-  
   if (papel && papel !== 'admin_total') {
     list = list.filter(r => r.diretoria === userDept);
   }
-  
   return list;
 };
 
