@@ -3456,6 +3456,92 @@
   ],
   "relatorios": [
     {
+      "id": "REL-1777568693629",
+      "nome": "Relatório_2026_04_30_14_04_53_ANDERSON",
+      "geradoEm": "30/04/2026, 14:04:53",
+      "dataGeracao": "30/04/2026, 14:04:53",
+      "autor": "Anderson",
+      "diretoria": "Diretoria de Tecnologia da Informação",
+      "panorama": [
+        {
+          "titulo": "Status Geral dos Projetos de TI",
+          "descricao": "A carteira de projetos de TI apresenta desafios significativos, com projetos chave enfrentando atrasos devido a impedimentos não previstos e necessidade de revisão de cronogramas.",
+          "nivel": "alto"
+        },
+        {
+          "titulo": "Desempenho Operacional DETRAN-SP",
+          "descricao": "As operações diárias do DETRAN-SP mantêm-se estáveis, com a maioria dos sistemas funcionando conforme esperado, porém com pontos de atenção em processos que dependem de infraestrutura crítica.",
+          "nivel": "medio"
+        },
+        {
+          "titulo": "Previsão Orçamentária e Custos",
+          "descricao": "O acompanhamento orçamentário indica que a maioria dos projetos está dentro da alocação prevista, mas atrasos pontuais podem gerar custos adicionais com extensão de contratos e recursos.",
+          "nivel": "baixo"
+        }
+      ],
+      "detalhes": [
+        {
+          "id": 1,
+          "nome": "Alteração dos Racks",
+          "progress": 0,
+          "departamento": "Infraestrutura e TI",
+          "analiseIA": "O projeto 'Alteração dos Racks' está em fase inicial de desenvolvimento (0% de progresso) e já acumula 2 dias de atraso. O principal gargalo é um impedimento na tarefa 'a', que foi identificada como atrasada e está bloqueando o avanço. Há indícios de instabilidade no planejamento inicial, com exclusões e recriações de tarefas.",
+          "conclusao": "Recomenda-se uma ação imediata para investigar a fundo o impedimento na tarefa 'a', realocar recursos se necessário e revisar o cronograma. Uma reunião com a equipe do projeto e stakeholders é essencial para definir um plano de recuperação e evitar que o atraso se agrave e impacte outras fases críticas.",
+          "eventosCriticos": [
+            "Impedimento crítico na tarefa 'a' registrado em 29/04/2026, causando bloqueio no projeto.",
+            "Projeto com 2 dias de atraso em relação ao planejamento inicial.",
+            "Tarefa 'a' identificada como atrasada e prioritária para resolução.",
+            "Registros de exclusão e recriação de tarefas, sugerindo desafios na gestão do escopo ou planejamento inicial."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "REL-1777568684014",
+      "nome": "Relatório_2026_04_30_14_04_44_ANDERSON",
+      "geradoEm": "30/04/2026, 14:04:44",
+      "dataGeracao": "30/04/2026, 14:04:44",
+      "autor": "Anderson",
+      "diretoria": "Diretoria de Tecnologia da Informação",
+      "panorama": [
+        {
+          "titulo": "Desempenho Geral Operacional",
+          "descricao": "Avaliação da eficiência nos processos de emissão de documentos (CNH e CRLV) e agendamentos. Observa-se uma estabilização nos tempos de espera, com pontos de atenção em regiões específicas do interior.",
+          "nivel": "medio"
+        },
+        {
+          "titulo": "Projetos de Modernização de TI",
+          "descricao": "Panorama dos principais projetos de tecnologia, incluindo a migração de sistemas legados e a implementação de novas ferramentas digitais. O projeto 'Alteração dos Racks' está em desenvolvimento com atrasos pontuais.",
+          "nivel": "alto"
+        },
+        {
+          "titulo": "Fiscalização e Segurança no Trânsito",
+          "descricao": "Relatório sobre as ações de fiscalização e campanhas de conscientização. Indicadores mostram uma leve redução nos acidentes com vítimas, porém infrações por excesso de velocidade permanecem um desafio.",
+          "nivel": "medio"
+        },
+        {
+          "titulo": "Saúde Financeira e Orçamentária",
+          "descricao": "Análise da execução orçamentária do período. A arrecadação está em linha com o esperado, e os gastos com manutenção de infraestrutura estão sob controle.",
+          "nivel": "baixo"
+        }
+      ],
+      "detalhes": [
+        {
+          "id": 1,
+          "nome": "Alteração dos Racks",
+          "progress": 0,
+          "departamento": "TI - Infraestrutura",
+          "analiseIA": "O projeto 'Alteração dos Racks' encontra-se em estágio inicial de desenvolvimento (0% de progresso) e apresenta 2 dias de atraso. Logs indicam um impedimento recente em 29/04/2026 e a existência de tarefas atrasadas ('a'). A equipe parece estar em processo de reestruturação de tarefas, o que pode impactar o cronograma.",
+          "conclusao": "Recomenda-se uma análise imediata do impedimento reportado e uma revisão detalhada do plano de trabalho, priorizando a resolução das tarefas atrasadas para evitar maiores desvios no cronograma. A comunicação entre as equipes envolvidas deve ser intensificada.",
+          "eventosCriticos": [
+            "Atraso de 2 dias no cronograma do projeto.",
+            "Impedimento não especificado em 29/04/2026.",
+            "Tarefa 'a' identificada como atrasada e sem avanço."
+          ]
+        }
+      ]
+    },
+    {
       "id": "TESTE",
       "nome": "Relatório de Teste"
     }
