@@ -61,7 +61,6 @@ export async function GET(request: Request) {
       ]
     }`;
 
-    const apiKey = process.env.GEMINI_API_KEY;
     const model = "gemini-2.5-flash"; 
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
 
