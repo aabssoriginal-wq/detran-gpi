@@ -3,27 +3,33 @@ import fs from 'fs';
 import path from 'path';
 import { formatarDataBR } from "./utils";
 
-// No Azure, a raiz do site montada via Run From Package é somente leitura.
-const getDBPath = () => {
+// Lógica de persistência inteligente para Azure e Local
+const getFilePath = (fileName: string) => {
   const isAzure = process.env.WEBSITE_INSTANCE_ID !== undefined;
+  
   if (isAzure) {
-    const azureDataDir = path.join('/home/site/data');
-    if (process.env.FORCE_CLEAN === 'true') {
-      try {
-        if (fs.existsSync(azureDataDir)) {
-          fs.rmSync(azureDataDir, { recursive: true, force: true });
-        }
-      } catch(e) {}
-    }
+    const azureDataDir = '/home/site/data';
+    const targetPath = path.join(azureDataDir, fileName);
+    const sourcePath = path.join(process.cwd(), fileName);
+
+    // Garantir que o diretório persistente exista
     if (!fs.existsSync(azureDataDir)) {
       try { fs.mkdirSync(azureDataDir, { recursive: true }); } catch(e) {}
     }
-    return path.join(azureDataDir, 'data.json');
+
+    // Se o arquivo não existe na pasta persistente, copiar a massa de dados do pacote
+    if (!fs.existsSync(targetPath) && fs.existsSync(sourcePath)) {
+      try { fs.copyFileSync(sourcePath, targetPath); } catch(e) {}
+    }
+
+    return targetPath;
   }
-  return path.join(process.cwd(), 'data.json');
+  
+  return path.join(process.cwd(), fileName);
 };
 
-const dataFilePath = getDBPath();
+const dataFilePath = getFilePath('data.json');
+const usersFilePath = getFilePath('users.json');
 
 export interface LogEntry {
   acao: string;
