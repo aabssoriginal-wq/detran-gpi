@@ -1,3455 +1,3463 @@
-[
-  {
-    "id": 66,
-    "nome": "Alteração dos Racks",
-    "status": "desenvolvimento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 1,
-    "text": "Impedimentos",
-    "indicator": "bg-rose-600",
-    "icon": "ShieldAlert",
-    "iconColor": "text-rose-600",
-    "responsavel": "Clayton Rodrigues do Carmo",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Impedimento em a",
-        "justificativa": "a",
-        "data": "29/04/2026 00:00",
-        "user": "Bruno Zaia Boneto"
+{
+  "projetos": [
+    {
+      "id": 66,
+      "nome": "Alteração dos Racks",
+      "status": "desenvolvimento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 1,
+      "text": "Impedimentos",
+      "indicator": "bg-rose-600",
+      "icon": "ShieldAlert",
+      "iconColor": "text-rose-600",
+      "responsavel": "Clayton Rodrigues do Carmo",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Impedimento em a",
+          "justificativa": "a",
+          "data": "29/04/2026 00:00",
+          "user": "Bruno Zaia Boneto"
+        },
+        {
+          "acao": "Criou tarefa: a",
+          "justificativa": "Nenhuma",
+          "data": "28/04/2026 23:54",
+          "user": "Bruno Zaia Boneto"
+        },
+        {
+          "acao": "Atualização de EAP",
+          "justificativa": "Alteração de tarefas",
+          "data": "28/04/2026 23:54",
+          "user": "Bruno Zaia Boneto"
+        },
+        {
+          "acao": "Excluiu tarefa e toda hierarquia: Início (3 itens)",
+          "justificativa": ".",
+          "data": "28/04/2026 16:26",
+          "user": "Bruno Zaia Boneto"
+        },
+        {
+          "acao": "Criou tarefa: 2",
+          "justificativa": "Nenhuma",
+          "data": "28/04/2026 16:26",
+          "user": "Bruno Zaia Boneto"
+        },
+        {
+          "acao": "Atualização de EAP",
+          "justificativa": "Alteração de tarefas",
+          "data": "28/04/2026 16:26",
+          "user": "Bruno Zaia Boneto"
+        },
+        {
+          "acao": "Criou tarefa: 2",
+          "justificativa": "Nenhuma",
+          "data": "28/04/2026 16:25",
+          "user": "Bruno Zaia Boneto"
+        },
+        {
+          "acao": "Atualização de EAP",
+          "justificativa": "Alteração de tarefas",
+          "data": "28/04/2026 16:25",
+          "user": "Bruno Zaia Boneto"
+        },
+        {
+          "acao": "Criou tarefa: Início",
+          "justificativa": "Nenhuma",
+          "data": "28/04/2026 16:20",
+          "user": "Bruno Zaia Boneto"
+        },
+        {
+          "acao": "Atualização de EAP",
+          "justificativa": "Alteração de tarefas",
+          "data": "28/04/2026 16:20",
+          "user": "Bruno Zaia Boneto"
+        },
+        {
+          "acao": "Diretoria alterada: Diretoria de Veículos Automotores → Diretoria de Tecnologia da Informação",
+          "justificativa": "corrigir",
+          "data": "28/04/2026 15:51",
+          "user": "Anderson"
+        },
+        {
+          "acao": "Responsável alterado para Clayton Rodrigues do Carmo",
+          "justificativa": "Atribuição",
+          "data": "28/04/2026 15:50",
+          "user": "Anderson"
+        },
+        {
+          "acao": "Responsável alterado para Vinicius Novaes",
+          "justificativa": "Atribuição",
+          "data": "28/04/2026 15:50",
+          "user": "Vinicius Novaes"
+        },
+        {
+          "acao": "Responsável alterado para Vinicius Novaes",
+          "justificativa": "Atribuição",
+          "data": "28/04/2026 15:50",
+          "user": "Vinicius Novaes"
+        },
+        {
+          "acao": "Responsável alterado para Vinicius Novaes",
+          "justificativa": "Atribuição",
+          "data": "28/04/2026 15:50",
+          "user": "Vinicius Novaes"
+        },
+        {
+          "acao": "Diretoria alterada: Diretoria de Tecnologia da Informação → Diretoria de Veículos Automotores",
+          "justificativa": ".",
+          "data": "28/04/2026 15:41",
+          "user": "Anderson dos Santos Soares"
+        },
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2026-03-02",
+        "fim": "2026-04-28"
       },
-      {
-        "acao": "Criou tarefa: a",
-        "justificativa": "Nenhuma",
-        "data": "28/04/2026 23:54",
-        "user": "Bruno Zaia Boneto"
+      "tarefas": [
+        {
+          "id": "j3lkprdns",
+          "titulo": "a",
+          "dataInicio": "2026-02-13",
+          "dataFim": "2026-04-28",
+          "responsavel": "",
+          "parentId": "none",
+          "progress": 0,
+          "status": "ideacao",
+          "notas": "",
+          "lancamentos": [],
+          "impedimentoAtivo": true,
+          "motivoImpedimento": "a"
+        }
+      ],
+      "escopo": "Substituição completa dos racks de comunicação localizados nas alas BV e JB do 11º andar.",
+      "healthStatus": "impedimentos",
+      "healthReason": "Bloqueado: a",
+      "tarefaBloqueada": "a",
+      "motivoBloqueio": "a",
+      "responsavelTecnico": "",
+      "favorito": true,
+      "favoritos": [
+        "Anderson",
+        "Bruno Zaia Boneto"
+      ]
+    },
+    {
+      "id": 37,
+      "nome": "Arquitetura de TIC",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Édipo do Nascimento Reis",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
       },
-      {
-        "acao": "Atualização de EAP",
-        "justificativa": "Alteração de tarefas",
-        "data": "28/04/2026 23:54",
-        "user": "Bruno Zaia Boneto"
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favorito": true,
+      "favoritos": [
+        "Bruno Zaia Boneto"
+      ]
+    },
+    {
+      "id": 72,
+      "nome": "AVA Moodle",
+      "status": "desenvolvimento",
+      "andamento": true,
+      "progress": 99,
+      "delta": 30,
+      "text": "Atrasados",
+      "indicator": "bg-rose-500",
+      "icon": "AlertCircle",
+      "iconColor": "text-rose-500",
+      "responsavel": "Lucas Rodrigues Jose Cesario",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2026-02-03",
+        "fim": "2026-03-30"
       },
-      {
-        "acao": "Excluiu tarefa e toda hierarquia: Início (3 itens)",
-        "justificativa": ".",
-        "data": "28/04/2026 16:26",
-        "user": "Bruno Zaia Boneto"
+      "tarefas": [],
+      "escopo": "Migração do AVA Moodle para a nuvem do DETRAN para ampliar o controle e a governança da infraestrutura.",
+      "healthStatus": "atrasados",
+      "healthReason": "Projeto atrasado há 30 dias.",
+      "favorito": true,
+      "favoritos": [
+        "Bruno Zaia Boneto"
+      ]
+    },
+    {
+      "id": 30,
+      "nome": "b-Cadastros Legados",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Ricardo Mores Zafra Junior",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
       },
-      {
-        "acao": "Criou tarefa: 2",
-        "justificativa": "Nenhuma",
-        "data": "28/04/2026 16:26",
-        "user": "Bruno Zaia Boneto"
+      "tarefas": [],
+      "escopo": "Integração do e-CNH com API b-Cadastro para validação de CPF/CNPJ junto à Receita Federal, garantindo integridade e rastreabilidade.",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favorito": true,
+      "favoritos": [
+        "Bruno Zaia Boneto"
+      ]
+    },
+    {
+      "id": 61,
+      "nome": "BlackSpirit",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Bruno Zaia Boneto",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2026-04-14",
+        "fim": ""
       },
-      {
-        "acao": "Atualização de EAP",
-        "justificativa": "Alteração de tarefas",
-        "data": "28/04/2026 16:26",
-        "user": "Bruno Zaia Boneto"
+      "tarefas": [],
+      "escopo": "Orquestração de exames e fiscalização via Databricks, integrando CFTV e análise geoespacial para monitoramento em tempo real.",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favorito": true,
+      "favoritos": [
+        "Bruno Zaia Boneto"
+      ]
+    },
+    {
+      "id": 77,
+      "nome": "BR26 - SI",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Yago Taigo de Abreu Lima",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2026-04-01",
+        "fim": ""
       },
-      {
-        "acao": "Criou tarefa: 2",
-        "justificativa": "Nenhuma",
-        "data": "28/04/2026 16:25",
-        "user": "Bruno Zaia Boneto"
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favorito": true,
+      "favoritos": [
+        "Bruno Zaia Boneto"
+      ]
+    },
+    {
+      "id": 50,
+      "nome": "CFTV",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Clayton Rodrigues do Carmo",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
       },
-      {
-        "acao": "Atualização de EAP",
-        "justificativa": "Alteração de tarefas",
-        "data": "28/04/2026 16:25",
-        "user": "Bruno Zaia Boneto"
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favorito": true,
+      "favoritos": [
+        "Bruno Zaia Boneto"
+      ]
+    },
+    {
+      "id": 1000,
+      "nome": "CNH Paulista",
+      "status": "desenvolvimento",
+      "andamento": true,
+      "progress": 82,
+      "delta": 41,
+      "text": "Risco",
+      "indicator": "bg-amber-500",
+      "icon": "Clock",
+      "iconColor": "text-amber-500",
+      "responsavel": "Amanda Guedes Gomes",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Excluiu tarefa: Az",
+          "justificativa": ".",
+          "data": "29/04/2026 00:35",
+          "user": "Anderson"
+        },
+        {
+          "acao": "Atualização de EAP",
+          "justificativa": "Alteração de tarefas",
+          "data": "29/04/2026 00:35",
+          "user": "Anderson"
+        },
+        {
+          "acao": "Renomeação de tarefa: \"A\" para \"Az\"",
+          "justificativa": "Alteração manual de registro",
+          "data": "29/04/2026 00:35",
+          "user": "Anderson"
+        },
+        {
+          "acao": "Atualização de EAP",
+          "justificativa": "Atualização de progresso/status via painel",
+          "data": "29/04/2026 00:29",
+          "user": "Anderson"
+        },
+        {
+          "acao": "Atualização de EAP",
+          "justificativa": "Atualização de progresso/status via painel",
+          "data": "29/04/2026 00:29",
+          "user": "Anderson"
+        },
+        {
+          "acao": "Atualização de EAP",
+          "justificativa": "Atualização de progresso/status via painel",
+          "data": "29/04/2026 00:29",
+          "user": "Anderson"
+        },
+        {
+          "acao": "Atualização de EAP",
+          "justificativa": "Atualização de progresso/status via painel",
+          "data": "29/04/2026 00:29",
+          "user": "Anderson"
+        },
+        {
+          "acao": "Criou tarefa: A",
+          "justificativa": "Nenhuma",
+          "data": "29/04/2026 00:29",
+          "user": "Anderson"
+        },
+        {
+          "acao": "Atualização de EAP",
+          "justificativa": "Alteração de tarefas",
+          "data": "29/04/2026 00:29",
+          "user": "Anderson"
+        },
+        {
+          "acao": "Atualizou tarefa 05 – PRJ0014255 – DMND0001412 – CNH somente versão digital: 68%",
+          "justificativa": "Atualização de progresso/status via painel",
+          "data": "29/04/2026 00:27",
+          "user": "Anderson"
+        },
+        {
+          "acao": "Carga de Projeto e EAP Hierárquica",
+          "data": "28/04/2026 16:05",
+          "justificativa": "Importação de planilha estruturada",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2025-11-01",
+        "fim": "2026-04-29"
       },
-      {
-        "acao": "Criou tarefa: Início",
-        "justificativa": "Nenhuma",
-        "data": "28/04/2026 16:20",
-        "user": "Bruno Zaia Boneto"
+      "tarefas": [
+        {
+          "id": "1001",
+          "titulo": "01 – DMND0001337 – #265064 – Res. 1.020 | Ajuste na TR 151",
+          "status": "concluido",
+          "progress": 100,
+          "responsavel": "Amanda Guedes Gomes",
+          "dataInicio": "2025-12-17",
+          "dataFim": "2026-01-29",
+          "parentId": "",
+          "notas": "Ajuste na TR 151"
+        },
+        {
+          "id": "1002",
+          "titulo": "02 – PRJ0011720 – DMND0001340 – Exame teórico sem matrícula CFC",
+          "status": "concluido",
+          "progress": 100,
+          "responsavel": "Amanda Guedes Gomes",
+          "dataInicio": "2025-12-15",
+          "dataFim": "2026-01-07",
+          "parentId": "",
+          "notas": "Exame teórico"
+        },
+        {
+          "id": "1003",
+          "titulo": "05 – PRJ0014255 – DMND0001412 – CNH somente versão digital",
+          "status": "em_andamento",
+          "progress": 68,
+          "responsavel": "Amanda Guedes Gomes",
+          "dataInicio": "2025-12-23",
+          "dataFim": "2026-03-19",
+          "parentId": "",
+          "notas": "Versão digital"
+        }
+      ],
+      "escopo": "",
+      "healthStatus": "risco",
+      "healthReason": "Tarefa \"05 – PRJ0014255 – DMND0001412 – CNH somente versão digital\" atrasada.",
+      "favorito": true,
+      "favoritos": [
+        "Bruno Zaia Boneto"
+      ]
+    },
+    {
+      "id": 22,
+      "nome": "CNH Paulista",
+      "status": "desenvolvimento",
+      "andamento": true,
+      "progress": 49,
+      "delta": 207,
+      "text": "Atrasados",
+      "indicator": "bg-rose-500",
+      "icon": "AlertCircle",
+      "iconColor": "text-rose-500",
+      "responsavel": "Ricardo Mores Zafra Junior",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2025-12-12",
+        "fim": "2025-10-04"
       },
-      {
-        "acao": "Atualização de EAP",
-        "justificativa": "Alteração de tarefas",
-        "data": "28/04/2026 16:20",
-        "user": "Bruno Zaia Boneto"
+      "tarefas": [],
+      "escopo": "Adequação dos sistemas do programa CNH Paulista às novas diretrizes estabelecidas pela Resolução CONTRAN nº 1.020/2025.",
+      "healthStatus": "atrasados",
+      "healthReason": "Projeto atrasado há 207 dias.",
+      "favorito": false,
+      "favoritos": []
+    },
+    {
+      "id": 32,
+      "nome": "CNPJ Alfanumérico Legados",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Ricardo Mores Zafra Junior",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
       },
-      {
-        "acao": "Diretoria alterada: Diretoria de Veículos Automotores → Diretoria de Tecnologia da Informação",
-        "justificativa": "corrigir",
-        "data": "28/04/2026 15:51",
-        "user": "Anderson"
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favorito": true,
+      "favoritos": []
+    },
+    {
+      "id": 44,
+      "nome": "Contratação de Tablets",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Daniel André Janzen",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2026-01-12",
+        "fim": ""
       },
-      {
-        "acao": "Responsável alterado para Clayton Rodrigues do Carmo",
-        "justificativa": "Atribuição",
-        "data": "28/04/2026 15:50",
-        "user": "Anderson"
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favorito": true,
+      "favoritos": []
+    },
+    {
+      "id": 94,
+      "nome": "Cybersegurança - novo contrato",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Claudio Xavier Matos",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
       },
-      {
-        "acao": "Responsável alterado para Vinicius Novaes",
-        "justificativa": "Atribuição",
-        "data": "28/04/2026 15:50",
-        "user": "Vinicius Novaes"
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favorito": true,
+      "favoritos": []
+    },
+    {
+      "id": 59,
+      "nome": "Dashboard de Exames Práticos",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 118,
+      "text": "Atrasados",
+      "indicator": "bg-rose-500",
+      "icon": "AlertCircle",
+      "iconColor": "text-rose-500",
+      "responsavel": "Leonardo José Ramos Botelho",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2025-01-12",
+        "fim": "2026-01-01"
       },
-      {
-        "acao": "Responsável alterado para Vinicius Novaes",
-        "justificativa": "Atribuição",
-        "data": "28/04/2026 15:50",
-        "user": "Vinicius Novaes"
+      "tarefas": [],
+      "escopo": "Dashboard para análise, insights e suporte à decisões estratégicas sobre exames práticos da CNH.",
+      "healthStatus": "atrasados",
+      "healthReason": "Projeto atrasado há 118 dias.",
+      "favoritos": []
+    },
+    {
+      "id": 42,
+      "nome": "Dashboard Usuários Sistemas",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Bruno Zaia Boneto",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
       },
-      {
-        "acao": "Responsável alterado para Vinicius Novaes",
-        "justificativa": "Atribuição",
-        "data": "28/04/2026 15:50",
-        "user": "Vinicius Novaes"
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 26,
+      "nome": "Databricks - Exames",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 113,
+      "text": "Atrasados",
+      "indicator": "bg-rose-500",
+      "icon": "AlertCircle",
+      "iconColor": "text-rose-500",
+      "responsavel": "Leonardo José Ramos Botelho",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2025-01-11",
+        "fim": "2026-01-06"
       },
-      {
-        "acao": "Diretoria alterada: Diretoria de Tecnologia da Informação → Diretoria de Veículos Automotores",
-        "justificativa": ".",
-        "data": "28/04/2026 15:41",
-        "user": "Anderson dos Santos Soares"
+      "tarefas": [],
+      "escopo": "Previsão de exames práticos, visando obter o número médio previsto de exames por local nas próximas 4 semanas.",
+      "healthStatus": "atrasados",
+      "healthReason": "Projeto atrasado há 113 dias.",
+      "favoritos": []
+    },
+    {
+      "id": 14,
+      "nome": "Databricks - Gestão de Pessoas",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Édipo do Nascimento Reis",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2026-02-04",
+        "fim": ""
       },
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2026-03-02",
-      "fim": "2026-04-28"
+      "tarefas": [],
+      "escopo": "Estudo de viabilidade e implementação de controles de acesso identitário, conectividade Databricks & CyberArk para rastreabilidade e segmentação de acesso.",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
     },
-    "tarefas": [
-      {
-        "id": "j3lkprdns",
-        "titulo": "a",
-        "dataInicio": "2026-02-13",
-        "dataFim": "2026-04-28",
-        "responsavel": "",
-        "parentId": "none",
-        "progress": 0,
-        "status": "ideacao",
-        "notas": "",
-        "lancamentos": [],
-        "impedimentoAtivo": true,
-        "motivoImpedimento": "a"
-      }
-    ],
-    "escopo": "Substituição completa dos racks de comunicação localizados nas alas BV e JB do 11º andar.",
-    "healthStatus": "impedimentos",
-    "healthReason": "Bloqueado: a",
-    "tarefaBloqueada": "a",
-    "motivoBloqueio": "a",
-    "responsavelTecnico": "",
-    "favorito": true,
-    "favoritos": [
-      "Anderson",
-      "Bruno Zaia Boneto"
-    ]
-  },
-  {
-    "id": 37,
-    "nome": "Arquitetura de TIC",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Édipo do Nascimento Reis",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favorito": true,
-    "favoritos": [
-      "Bruno Zaia Boneto"
-    ]
-  },
-  {
-    "id": 72,
-    "nome": "AVA Moodle",
-    "status": "desenvolvimento",
-    "andamento": true,
-    "progress": 99,
-    "delta": 30,
-    "text": "Atrasados",
-    "indicator": "bg-rose-500",
-    "icon": "AlertCircle",
-    "iconColor": "text-rose-500",
-    "responsavel": "Lucas Rodrigues Jose Cesario",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2026-02-03",
-      "fim": "2026-03-30"
-    },
-    "tarefas": [],
-    "escopo": "Migração do AVA Moodle para a nuvem do DETRAN para ampliar o controle e a governança da infraestrutura.",
-    "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 30 dias.",
-    "favorito": true,
-    "favoritos": [
-      "Bruno Zaia Boneto"
-    ]
-  },
-  {
-    "id": 30,
-    "nome": "b-Cadastros Legados",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Ricardo Mores Zafra Junior",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "Integração do e-CNH com API b-Cadastro para validação de CPF/CNPJ junto à Receita Federal, garantindo integridade e rastreabilidade.",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favorito": true,
-    "favoritos": [
-      "Bruno Zaia Boneto"
-    ]
-  },
-  {
-    "id": 61,
-    "nome": "BlackSpirit",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Bruno Zaia Boneto",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2026-04-14",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "Orquestração de exames e fiscalização via Databricks, integrando CFTV e análise geoespacial para monitoramento em tempo real.",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favorito": true,
-    "favoritos": [
-      "Bruno Zaia Boneto"
-    ]
-  },
-  {
-    "id": 77,
-    "nome": "BR26 - SI",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Yago Taigo de Abreu Lima",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2026-04-01",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favorito": true,
-    "favoritos": [
-      "Bruno Zaia Boneto"
-    ]
-  },
-  {
-    "id": 50,
-    "nome": "CFTV",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Clayton Rodrigues do Carmo",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favorito": true,
-    "favoritos": [
-      "Bruno Zaia Boneto"
-    ]
-  },
-  {
-    "id": 1000,
-    "nome": "CNH Paulista",
-    "status": "desenvolvimento",
-    "andamento": true,
-    "progress": 82,
-    "delta": 41,
-    "text": "Risco",
-    "indicator": "bg-amber-500",
-    "icon": "Clock",
-    "iconColor": "text-amber-500",
-    "responsavel": "Amanda Guedes Gomes",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Excluiu tarefa: Az",
-        "justificativa": ".",
-        "data": "29/04/2026 00:35",
-        "user": "Anderson"
+    {
+      "id": 27,
+      "nome": "Databricks - Live",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 41,
+      "text": "Atrasados",
+      "indicator": "bg-rose-500",
+      "icon": "AlertCircle",
+      "iconColor": "text-rose-500",
+      "responsavel": "Leonardo José Ramos Botelho",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2025-09-23",
+        "fim": "2026-03-19"
       },
-      {
-        "acao": "Atualização de EAP",
-        "justificativa": "Alteração de tarefas",
-        "data": "29/04/2026 00:35",
-        "user": "Anderson"
+      "tarefas": [],
+      "escopo": "Ingestão dos dados da LIVE /SN via conector nativo no ambiente Databricks.",
+      "healthStatus": "atrasados",
+      "healthReason": "Projeto atrasado há 41 dias.",
+      "favoritos": []
+    },
+    {
+      "id": 28,
+      "nome": "Databricks - TDV",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Leonardo José Ramos Botelho",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2025-07-31",
+        "fim": ""
       },
-      {
-        "acao": "Renomeação de tarefa: \"A\" para \"Az\"",
-        "justificativa": "Alteração manual de registro",
-        "data": "29/04/2026 00:35",
-        "user": "Anderson"
+      "tarefas": [],
+      "escopo": "Ingestão dos dados da TDV via conector nativo no ambiente Databricks.",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 16,
+      "nome": "Detran Concierge",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Lucas Rodrigues Jose Cesario",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2026-12-01",
+        "fim": ""
       },
-      {
-        "acao": "Atualização de EAP",
-        "justificativa": "Atualização de progresso/status via painel",
-        "data": "29/04/2026 00:29",
-        "user": "Anderson"
+      "tarefas": [],
+      "escopo": "Plataforma omnichannel com comunicação ativa e acesso personalizado aos serviços do Detran para o cidadão.",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favorito": true,
+      "favoritos": []
+    },
+    {
+      "id": 49,
+      "nome": "Detran Pay/SEV segurança",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Marcela Ramos Alexandre",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
       },
-      {
-        "acao": "Atualização de EAP",
-        "justificativa": "Atualização de progresso/status via painel",
-        "data": "29/04/2026 00:29",
-        "user": "Anderson"
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 96,
+      "nome": "e-CPF",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Claudio Xavier Matos",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
       },
-      {
-        "acao": "Atualização de EAP",
-        "justificativa": "Atualização de progresso/status via painel",
-        "data": "29/04/2026 00:29",
-        "user": "Anderson"
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 15,
+      "nome": "eCartas",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Gustavo De Camargo Costa",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2025-12-03",
+        "fim": "2026-05-02"
       },
-      {
-        "acao": "Atualização de EAP",
-        "justificativa": "Atualização de progresso/status via painel",
-        "data": "29/04/2026 00:29",
-        "user": "Anderson"
+      "tarefas": [],
+      "escopo": "Automatizar o envio de notificações de trânsito via Correios em fluxo digital, com acompanhamento de status e cumprimento de prazos legais no sistema SIM.",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 76,
+      "nome": "Encurtador de Links",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Yago Taigo de Abreu Lima",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2026-03-17",
+        "fim": ""
       },
-      {
-        "acao": "Criou tarefa: A",
-        "justificativa": "Nenhuma",
-        "data": "29/04/2026 00:29",
-        "user": "Anderson"
+      "tarefas": [],
+      "escopo": "Solução própria de encurtamento de links para centralizar a gestão de ativos digitais com resiliência em nuvem.",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 54,
+      "nome": "Estudo de Viabilidade - CyberArk Cloud",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Daniel André Janzen",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
       },
-      {
-        "acao": "Atualização de EAP",
-        "justificativa": "Alteração de tarefas",
-        "data": "29/04/2026 00:29",
-        "user": "Anderson"
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 48,
+      "nome": "Estudo modernização salas de reunião",
+      "status": "desenvolvimento",
+      "andamento": true,
+      "progress": 20,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-amber-500",
+      "icon": "Clock",
+      "iconColor": "text-amber-500",
+      "responsavel": "Clayton Rodrigues do Carmo",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2026-09-03",
+        "fim": ""
       },
-      {
-        "acao": "Atualizou tarefa 05 – PRJ0014255 – DMND0001412 – CNH somente versão digital: 68%",
-        "justificativa": "Atualização de progresso/status via painel",
-        "data": "29/04/2026 00:27",
-        "user": "Anderson"
+      "tarefas": [],
+      "escopo": "Pilar de modernização das salas de reunião, avaliando a unificação com o estudo da plenária.",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 46,
+      "nome": "Estudo plenária",
+      "status": "desenvolvimento",
+      "andamento": true,
+      "progress": 20,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-amber-500",
+      "icon": "Clock",
+      "iconColor": "text-amber-500",
+      "responsavel": "Clayton Rodrigues do Carmo",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2026-03-09",
+        "fim": ""
       },
-      {
-        "acao": "Carga de Projeto e EAP Hierárquica",
-        "data": "28/04/2026 16:05",
-        "justificativa": "Importação de planilha estruturada",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2025-11-01",
-      "fim": "2026-04-29"
+      "tarefas": [],
+      "escopo": "Melhoria de áudio e vídeo para a sala da plenária e demais salas de reunião (Pilar de Modernização).",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
     },
-    "tarefas": [
-      {
-        "id": "1001",
-        "titulo": "01 – DMND0001337 – #265064 – Res. 1.020 | Ajuste na TR 151",
-        "status": "concluido",
-        "progress": 100,
-        "responsavel": "Amanda Guedes Gomes",
-        "dataInicio": "2025-12-17",
-        "dataFim": "2026-01-29",
-        "parentId": "",
-        "notas": "Ajuste na TR 151"
+    {
+      "id": 45,
+      "nome": "Estudo Telefonia",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Édipo do Nascimento Reis",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2026-03-02",
+        "fim": ""
       },
-      {
-        "id": "1002",
-        "titulo": "02 – PRJ0011720 – DMND0001340 – Exame teórico sem matrícula CFC",
-        "status": "concluido",
-        "progress": 100,
-        "responsavel": "Amanda Guedes Gomes",
-        "dataInicio": "2025-12-15",
-        "dataFim": "2026-01-07",
-        "parentId": "",
-        "notas": "Exame teórico"
+      "tarefas": [],
+      "escopo": "Entrega de celulares corporativos e desativação de telefones fixos para padronização da comunicação institucional via WhatsApp.",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 13,
+      "nome": "ETP e TR - Especialistas de TI",
+      "status": "desenvolvimento",
+      "andamento": true,
+      "progress": 80,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-amber-500",
+      "icon": "Clock",
+      "iconColor": "text-amber-500",
+      "responsavel": "Daniel André Janzen",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2026-03-16",
+        "fim": ""
       },
-      {
-        "id": "1003",
-        "titulo": "05 – PRJ0014255 – DMND0001412 – CNH somente versão digital",
-        "status": "em_andamento",
-        "progress": 68,
-        "responsavel": "Amanda Guedes Gomes",
-        "dataInicio": "2025-12-23",
-        "dataFim": "2026-03-19",
-        "parentId": "",
-        "notas": "Versão digital"
-      }
-    ],
-    "escopo": "",
-    "healthStatus": "risco",
-    "healthReason": "Tarefa \"05 – PRJ0014255 – DMND0001412 – CNH somente versão digital\" atrasada.",
-    "favorito": true,
-    "favoritos": [
-      "Bruno Zaia Boneto"
-    ]
-  },
-  {
-    "id": 22,
-    "nome": "CNH Paulista",
-    "status": "desenvolvimento",
-    "andamento": true,
-    "progress": 49,
-    "delta": 207,
-    "text": "Atrasados",
-    "indicator": "bg-rose-500",
-    "icon": "AlertCircle",
-    "iconColor": "text-rose-500",
-    "responsavel": "Ricardo Mores Zafra Junior",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2025-12-12",
-      "fim": "2025-10-04"
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
     },
-    "tarefas": [],
-    "escopo": "Adequação dos sistemas do programa CNH Paulista às novas diretrizes estabelecidas pela Resolução CONTRAN nº 1.020/2025.",
-    "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 207 dias.",
-    "favorito": false,
-    "favoritos": []
-  },
-  {
-    "id": 32,
-    "nome": "CNPJ Alfanumérico Legados",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Ricardo Mores Zafra Junior",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favorito": true,
-    "favoritos": []
-  },
-  {
-    "id": 44,
-    "nome": "Contratação de Tablets",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Daniel André Janzen",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2026-01-12",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favorito": true,
-    "favoritos": []
-  },
-  {
-    "id": 94,
-    "nome": "Cybersegurança - novo contrato",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Claudio Xavier Matos",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favorito": true,
-    "favoritos": []
-  },
-  {
-    "id": 59,
-    "nome": "Dashboard de Exames Práticos",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 118,
-    "text": "Atrasados",
-    "indicator": "bg-rose-500",
-    "icon": "AlertCircle",
-    "iconColor": "text-rose-500",
-    "responsavel": "Leonardo José Ramos Botelho",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2025-01-12",
-      "fim": "2026-01-01"
-    },
-    "tarefas": [],
-    "escopo": "Dashboard para análise, insights e suporte à decisões estratégicas sobre exames práticos da CNH.",
-    "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 118 dias.",
-    "favoritos": []
-  },
-  {
-    "id": 42,
-    "nome": "Dashboard Usuários Sistemas",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Bruno Zaia Boneto",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 26,
-    "nome": "Databricks - Exames",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 113,
-    "text": "Atrasados",
-    "indicator": "bg-rose-500",
-    "icon": "AlertCircle",
-    "iconColor": "text-rose-500",
-    "responsavel": "Leonardo José Ramos Botelho",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2025-01-11",
-      "fim": "2026-01-06"
-    },
-    "tarefas": [],
-    "escopo": "Previsão de exames práticos, visando obter o número médio previsto de exames por local nas próximas 4 semanas.",
-    "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 113 dias.",
-    "favoritos": []
-  },
-  {
-    "id": 14,
-    "nome": "Databricks - Gestão de Pessoas",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Édipo do Nascimento Reis",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2026-02-04",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "Estudo de viabilidade e implementação de controles de acesso identitário, conectividade Databricks & CyberArk para rastreabilidade e segmentação de acesso.",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 27,
-    "nome": "Databricks - Live",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 41,
-    "text": "Atrasados",
-    "indicator": "bg-rose-500",
-    "icon": "AlertCircle",
-    "iconColor": "text-rose-500",
-    "responsavel": "Leonardo José Ramos Botelho",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2025-09-23",
-      "fim": "2026-03-19"
-    },
-    "tarefas": [],
-    "escopo": "Ingestão dos dados da LIVE /SN via conector nativo no ambiente Databricks.",
-    "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 41 dias.",
-    "favoritos": []
-  },
-  {
-    "id": 28,
-    "nome": "Databricks - TDV",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Leonardo José Ramos Botelho",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2025-07-31",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "Ingestão dos dados da TDV via conector nativo no ambiente Databricks.",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 16,
-    "nome": "Detran Concierge",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Lucas Rodrigues Jose Cesario",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2026-12-01",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "Plataforma omnichannel com comunicação ativa e acesso personalizado aos serviços do Detran para o cidadão.",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favorito": true,
-    "favoritos": []
-  },
-  {
-    "id": 49,
-    "nome": "Detran Pay/SEV segurança",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Marcela Ramos Alexandre",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 96,
-    "nome": "e-CPF",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Claudio Xavier Matos",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 15,
-    "nome": "eCartas",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Gustavo De Camargo Costa",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2025-12-03",
-      "fim": "2026-05-02"
-    },
-    "tarefas": [],
-    "escopo": "Automatizar o envio de notificações de trânsito via Correios em fluxo digital, com acompanhamento de status e cumprimento de prazos legais no sistema SIM.",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 76,
-    "nome": "Encurtador de Links",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Yago Taigo de Abreu Lima",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2026-03-17",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "Solução própria de encurtamento de links para centralizar a gestão de ativos digitais com resiliência em nuvem.",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 54,
-    "nome": "Estudo de Viabilidade - CyberArk Cloud",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Daniel André Janzen",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 48,
-    "nome": "Estudo modernização salas de reunião",
-    "status": "desenvolvimento",
-    "andamento": true,
-    "progress": 20,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-amber-500",
-    "icon": "Clock",
-    "iconColor": "text-amber-500",
-    "responsavel": "Clayton Rodrigues do Carmo",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2026-09-03",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "Pilar de modernização das salas de reunião, avaliando a unificação com o estudo da plenária.",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 46,
-    "nome": "Estudo plenária",
-    "status": "desenvolvimento",
-    "andamento": true,
-    "progress": 20,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-amber-500",
-    "icon": "Clock",
-    "iconColor": "text-amber-500",
-    "responsavel": "Clayton Rodrigues do Carmo",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2026-03-09",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "Melhoria de áudio e vídeo para a sala da plenária e demais salas de reunião (Pilar de Modernização).",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 45,
-    "nome": "Estudo Telefonia",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Édipo do Nascimento Reis",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2026-03-02",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "Entrega de celulares corporativos e desativação de telefones fixos para padronização da comunicação institucional via WhatsApp.",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 13,
-    "nome": "ETP e TR - Especialistas de TI",
-    "status": "desenvolvimento",
-    "andamento": true,
-    "progress": 80,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-amber-500",
-    "icon": "Clock",
-    "iconColor": "text-amber-500",
-    "responsavel": "Daniel André Janzen",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2026-03-16",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 12,
-    "nome": "ETP e TR - Service Desk",
-    "status": "desenvolvimento",
-    "andamento": true,
-    "progress": 99,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-amber-500",
-    "icon": "Clock",
-    "iconColor": "text-amber-500",
-    "responsavel": "Lucas Rodrigues Jose Cesario",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "Contratação de um Service Desk para atendimento de suporte aos usuários de TI do DETRAN-SP.",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 57,
-    "nome": "ETP e TR Licitação de Pessoal bodyshop",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Daniel André Janzen",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 62,
-    "nome": "Google - RST",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Leandro Almeida Batista da Silva",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2026-01-26",
-      "fim": "2026-06-19"
-    },
-    "tarefas": [],
-    "escopo": "App digital para registro de sinistros, com fotos, vídeos, OCR de placas e funcionamento offline, otimizando o processo de ocorrências.",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 65,
-    "nome": "HAVI",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Bruno Zaia Boneto",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2026-02-03",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "Infraestrutura tecnológica para monitoramento e colaboração, utilizando Dockstations para organização do ambiente.",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 40,
-    "nome": "Heimdall",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Édipo do Nascimento Reis",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 78,
-    "nome": "Hiperautomação",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Amanda Guedes Gomes",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 11,
-    "nome": "Hiperautomação pendências 1o contrato",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Lucas Rodrigues Jose Cesario",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 41,
-    "nome": "IA - Gemini/Kiro",
-    "status": "desenvolvimento",
-    "andamento": true,
-    "progress": 85,
-    "delta": 13,
-    "text": "Atrasados",
-    "indicator": "bg-rose-500",
-    "icon": "AlertCircle",
-    "iconColor": "text-rose-500",
-    "responsavel": "Bruno Zaia Boneto",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2026-02-23",
-      "fim": "2026-04-16"
-    },
-    "tarefas": [],
-    "escopo": "Aquisição de licenças Gemini e Kiro para suporte ao desenvolvimento em Power Apps e exploração de capacidades de LLM.",
-    "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 13 dias.",
-    "favoritos": []
-  },
-  {
-    "id": 98,
-    "nome": "Indicadores CiberSegurança (Nist e DID)",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Eduardo Fontolan Damasceno",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 79,
-    "nome": "Indicadores da DTI BR26 - operacional",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Édipo do Nascimento Reis",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 80,
-    "nome": "Indicadores da DTI BR26 - racional",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Carlos Alberto Rocha",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 36,
-    "nome": "Infosiga 4.0",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Claudio Xavier Matos",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 75,
-    "nome": "Inventário de Dados Pessoais",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Édipo do Nascimento Reis",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2025-01-14",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "Mapeamento estruturado do ciclo de vida dos dados em todas as diretorias para garantir conformidade com a LGPD.",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 39,
-    "nome": "ITAM",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Alex Felipe da Silva",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 38,
-    "nome": "ITSM",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Carlos Alberto Rocha",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 56,
-    "nome": "ITSM - Uso por todo DETRAN",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Carlos Alberto Rocha",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2026-01-02",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "Implementação de ITSM único para uso de todo o Detran e áreas de atendimento Prodesp.",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 91,
-    "nome": "Licitação Service Desk",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Daniel André Janzen",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 70,
-    "nome": "Macroprocessos DTI",
-    "status": "desenvolvimento",
-    "andamento": true,
-    "progress": 99,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-amber-500",
-    "icon": "Clock",
-    "iconColor": "text-amber-500",
-    "responsavel": "Carlos Alberto Rocha",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 35,
-    "nome": "Megalake 2.0",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Claudio Xavier Matos",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "Ingestão de dados do SIM, eVistoria, eCNH, eCRV, SISPL, SISFIN e ServiceNow no Databricks (aproximadamente 50 projetos).",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 92,
-    "nome": "Megalake 2.0 (Arquitetura de Dados)",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Claudio Xavier Matos",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 93,
-    "nome": "Microsoft Nova Contratação",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Claudio Xavier Matos",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 17,
-    "nome": "Migração Mainframe",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Édipo do Nascimento Reis",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 81,
-    "nome": "Minha Área/Controle de Acessos Estadual",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Eduardo Fontolan Damasceno",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 74,
-    "nome": "Minha Área/PLATAFORMA.SP",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Eduardo Fontolan Damasceno",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2025-11-25",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "Centralização do acesso aos sistemas corporativos com autenticação integrada e gestão unificada de credenciais.",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 95,
-    "nome": "Monitores Curvos (adesão)",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Claudio Xavier Matos",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 25,
-    "nome": "N33",
-    "status": "desenvolvimento",
-    "andamento": true,
-    "progress": 90,
-    "delta": 364,
-    "text": "Atrasados",
-    "indicator": "bg-rose-500",
-    "icon": "AlertCircle",
-    "iconColor": "text-rose-500",
-    "responsavel": "Rafael Ribeiro da Silva",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2025-03-13",
-      "fim": "2025-04-30"
-    },
-    "tarefas": [],
-    "escopo": "Adequação de sistemas para permitir a realização de exames práticos em municípios diversos da residência, conforme a Portaria nº 33/2024.",
-    "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 364 dias.",
-    "favoritos": []
-  },
-  {
-    "id": 82,
-    "nome": "Normas",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Anderson dos Santos Soares",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "Framework centralizado para gerenciar governança normativa de SP (leis, decretos, CONTRAN/SENATRAN) com suporte de IA.",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 5000,
-    "nome": "Normas SP",
-    "status": "desenvolvimento",
-    "andamento": true,
-    "progress": 47,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-amber-500",
-    "icon": "Clock",
-    "iconColor": "text-amber-500",
-    "responsavel": "Amanda Guedes Gomes",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga de Projeto e EAP Hierárquica",
-        "data": "28/04/2026 16:05",
-        "justificativa": "Importação de planilha estruturada",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [
-      {
-        "id": "5001",
-        "titulo": "48 - Lote 2: Leis (Massivo)",
-        "status": "em_andamento",
-        "progress": 50,
-        "responsavel": "Amanda Guedes Gomes",
-        "dataInicio": "2026-03-23",
-        "dataFim": "2026-05-01",
-        "parentId": "",
-        "notas": "Job de processamento paralelo"
+    {
+      "id": 12,
+      "nome": "ETP e TR - Service Desk",
+      "status": "desenvolvimento",
+      "andamento": true,
+      "progress": 99,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-amber-500",
+      "icon": "Clock",
+      "iconColor": "text-amber-500",
+      "responsavel": "Lucas Rodrigues Jose Cesario",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
       },
-      {
-        "id": "5002",
-        "titulo": "49 - Registro de Proveniência",
-        "status": "em_andamento",
-        "progress": 0,
-        "responsavel": "Amanda Guedes Gomes",
-        "dataInicio": "2026-05-15",
-        "dataFim": "2026-05-18",
-        "parentId": "",
-        "notas": "Smart Contracts"
+      "tarefas": [],
+      "escopo": "Contratação de um Service Desk para atendimento de suporte aos usuários de TI do DETRAN-SP.",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 57,
+      "nome": "ETP e TR Licitação de Pessoal bodyshop",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Daniel André Janzen",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
       },
-      {
-        "id": "5003",
-        "titulo": "50 - Lote 3: Decretos",
-        "status": "em_andamento",
-        "progress": 0,
-        "responsavel": "Amanda Guedes Gomes",
-        "dataInicio": "2026-05-04",
-        "dataFim": "2026-05-15",
-        "parentId": "",
-        "notas": "Preemptible VMs"
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 62,
+      "nome": "Google - RST",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Leandro Almeida Batista da Silva",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2026-01-26",
+        "fim": "2026-06-19"
       },
-      {
-        "id": "5004",
-        "titulo": "56 - Governança IBFT",
-        "status": "concluido",
-        "progress": 100,
-        "responsavel": "Amanda Guedes Gomes",
-        "dataInicio": "2026-02-23",
-        "dataFim": "2026-03-06",
-        "parentId": "",
-        "notas": "Especificação do Genesis Block"
-      }
-    ],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 83,
-    "nome": "Nova contratação CyberArk",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Édipo do Nascimento Reis",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
+      "tarefas": [],
+      "escopo": "App digital para registro de sinistros, com fotos, vídeos, OCR de placas e funcionamento offline, otimizando o processo de ocorrências.",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
     },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 51,
-    "nome": "Novo Contrato do Correios",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Daniel André Janzen",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 53,
-    "nome": "Novo Contrato Multicloud",
-    "status": "desenvolvimento",
-    "andamento": true,
-    "progress": 85,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-amber-500",
-    "icon": "Clock",
-    "iconColor": "text-amber-500",
-    "responsavel": "Daniel André Janzen",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2025-11-01",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 84,
-    "nome": "Novo Talonário",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Claudio Xavier Matos",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 52,
-    "nome": "Novos Pilares de Contratação (SLAs)",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Bruno Zaia Boneto",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 21,
-    "nome": "Organização na Wiki dos Apps",
-    "status": "desenvolvimento",
-    "andamento": true,
-    "progress": 99,
-    "delta": 101,
-    "text": "Atrasados",
-    "indicator": "bg-rose-500",
-    "icon": "AlertCircle",
-    "iconColor": "text-rose-500",
-    "responsavel": "Maila Fernandes Chagas",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2026-01-16",
-      "fim": "2026-01-18"
-    },
-    "tarefas": [],
-    "escopo": "Criação de página Wiki para centralização dos aplicativos ativos do Detran-SP, facilitando a consulta e disseminação do conhecimento.",
-    "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 101 dias.",
-    "favoritos": []
-  },
-  {
-    "id": 43,
-    "nome": "Painel BR25",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Laisa Cristina Capodifoglio",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2026-02-25",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 71,
-    "nome": "Pendência de pagamentos PRODESP",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Lucas Rodrigues Jose Cesario",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 20,
-    "nome": "Pilares de Contratação",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Amanda Guedes Gomes",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 55,
-    "nome": "Política de Segurança da Informação",
-    "status": "desenvolvimento",
-    "andamento": true,
-    "progress": 51,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-amber-500",
-    "icon": "Clock",
-    "iconColor": "text-amber-500",
-    "responsavel": "Daniel André Janzen",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2026-02-02",
-      "fim": "2026-04-30"
-    },
-    "tarefas": [],
-    "escopo": "Elaboração, implementação e monitoramento das políticas corporativas aplicáveis a todas as unidades organizacionais.",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 69,
-    "nome": "Políticas DTI",
-    "status": "desenvolvimento",
-    "andamento": true,
-    "progress": 99,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-amber-500",
-    "icon": "Clock",
-    "iconColor": "text-amber-500",
-    "responsavel": "Carlos Alberto Rocha",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 85,
-    "nome": "Portal Credenciados",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Leandro Almeida Batista da Silva",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 64,
-    "nome": "Projeto Cursos",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Bruno Zaia Boneto",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 58,
-    "nome": "Projeto Exames Teóricos - online",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Claudio Xavier Matos",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "Contratação de sistema 100% digital e remoto para exames teóricos, visando escalabilidade, segurança e redução de filas presenciais.",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 18,
-    "nome": "Projetos Google",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 24,
-    "text": "Atrasados",
-    "indicator": "bg-rose-500",
-    "icon": "AlertCircle",
-    "iconColor": "text-rose-500",
-    "responsavel": "Amanda Guedes Gomes",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2025-10-11",
-      "fim": "2026-04-05"
-    },
-    "tarefas": [],
-    "escopo": "Desenvolvimento de Prova Prática (digitalização de exames), Normas (gestão de regras) e SEV (automação de vistorias).",
-    "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 24 dias.",
-    "favoritos": []
-  },
-  {
-    "id": 63,
-    "nome": "Projetos Google - CGIS",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Leandro Almeida Batista da Silva",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 86,
-    "nome": "Projetos Google - Mandiant",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Eduardo Fontolan Damasceno",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 19,
-    "nome": "Projetos Hiperautomação",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 21,
-    "text": "Atrasados",
-    "indicator": "bg-rose-500",
-    "icon": "AlertCircle",
-    "iconColor": "text-rose-500",
-    "responsavel": "Amanda Guedes Gomes",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2025-10-15",
-      "fim": "2026-04-08"
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 21 dias.",
-    "favoritos": []
-  },
-  {
-    "id": 4000,
-    "nome": "Prova Prática",
-    "status": "desenvolvimento",
-    "andamento": true,
-    "progress": 72,
-    "delta": 26,
-    "text": "Risco",
-    "indicator": "bg-amber-500",
-    "icon": "Clock",
-    "iconColor": "text-amber-500",
-    "responsavel": "Amanda Guedes Gomes",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga de Projeto e EAP Hierárquica",
-        "data": "28/04/2026 16:05",
-        "justificativa": "Importação de planilha estruturada",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [
-      {
-        "id": "4001",
-        "titulo": "16 - Desenvolvimento de BackEnd - Auxiliar",
-        "status": "em_andamento",
-        "progress": 0,
-        "responsavel": "Amanda Guedes Gomes",
-        "dataInicio": "2026-03-27",
-        "dataFim": "2026-04-10",
-        "parentId": "",
-        "notas": "BackEnd Auxiliar"
+    {
+      "id": 65,
+      "nome": "HAVI",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Bruno Zaia Boneto",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2026-02-03",
+        "fim": ""
       },
-      {
-        "id": "4002",
-        "titulo": "Login gov.br + Biometria Facial",
-        "status": "concluido",
-        "progress": 100,
-        "responsavel": "Amanda Guedes Gomes",
-        "dataInicio": "2026-03-30",
-        "dataFim": "2026-04-03",
-        "parentId": "4001",
-        "notas": "Autenticação"
+      "tarefas": [],
+      "escopo": "Infraestrutura tecnológica para monitoramento e colaboração, utilizando Dockstations para organização do ambiente.",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 40,
+      "nome": "Heimdall",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Édipo do Nascimento Reis",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
       },
-      {
-        "id": "4003",
-        "titulo": "17 - Desenvolvimento de FrontEnd - Auxiliar",
-        "status": "em_andamento",
-        "progress": 0,
-        "responsavel": "Amanda Guedes Gomes",
-        "dataInicio": "2026-03-23",
-        "dataFim": "2026-04-03",
-        "parentId": "",
-        "notas": "FrontEnd Auxiliar"
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 78,
+      "nome": "Hiperautomação",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Amanda Guedes Gomes",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
       },
-      {
-        "id": "4004",
-        "titulo": "1 - Dependências",
-        "status": "concluido",
-        "progress": 100,
-        "responsavel": "Amanda Guedes Gomes",
-        "dataInicio": "2026-01-27",
-        "dataFim": "2026-03-30",
-        "parentId": "",
-        "notas": "Dependências gerais"
-      }
-    ],
-    "escopo": "",
-    "healthStatus": "risco",
-    "healthReason": "Tarefa \"17 - Desenvolvimento de FrontEnd - Auxiliar\" atrasada.",
-    "favoritos": []
-  },
-  {
-    "id": 87,
-    "nome": "Prova Prática",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Leandro Almeida Batista da Silva",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
     },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 68,
-    "nome": "Revisão do PDTIC",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Carlos Alberto Rocha",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 2000,
-    "nome": "RST (Registro de Sinistros de Trânsito)",
-    "status": "concluido",
-    "andamento": true,
-    "progress": 100,
-    "delta": 0,
-    "text": "Concluído",
-    "indicator": "bg-emerald-600",
-    "icon": "CheckCircle2",
-    "iconColor": "text-emerald-600",
-    "responsavel": "Amanda Guedes Gomes",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga de Projeto e EAP Hierárquica",
-        "data": "28/04/2026 16:05",
-        "justificativa": "Importação de planilha estruturada",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [
-      {
-        "id": "2001",
-        "titulo": "1- Dependências",
-        "status": "concluido",
-        "progress": 100,
-        "responsavel": "Amanda Guedes Gomes",
-        "dataInicio": "2026-01-23",
-        "dataFim": "2026-02-27",
-        "parentId": "",
-        "notas": "Tratamento das dependências"
+    {
+      "id": 11,
+      "nome": "Hiperautomação pendências 1o contrato",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Lucas Rodrigues Jose Cesario",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
       },
-      {
-        "id": "2002",
-        "titulo": "Criação do Ambiente",
-        "status": "concluido",
-        "progress": 100,
-        "responsavel": "Amanda Guedes Gomes",
-        "dataInicio": "2026-01-26",
-        "dataFim": "2026-02-06",
-        "parentId": "2001",
-        "notas": "Criação do ambiente Admin"
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 41,
+      "nome": "IA - Gemini/Kiro",
+      "status": "desenvolvimento",
+      "andamento": true,
+      "progress": 85,
+      "delta": 13,
+      "text": "Atrasados",
+      "indicator": "bg-rose-500",
+      "icon": "AlertCircle",
+      "iconColor": "text-rose-500",
+      "responsavel": "Bruno Zaia Boneto",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2026-02-23",
+        "fim": "2026-04-16"
       },
-      {
-        "id": "2003",
-        "titulo": "Aprovação Protótipo Administração",
-        "status": "concluido",
-        "progress": 100,
-        "responsavel": "Amanda Guedes Gomes",
-        "dataInicio": "2026-01-23",
-        "dataFim": "2026-01-30",
-        "parentId": "2001",
-        "notas": "Aprovação"
+      "tarefas": [],
+      "escopo": "Aquisição de licenças Gemini e Kiro para suporte ao desenvolvimento em Power Apps e exploração de capacidades de LLM.",
+      "healthStatus": "atrasados",
+      "healthReason": "Projeto atrasado há 13 dias.",
+      "favoritos": []
+    },
+    {
+      "id": 98,
+      "nome": "Indicadores CiberSegurança (Nist e DID)",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Eduardo Fontolan Damasceno",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
       },
-      {
-        "id": "2004",
-        "titulo": "9- Protótipo - Administração - V2",
-        "status": "concluido",
-        "progress": 100,
-        "responsavel": "Amanda Guedes Gomes",
-        "dataInicio": "2026-02-05",
-        "dataFim": "2026-02-16",
-        "parentId": "",
-        "notas": "Protótipo V2"
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 79,
+      "nome": "Indicadores da DTI BR26 - operacional",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Édipo do Nascimento Reis",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
       },
-      {
-        "id": "2005",
-        "titulo": "11- Desenvolvimento de BackEnd - Operacional",
-        "status": "concluido",
-        "progress": 100,
-        "responsavel": "Amanda Guedes Gomes",
-        "dataInicio": "2026-02-09",
-        "dataFim": "2026-03-04",
-        "parentId": "",
-        "notas": "BackEnd Operacional"
-      }
-    ],
-    "escopo": "",
-    "healthStatus": "concluído",
-    "healthReason": "Concluído.",
-    "favoritos": []
-  },
-  {
-    "id": 24,
-    "nome": "Sala Segura",
-    "status": "concluido",
-    "andamento": true,
-    "progress": 100,
-    "delta": 0,
-    "text": "Concluído",
-    "indicator": "bg-emerald-600",
-    "icon": "CheckCircle2",
-    "iconColor": "text-emerald-600",
-    "responsavel": "Clayton Rodrigues do Carmo",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2026-03-11",
-      "fim": "2026-03-16"
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
     },
-    "tarefas": [],
-    "escopo": "Implantação do novo Data Center do Detran-SP.",
-    "healthStatus": "concluído",
-    "healthReason": "Concluído.",
-    "favoritos": []
-  },
-  {
-    "id": 67,
-    "nome": "Scanner Corporativo",
-    "status": "desenvolvimento",
-    "andamento": true,
-    "progress": 20,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-amber-500",
-    "icon": "Clock",
-    "iconColor": "text-amber-500",
-    "responsavel": "Clayton Rodrigues do Carmo",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2026-03-27",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "Alteração do método de escaneamento para possibilitar o envio direto por e-mail.",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 88,
-    "nome": "Segurança Orgânica",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Eduardo Fontolan Damasceno",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 89,
-    "nome": "SEV",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Marcela Ramos Alexandre",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 3000,
-    "nome": "SEV - Vistorias",
-    "status": "concluido",
-    "andamento": true,
-    "progress": 100,
-    "delta": 0,
-    "text": "Concluído",
-    "indicator": "bg-emerald-600",
-    "icon": "CheckCircle2",
-    "iconColor": "text-emerald-600",
-    "responsavel": "Amanda Guedes Gomes",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga de Projeto e EAP Hierárquica",
-        "data": "28/04/2026 16:05",
-        "justificativa": "Importação de planilha estruturada",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [
-      {
-        "id": "3001",
-        "titulo": "Pagamento de 5 vistorias",
-        "status": "concluido",
-        "progress": 100,
-        "responsavel": "Amanda Guedes Gomes",
-        "dataInicio": "2026-02-02",
-        "dataFim": "2026-02-13",
-        "parentId": "",
-        "notas": "Pagamento de 5 vistorias"
+    {
+      "id": 80,
+      "nome": "Indicadores da DTI BR26 - racional",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Carlos Alberto Rocha",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
       },
-      {
-        "id": "3002",
-        "titulo": "12/02: em testes por QA",
-        "status": "concluido",
-        "progress": 100,
-        "responsavel": "Amanda Guedes Gomes",
-        "dataInicio": "2026-02-12",
-        "dataFim": "2026-02-13",
-        "parentId": "3001",
-        "notas": "Testes QA"
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 36,
+      "nome": "Infosiga 4.0",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Claudio Xavier Matos",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
       },
-      {
-        "id": "3003",
-        "titulo": "15- Integração com Portal do Cidadão",
-        "status": "concluido",
-        "progress": 100,
-        "responsavel": "Amanda Guedes Gomes",
-        "dataInicio": "2025-11-17",
-        "dataFim": "2025-12-11",
-        "parentId": "",
-        "notas": "Portal Cidadão"
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 75,
+      "nome": "Inventário de Dados Pessoais",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Édipo do Nascimento Reis",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2025-01-14",
+        "fim": ""
       },
-      {
-        "id": "3004",
-        "titulo": "11- Frontend (Plataforma Estadual de Vistoria)",
-        "status": "concluido",
-        "progress": 100,
-        "responsavel": "Amanda Guedes Gomes",
-        "dataInicio": "2025-11-17",
-        "dataFim": "2025-12-05",
-        "parentId": "",
-        "notas": "Frontend eVistoria"
-      }
-    ],
-    "escopo": "",
-    "healthStatus": "concluído",
-    "healthReason": "Concluído.",
-    "favoritos": []
-  },
-  {
-    "id": 23,
-    "nome": "SIAUT",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Simone Pereira dos Santos Fogaça",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
+      "tarefas": [],
+      "escopo": "Mapeamento estruturado do ciclo de vida dos dados em todas as diretorias para garantir conformidade com a LGPD.",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
     },
-    "tarefas": [],
-    "escopo": "Sistema Integrated de Autuações de Trânsito para operacionalizar lavratura de autuações e penalidades, modernizando e automatizando processos para segurança viária.",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 31,
-    "nome": "Sincronismo CEP Legados",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Ricardo Mores Zafra Junior",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 29,
-    "nome": "Sistema AEDJ",
-    "status": "desenvolvimento",
-    "andamento": true,
-    "progress": 10,
-    "delta": 107,
-    "text": "Atrasados",
-    "indicator": "bg-rose-500",
-    "icon": "AlertCircle",
-    "iconColor": "text-rose-500",
-    "responsavel": "Amanda Guedes Gomes",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2026-03-17",
-      "fim": "2026-01-12"
-    },
-    "tarefas": [],
-    "escopo": "Plataforma integrada ao STJ/SEI para automatizar tratamento de processos judiciais via IA, incluindo jurimetria e dashboards para gestão estratégica.",
-    "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 107 dias.",
-    "favoritos": []
-  },
-  {
-    "id": 97,
-    "nome": "Sistema Biométrico",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Claudio Xavier Matos",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 73,
-    "nome": "SOC Estadual",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Édipo do Nascimento Reis",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2026-03-17",
-      "fim": "2026-04-30"
-    },
-    "tarefas": [],
-    "escopo": "Estrutura de monitoramento 24x7 centralizada para detecção e mitigação de ameaças cibernéticas em tempo real.",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 34,
-    "nome": "Talonário Eletrônico",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Claudio Xavier Matos",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "Atualização do Auto de Infração e Termo de Recolhimento de Veículo para formato eletrônico.",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 33,
-    "nome": "Tenant Microsoft",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Édipo do Nascimento Reis",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  },
-  {
-    "id": 60,
-    "nome": "Término da Instalação Wi-Fi",
-    "status": "desenvolvimento",
-    "andamento": true,
-    "progress": 99,
-    "delta": 33,
-    "text": "Atrasados",
-    "indicator": "bg-rose-500",
-    "icon": "AlertCircle",
-    "iconColor": "text-rose-500",
-    "responsavel": "Clayton Rodrigues do Carmo",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2026-01-02",
-      "fim": "2026-03-27"
-    },
-    "tarefas": [],
-    "escopo": "Modernização da conexão sem fio nas Superintendências e unidades Poupatempo.",
-    "healthStatus": "atrasados",
-    "healthReason": "Projeto atrasado há 33 dias.",
-    "favoritos": []
-  },
-  {
-    "id": 47,
-    "nome": "Unificação contratos periféricos",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Daniel André Janzen",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": [
-      "Bruno Zaia Boneto"
-    ]
-  },
-  {
-    "id": 90,
-    "nome": "Wallet",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Claudio Xavier Matos",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "",
-      "fim": ""
-    },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": [
-      "Bruno Zaia Boneto"
-    ]
-  },
-  {
-    "id": 10,
-    "nome": "Wrike- Amanda",
-    "status": "planejamento",
-    "andamento": true,
-    "progress": 0,
-    "delta": 0,
-    "text": "Prazo",
-    "indicator": "bg-indigo-400",
-    "icon": "Clock",
-    "iconColor": "text-indigo-400",
-    "responsavel": "Amanda Guedes Gomes",
-    "departamento": "Diretoria de Tecnologia da Informação",
-    "excluido": false,
-    "logs": [
-      {
-        "acao": "Repactuação: 28/04/2026 - 30/04/2026",
-        "justificativa": ".",
-        "data": "29/04/2026 00:55",
-        "user": "Anderson"
+    {
+      "id": 39,
+      "nome": "ITAM",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Alex Felipe da Silva",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
       },
-      {
-        "acao": "Repactuação: 29/04/2026 - 30/04/2026",
-        "justificativa": "Definição inicial de cronograma",
-        "data": "29/04/2026 00:55",
-        "user": "Anderson"
-      },
-      {
-        "acao": "Carga Inicial de Massa de Dados",
-        "data": "28/04/2026 15:35",
-        "justificativa": "Migração solicitada pelo usuário",
-        "user": "Sistema"
-      }
-    ],
-    "baselineData": {
-      "inicio": "2026-04-28",
-      "fim": "2026-04-30"
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
     },
-    "tarefas": [],
-    "escopo": "",
-    "healthStatus": "prazo",
-    "healthReason": "No prazo.",
-    "favoritos": []
-  }
-]
+    {
+      "id": 38,
+      "nome": "ITSM",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Carlos Alberto Rocha",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 56,
+      "nome": "ITSM - Uso por todo DETRAN",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Carlos Alberto Rocha",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2026-01-02",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "Implementação de ITSM único para uso de todo o Detran e áreas de atendimento Prodesp.",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 91,
+      "nome": "Licitação Service Desk",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Daniel André Janzen",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 70,
+      "nome": "Macroprocessos DTI",
+      "status": "desenvolvimento",
+      "andamento": true,
+      "progress": 99,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-amber-500",
+      "icon": "Clock",
+      "iconColor": "text-amber-500",
+      "responsavel": "Carlos Alberto Rocha",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 35,
+      "nome": "Megalake 2.0",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Claudio Xavier Matos",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "Ingestão de dados do SIM, eVistoria, eCNH, eCRV, SISPL, SISFIN e ServiceNow no Databricks (aproximadamente 50 projetos).",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 92,
+      "nome": "Megalake 2.0 (Arquitetura de Dados)",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Claudio Xavier Matos",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 93,
+      "nome": "Microsoft Nova Contratação",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Claudio Xavier Matos",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 17,
+      "nome": "Migração Mainframe",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Édipo do Nascimento Reis",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 81,
+      "nome": "Minha Área/Controle de Acessos Estadual",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Eduardo Fontolan Damasceno",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 74,
+      "nome": "Minha Área/PLATAFORMA.SP",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Eduardo Fontolan Damasceno",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2025-11-25",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "Centralização do acesso aos sistemas corporativos com autenticação integrada e gestão unificada de credenciais.",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 95,
+      "nome": "Monitores Curvos (adesão)",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Claudio Xavier Matos",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 25,
+      "nome": "N33",
+      "status": "desenvolvimento",
+      "andamento": true,
+      "progress": 90,
+      "delta": 364,
+      "text": "Atrasados",
+      "indicator": "bg-rose-500",
+      "icon": "AlertCircle",
+      "iconColor": "text-rose-500",
+      "responsavel": "Rafael Ribeiro da Silva",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2025-03-13",
+        "fim": "2025-04-30"
+      },
+      "tarefas": [],
+      "escopo": "Adequação de sistemas para permitir a realização de exames práticos em municípios diversos da residência, conforme a Portaria nº 33/2024.",
+      "healthStatus": "atrasados",
+      "healthReason": "Projeto atrasado há 364 dias.",
+      "favoritos": []
+    },
+    {
+      "id": 82,
+      "nome": "Normas",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Anderson dos Santos Soares",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "Framework centralizado para gerenciar governança normativa de SP (leis, decretos, CONTRAN/SENATRAN) com suporte de IA.",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 5000,
+      "nome": "Normas SP",
+      "status": "desenvolvimento",
+      "andamento": true,
+      "progress": 47,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-amber-500",
+      "icon": "Clock",
+      "iconColor": "text-amber-500",
+      "responsavel": "Amanda Guedes Gomes",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga de Projeto e EAP Hierárquica",
+          "data": "28/04/2026 16:05",
+          "justificativa": "Importação de planilha estruturada",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [
+        {
+          "id": "5001",
+          "titulo": "48 - Lote 2: Leis (Massivo)",
+          "status": "em_andamento",
+          "progress": 50,
+          "responsavel": "Amanda Guedes Gomes",
+          "dataInicio": "2026-03-23",
+          "dataFim": "2026-05-01",
+          "parentId": "",
+          "notas": "Job de processamento paralelo"
+        },
+        {
+          "id": "5002",
+          "titulo": "49 - Registro de Proveniência",
+          "status": "em_andamento",
+          "progress": 0,
+          "responsavel": "Amanda Guedes Gomes",
+          "dataInicio": "2026-05-15",
+          "dataFim": "2026-05-18",
+          "parentId": "",
+          "notas": "Smart Contracts"
+        },
+        {
+          "id": "5003",
+          "titulo": "50 - Lote 3: Decretos",
+          "status": "em_andamento",
+          "progress": 0,
+          "responsavel": "Amanda Guedes Gomes",
+          "dataInicio": "2026-05-04",
+          "dataFim": "2026-05-15",
+          "parentId": "",
+          "notas": "Preemptible VMs"
+        },
+        {
+          "id": "5004",
+          "titulo": "56 - Governança IBFT",
+          "status": "concluido",
+          "progress": 100,
+          "responsavel": "Amanda Guedes Gomes",
+          "dataInicio": "2026-02-23",
+          "dataFim": "2026-03-06",
+          "parentId": "",
+          "notas": "Especificação do Genesis Block"
+        }
+      ],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 83,
+      "nome": "Nova contratação CyberArk",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Édipo do Nascimento Reis",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 51,
+      "nome": "Novo Contrato do Correios",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Daniel André Janzen",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 53,
+      "nome": "Novo Contrato Multicloud",
+      "status": "desenvolvimento",
+      "andamento": true,
+      "progress": 85,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-amber-500",
+      "icon": "Clock",
+      "iconColor": "text-amber-500",
+      "responsavel": "Daniel André Janzen",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2025-11-01",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 84,
+      "nome": "Novo Talonário",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Claudio Xavier Matos",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 52,
+      "nome": "Novos Pilares de Contratação (SLAs)",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Bruno Zaia Boneto",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 21,
+      "nome": "Organização na Wiki dos Apps",
+      "status": "desenvolvimento",
+      "andamento": true,
+      "progress": 99,
+      "delta": 101,
+      "text": "Atrasados",
+      "indicator": "bg-rose-500",
+      "icon": "AlertCircle",
+      "iconColor": "text-rose-500",
+      "responsavel": "Maila Fernandes Chagas",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2026-01-16",
+        "fim": "2026-01-18"
+      },
+      "tarefas": [],
+      "escopo": "Criação de página Wiki para centralização dos aplicativos ativos do Detran-SP, facilitando a consulta e disseminação do conhecimento.",
+      "healthStatus": "atrasados",
+      "healthReason": "Projeto atrasado há 101 dias.",
+      "favoritos": []
+    },
+    {
+      "id": 43,
+      "nome": "Painel BR25",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Laisa Cristina Capodifoglio",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2026-02-25",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 71,
+      "nome": "Pendência de pagamentos PRODESP",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Lucas Rodrigues Jose Cesario",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 20,
+      "nome": "Pilares de Contratação",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Amanda Guedes Gomes",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 55,
+      "nome": "Política de Segurança da Informação",
+      "status": "desenvolvimento",
+      "andamento": true,
+      "progress": 51,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-amber-500",
+      "icon": "Clock",
+      "iconColor": "text-amber-500",
+      "responsavel": "Daniel André Janzen",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2026-02-02",
+        "fim": "2026-04-30"
+      },
+      "tarefas": [],
+      "escopo": "Elaboração, implementação e monitoramento das políticas corporativas aplicáveis a todas as unidades organizacionais.",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 69,
+      "nome": "Políticas DTI",
+      "status": "desenvolvimento",
+      "andamento": true,
+      "progress": 99,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-amber-500",
+      "icon": "Clock",
+      "iconColor": "text-amber-500",
+      "responsavel": "Carlos Alberto Rocha",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 85,
+      "nome": "Portal Credenciados",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Leandro Almeida Batista da Silva",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 64,
+      "nome": "Projeto Cursos",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Bruno Zaia Boneto",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 58,
+      "nome": "Projeto Exames Teóricos - online",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Claudio Xavier Matos",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "Contratação de sistema 100% digital e remoto para exames teóricos, visando escalabilidade, segurança e redução de filas presenciais.",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 18,
+      "nome": "Projetos Google",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 24,
+      "text": "Atrasados",
+      "indicator": "bg-rose-500",
+      "icon": "AlertCircle",
+      "iconColor": "text-rose-500",
+      "responsavel": "Amanda Guedes Gomes",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2025-10-11",
+        "fim": "2026-04-05"
+      },
+      "tarefas": [],
+      "escopo": "Desenvolvimento de Prova Prática (digitalização de exames), Normas (gestão de regras) e SEV (automação de vistorias).",
+      "healthStatus": "atrasados",
+      "healthReason": "Projeto atrasado há 24 dias.",
+      "favoritos": []
+    },
+    {
+      "id": 63,
+      "nome": "Projetos Google - CGIS",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Leandro Almeida Batista da Silva",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 86,
+      "nome": "Projetos Google - Mandiant",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Eduardo Fontolan Damasceno",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 19,
+      "nome": "Projetos Hiperautomação",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 21,
+      "text": "Atrasados",
+      "indicator": "bg-rose-500",
+      "icon": "AlertCircle",
+      "iconColor": "text-rose-500",
+      "responsavel": "Amanda Guedes Gomes",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2025-10-15",
+        "fim": "2026-04-08"
+      },
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "atrasados",
+      "healthReason": "Projeto atrasado há 21 dias.",
+      "favoritos": []
+    },
+    {
+      "id": 4000,
+      "nome": "Prova Prática",
+      "status": "desenvolvimento",
+      "andamento": true,
+      "progress": 72,
+      "delta": 26,
+      "text": "Risco",
+      "indicator": "bg-amber-500",
+      "icon": "Clock",
+      "iconColor": "text-amber-500",
+      "responsavel": "Amanda Guedes Gomes",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga de Projeto e EAP Hierárquica",
+          "data": "28/04/2026 16:05",
+          "justificativa": "Importação de planilha estruturada",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [
+        {
+          "id": "4001",
+          "titulo": "16 - Desenvolvimento de BackEnd - Auxiliar",
+          "status": "em_andamento",
+          "progress": 0,
+          "responsavel": "Amanda Guedes Gomes",
+          "dataInicio": "2026-03-27",
+          "dataFim": "2026-04-10",
+          "parentId": "",
+          "notas": "BackEnd Auxiliar"
+        },
+        {
+          "id": "4002",
+          "titulo": "Login gov.br + Biometria Facial",
+          "status": "concluido",
+          "progress": 100,
+          "responsavel": "Amanda Guedes Gomes",
+          "dataInicio": "2026-03-30",
+          "dataFim": "2026-04-03",
+          "parentId": "4001",
+          "notas": "Autenticação"
+        },
+        {
+          "id": "4003",
+          "titulo": "17 - Desenvolvimento de FrontEnd - Auxiliar",
+          "status": "em_andamento",
+          "progress": 0,
+          "responsavel": "Amanda Guedes Gomes",
+          "dataInicio": "2026-03-23",
+          "dataFim": "2026-04-03",
+          "parentId": "",
+          "notas": "FrontEnd Auxiliar"
+        },
+        {
+          "id": "4004",
+          "titulo": "1 - Dependências",
+          "status": "concluido",
+          "progress": 100,
+          "responsavel": "Amanda Guedes Gomes",
+          "dataInicio": "2026-01-27",
+          "dataFim": "2026-03-30",
+          "parentId": "",
+          "notas": "Dependências gerais"
+        }
+      ],
+      "escopo": "",
+      "healthStatus": "risco",
+      "healthReason": "Tarefa \"17 - Desenvolvimento de FrontEnd - Auxiliar\" atrasada.",
+      "favoritos": []
+    },
+    {
+      "id": 87,
+      "nome": "Prova Prática",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Leandro Almeida Batista da Silva",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 68,
+      "nome": "Revisão do PDTIC",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Carlos Alberto Rocha",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 2000,
+      "nome": "RST (Registro de Sinistros de Trânsito)",
+      "status": "concluido",
+      "andamento": true,
+      "progress": 100,
+      "delta": 0,
+      "text": "Concluído",
+      "indicator": "bg-emerald-600",
+      "icon": "CheckCircle2",
+      "iconColor": "text-emerald-600",
+      "responsavel": "Amanda Guedes Gomes",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga de Projeto e EAP Hierárquica",
+          "data": "28/04/2026 16:05",
+          "justificativa": "Importação de planilha estruturada",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [
+        {
+          "id": "2001",
+          "titulo": "1- Dependências",
+          "status": "concluido",
+          "progress": 100,
+          "responsavel": "Amanda Guedes Gomes",
+          "dataInicio": "2026-01-23",
+          "dataFim": "2026-02-27",
+          "parentId": "",
+          "notas": "Tratamento das dependências"
+        },
+        {
+          "id": "2002",
+          "titulo": "Criação do Ambiente",
+          "status": "concluido",
+          "progress": 100,
+          "responsavel": "Amanda Guedes Gomes",
+          "dataInicio": "2026-01-26",
+          "dataFim": "2026-02-06",
+          "parentId": "2001",
+          "notas": "Criação do ambiente Admin"
+        },
+        {
+          "id": "2003",
+          "titulo": "Aprovação Protótipo Administração",
+          "status": "concluido",
+          "progress": 100,
+          "responsavel": "Amanda Guedes Gomes",
+          "dataInicio": "2026-01-23",
+          "dataFim": "2026-01-30",
+          "parentId": "2001",
+          "notas": "Aprovação"
+        },
+        {
+          "id": "2004",
+          "titulo": "9- Protótipo - Administração - V2",
+          "status": "concluido",
+          "progress": 100,
+          "responsavel": "Amanda Guedes Gomes",
+          "dataInicio": "2026-02-05",
+          "dataFim": "2026-02-16",
+          "parentId": "",
+          "notas": "Protótipo V2"
+        },
+        {
+          "id": "2005",
+          "titulo": "11- Desenvolvimento de BackEnd - Operacional",
+          "status": "concluido",
+          "progress": 100,
+          "responsavel": "Amanda Guedes Gomes",
+          "dataInicio": "2026-02-09",
+          "dataFim": "2026-03-04",
+          "parentId": "",
+          "notas": "BackEnd Operacional"
+        }
+      ],
+      "escopo": "",
+      "healthStatus": "concluído",
+      "healthReason": "Concluído.",
+      "favoritos": []
+    },
+    {
+      "id": 24,
+      "nome": "Sala Segura",
+      "status": "concluido",
+      "andamento": true,
+      "progress": 100,
+      "delta": 0,
+      "text": "Concluído",
+      "indicator": "bg-emerald-600",
+      "icon": "CheckCircle2",
+      "iconColor": "text-emerald-600",
+      "responsavel": "Clayton Rodrigues do Carmo",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2026-03-11",
+        "fim": "2026-03-16"
+      },
+      "tarefas": [],
+      "escopo": "Implantação do novo Data Center do Detran-SP.",
+      "healthStatus": "concluído",
+      "healthReason": "Concluído.",
+      "favoritos": []
+    },
+    {
+      "id": 67,
+      "nome": "Scanner Corporativo",
+      "status": "desenvolvimento",
+      "andamento": true,
+      "progress": 20,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-amber-500",
+      "icon": "Clock",
+      "iconColor": "text-amber-500",
+      "responsavel": "Clayton Rodrigues do Carmo",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2026-03-27",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "Alteração do método de escaneamento para possibilitar o envio direto por e-mail.",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 88,
+      "nome": "Segurança Orgânica",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Eduardo Fontolan Damasceno",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 89,
+      "nome": "SEV",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Marcela Ramos Alexandre",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 3000,
+      "nome": "SEV - Vistorias",
+      "status": "concluido",
+      "andamento": true,
+      "progress": 100,
+      "delta": 0,
+      "text": "Concluído",
+      "indicator": "bg-emerald-600",
+      "icon": "CheckCircle2",
+      "iconColor": "text-emerald-600",
+      "responsavel": "Amanda Guedes Gomes",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga de Projeto e EAP Hierárquica",
+          "data": "28/04/2026 16:05",
+          "justificativa": "Importação de planilha estruturada",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [
+        {
+          "id": "3001",
+          "titulo": "Pagamento de 5 vistorias",
+          "status": "concluido",
+          "progress": 100,
+          "responsavel": "Amanda Guedes Gomes",
+          "dataInicio": "2026-02-02",
+          "dataFim": "2026-02-13",
+          "parentId": "",
+          "notas": "Pagamento de 5 vistorias"
+        },
+        {
+          "id": "3002",
+          "titulo": "12/02: em testes por QA",
+          "status": "concluido",
+          "progress": 100,
+          "responsavel": "Amanda Guedes Gomes",
+          "dataInicio": "2026-02-12",
+          "dataFim": "2026-02-13",
+          "parentId": "3001",
+          "notas": "Testes QA"
+        },
+        {
+          "id": "3003",
+          "titulo": "15- Integração com Portal do Cidadão",
+          "status": "concluido",
+          "progress": 100,
+          "responsavel": "Amanda Guedes Gomes",
+          "dataInicio": "2025-11-17",
+          "dataFim": "2025-12-11",
+          "parentId": "",
+          "notas": "Portal Cidadão"
+        },
+        {
+          "id": "3004",
+          "titulo": "11- Frontend (Plataforma Estadual de Vistoria)",
+          "status": "concluido",
+          "progress": 100,
+          "responsavel": "Amanda Guedes Gomes",
+          "dataInicio": "2025-11-17",
+          "dataFim": "2025-12-05",
+          "parentId": "",
+          "notas": "Frontend eVistoria"
+        }
+      ],
+      "escopo": "",
+      "healthStatus": "concluído",
+      "healthReason": "Concluído.",
+      "favoritos": []
+    },
+    {
+      "id": 23,
+      "nome": "SIAUT",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Simone Pereira dos Santos Fogaça",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "Sistema Integrated de Autuações de Trânsito para operacionalizar lavratura de autuações e penalidades, modernizando e automatizando processos para segurança viária.",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 31,
+      "nome": "Sincronismo CEP Legados",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Ricardo Mores Zafra Junior",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 29,
+      "nome": "Sistema AEDJ",
+      "status": "desenvolvimento",
+      "andamento": true,
+      "progress": 10,
+      "delta": 107,
+      "text": "Atrasados",
+      "indicator": "bg-rose-500",
+      "icon": "AlertCircle",
+      "iconColor": "text-rose-500",
+      "responsavel": "Amanda Guedes Gomes",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2026-03-17",
+        "fim": "2026-01-12"
+      },
+      "tarefas": [],
+      "escopo": "Plataforma integrada ao STJ/SEI para automatizar tratamento de processos judiciais via IA, incluindo jurimetria e dashboards para gestão estratégica.",
+      "healthStatus": "atrasados",
+      "healthReason": "Projeto atrasado há 107 dias.",
+      "favoritos": []
+    },
+    {
+      "id": 97,
+      "nome": "Sistema Biométrico",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Claudio Xavier Matos",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 73,
+      "nome": "SOC Estadual",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Édipo do Nascimento Reis",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2026-03-17",
+        "fim": "2026-04-30"
+      },
+      "tarefas": [],
+      "escopo": "Estrutura de monitoramento 24x7 centralizada para detecção e mitigação de ameaças cibernéticas em tempo real.",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 34,
+      "nome": "Talonário Eletrônico",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Claudio Xavier Matos",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "Atualização do Auto de Infração e Termo de Recolhimento de Veículo para formato eletrônico.",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 33,
+      "nome": "Tenant Microsoft",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Édipo do Nascimento Reis",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    },
+    {
+      "id": 60,
+      "nome": "Término da Instalação Wi-Fi",
+      "status": "desenvolvimento",
+      "andamento": true,
+      "progress": 99,
+      "delta": 33,
+      "text": "Atrasados",
+      "indicator": "bg-rose-500",
+      "icon": "AlertCircle",
+      "iconColor": "text-rose-500",
+      "responsavel": "Clayton Rodrigues do Carmo",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2026-01-02",
+        "fim": "2026-03-27"
+      },
+      "tarefas": [],
+      "escopo": "Modernização da conexão sem fio nas Superintendências e unidades Poupatempo.",
+      "healthStatus": "atrasados",
+      "healthReason": "Projeto atrasado há 33 dias.",
+      "favoritos": []
+    },
+    {
+      "id": 47,
+      "nome": "Unificação contratos periféricos",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Daniel André Janzen",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": [
+        "Bruno Zaia Boneto"
+      ]
+    },
+    {
+      "id": 90,
+      "nome": "Wallet",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Claudio Xavier Matos",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": [
+        "Bruno Zaia Boneto"
+      ]
+    },
+    {
+      "id": 10,
+      "nome": "Wrike- Amanda",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Amanda Guedes Gomes",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Repactuação: 28/04/2026 - 30/04/2026",
+          "justificativa": ".",
+          "data": "29/04/2026 00:55",
+          "user": "Anderson"
+        },
+        {
+          "acao": "Repactuação: 29/04/2026 - 30/04/2026",
+          "justificativa": "Definição inicial de cronograma",
+          "data": "29/04/2026 00:55",
+          "user": "Anderson"
+        },
+        {
+          "acao": "Carga Inicial de Massa de Dados",
+          "data": "28/04/2026 15:35",
+          "justificativa": "Migração solicitada pelo usuário",
+          "user": "Sistema"
+        }
+      ],
+      "baselineData": {
+        "inicio": "2026-04-28",
+        "fim": "2026-04-30"
+      },
+      "tarefas": [],
+      "escopo": "",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "favoritos": []
+    }
+  ],
+  "relatorios": [
+    {
+      "id": "TESTE",
+      "nome": "Relatório de Teste"
+    }
+  ]
+}
