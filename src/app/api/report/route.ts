@@ -5,6 +5,8 @@ import { getProjetos, saveRelatorio, getRelatorioById } from "@/lib/db";
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
+    const apiKey = process.env.GEMINI_API_KEY;
+    console.log("LOG_SISTEMA: API Key detectada no servidor:", apiKey ? `${apiKey.substring(0, 5)}...` : "NÃO ENCONTRADA");
     const role = searchParams.get("role");
     const userName = searchParams.get("userName");
     const userDept = searchParams.get("dept");
