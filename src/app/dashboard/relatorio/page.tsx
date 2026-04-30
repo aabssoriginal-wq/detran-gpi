@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useAuth } from "@/context/AuthContext";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { 
   FileText, ArrowLeft, Printer, Download, Loader2, 
   ChevronDown, ChevronUp, AlertCircle, CheckCircle2, 
@@ -17,6 +17,7 @@ import { toast } from "sonner";
 export default function RelatorioPage() {
   const { usuario } = useAuth();
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<any>(null);
   const [expanded, setExpanded] = useState<Record<number, boolean>>({});
