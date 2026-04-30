@@ -17,9 +17,15 @@ const getFilePath = (fileName: string) => {
       try { fs.mkdirSync(azureDataDir, { recursive: true }); } catch(e) {}
     }
 
-    // Se o arquivo não existe na pasta persistente, copiar a massa de dados do pacote
-    if (!fs.existsSync(targetPath) && fs.existsSync(sourcePath)) {
-      try { fs.copyFileSync(sourcePath, targetPath); } catch(e) {}
+    // Se o arquivo não existe OU se pedirmos sincronização forçada
+    const forceSync = process.env.SYNC_DATA_NOW === 'true';
+    if ((!fs.existsSync(targetPath) || forceSync) && fs.existsSync(sourcePath)) {
+      try { 
+        fs.copyFileSync(sourcePath, targetPath); 
+        console.log(`Dados sincronizados: ${fileName}`);
+      } catch(e) {
+        console.error(`Erro ao sincronizar ${fileName}:`, e);
+      }
     }
 
     return targetPath;
