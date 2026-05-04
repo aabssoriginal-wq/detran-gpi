@@ -12,10 +12,12 @@ export async function GET(request: Request) {
     const deptParam = searchParams.get('dept');
     const roleParam = searchParams.get('role');
 
-    // Tenta obter sessão do servidor; se não houver, usa os parâmetros de URL (modo DEV)
+    // Tenta obter sessão do servidor
     const session = await getServerSession(authOptions);
-    const role = session?.user?.papel || roleParam;
-    const dept = session?.user?.departamento || deptParam;
+    
+    // Prioridade para a sessão, mas aceita parâmetros para o modo mocado/DEV
+    const role = session?.user?.papel || searchParams.get('role');
+    const dept = session?.user?.departamento || searchParams.get('dept');
 
     let usuarios = getUsuarios();
 

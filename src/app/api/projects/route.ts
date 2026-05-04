@@ -11,11 +11,13 @@ export async function GET(request: Request) {
     const papelParam = searchParams.get('role') || undefined;
     const userNameParam = searchParams.get('userName') || undefined;
 
-    // SEGURANÇA: Obter dados da sessão do servidor quando disponível
+    // SEGURANÇA: Obter dados da sessão do servidor
     const session = await getServerSession(authOptions);
-    const userDept = session?.user?.departamento || deptParam;
-    const papel = session?.user?.papel || papelParam;
-    const userName = session?.user?.nome || userNameParam;
+    
+    // Fallback para parâmetros (suporte ao login mocado/DEV)
+    const userDept = session?.user?.departamento || searchParams.get('dept');
+    const papel = session?.user?.papel || searchParams.get('role');
+    const userName = session?.user?.nome || searchParams.get('userName');
 
     let projetos = getProjetos(userDept || undefined, papel || undefined);
     
