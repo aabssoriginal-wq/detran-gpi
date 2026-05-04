@@ -2,17 +2,23 @@ import fs from 'fs';
 import path from 'path';
 import packageUsers from '../../users.json';
 
-// No Azure, a raiz do site montada via Run From Package é somente leitura.
-const getUsersPath = () => {
-  const isAzure = process.env.WEBSITE_INSTANCE_ID !== undefined;
-  if (isAzure) {
-    const azureDataDir = '/home/site/data';
-    if (!fs.existsSync(azureDataDir)) {
-      try { fs.mkdirSync(azureDataDir, { recursive: true }); } catch(e) {}
+// Lógica de persistência universal
+const getDataDirectory = () => {
+  const azureDir = '/home/site/data';
+  try {
+    if (fs.existsSync('/home/site')) {
+      if (!fs.existsSync(azureDir)) {
+        fs.mkdirSync(azureDir, { recursive: true });
+      }
+      return azureDir;
     }
-    return path.join(azureDataDir, 'users.json');
-  }
-  return path.join(process.cwd(), 'users.json');
+  } catch (e) {}
+  return process.cwd();
+};
+
+const getUsersPath = () => {
+  const dataDir = getDataDirectory();
+  return path.join(dataDir, 'users.json');
 };
 
 const usersFilePath = getUsersPath();
@@ -58,22 +64,16 @@ let lastReadTime: number = 0;
 const CACHE_TTL = 5000; // 5 seconds
 
 const initUsersDB = () => {
-  // Se estiver no Azure, gerenciar persistência e sincronização usando os dados embutidos no build
-  if (process.env.WEBSITE_INSTANCE_ID !== undefined) {
-    const forceSync = process.env.SYNC_DATA_NOW === 'true';
+  const forceSync = process.env.SYNC_DATA_NOW === 'true';
 
-    if (!fs.existsSync(usersFilePath) || forceSync) {
-      try {
-        fs.writeFileSync(usersFilePath, JSON.stringify(packageUsers, null, 2));
-        console.log("USUÁRIOS SINCRONIZADOS COM SUCESSO A PARTIR DO BUNDLE");
-      } catch (e) {
-        console.error("Erro ao sincronizar usuários:", e);
-      }
+  // Se o arquivo não existir ou se forçarmos a sincronização, recriamos com os dados embutidos
+  if (!fs.existsSync(usersFilePath) || forceSync) {
+    try {
+      fs.writeFileSync(usersFilePath, JSON.stringify(packageUsers, null, 2));
+      console.log(`USUÁRIOS SINCRONIZADOS COM SUCESSO A PARTIR DO BUNDLE: ${usersFilePath}`);
+    } catch (e) {
+      console.error("Erro ao sincronizar usuários:", e);
     }
-  }
-
-  if (!fs.existsSync(usersFilePath)) {
-    fs.writeFileSync(usersFilePath, JSON.stringify(initialUsers, null, 2));
   }
 };
 

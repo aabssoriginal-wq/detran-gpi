@@ -3,34 +3,42 @@ import path from 'path';
 import { formatarDataBR } from "./utils";
 import packageData from '../../data.json';
 
-// Lógica de persistência inteligente para Azure e Local
-const getFilePath = (fileName: string) => {
-  const isAzure = process.env.WEBSITE_INSTANCE_ID !== undefined;
-  
-  if (isAzure) {
-    const azureDataDir = '/home/site/data';
-    const targetPath = path.join(azureDataDir, fileName);
-
-    // Garantir que o diretório persistente exista
-    if (!fs.existsSync(azureDataDir)) {
-      try { fs.mkdirSync(azureDataDir, { recursive: true }); } catch(e) {}
-    }
-
-    // Se o arquivo não existe OU se pedirmos sincronização forçada
-    const forceSync = process.env.SYNC_DATA_NOW === 'true';
-    if (!fs.existsSync(targetPath) || forceSync) {
-      try { 
-        fs.writeFileSync(targetPath, JSON.stringify(packageData, null, 2)); 
-        console.log(`DADOS SINCRONIZADOS COM SUCESSO A PARTIR DO BUNDLE: ${fileName}`);
-      } catch(e) {
-        console.error(`Erro ao sincronizar ${fileName}:`, e);
+// Lógica de persistência universal
+const getDataDirectory = () => {
+  // Tenta usar o diretório persistente do Azure se possível, senão usa a pasta atual
+  const azureDir = '/home/site/data';
+  try {
+    if (fs.existsSync('/home/site')) {
+      if (!fs.existsSync(azureDir)) {
+        fs.mkdirSync(azureDir, { recursive: true });
       }
+      return azureDir;
     }
+  } catch (e) {}
+  return process.cwd();
+};
 
-    return targetPath;
+const getFilePath = (fileName: string) => {
+  const dataDir = getDataDirectory();
+  const targetPath = path.join(dataDir, fileName);
+
+  // Força a sincronização se a variável de ambiente estiver ativada
+  const forceSync = process.env.SYNC_DATA_NOW === 'true';
+
+  // Se o arquivo não existir ou se forçarmos a sincronização, recriamos com os dados embutidos (packageData)
+  if (!fs.existsSync(targetPath) || forceSync) {
+    try {
+      const dataToSync = fileName === 'data.json' ? packageData : undefined;
+      if (dataToSync) {
+        fs.writeFileSync(targetPath, JSON.stringify(dataToSync, null, 2));
+        console.log(`DADOS SINCRONIZADOS COM SUCESSO A PARTIR DO BUNDLE: ${targetPath}`);
+      }
+    } catch (e) {
+      console.error(`Erro ao sincronizar ${fileName}:`, e);
+    }
   }
-  
-  return path.join(process.cwd(), fileName);
+
+  return targetPath;
 };
 
 const dataFilePath = getFilePath('data.json');
