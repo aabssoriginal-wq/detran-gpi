@@ -138,12 +138,16 @@ const getDB = (): DB => {
       relatorios: data.relatorios || []
     };
   } catch (e) {
-    console.error("Erro ao ler banco de dados, usando fallback:", e);
+    console.error("Erro ao ler banco de dados, usando fallback direto do pacote:", e);
+    
+    // Fallback: garante a estrutura correta baseada no packageData (que vem do JSON completo)
+    let fallbackData = packageData as any;
+    if (Array.isArray(fallbackData)) {
+      return { projetos: fallbackData, relatorios: [] };
+    }
     return {
-      projetos: [
-        { id: 1, nome: "Identidade Digital (SSO)", status: "prazo", andamento: true, progress: 85, delta: 0, text: "No Prazo", indicator: "bg-emerald-500", icon: "CheckCircle2", iconColor: "text-emerald-500", responsavel: "Luiz Wanderley", departamento: "Diretoria de Tecnologia da Informação", excluido: false, logs: [], baselineData: { inicio: "2026-05-01", fim: "2026-12-15" }, tarefas: [], favoritos: [] }
-      ],
-      relatorios: []
+      projetos: fallbackData.projetos || [],
+      relatorios: fallbackData.relatorios || []
     };
   }
 };
