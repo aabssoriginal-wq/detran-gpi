@@ -97,16 +97,18 @@ let lastReadTime: number = 0;
 const CACHE_TTL = 5000; // 5 seconds
 
 const initUsersDB = () => {
-  // Se estiver no Azure e o arquivo persistente não existir, tenta copiar do pacote original
-  if (process.env.WEBSITE_INSTANCE_ID !== undefined && !fs.existsSync(usersFilePath)) {
+  // Se estiver no Azure, gerenciar persistência e sincronização
+  if (process.env.WEBSITE_INSTANCE_ID !== undefined) {
     const packageUsersPath = path.join(process.cwd(), 'users.json');
-    if (fs.existsSync(packageUsersPath)) {
+    const forceSync = process.env.SYNC_DATA_NOW === 'true';
+
+    if ((!fs.existsSync(usersFilePath) || forceSync) && fs.existsSync(packageUsersPath)) {
       try {
         const initialContent = fs.readFileSync(packageUsersPath, 'utf-8');
         fs.writeFileSync(usersFilePath, initialContent);
-        console.log("Usuários inicializados a partir do pacote de deploy.");
+        console.log("Usuários sincronizados/inicializados com sucesso.");
       } catch (e) {
-        console.error("Erro ao copiar usuários iniciais:", e);
+        console.error("Erro ao sincronizar usuários:", e);
       }
     }
   }
