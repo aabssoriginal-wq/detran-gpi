@@ -127,15 +127,28 @@ const initializeDB = () => {
 
 const getDB = (): DB => {
   initializeDB();
-  const fileData = fs.readFileSync(dataFilePath, 'utf-8');
-  let data = JSON.parse(fileData);
-  if (Array.isArray(data)) {
-    return { projetos: data, relatorios: [] };
+  try {
+    const fileData = fs.readFileSync(dataFilePath, 'utf-8');
+    if (!fileData || fileData.trim() === "") {
+      throw new Error("Arquivo de dados vazio");
+    }
+    let data = JSON.parse(fileData);
+    if (Array.isArray(data)) {
+      return { projetos: data, relatorios: [] };
+    }
+    return {
+      projetos: data.projetos || [],
+      relatorios: data.relatorios || []
+    };
+  } catch (e) {
+    console.error("Erro ao ler banco de dados, usando fallback:", e);
+    return {
+      projetos: [
+        { id: 1, nome: "Identidade Digital (SSO)", status: "prazo", andamento: true, progress: 85, delta: 0, text: "No Prazo", indicator: "bg-emerald-500", icon: "CheckCircle2", iconColor: "text-emerald-500", responsavel: "Luiz Wanderley", departamento: "Diretoria de Tecnologia da Informação", excluido: false, logs: [], baselineData: { inicio: "2026-05-01", fim: "2026-12-15" }, tarefas: [], favoritos: [] }
+      ],
+      relatorios: []
+    };
   }
-  return {
-    projetos: data.projetos || [],
-    relatorios: data.relatorios || []
-  };
 };
 
 const saveFullDB = (db: DB) => {

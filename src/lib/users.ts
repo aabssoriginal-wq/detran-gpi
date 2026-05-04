@@ -131,11 +131,19 @@ export const getUsuarios = (): Usuario[] => {
   }
 
   initUsersDB();
-  const data = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
-  cachedUsuarios = data;
-  lastReadTime = now;
-  // Ordenação Alfabética por Nome
-  return data.sort((a: any, b: any) => a.nome.localeCompare(b.nome));
+  try {
+    const fileContent = fs.readFileSync(usersFilePath, 'utf-8');
+    if (!fileContent || fileContent.trim() === "") {
+      throw new Error("Arquivo de usuários vazio");
+    }
+    const data = JSON.parse(fileContent);
+    cachedUsuarios = data;
+    lastReadTime = now;
+    return data.sort((a: any, b: any) => a.nome.localeCompare(b.nome));
+  } catch (e) {
+    console.error("Erro ao ler banco de usuários, usando fallback:", e);
+    return [...initialUsers].sort((a: any, b: any) => a.nome.localeCompare(b.nome));
+  }
 };
 
 export const getUsuarioById = (id: string): Usuario | undefined => {
