@@ -171,12 +171,16 @@ export default function LoginPage() {
                 {status === "loading" ? "Conectando..." : "Entrar com Conta Microsoft"}
               </button>
               
+              {process.env.NODE_ENV === 'development' && (
               <div className="relative">
                 <div className="absolute inset-0 flex items-center"><span className="w-full border-t border-slate-200 dark:border-slate-800"></span></div>
                 <div className="relative flex justify-center text-[10px] uppercase"><span className="bg-white dark:bg-slate-900 px-2 text-slate-400 font-bold tracking-widest">ou acesso rápido (DEV)</span></div>
               </div>
+              )}
             </div>
 
+            {process.env.NODE_ENV === 'development' && (
+            <>
             <div className="px-4 py-2 bg-slate-50/50 dark:bg-slate-800/30 border-y border-slate-100 dark:border-slate-800">
               <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Colaboradores Detran-SP</p>
             </div>
@@ -223,6 +227,8 @@ export default function LoginPage() {
                   );
                 })}
               </div>
+            )}
+            </>
             )}
           </div>
           <p className="text-center text-xs text-slate-400">Acesso restrito a colaboradores autorizados do DETRAN-SP</p>

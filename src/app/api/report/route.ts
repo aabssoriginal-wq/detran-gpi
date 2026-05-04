@@ -1,16 +1,20 @@
 // v1.0.1 - Deploy Production
 import { NextResponse } from "next/server";
 import { getProjetos, saveRelatorio, getRelatorioById } from "@/lib/db";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
 
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const apiKey = process.env.GEMINI_API_KEY;
-    console.log("LOG_SISTEMA: API Key detectada no servidor:", apiKey ? `${apiKey.substring(0, 5)}...` : "NÃO ENCONTRADA");
-    const role = searchParams.get("role");
-    const userName = searchParams.get("userName");
-    const userDept = searchParams.get("dept");
     const reportId = searchParams.get("id");
+
+    // SEGURANÇA: Obter dados da sessão do servidor quando disponível
+    const session = await getServerSession(authOptions);
+    const role = session?.user?.papel || searchParams.get("role");
+    const userName = session?.user?.nome || searchParams.get("userName");
+    const userDept = session?.user?.departamento || searchParams.get("dept");
 
     // Caso seja busca por ID (Histórico)
     if (reportId) {

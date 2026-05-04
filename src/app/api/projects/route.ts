@@ -1,13 +1,21 @@
 import { NextResponse } from 'next/server';
 import { getProjetos, createProjeto } from '@/lib/db';
 import { getUsuarios } from '@/lib/users';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
 
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const userDept = searchParams.get('dept') || undefined;
-    const papel = searchParams.get('role') || undefined;
-    const userName = searchParams.get('userName') || undefined;
+    const deptParam = searchParams.get('dept') || undefined;
+    const papelParam = searchParams.get('role') || undefined;
+    const userNameParam = searchParams.get('userName') || undefined;
+
+    // SEGURANÇA: Obter dados da sessão do servidor quando disponível
+    const session = await getServerSession(authOptions);
+    const userDept = session?.user?.departamento || deptParam;
+    const papel = session?.user?.papel || papelParam;
+    const userName = session?.user?.nome || userNameParam;
 
     let projetos = getProjetos(userDept || undefined, papel || undefined);
     

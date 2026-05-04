@@ -1,20 +1,26 @@
 import { NextResponse } from 'next/server';
 import { getUsuarios, updateUsuarioPapel, updateUsuarioProjetosAtribuidos, addUsuario, removeUsuario, type Papel } from '@/lib/users';
 import { getProjetos, updateTarefas, updateResponsavel } from '@/lib/db';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
 
 const HIERARCHY = { 'admin_total': 4, 'admin_master': 3, 'usuario_master': 2, 'usuario': 1 };
 
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const dept = searchParams.get('dept');
-    const role = searchParams.get('role');
+    const deptParam = searchParams.get('dept');
+    const roleParam = searchParams.get('role');
+
+    // Tenta obter sessão do servidor; se não houver, usa os parâmetros de URL (modo DEV)
+    const session = await getServerSession(authOptions);
+    const role = session?.user?.papel || roleParam;
+    const dept = session?.user?.departamento || deptParam;
 
     let usuarios = getUsuarios();
 
     // Regra de Isolamento: Apenas admin_total vê usuários de todas as diretorias.
-    // O filtro só é aplicado se os parâmetros forem passados (página de usuários).
-    // Na tela de login (sem parâmetros), retornamos todos os usuários.
+    // Na tela de login (sem parâmetros e sem sessão), retornamos todos os usuários.
     if (role && role !== 'admin_total') {
       if (dept) {
         usuarios = usuarios.filter(u => u.departamento === dept);
@@ -83,9 +89,13 @@ export async function DELETE(request: Request) {
 export async function PUT(request: Request) {
   try {
     const body = await request.json();
-    const { id, action, papel, projetosAtribuidos, requesterPapel } = body;
+    const { id, action, papel, projetosAtribuidos } = body;
 
     if (!id) return NextResponse.json({ error: 'ID obrigatório' }, { status: 400 });
+
+    // SEGURANÇA: Obter o papel do solicitante da sessão do servidor, não do body
+    const session = await getServerSession(authOptions);
+    const requesterPapel = session?.user?.papel || body.requesterPapel;
 
     if (action === 'update_papel') {
       if (!papel) return NextResponse.json({ error: 'Papel obrigatório' }, { status: 400 });
