@@ -1,11 +1,12 @@
 import fs from 'fs';
 import path from 'path';
+import packageUsers from '../../users.json';
 
 // No Azure, a raiz do site montada via Run From Package é somente leitura.
 const getUsersPath = () => {
   const isAzure = process.env.WEBSITE_INSTANCE_ID !== undefined;
   if (isAzure) {
-    const azureDataDir = path.join('/home/site/data');
+    const azureDataDir = '/home/site/data';
     if (!fs.existsSync(azureDataDir)) {
       try { fs.mkdirSync(azureDataDir, { recursive: true }); } catch(e) {}
     }
@@ -49,46 +50,6 @@ const initialUsers: Usuario[] = [
     papel: 'admin_master',
     departamento: 'Diretoria de Tecnologia da Informação',
     projetosAtribuidos: []
-  },
-  {
-    id: 'u002',
-    nome: 'Ana Paula Ferreira',
-    email: 'ana.ferreira@detran.sp.gov.br',
-    cargo: 'Gerente de Projetos',
-    avatar: 'https://i.pravatar.cc/150?img=47',
-    papel: 'usuario_master',
-    departamento: 'Diretoria de Tecnologia da Informação',
-    projetosAtribuidos: []
-  },
-  {
-    id: 'u003',
-    nome: 'Carlos Eduardo Lima',
-    email: 'carlos.lima@detran.sp.gov.br',
-    cargo: 'Analista de Sistemas Sênior',
-    avatar: 'https://i.pravatar.cc/150?img=12',
-    papel: 'usuario',
-    departamento: 'Diretoria de Tecnologia da Informação',
-    projetosAtribuidos: [1, 3]
-  },
-  {
-    id: 'u007',
-    nome: 'Marcos Silveira',
-    email: 'marcos.silveira@detran.sp.gov.br',
-    cargo: 'Diretor de Fiscalização',
-    avatar: 'https://i.pravatar.cc/150?img=8',
-    papel: 'admin_master',
-    departamento: 'Diretoria de Fiscalização de Trânsito',
-    projetosAtribuidos: []
-  },
-  {
-    id: 'u010',
-    nome: 'Beatriz Santos',
-    email: 'beatriz.santos@detran.sp.gov.br',
-    cargo: 'Usuário Master Veículos',
-    avatar: 'https://i.pravatar.cc/150?img=22',
-    papel: 'usuario_master',
-    departamento: 'Diretoria de Veículos Automotores',
-    projetosAtribuidos: []
   }
 ];
 
@@ -97,21 +58,14 @@ let lastReadTime: number = 0;
 const CACHE_TTL = 5000; // 5 seconds
 
 const initUsersDB = () => {
-  // Se estiver no Azure, gerenciar persistência e sincronização
+  // Se estiver no Azure, gerenciar persistência e sincronização usando os dados embutidos no build
   if (process.env.WEBSITE_INSTANCE_ID !== undefined) {
-    const possiblePaths = [
-      path.join(process.cwd(), 'users.json'),
-      path.join(process.cwd(), '..', 'users.json'),
-      path.join(process.cwd(), '..', '..', 'users.json')
-    ];
-    let packageUsersPath = possiblePaths.find(p => fs.existsSync(p));
     const forceSync = process.env.SYNC_DATA_NOW === 'true';
 
-    if ((!fs.existsSync(usersFilePath) || forceSync) && packageUsersPath) {
+    if (!fs.existsSync(usersFilePath) || forceSync) {
       try {
-        const initialContent = fs.readFileSync(packageUsersPath, 'utf-8');
-        fs.writeFileSync(usersFilePath, initialContent);
-        console.log(`USUÁRIOS SINCRONIZADOS COM SUCESSO de ${packageUsersPath}`);
+        fs.writeFileSync(usersFilePath, JSON.stringify(packageUsers, null, 2));
+        console.log("USUÁRIOS SINCRONIZADOS COM SUCESSO A PARTIR DO BUNDLE");
       } catch (e) {
         console.error("Erro ao sincronizar usuários:", e);
       }

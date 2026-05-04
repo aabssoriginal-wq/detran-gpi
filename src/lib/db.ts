@@ -1,7 +1,7 @@
-// GPI System DB Layer
 import fs from 'fs';
 import path from 'path';
 import { formatarDataBR } from "./utils";
+import packageData from '../../data.json';
 
 // Lógica de persistência inteligente para Azure e Local
 const getFilePath = (fileName: string) => {
@@ -10,14 +10,6 @@ const getFilePath = (fileName: string) => {
   if (isAzure) {
     const azureDataDir = '/home/site/data';
     const targetPath = path.join(azureDataDir, fileName);
-    // Caminhos possíveis para os arquivos fonte no deploy do Azure
-    const possiblePaths = [
-      path.join(process.cwd(), fileName),
-      path.join(process.cwd(), '..', fileName),
-      path.join(process.cwd(), '..', '..', fileName)
-    ];
-    
-    let sourcePath = possiblePaths.find(p => fs.existsSync(p));
 
     // Garantir que o diretório persistente exista
     if (!fs.existsSync(azureDataDir)) {
@@ -26,10 +18,10 @@ const getFilePath = (fileName: string) => {
 
     // Se o arquivo não existe OU se pedirmos sincronização forçada
     const forceSync = process.env.SYNC_DATA_NOW === 'true';
-    if ((!fs.existsSync(targetPath) || forceSync) && sourcePath) {
+    if (!fs.existsSync(targetPath) || forceSync) {
       try { 
-        fs.copyFileSync(sourcePath, targetPath); 
-        console.log(`DADOS SINCRONIZADOS COM SUCESSO: ${fileName} de ${sourcePath}`);
+        fs.writeFileSync(targetPath, JSON.stringify(packageData, null, 2)); 
+        console.log(`DADOS SINCRONIZADOS COM SUCESSO A PARTIR DO BUNDLE: ${fileName}`);
       } catch(e) {
         console.error(`Erro ao sincronizar ${fileName}:`, e);
       }
@@ -123,8 +115,6 @@ const initializeDB = () => {
     const initialData: DB = {
       projetos: [
         { id: 1, nome: "Identidade Digital (SSO)", status: "prazo", andamento: true, progress: 85, delta: 0, text: "No Prazo", indicator: "bg-emerald-500", icon: "CheckCircle2", iconColor: "text-emerald-500", responsavel: "Luiz Wanderley", departamento: "Diretoria de Tecnologia da Informação", excluido: false, logs: [], baselineData: { inicio: "2026-05-01", fim: "2026-12-15" }, tarefas: [], favoritos: [] },
-        { id: 2, nome: "Migração para Azure Cloud", status: "atrasados", andamento: true, progress: 45, delta: 18, text: "Delta: +18 dias", indicator: "bg-rose-500", icon: "AlertCircle", iconColor: "text-rose-500", responsavel: "Equipe Infra", departamento: "Diretoria de Tecnologia da Informação", excluido: false, logs: [], baselineData: { inicio: "2026-03-01", fim: "2026-10-30" }, tarefas: [], favoritos: [] },
-        { id: 3, nome: "Novo Portal do Cliente", status: "risco", andamento: true, progress: 30, delta: 5, text: "Delta: +5 dias", indicator: "bg-amber-500", icon: "Clock", iconColor: "text-amber-500", responsavel: "Equipe Front", departamento: "Diretoria de Tecnologia da Informação", excluido: false, logs: [], baselineData: { inicio: "2026-06-01", fim: "2026-11-20" }, tarefas: [], favoritos: [] }
       ],
       relatorios: []
     };
