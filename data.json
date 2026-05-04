@@ -6,7 +6,7 @@
       "status": "desenvolvimento",
       "andamento": true,
       "progress": 0,
-      "delta": 1,
+      "delta": 6,
       "text": "Impedimentos",
       "indicator": "bg-rose-600",
       "icon": "ShieldAlert",
@@ -140,13 +140,12 @@
       ],
       "escopo": "Substituição completa dos racks de comunicação localizados nas alas BV e JB do 11º andar.",
       "healthStatus": "impedimentos",
-      "healthReason": "Bloqueado: a",
+      "healthReason": "Bloqueado por impedimento.",
       "tarefaBloqueada": "a",
       "motivoBloqueio": "a",
       "responsavelTecnico": "",
       "favorito": true,
       "favoritos": [
-        "Anderson",
         "Bruno Zaia Boneto"
       ]
     },
@@ -191,7 +190,7 @@
       "status": "desenvolvimento",
       "andamento": true,
       "progress": 99,
-      "delta": 30,
+      "delta": 35,
       "text": "Atrasados",
       "indicator": "bg-rose-500",
       "icon": "AlertCircle",
@@ -214,7 +213,7 @@
       "tarefas": [],
       "escopo": "Migração do AVA Moodle para a nuvem do DETRAN para ampliar o controle e a governança da infraestrutura.",
       "healthStatus": "atrasados",
-      "healthReason": "Projeto atrasado há 30 dias.",
+      "healthReason": "Projeto atrasado há 35 dias.",
       "favorito": true,
       "favoritos": [
         "Bruno Zaia Boneto"
@@ -251,9 +250,7 @@
       "healthStatus": "prazo",
       "healthReason": "No prazo.",
       "favorito": true,
-      "favoritos": [
-        "Bruno Zaia Boneto"
-      ]
+      "favoritos": []
     },
     {
       "id": 61,
@@ -321,9 +318,7 @@
       "healthStatus": "prazo",
       "healthReason": "No prazo.",
       "favorito": true,
-      "favoritos": [
-        "Bruno Zaia Boneto"
-      ]
+      "favoritos": []
     },
     {
       "id": 50,
@@ -356,9 +351,51 @@
       "healthStatus": "prazo",
       "healthReason": "No prazo.",
       "favorito": true,
-      "favoritos": [
-        "Bruno Zaia Boneto"
-      ]
+      "favoritos": []
+    },
+    {
+      "id": 5001,
+      "nome": "CGTI - Teste",
+      "status": "planejamento",
+      "andamento": true,
+      "progress": 0,
+      "delta": 0,
+      "text": "Prazo",
+      "indicator": "bg-indigo-400",
+      "icon": "Clock",
+      "iconColor": "text-indigo-400",
+      "responsavel": "Carla Pozitano Paiva Carnauba",
+      "departamento": "Diretoria de Tecnologia da Informação",
+      "excluido": false,
+      "logs": [
+        {
+          "acao": "Atualização de Escopo",
+          "justificativa": "Edição manual",
+          "data": "30/04/2026 16:58",
+          "user": "Carla Pozitano Paiva Carnauba"
+        },
+        {
+          "acao": "Alteração de Fase para planejamento",
+          "justificativa": "a",
+          "data": "30/04/2026 16:50",
+          "user": "Carla Pozitano Paiva Carnauba"
+        },
+        {
+          "acao": "Criação do Projeto",
+          "justificativa": "Nenhuma",
+          "data": "30/04/2026 16:37",
+          "user": "Usuário"
+        }
+      ],
+      "baselineData": {
+        "inicio": "",
+        "fim": ""
+      },
+      "tarefas": [],
+      "favoritos": [],
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
+      "escopo": "testee"
     },
     {
       "id": 1000,
@@ -366,11 +403,11 @@
       "status": "desenvolvimento",
       "andamento": true,
       "progress": 82,
-      "delta": 41,
-      "text": "Risco",
-      "indicator": "bg-amber-500",
-      "icon": "Clock",
-      "iconColor": "text-amber-500",
+      "delta": 5,
+      "text": "Atrasados",
+      "indicator": "bg-rose-500",
+      "icon": "AlertCircle",
+      "iconColor": "text-rose-500",
       "responsavel": "Amanda Guedes Gomes",
       "departamento": "Diretoria de Tecnologia da Informação",
       "excluido": false,
@@ -482,12 +519,10 @@
         }
       ],
       "escopo": "",
-      "healthStatus": "risco",
-      "healthReason": "Tarefa \"05 – PRJ0014255 – DMND0001412 – CNH somente versão digital\" atrasada.",
+      "healthStatus": "atrasados",
+      "healthReason": "Projeto atrasado há 5 dias.",
       "favorito": true,
-      "favoritos": [
-        "Bruno Zaia Boneto"
-      ]
+      "favoritos": []
     },
     {
       "id": 22,
@@ -495,7 +530,7 @@
       "status": "desenvolvimento",
       "andamento": true,
       "progress": 49,
-      "delta": 207,
+      "delta": 212,
       "text": "Atrasados",
       "indicator": "bg-rose-500",
       "icon": "AlertCircle",
@@ -518,7 +553,7 @@
       "tarefas": [],
       "escopo": "Adequação dos sistemas do programa CNH Paulista às novas diretrizes estabelecidas pela Resolução CONTRAN nº 1.020/2025.",
       "healthStatus": "atrasados",
-      "healthReason": "Projeto atrasado há 207 dias.",
+      "healthReason": "Projeto atrasado há 212 dias.",
       "favorito": false,
       "favoritos": []
     },
@@ -627,7 +662,7 @@
       "status": "planejamento",
       "andamento": true,
       "progress": 0,
-      "delta": 118,
+      "delta": 123,
       "text": "Atrasados",
       "indicator": "bg-rose-500",
       "icon": "AlertCircle",
@@ -650,7 +685,7 @@
       "tarefas": [],
       "escopo": "Dashboard para análise, insights e suporte à decisões estratégicas sobre exames práticos da CNH.",
       "healthStatus": "atrasados",
-      "healthReason": "Projeto atrasado há 118 dias.",
+      "healthReason": "Projeto atrasado há 123 dias.",
       "favoritos": []
     },
     {
@@ -691,7 +726,7 @@
       "status": "planejamento",
       "andamento": true,
       "progress": 0,
-      "delta": 113,
+      "delta": 118,
       "text": "Atrasados",
       "indicator": "bg-rose-500",
       "icon": "AlertCircle",
@@ -714,7 +749,7 @@
       "tarefas": [],
       "escopo": "Previsão de exames práticos, visando obter o número médio previsto de exames por local nas próximas 4 semanas.",
       "healthStatus": "atrasados",
-      "healthReason": "Projeto atrasado há 113 dias.",
+      "healthReason": "Projeto atrasado há 118 dias.",
       "favoritos": []
     },
     {
@@ -755,7 +790,7 @@
       "status": "planejamento",
       "andamento": true,
       "progress": 0,
-      "delta": 41,
+      "delta": 46,
       "text": "Atrasados",
       "indicator": "bg-rose-500",
       "icon": "AlertCircle",
@@ -778,7 +813,7 @@
       "tarefas": [],
       "escopo": "Ingestão dos dados da LIVE /SN via conector nativo no ambiente Databricks.",
       "healthStatus": "atrasados",
-      "healthReason": "Projeto atrasado há 41 dias.",
+      "healthReason": "Projeto atrasado há 46 dias.",
       "favoritos": []
     },
     {
@@ -916,11 +951,11 @@
       "status": "planejamento",
       "andamento": true,
       "progress": 0,
-      "delta": 0,
-      "text": "Prazo",
-      "indicator": "bg-indigo-400",
-      "icon": "Clock",
-      "iconColor": "text-indigo-400",
+      "delta": 2,
+      "text": "Atrasados",
+      "indicator": "bg-rose-500",
+      "icon": "AlertCircle",
+      "iconColor": "text-rose-500",
       "responsavel": "Gustavo De Camargo Costa",
       "departamento": "Diretoria de Tecnologia da Informação",
       "excluido": false,
@@ -938,8 +973,8 @@
       },
       "tarefas": [],
       "escopo": "Automatizar o envio de notificações de trânsito via Correios em fluxo digital, com acompanhamento de status e cumprimento de prazos legais no sistema SIM.",
-      "healthStatus": "prazo",
-      "healthReason": "No prazo.",
+      "healthStatus": "atrasados",
+      "healthReason": "Projeto atrasado há 2 dias.",
       "favoritos": []
     },
     {
@@ -1364,7 +1399,7 @@
       "status": "desenvolvimento",
       "andamento": true,
       "progress": 85,
-      "delta": 13,
+      "delta": 18,
       "text": "Atrasados",
       "indicator": "bg-rose-500",
       "icon": "AlertCircle",
@@ -1387,7 +1422,7 @@
       "tarefas": [],
       "escopo": "Aquisição de licenças Gemini e Kiro para suporte ao desenvolvimento em Power Apps e exploração de capacidades de LLM.",
       "healthStatus": "atrasados",
-      "healthReason": "Projeto atrasado há 13 dias.",
+      "healthReason": "Projeto atrasado há 18 dias.",
       "favoritos": []
     },
     {
@@ -1940,7 +1975,7 @@
       "status": "desenvolvimento",
       "andamento": true,
       "progress": 90,
-      "delta": 364,
+      "delta": 369,
       "text": "Atrasados",
       "indicator": "bg-rose-500",
       "icon": "AlertCircle",
@@ -1963,7 +1998,7 @@
       "tarefas": [],
       "escopo": "Adequação de sistemas para permitir a realização de exames práticos em municípios diversos da residência, conforme a Portaria nº 33/2024.",
       "healthStatus": "atrasados",
-      "healthReason": "Projeto atrasado há 364 dias.",
+      "healthReason": "Projeto atrasado há 369 dias.",
       "favoritos": []
     },
     {
@@ -2241,7 +2276,7 @@
       "status": "desenvolvimento",
       "andamento": true,
       "progress": 99,
-      "delta": 101,
+      "delta": 106,
       "text": "Atrasados",
       "indicator": "bg-rose-500",
       "icon": "AlertCircle",
@@ -2264,7 +2299,7 @@
       "tarefas": [],
       "escopo": "Criação de página Wiki para centralização dos aplicativos ativos do Detran-SP, facilitando a consulta e disseminação do conhecimento.",
       "healthStatus": "atrasados",
-      "healthReason": "Projeto atrasado há 101 dias.",
+      "healthReason": "Projeto atrasado há 106 dias.",
       "favoritos": []
     },
     {
@@ -2369,11 +2404,11 @@
       "status": "desenvolvimento",
       "andamento": true,
       "progress": 51,
-      "delta": 0,
-      "text": "Prazo",
-      "indicator": "bg-amber-500",
-      "icon": "Clock",
-      "iconColor": "text-amber-500",
+      "delta": 4,
+      "text": "Atrasados",
+      "indicator": "bg-rose-500",
+      "icon": "AlertCircle",
+      "iconColor": "text-rose-500",
       "responsavel": "Daniel André Janzen",
       "departamento": "Diretoria de Tecnologia da Informação",
       "excluido": false,
@@ -2391,8 +2426,8 @@
       },
       "tarefas": [],
       "escopo": "Elaboração, implementação e monitoramento das políticas corporativas aplicáveis a todas as unidades organizacionais.",
-      "healthStatus": "prazo",
-      "healthReason": "No prazo.",
+      "healthStatus": "atrasados",
+      "healthReason": "Projeto atrasado há 4 dias.",
       "favoritos": []
     },
     {
@@ -2529,7 +2564,7 @@
       "status": "planejamento",
       "andamento": true,
       "progress": 0,
-      "delta": 24,
+      "delta": 29,
       "text": "Atrasados",
       "indicator": "bg-rose-500",
       "icon": "AlertCircle",
@@ -2552,7 +2587,7 @@
       "tarefas": [],
       "escopo": "Desenvolvimento de Prova Prática (digitalização de exames), Normas (gestão de regras) e SEV (automação de vistorias).",
       "healthStatus": "atrasados",
-      "healthReason": "Projeto atrasado há 24 dias.",
+      "healthReason": "Projeto atrasado há 29 dias.",
       "favoritos": []
     },
     {
@@ -2625,7 +2660,7 @@
       "status": "planejamento",
       "andamento": true,
       "progress": 0,
-      "delta": 21,
+      "delta": 26,
       "text": "Atrasados",
       "indicator": "bg-rose-500",
       "icon": "AlertCircle",
@@ -2648,7 +2683,7 @@
       "tarefas": [],
       "escopo": "",
       "healthStatus": "atrasados",
-      "healthReason": "Projeto atrasado há 21 dias.",
+      "healthReason": "Projeto atrasado há 26 dias.",
       "favoritos": []
     },
     {
@@ -2657,8 +2692,8 @@
       "status": "desenvolvimento",
       "andamento": true,
       "progress": 72,
-      "delta": 26,
-      "text": "Risco",
+      "delta": 0,
+      "text": "Prazo",
       "indicator": "bg-amber-500",
       "icon": "Clock",
       "iconColor": "text-amber-500",
@@ -2724,8 +2759,8 @@
         }
       ],
       "escopo": "",
-      "healthStatus": "risco",
-      "healthReason": "Tarefa \"17 - Desenvolvimento de FrontEnd - Auxiliar\" atrasada.",
+      "healthStatus": "prazo",
+      "healthReason": "No prazo.",
       "favoritos": []
     },
     {
@@ -2799,7 +2834,7 @@
       "andamento": true,
       "progress": 100,
       "delta": 0,
-      "text": "Concluído",
+      "text": "Concluido",
       "indicator": "bg-emerald-600",
       "icon": "CheckCircle2",
       "iconColor": "text-emerald-600",
@@ -2876,7 +2911,7 @@
         }
       ],
       "escopo": "",
-      "healthStatus": "concluído",
+      "healthStatus": "concluido",
       "healthReason": "Concluído.",
       "favoritos": []
     },
@@ -2887,7 +2922,7 @@
       "andamento": true,
       "progress": 100,
       "delta": 0,
-      "text": "Concluído",
+      "text": "Concluido",
       "indicator": "bg-emerald-600",
       "icon": "CheckCircle2",
       "iconColor": "text-emerald-600",
@@ -2908,7 +2943,7 @@
       },
       "tarefas": [],
       "escopo": "Implantação do novo Data Center do Detran-SP.",
-      "healthStatus": "concluído",
+      "healthStatus": "concluido",
       "healthReason": "Concluído.",
       "favoritos": []
     },
@@ -3015,7 +3050,7 @@
       "andamento": true,
       "progress": 100,
       "delta": 0,
-      "text": "Concluído",
+      "text": "Concluido",
       "indicator": "bg-emerald-600",
       "icon": "CheckCircle2",
       "iconColor": "text-emerald-600",
@@ -3081,7 +3116,7 @@
         }
       ],
       "escopo": "",
-      "healthStatus": "concluído",
+      "healthStatus": "concluido",
       "healthReason": "Concluído.",
       "favoritos": []
     },
@@ -3155,7 +3190,7 @@
       "status": "desenvolvimento",
       "andamento": true,
       "progress": 10,
-      "delta": 107,
+      "delta": 112,
       "text": "Atrasados",
       "indicator": "bg-rose-500",
       "icon": "AlertCircle",
@@ -3178,7 +3213,7 @@
       "tarefas": [],
       "escopo": "Plataforma integrada ao STJ/SEI para automatizar tratamento de processos judiciais via IA, incluindo jurimetria e dashboards para gestão estratégica.",
       "healthStatus": "atrasados",
-      "healthReason": "Projeto atrasado há 107 dias.",
+      "healthReason": "Projeto atrasado há 112 dias.",
       "favoritos": []
     },
     {
@@ -3219,11 +3254,11 @@
       "status": "planejamento",
       "andamento": true,
       "progress": 0,
-      "delta": 0,
-      "text": "Prazo",
-      "indicator": "bg-indigo-400",
-      "icon": "Clock",
-      "iconColor": "text-indigo-400",
+      "delta": 4,
+      "text": "Atrasados",
+      "indicator": "bg-rose-500",
+      "icon": "AlertCircle",
+      "iconColor": "text-rose-500",
       "responsavel": "Édipo do Nascimento Reis",
       "departamento": "Diretoria de Tecnologia da Informação",
       "excluido": false,
@@ -3241,8 +3276,8 @@
       },
       "tarefas": [],
       "escopo": "Estrutura de monitoramento 24x7 centralizada para detecção e mitigação de ameaças cibernéticas em tempo real.",
-      "healthStatus": "prazo",
-      "healthReason": "No prazo.",
+      "healthStatus": "atrasados",
+      "healthReason": "Projeto atrasado há 4 dias.",
       "favoritos": []
     },
     {
@@ -3315,7 +3350,7 @@
       "status": "desenvolvimento",
       "andamento": true,
       "progress": 99,
-      "delta": 33,
+      "delta": 38,
       "text": "Atrasados",
       "indicator": "bg-rose-500",
       "icon": "AlertCircle",
@@ -3338,7 +3373,7 @@
       "tarefas": [],
       "escopo": "Modernização da conexão sem fio nas Superintendências e unidades Poupatempo.",
       "healthStatus": "atrasados",
-      "healthReason": "Projeto atrasado há 33 dias.",
+      "healthReason": "Projeto atrasado há 38 dias.",
       "favoritos": []
     },
     {
@@ -3415,11 +3450,11 @@
       "status": "planejamento",
       "andamento": true,
       "progress": 0,
-      "delta": 0,
-      "text": "Prazo",
-      "indicator": "bg-indigo-400",
-      "icon": "Clock",
-      "iconColor": "text-indigo-400",
+      "delta": 4,
+      "text": "Atrasados",
+      "indicator": "bg-rose-500",
+      "icon": "AlertCircle",
+      "iconColor": "text-rose-500",
       "responsavel": "Amanda Guedes Gomes",
       "departamento": "Diretoria de Tecnologia da Informação",
       "excluido": false,
@@ -3449,12 +3484,273 @@
       },
       "tarefas": [],
       "escopo": "",
-      "healthStatus": "prazo",
-      "healthReason": "No prazo.",
+      "healthStatus": "atrasados",
+      "healthReason": "Projeto atrasado há 4 dias.",
       "favoritos": []
     }
   ],
   "relatorios": [
+    {
+      "id": "REL-1777578747350",
+      "nome": "Relatório_2026_04_30_16_52_27_ANDERSON",
+      "geradoEm": "30/04/2026, 16:52:27",
+      "dataGeracao": "30/04/2026, 16:52:27",
+      "autor": "Anderson",
+      "diretoria": "Diretoria de Tecnologia da Informação",
+      "panorama": [
+        {
+          "titulo": "Saúde Geral do Cronograma",
+          "descricao": "O projeto 'Alteração dos Racks' está com 2 dias de atraso e progresso em 0%, com a data de baseline final já ultrapassada, indicando uma situação crítica.",
+          "nivel": "alto"
+        },
+        {
+          "titulo": "Situação das Tarefas Críticas e Atualizações",
+          "descricao": "A principal tarefa 'a' permanece em 'ideação' com 0% de progresso e está atrasada. Há um 'impedimento' registrado em 29/04/2026. A ausência de notas ou lançamentos recentes impede uma compreensão clara do seu status atual, necessitando de detalhamento urgente.",
+          "nivel": "alto"
+        },
+        {
+          "titulo": "Próximos Passos e Recomendações Imediatas",
+          "descricao": "É fundamental investigar imediatamente o 'impedimento' da tarefa 'a', atualizar seu status e progresso, e reavaliar o cronograma do projeto para mitigar o atraso. Prioridade máxima para resolução de bloqueios e comunicação de status detalhada.",
+          "nivel": "alto"
+        }
+      ],
+      "detalhes": [
+        {
+          "id": 1,
+          "nome": "Alteração dos Racks",
+          "progress": 0,
+          "departamento": "TI / Infraestrutura",
+          "analiseIA": "O projeto 'Alteração dos Racks' está em status 'desenvolvimento', mas apresenta 0% de progresso e 2 dias de atraso em relação à data de baseline final (28/04/2026). A tarefa 'a', que tem o mesmo prazo de término, também está com 0% de progresso e em fase de 'ideação'. Um log recente de 29/04/2026 indica um 'impedimento' nessa tarefa, o que corrobora o atraso. A falta de 'notas' e 'últimos lançamentos' nas tarefas sugere pouca ou nenhuma atualização detalhada do progresso.",
+          "conclusao": "Recomenda-se uma revisão urgente do cronograma e dos impedimentos do projeto, com foco imediato na tarefa 'a'. É crucial obter clareza sobre o 'impedimento', atualizar o status e as notas da tarefa, e definir um plano de ação para retomar o progresso e realinhar o projeto.",
+          "eventosCriticos": [
+            "Projeto 'Alteração dos Racks' apresenta 2 dias de atraso em relação à data de baseline final (28/04/2026).",
+            "Tarefa 'a' está com status 'ideação' e progresso 0%, com data final prevista em 28/04/2026, indicando atraso.",
+            "Registro de 'Impedimento em a' em 29/04/2026 nos logs do projeto."
+          ],
+          "baselineInicio": "2026-03-02",
+          "baselineFim": "2026-04-28",
+          "baselineData": {
+            "inicio": "2026-03-02",
+            "fim": "2026-04-28"
+          }
+        }
+      ]
+    },
+    {
+      "id": "REL-1777578731315",
+      "nome": "Relatório_2026_04_30_16_52_11_ANDERSON",
+      "geradoEm": "30/04/2026, 16:52:11",
+      "dataGeracao": "30/04/2026, 16:52:11",
+      "autor": "Anderson",
+      "diretoria": "Diretoria de Tecnologia da Informação",
+      "panorama": [
+        {
+          "titulo": "Saúde Geral das Datas do Projeto",
+          "descricao": "O projeto 'Alteração dos Racks' apresenta atraso de 2 dias em relação à baseline de conclusão (28/04/2026). A data atual já ultrapassa o prazo estabelecido, indicando necessidade de revisão e ajuste de cronograma.",
+          "nivel": "alto"
+        },
+        {
+          "titulo": "Tarefas Críticas e Observações",
+          "descricao": "A tarefa 'a', com data de término em 28/04/2026, ainda está em fase de ideação com 0% de progresso. Foi registrado um impedimento crítico para esta tarefa em 29/04/2026, exigindo atenção imediata para evitar maiores impactos.",
+          "nivel": "alto"
+        },
+        {
+          "titulo": "Próximos Passos Recomendados",
+          "descricao": "Priorizar a resolução do impedimento na tarefa 'a'. Realizar reunião de alinhamento com a equipe para reavaliar o cronograma do projeto e da tarefa, buscando um novo plano de ação e datas realistas para a conclusão. Considerar um plano de contingência.",
+          "nivel": "medio"
+        }
+      ],
+      "detalhes": [
+        {
+          "id": 1,
+          "nome": "Alteração dos Racks",
+          "progress": 0,
+          "departamento": "DETRAN-SP Infraestrutura",
+          "analiseIA": "O projeto 'Alteração dos Racks' encontra-se em status de desenvolvimento, mas com 0% de progresso, e está com 2 dias de atraso em relação à sua baseline de conclusão, que era 2026-04-28. A única tarefa listada, 'a', também possui 0% de progresso, está em 'ideacao' e sua data de fim (2026-04-28) já foi ultrapassada. Um impedimento crítico foi reportado para esta tarefa em 29/04/2026, agravando a situação.",
+          "conclusao": "Recomenda-se uma revisão urgente do cronograma e dos recursos alocados para o projeto 'Alteração dos Racks'. É fundamental resolver o impedimento na tarefa 'a' imediatamente e reavaliar o escopo e as datas da mesma, visto que a data de término já foi ultrapassada e o progresso é nulo. Um plano de contingência para mitigar os impactos do atraso é crucial.",
+          "eventosCriticos": [
+            "O projeto 'Alteração dos Racks' está com 2 dias de atraso em relação à baseline de conclusão (2026-04-28).",
+            "Impedimento registrado na tarefa 'a' em 29/04/2026, afetando o progresso crítico do projeto.",
+            "Tarefa 'a' com data de término em 28/04/2026, ainda em 'ideacao' e com 0% de progresso."
+          ],
+          "baselineInicio": "2026-03-02",
+          "baselineFim": "2026-04-28",
+          "baselineData": {
+            "inicio": "2026-03-02",
+            "fim": "2026-04-28"
+          }
+        }
+      ]
+    },
+    {
+      "id": "REL-1777578237872",
+      "nome": "Relatório_2026_04_30_16_43_57_BRUNO_ZAIA_BONETO",
+      "geradoEm": "30/04/2026, 16:43:57",
+      "dataGeracao": "30/04/2026, 16:43:57",
+      "autor": "Bruno Zaia Boneto",
+      "diretoria": "Diretoria de Tecnologia da Informação",
+      "panorama": [
+        {
+          "titulo": "Situação Geral dos Projetos",
+          "descricao": "Dos 6 projetos favoritos, 2 estão em desenvolvimento e apresentam atrasos ou impedimentos significativos, e 4 estão na fase de planejamento, com a maioria ainda sem baselines formalizadas. A gestão deve focar nos projetos com desafios imediatos e na estruturação dos projetos em fase inicial.",
+          "nivel": "medio"
+        },
+        {
+          "titulo": "Projetos em Risco Crítico",
+          "descricao": "Os projetos 'Alteração dos Racks' e 'AVA Moodle' demandam atenção prioritária. 'Alteração dos Racks' possui uma tarefa-chave atrasada e sem progresso, com um impedimento recente reportado. 'AVA Moodle', embora 99% concluído, está com 31 dias de atraso em relação ao seu prazo inicial.",
+          "nivel": "alto"
+        },
+        {
+          "titulo": "Projetos em Planejamento",
+          "descricao": "Os projetos 'Arquitetura de TIC', 'BlackSpirit', 'Unificação contratos periféricos' e 'Wallet' estão em fase inicial de planejamento, sem progresso. A maioria carece de datas de baseline definidas, o que é um passo fundamental para o avanço.",
+          "nivel": "baixo"
+        }
+      ],
+      "detalhes": [
+        {
+          "id": 1,
+          "nome": "Alteração dos Racks",
+          "progress": 0,
+          "departamento": "DETRAN-SP - TIC",
+          "analiseIA": "O projeto 'Alteração dos Racks' encontra-se em desenvolvimento com 0% de progresso, registrando um atraso de 2 dias em relação ao seu baseline final (28/04/2026), que já foi ultrapassado. A tarefa 'a', com prazo de fim em 28/04/2026, também apresenta 0% de progresso. Os logs indicam um 'Impedimento' em 29/04/2026, o que é um fator crítico para a estagnação do projeto.",
+          "conclusao": "É imperativo identificar e remover o impedimento relatado para a tarefa 'a' e para o projeto. Uma reunião com a equipe para reavaliar o cronograma e alocar recursos é essencial para iniciar o progresso e mitigar o atraso.",
+          "eventosCriticos": [
+            "Tarefa 'a' (fim: 2026-04-28, progresso: 0%) está atrasada e sem progresso."
+          ]
+        },
+        {
+          "id": 2,
+          "nome": "Arquitetura de TIC",
+          "progress": 0,
+          "departamento": "DETRAN-SP - TIC",
+          "analiseIA": "O projeto 'Arquitetura de TIC' está na fase de planejamento, sem progresso registrado e sem atrasos. As datas de baseline (início e fim) não foram definidas, indicando que o projeto está em suas etapas iniciais de concepção ou detalhamento do escopo.",
+          "conclusao": "Recomenda-se a formalização das datas de baseline o mais breve possível para estabelecer um cronograma claro e metas tangíveis, permitindo o avanço para as próximas fases.",
+          "eventosCriticos": []
+        },
+        {
+          "id": 3,
+          "nome": "AVA Moodle",
+          "progress": 99,
+          "departamento": "DETRAN-SP - TIC",
+          "analiseIA": "O projeto 'AVA Moodle' está em estágio avançado de desenvolvimento, com 99% de progresso. No entanto, o projeto acumula um atraso significativo de 31 dias, tendo o baseline final (30/03/2026) já sido ultrapassado. Apesar de quase concluído, a demora na finalização é notável.",
+          "conclusao": "É crucial identificar os fatores que impedem a conclusão do último 1% do projeto e aplicar recursos focados para finalizar rapidamente. Uma revisão dos planos de go-live e comunicação aos usuários é necessária para gerenciar expectativas.",
+          "eventosCriticos": []
+        },
+        {
+          "id": 4,
+          "nome": "BlackSpirit",
+          "progress": 0,
+          "departamento": "DETRAN-SP - TIC",
+          "analiseIA": "O projeto 'BlackSpirit' está na fase de planejamento, com 0% de progresso e sem atrasos. A data de baseline de início é 14/04/2026, mas a data de fim ainda não foi estabelecida. O escopo de orquestração de exames e fiscalização via Databricks é promissor, mas o planejamento precisa ser completado.",
+          "conclusao": "Recomenda-se a formalização da data de baseline de fim e o detalhamento das primeiras tarefas para garantir que o planejamento avance conforme o esperado e o projeto possa iniciar o desenvolvimento de forma estruturada.",
+          "eventosCriticos": []
+        },
+        {
+          "id": 5,
+          "nome": "Unificação contratos periféricos",
+          "progress": 0,
+          "departamento": "DETRAN-SP - TIC",
+          "analiseIA": "O projeto 'Unificação contratos periféricos' está em planejamento, com 0% de progresso e sem atrasos. Não há datas de baseline (início e fim) definidas, o que indica que o projeto está em uma fase muito inicial de concepção.",
+          "conclusao": "É importante definir o escopo e as datas de baseline para este projeto o mais rápido possível para permitir um planejamento eficaz e o início estruturado das atividades.",
+          "eventosCriticos": []
+        },
+        {
+          "id": 6,
+          "nome": "Wallet",
+          "progress": 0,
+          "departamento": "DETRAN-SP - TIC",
+          "analiseIA": "O projeto 'Wallet' está em fase de planejamento, com 0% de progresso e sem atrasos. As datas de baseline (início e fim) não foram estabelecidas, sugerindo que o projeto ainda está em uma etapa preliminar de conceituação e levantamento de requisitos.",
+          "conclusao": "A formalização do escopo e a definição das datas de baseline são passos essenciais para que o projeto 'Wallet' possa progredir para as próximas fases de planejamento e desenvolvimento.",
+          "eventosCriticos": []
+        }
+      ]
+    },
+    {
+      "id": "REL-1777578213479",
+      "nome": "Relatório_2026_04_30_16_43_33_BRUNO_ZAIA_BONETO",
+      "geradoEm": "30/04/2026, 16:43:33",
+      "dataGeracao": "30/04/2026, 16:43:33",
+      "autor": "Bruno Zaia Boneto",
+      "diretoria": "Diretoria de Tecnologia da Informação",
+      "panorama": [
+        {
+          "titulo": "Status Geral dos Projetos",
+          "descricao": "Atualmente, 6 projetos estão em andamento: 2 em fase de desenvolvimento e 4 em planejamento, indicando uma robusta pipeline de iniciativas futuras.",
+          "nivel": "medio"
+        },
+        {
+          "titulo": "Projetos com Atraso",
+          "descricao": "Dois projetos em desenvolvimento, 'Alteração dos Racks' e 'AVA Moodle', somam um total de 33 dias de atraso em relação às suas baselines, com o AVA Moodle representando a maior parte.",
+          "nivel": "alto"
+        },
+        {
+          "titulo": "Adesão ao Planejamento",
+          "descricao": "Quatro projetos em fase de planejamento ('Arquitetura de TIC', 'BlackSpirit', 'Unificação contratos periféricos', 'Wallet') ainda não possuem baselines ou prazos finais definidos, o que pode impactar a previsibilidade futura e a formalização do escopo.",
+          "nivel": "medio"
+        }
+      ],
+      "detalhes": [
+        {
+          "id": 1,
+          "nome": "Alteração dos Racks",
+          "progress": 0,
+          "departamento": "DETRAN-SP",
+          "analiseIA": "O projeto 'Alteração dos Racks', em fase de desenvolvimento, apresenta 0% de progresso e está com 2 dias de atraso em relação à sua baseline, que previa o término em 28/04/2026. A tarefa 'a' associada a este projeto também não teve progresso e já ultrapassou sua data de término. Logs recentes indicam impedimentos e atualizações de EAP, sugerindo instabilidade no planejamento. Nenhuma nota ou lançamento específico da tarefa foi registrado para detalhar o impedimento.",
+          "conclusao": "Revisão urgente do cronograma, identificação e mitigação dos impedimentos reportados, e reavaliação do escopo da tarefa 'a' para impulsionar o progresso.",
+          "eventosCriticos": [
+            "Projeto com 2 dias de atraso em relação à baseline (fim previsto: 2026-04-28).",
+            "Tarefa 'a' com 0% de progresso e fim previsto para 2026-04-28."
+          ]
+        },
+        {
+          "id": 2,
+          "nome": "Arquitetura de TIC",
+          "progress": 0,
+          "departamento": "DETRAN-SP",
+          "analiseIA": "O projeto 'Arquitetura de TIC' encontra-se em fase de planejamento com 0% de progresso e sem baseline definida para início ou fim. A ausência de um cronograma formal impede a medição de atrasos ou o acompanhamento efetivo. A única atividade registrada é a 'Carga Inicial de Massa de Dados', indicando o estágio muito inicial do projeto.",
+          "conclusao": "Priorizar a definição do escopo e do cronograma detalhado (baseline) para permitir o planejamento efetivo e o acompanhamento do progresso.",
+          "eventosCriticos": []
+        },
+        {
+          "id": 3,
+          "nome": "AVA Moodle",
+          "progress": 99,
+          "departamento": "DETRAN-SP",
+          "analiseIA": "O projeto 'AVA Moodle', que visa a migração para a nuvem do DETRAN, está 99% concluído, porém acumula 31 dias de atraso em relação à sua baseline, que previa o término em 30/03/2026. Apesar do alto nível de progresso, a finalização está pendente, indicando um impedimento persistente no último percentual. Nenhuma tarefa específica com notas ou lançamentos foi registrada para esclarecer o motivo do atraso final.",
+          "conclusao": "Focar esforços na conclusão do 1% restante, identificar a causa do atraso final e implementar ações corretivas para evitar recorrências em futuras finalizações de projetos.",
+          "eventosCriticos": [
+            "Projeto com 31 dias de atraso em relação à baseline (fim previsto: 2026-03-30)."
+          ]
+        },
+        {
+          "id": 4,
+          "nome": "BlackSpirit",
+          "progress": 0,
+          "departamento": "DETRAN-SP",
+          "analiseIA": "O projeto 'BlackSpirit' está em fase de planejamento com 0% de progresso. Embora tenha uma data de início de baseline (14/04/2026), a data de término ainda não foi definida. Isso sugere que o escopo pode estar em fase de refinamento ou que as estimativas de prazo ainda não foram estabelecidas. Nenhuma tarefa com notas ou lançamentos foi fornecida.",
+          "conclusao": "Definir urgentemente a baseline completa, incluindo a data de término do projeto, para formalizar o planejamento e permitir o acompanhamento do progresso.",
+          "eventosCriticos": []
+        },
+        {
+          "id": 5,
+          "nome": "Unificação contratos periféricos",
+          "progress": 0,
+          "departamento": "DETRAN-SP",
+          "analiseIA": "O projeto 'Unificação contratos periféricos' está em fase de planejamento, com 0% de progresso e sem nenhuma baseline definida. Este status indica que o projeto está em um estágio muito preliminar, com a necessidade de formalização de seu escopo e cronograma.",
+          "conclusao": "Iniciar o processo de detalhamento do escopo, seguido pela definição de uma baseline clara para início e fim do projeto, visando a formalização e o planejamento efetivo.",
+          "eventosCriticos": []
+        },
+        {
+          "id": 6,
+          "nome": "Wallet",
+          "progress": 0,
+          "departamento": "DETRAN-SP",
+          "analiseIA": "O projeto 'Wallet' está em fase de planejamento, com 0% de progresso e sem baseline definida. Similar a outros projetos na mesma fase, a ausência de um cronograma formal e de marcos iniciais indica que o projeto ainda requer estruturação e detalhamento antes de avançar para a execução.",
+          "conclusao": "Elaborar o escopo inicial e estabelecer as métricas e o cronograma (baseline) para formalizar o planejamento e permitir o início das atividades.",
+          "eventosCriticos": []
+        }
+      ]
+    },
     {
       "id": "REL-1777568693629",
       "nome": "Relatório_2026_04_30_14_04_53_ANDERSON",

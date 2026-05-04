@@ -53,6 +53,7 @@ export default function UsuariosPage() {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [novoUsuario, setNovoUsuario] = useState(novoUsuarioDefault);
   const [savingUser, setSavingUser] = useState(false);
+  const [isSearchingCorporate, setIsSearchingCorporate] = useState(false);
 
   // Delete em progresso
   const [deletingId, setDeletingId] = useState<string | null>(null);
@@ -68,6 +69,12 @@ export default function UsuariosPage() {
   };
 
   useEffect(() => { fetchUsers(); }, []);
+
+  useEffect(() => {
+    if (dialogOpen) {
+      setNovoUsuario(novoUsuarioDefault);
+    }
+  }, [dialogOpen]);
 
   const canManageRoles = usuario?.papel === 'admin_total' || usuario?.papel === 'admin_master';
   const canManageUsers = usuario?.papel === 'admin_total' || usuario?.papel === 'admin_master' || usuario?.papel === 'usuario_master';
@@ -151,6 +158,40 @@ export default function UsuariosPage() {
       }
     } catch { toast.error("Falha ao atualizar papel."); }
     setEditingId(null);
+  };
+
+  const handleSearchMicrosoft = () => {
+    if (!novoUsuario.email.includes("@")) {
+      toast.error("Insira um e-mail válido para consultar.");
+      return;
+    }
+
+    setIsSearchingCorporate(true);
+    // Simulação de chamada à Graph API
+    setTimeout(() => {
+      setIsSearchingCorporate(false);
+      
+      // Mock de dados encontrados na rede (exemplo para demonstração)
+      const mockData: any = {
+        "pedro.oliveira@detran.sp.gov.br": { nome: "Pedro Oliveira", cargo: "Coordenador de TI", depto: "Diretoria de Tecnologia da Informação" },
+        "marcia.santos@detran.sp.gov.br": { nome: "Marcia Santos", cargo: "Gerente de Projetos", depto: "Diretoria Administrativa" },
+        "ana.lima@detran.sp.gov.br": { nome: "Ana Lima", cargo: "Fiscal de Trânsito", depto: "Diretoria de Fiscalização de Trânsito" }
+      };
+
+      const found = mockData[novoUsuario.email.toLowerCase()];
+
+      if (found) {
+        setNovoUsuario(prev => ({
+          ...prev,
+          nome: found.nome,
+          cargo: found.cargo,
+          departamento: found.depto
+        }));
+        toast.success("Dados recuperados da rede corporativa com sucesso!");
+      } else {
+        toast.info("Usuário não encontrado na busca automática. Preencha os dados manualmente.");
+      }
+    }, 1500);
   };
 
   const handleAddUsuario = async () => {
@@ -241,20 +282,41 @@ export default function UsuariosPage() {
               </DialogHeader>
               <div className="space-y-4 py-2">
                 <div className="space-y-2">
+                  <Label className="flex items-center gap-1.5"><Mail className="h-3.5 w-3.5" /> E-mail Corporativo</Label>
+                  <div className="flex gap-2">
+                    <Input
+                      placeholder="joao.silva@detran.sp.gov.br"
+                      type="email"
+                      className="flex-1"
+                      value={novoUsuario.email}
+                      onChange={e => {
+                        const val = e.target.value;
+                        if (!val) {
+                          setNovoUsuario(novoUsuarioDefault);
+                        } else {
+                          setNovoUsuario({ ...novoUsuario, email: val });
+                        }
+                      }}
+                    />
+                    <Button 
+                      type="button"
+                      variant="outline" 
+                      size="sm"
+                      onClick={handleSearchMicrosoft}
+                      disabled={isSearchingCorporate}
+                      className="shrink-0 gap-1.5 border-blue-200 text-blue-600 hover:bg-blue-50"
+                    >
+                      {isSearchingCorporate ? <Loader2 className="h-3 w-3 animate-spin" /> : <Search className="h-3 w-3" />}
+                      Consultar
+                    </Button>
+                  </div>
+                </div>
+                <div className="space-y-2">
                   <Label className="flex items-center gap-1.5"><UserIcon className="h-3.5 w-3.5" /> Nome Completo</Label>
                   <Input
                     placeholder="Ex: João da Silva"
                     value={novoUsuario.nome}
                     onChange={e => setNovoUsuario({ ...novoUsuario, nome: e.target.value })}
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label className="flex items-center gap-1.5"><Mail className="h-3.5 w-3.5" /> E-mail Corporativo</Label>
-                  <Input
-                    placeholder="joao.silva@detran.sp.gov.br"
-                    type="email"
-                    value={novoUsuario.email}
-                    onChange={e => setNovoUsuario({ ...novoUsuario, email: e.target.value })}
                   />
                 </div>
                 <div className="space-y-2">

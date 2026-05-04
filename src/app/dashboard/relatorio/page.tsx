@@ -32,6 +32,17 @@ export default function RelatorioPage() {
 
     const fetchReport = async () => {
       try {
+        // Primeiro, verifica se há projetos favoritados
+        const projectsRes = await fetch(`/api/projects?dept=${encodeURIComponent(usuario?.departamento || "")}&role=${usuario?.papel}`);
+        const projects = await projectsRes.json();
+        const hasFavorites = Array.isArray(projects) && projects.some(p => p.favoritos?.includes(usuario?.nome));
+
+        if (!hasFavorites && !searchParams.get("id")) {
+          toast.error("Adicione ao menos um projeto como favorito para a geração do relatório.");
+          router.push("/dashboard/projetos");
+          return;
+        }
+
         const reportId = searchParams.get("id");
         const url = reportId 
           ? `/api/report?id=${reportId}` 
@@ -54,6 +65,13 @@ export default function RelatorioPage() {
 
     if (usuario) fetchReport();
   }, [usuario, router]);
+
+  const formatarDataBR = (dataIso?: string) => {
+    if (!dataIso || dataIso === "" || dataIso === "N/D") return "N/D";
+    const [year, month, day] = dataIso.split("-");
+    if (!day || !month || !year) return dataIso;
+    return `${day}/${month}/${year}`;
+  };
 
   const toggle = (id: number) => {
     setExpanded(prev => ({ ...prev, [id]: !prev[id] }));
@@ -106,7 +124,7 @@ export default function RelatorioPage() {
               <img 
                 src="https://www.detran.sp.gov.br/702a783633529610cd8381ac4f5c7b5b.iix" 
                 alt="Logo Detran SP" 
-                className="h-16 object-contain"
+                className="h-16 object-contain dark:brightness-0 dark:invert"
               />
               <div className="h-12 w-px bg-slate-300 mx-2" />
               <div>
@@ -212,11 +230,11 @@ export default function RelatorioPage() {
                         <div className="grid grid-cols-2 gap-4">
                           <div className="p-2 rounded bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
                             <p className="text-[9px] text-slate-400 uppercase font-bold">Início Baseline</p>
-                            <p className="text-xs font-bold text-slate-700 dark:text-slate-200">{proj.baselineData?.inicio || 'N/D'}</p>
+                            <p className="text-xs font-bold text-slate-700 dark:text-slate-200">{formatarDataBR(proj.baselineData?.inicio)}</p>
                           </div>
                           <div className="p-2 rounded bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
                             <p className="text-[9px] text-slate-400 uppercase font-bold">Término Baseline</p>
-                            <p className="text-xs font-bold text-slate-700 dark:text-slate-200">{proj.baselineData?.fim || 'N/D'}</p>
+                            <p className="text-xs font-bold text-slate-700 dark:text-slate-200">{formatarDataBR(proj.baselineData?.fim)}</p>
                           </div>
                         </div>
                       </div>
@@ -287,7 +305,7 @@ export default function RelatorioPage() {
               Departamento Estadual de Trânsito de São Paulo - DETRAN SP
             </p>
             <div className="flex justify-center gap-8 text-[9px] text-slate-400">
-              <span>© 2026 GPI v2.5.1</span>
+              <span>© 2026 GPI v1.0.9</span>
               <span>Inteligência Artificial por Google Gemini 2.5 Flash</span>
               <span className="print:inline hidden">Autenticação: {Math.random().toString(36).substring(7).toUpperCase()}</span>
             </div>

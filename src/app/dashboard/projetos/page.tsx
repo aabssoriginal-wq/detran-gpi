@@ -48,9 +48,13 @@ export default function ProjetosPage() {
           return;
         }
         let filtered = data.filter((p: any) => !p.excluido);
-        // Usuário Comum vê apenas seus projetos atribuídos (dentro do seu depto)
+        // Usuário Comum vê projetos atribuídos OU projetos onde é o responsável
         if (usuario.papel === 'usuario') {
-          filtered = filtered.filter((p: any) => usuario.projetosAtribuidos?.includes(p.id));
+          const nomeNormalizado = usuario.nome.trim().toLowerCase();
+          filtered = filtered.filter((p: any) => 
+            (usuario.projetosAtribuidos?.some((pid: any) => String(pid) === String(p.id))) ||
+            (p.responsavel && p.responsavel.trim().toLowerCase() === nomeNormalizado)
+          );
         }
         setProjetos(filtered);
         setLoading(false);
@@ -249,7 +253,15 @@ export default function ProjetosPage() {
                         projeto.status === "concluído" ? "bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-900/20 dark:text-emerald-400" :
                         "bg-slate-50 text-slate-700 border-slate-200 dark:bg-slate-900/20 dark:text-slate-400"
                       }>
-                        {projeto.text}
+                        {
+                          projeto.status === "ideacao" ? "Ideação" :
+                          projeto.status === "planejamento" ? "Planejamento" :
+                          projeto.status === "desenvolvimento" ? "Desenvolvimento" :
+                          projeto.status === "testes" ? "Testes" :
+                          projeto.status === "homologacao" ? "Homologação" :
+                          projeto.status === "implantacao" ? "Implantação" :
+                          projeto.status === "concluido" ? "Concluído" : projeto.status
+                        }
                       </Badge>
                     </TableCell>
                     <TableCell className="text-right font-medium">{projeto.progress}%</TableCell>

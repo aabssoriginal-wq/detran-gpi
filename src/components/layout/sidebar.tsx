@@ -28,12 +28,15 @@ export default function Sidebar() {
 
   return (
     <aside className="hidden md:flex flex-col w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800">
-      <div className="h-16 flex items-center px-6 border-b border-slate-200 dark:border-slate-800">
-        <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400">
-          <FolderKanban className="h-6 w-6" />
-          <span className="font-bold text-lg tracking-tight">GPI</span>
-          <span className="text-[10px] font-medium text-slate-400 mt-1 ml-1 opacity-70 italic">v2.5.1</span>
-        </div>
+      <div className="h-16 flex items-center px-6 border-b border-slate-200 dark:border-slate-800 gap-3">
+        <img 
+          src="https://www.detran.sp.gov.br/702a783633529610cd8381ac4f5c7b5b.iix" 
+          alt="Logo Detran SP" 
+          className="h-7 object-contain dark:brightness-0 dark:invert" 
+        />
+        <div className="h-6 w-px bg-slate-200 dark:bg-slate-700" />
+        <span className="font-black text-lg tracking-tighter text-blue-900 dark:text-blue-400">GPI</span>
+        <span className="text-[9px] font-bold text-blue-500/50 italic px-1 bg-blue-50 dark:bg-blue-900/20 rounded ml-auto">v1.0.9</span>
       </div>
 
       <nav className="flex-1 overflow-y-auto py-6 px-4 space-y-1.5">

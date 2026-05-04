@@ -13,9 +13,12 @@ export async function GET(request: Request) {
     let usuarios = getUsuarios();
 
     // Regra de Isolamento: Apenas admin_total vê usuários de todas as diretorias.
-    // admin_master, usuario_master e usuario comum veem apenas sua própria diretoria.
-    if (role !== 'admin_total' && dept) {
-      usuarios = usuarios.filter(u => u.departamento === dept);
+    // O filtro só é aplicado se os parâmetros forem passados (página de usuários).
+    // Na tela de login (sem parâmetros), retornamos todos os usuários.
+    if (role && role !== 'admin_total') {
+      if (dept) {
+        usuarios = usuarios.filter(u => u.departamento === dept);
+      }
     }
 
     return NextResponse.json(usuarios);

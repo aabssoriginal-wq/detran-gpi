@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { signOut } from "next-auth/react";
 
 export type Papel = 'admin_total' | 'admin_master' | 'usuario_master' | 'usuario';
 
@@ -57,11 +58,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem('gpi_session', JSON.stringify(u));
   };
 
+
   const logout = () => {
     setUsuario(null);
     setOriginalUsuario(null);
     localStorage.removeItem('gpi_session');
     localStorage.removeItem('gpi_original_session');
+    signOut({ redirect: false });
   };
 
   const impersonate = (target: SessaoUsuario) => {

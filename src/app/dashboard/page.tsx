@@ -594,12 +594,15 @@ export default function DashboardPage() {
                         )}
                       </div>
                     )}
-                    <Progress 
-                      value={projeto.progress} 
-                      className={`h-2 cursor-help ${!projeto.andamento ? 'opacity-50' : ''}`} 
-                      indicatorColor={projeto.indicator} 
-                      title={projeto.healthReason}
-                    />
+                    <div className="flex items-center gap-2">
+                      <Progress 
+                        value={projeto.progress} 
+                        className={`h-2 flex-1 cursor-help ${!projeto.andamento ? 'opacity-50' : ''}`} 
+                        indicatorColor={projeto.indicator} 
+                        title={projeto.healthReason}
+                      />
+                      <span className="text-[10px] font-bold text-slate-500 w-8 text-right">{projeto.progress}%</span>
+                    </div>
                   </div>
                 );
               })

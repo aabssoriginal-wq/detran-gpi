@@ -20,6 +20,10 @@ export const metadata: Metadata = {
   description: "Sistema de Gestão de Portfólio da Diretoria de TI do DETRAN-SP",
 };
 
+import { NextAuthProvider } from "@/components/providers/NextAuthProvider";
+
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -29,14 +33,19 @@ export default function RootLayout({
     <html
       lang="pt-BR"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
-        <AuthProvider>
-          <TooltipProvider>
-            {children}
-          </TooltipProvider>
-          <Toaster richColors position="top-right" />
-        </AuthProvider>
+        <NextAuthProvider>
+          <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+            <AuthProvider>
+              <TooltipProvider>
+                {children}
+              </TooltipProvider>
+              <Toaster richColors position="top-right" />
+            </AuthProvider>
+          </ThemeProvider>
+        </NextAuthProvider>
       </body>
     </html>
   );

@@ -721,7 +721,9 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
   const isDeleted = projetoData.excluido === true;
   const isAdminTotal = usuario?.papel === 'admin_total';
   const isAdmin = usuario?.papel === 'admin_total' || usuario?.papel === 'admin_master';
-  const isPowerUser = isAdmin || usuario?.papel === 'usuario_master';
+  const isPowerUser = isAdmin || usuario?.papel === 'usuario_master' || 
+    (projetoData.responsavel && projetoData.responsavel.trim().toLowerCase() === usuario?.nome.trim().toLowerCase()) ||
+    (usuario?.projetosAtribuidos?.some((pid: any) => String(pid) === String(projetoData.id)));
   
   const canEditDeleted = isAdmin;
   const isBlocked = isDeleted && !canEditDeleted;

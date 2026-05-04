@@ -23,7 +23,15 @@ export async function POST(request: Request) {
       nome: p.nome,
       status: p.status,
       responsavel: p.responsavel,
-      progresso: p.progress
+      progresso: p.progress,
+      baseline: p.baselineData,
+      tarefas: (p.tarefas || []).map((t: any) => ({
+        titulo: t.titulo,
+        status: t.status,
+        fim: t.dataFim,
+        notas: t.notas,
+        impedimento: t.impedimentoAtivo
+      }))
     })), null, 2);
 
     const systemPrompt = `Você é o Assistente IA do Sistema GPI (DETRAN-SP).

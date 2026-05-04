@@ -14,13 +14,14 @@ export async function GET(request: Request) {
     // Regra de Ouro: Se for usuário comum, filtramos por atribuição real no servidor
     if (papel === 'usuario' && userName) {
       const allUsers = getUsuarios();
-      const currentUser = allUsers.find(u => u.nome.trim() === userName.trim());
+      const normalizedReqName = userName.trim().toLowerCase();
+      const currentUser = allUsers.find(u => u.nome.trim().toLowerCase() === normalizedReqName);
       
       if (currentUser) {
         const IDsAtribuidos = currentUser.projetosAtribuidos || [];
         projetos = projetos.filter(p => 
           IDsAtribuidos.includes(p.id) || 
-          (p.responsavel && p.responsavel.trim().toLowerCase() === userName.trim().toLowerCase())
+          (p.responsavel && p.responsavel.trim().toLowerCase() === normalizedReqName)
         );
       }
     }

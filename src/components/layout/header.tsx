@@ -1,6 +1,7 @@
 "use client";
 
 import { Bell, Menu, Search, ShieldAlert } from "lucide-react";
+import { DarkModeToggle } from "./DarkModeToggle";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -74,6 +75,7 @@ export default function Header() {
       </div>
 
       <div className="flex items-center gap-4">
+        <DarkModeToggle />
         <Button variant="ghost" size="icon" className="relative text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200">
           <Bell className="h-5 w-5" />
           <span className="absolute top-2 right-2 h-2 w-2 rounded-full bg-red-500 ring-2 ring-white dark:ring-slate-900" />

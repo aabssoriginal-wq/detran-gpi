@@ -30,19 +30,38 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: "Nenhum projeto favoritado encontrado." }, { status: 404 });
     }
 
-    // Preparar dados simplificados para a IA
+    // Preparar dados enriquecidos para a IA
     const dadosParaIA = favoritos.map(p => ({
       nome: p.nome,
       escopo: p.escopo,
       status: p.status,
       progresso: p.progress,
       atraso: p.delta,
+      baselineInicio: p.baselineData?.inicio,
+      baselineFim: p.baselineData?.fim,
       logs: (p.logs || []).slice(0, 5).map(l => `${l.data}: ${l.acao}`),
-      tarefasAtrasadas: (p.tarefas || []).filter(t => t.status !== 'concluído' && t.dataFim && new Date(t.dataFim) < new Date()).map(t => t.titulo)
+      tarefas: (p.tarefas || []).map(t => ({
+        titulo: t.titulo,
+        status: t.status,
+        progresso: t.progress,
+        inicio: t.dataInicio,
+        fim: t.dataFim,
+        notas: t.notas, // Anotações
+        numLancamentos: t.lancamentos?.length || 0,
+        ultimosLancamentos: (t.lancamentos || []).slice(0, 3).map((l: any) => l.texto)
+      }))
     }));
 
     const prompt = `Gere um JSON para um Relatório Executivo do DETRAN-SP.
     PROJETOS FAVORITADOS: ${JSON.stringify(dadosParaIA)}
+    
+    INSTRUÇÕES IMPORTANTES:
+    1. Analise as datas de 'baselineInicio' e 'baselineFim' do projeto.
+    2. Verifique as 'notas' e 'ultimosLancamentos' das tarefas.
+    3. No campo 'eventosCriticos', destaque tarefas com atraso real.
+    4. Se houver anotações importantes, cite-as na 'analiseIA'.
+    5. No campo 'panorama', crie 3 itens destacando: (a) Saúde Geral das Datas, (b) Tarefas Críticas/Notas e (c) Próximos Passos.
+    6. COPIE obrigatoria e exatamente as datas de 'baselineInicio' e 'baselineFim' para os respectivos campos no JSON de saída.
     
     ESTRUTURA DO JSON ESPERADA:
     {
@@ -58,7 +77,9 @@ export async function GET(request: Request) {
           "departamento": "string",
           "analiseIA": "string (resumo executivo do status)",
           "conclusao": "string (recomendação)",
-          "eventosCriticos": ["string"]
+          "eventosCriticos": ["string"],
+          "baselineInicio": "string (YYYY-MM-DD)",
+          "baselineFim": "string (YYYY-MM-DD)"
         }
       ]
     }`;
@@ -109,8 +130,14 @@ export async function GET(request: Request) {
       dataGeracao: agora.toLocaleString('pt-BR'),
       autor: userName || "Sistema",
       diretoria: userDept || "Geral",
-      panorama: reportData.panorama,
-      detalhes: reportData.detalhes
+      panorama: reportData.panorama || [],
+      detalhes: reportData.detalhes.map((d: any) => ({
+        ...d,
+        baselineData: {
+          inicio: d.baselineInicio || "N/D",
+          fim: d.baselineFim || "N/D"
+        }
+      }))
     };
     saveRelatorio(novoRelatorio);
 

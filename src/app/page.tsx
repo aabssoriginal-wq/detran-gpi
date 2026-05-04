@@ -3,8 +3,10 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth, papelLabel, papelColor, type SessaoUsuario } from "@/context/AuthContext";
+import { useSession, signIn } from "next-auth/react";
 import { Badge } from "@/components/ui/badge";
 import { FolderKanban, Crown, Shield, User as UserIcon, Loader2, ChevronRight } from "lucide-react";
+import { toast } from "sonner";
 
 const PAPEL_ICONS = {
   admin_total: Crown,
@@ -16,9 +18,49 @@ const PAPEL_ICONS = {
 export default function LoginPage() {
   const { login, usuario } = useAuth();
   const router = useRouter();
+  
+  // Tratamento seguro de sessão para evitar loops em ambiente sem config
+  let sessionData: any = { data: null, status: "unauthenticated" };
+  try {
+    sessionData = useSession();
+  } catch (e) {
+    console.warn("NextAuth não configurado totalmente.");
+  }
+  const { data: session, status } = sessionData;
   const [users, setUsers] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [selecting, setSelecting] = useState<string | null>(null);
+
+  // Sincroniza sessão Microsoft com o sistema local
+  useEffect(() => {
+    if (status === "authenticated" && session?.user && !usuario) {
+      // Procura o usuário local correspondente ao e-mail do Microsoft
+      const email = session.user.email;
+      fetch("/api/users")
+        .then(res => res.json())
+        .then(allUsers => {
+          const found = allUsers.find((u: any) => u.email.toLowerCase() === email?.toLowerCase());
+            if (found) {
+              const sessao: SessaoUsuario = {
+                id: found.id,
+                nome: found.nome,
+                email: found.email,
+                cargo: found.cargo,
+                avatar: found.avatar,
+                papel: found.papel,
+                departamento: found.departamento,
+                projetosAtribuidos: found.projetosAtribuidos || [],
+              };
+              login(sessao);
+              router.replace("/dashboard");
+            } else {
+              toast.error("Acesso não autorizado: Seu e-mail corporativo não está cadastrado no sistema GPI. Entre em contato com o administrador.");
+              // Desloga do NextAuth para permitir tentar com outra conta se necessário
+              fetch("/api/auth/signout", { method: "POST" });
+            }
+        });
+    }
+  }, [session, status, usuario, login, router]);
 
   useEffect(() => {
     if (usuario) {
@@ -27,7 +69,7 @@ export default function LoginPage() {
     }
     fetch("/api/users")
       .then(res => res.json())
-      .then(data => { setUsers(data); setLoading(false); })
+      .then(data => { setUsers(Array.isArray(data) ? data : []); setLoading(false); })
       .catch(() => setLoading(false));
   }, [usuario, router]);
 
@@ -55,9 +97,14 @@ export default function LoginPage() {
       <div className="hidden md:flex flex-col flex-1 bg-blue-700 dark:bg-blue-900 text-white p-12 justify-between relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10" />
         <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent" />
-        <div className="relative z-10 flex items-center gap-3">
-          <FolderKanban className="h-10 w-10" />
-          <span className="text-3xl font-bold tracking-tight">GPI</span>
+        <div className="relative z-10 flex items-center gap-4 bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20 w-fit">
+          <img 
+            src="https://www.detran.sp.gov.br/702a783633529610cd8381ac4f5c7b5b.iix" 
+            alt="Logo Detran SP" 
+            className="h-10 object-contain brightness-0 invert" 
+          />
+          <div className="h-8 w-px bg-white/30" />
+          <span className="text-3xl font-black text-white tracking-tighter leading-none">GPI</span>
         </div>
         <div className="relative z-10 max-w-lg">
           <h1 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">
@@ -78,9 +125,16 @@ export default function LoginPage() {
       <div className="flex-1 flex items-center justify-center p-6 md:p-12">
         <div className="w-full max-w-md space-y-6">
           <div className="text-center">
-            <div className="md:hidden flex items-center justify-center gap-2 mb-6 text-blue-600">
-              <FolderKanban className="h-8 w-8" />
-              <span className="text-2xl font-bold">GPI</span>
+            <div className="md:hidden flex flex-col items-center justify-center gap-2 mb-6">
+              <div className="flex items-center gap-3 bg-blue-600 p-3 rounded-lg shadow-lg">
+                <img 
+                  src="https://www.detran.sp.gov.br/702a783633529610cd8381ac4f5c7b5b.iix" 
+                  alt="Logo Detran SP" 
+                  className="h-8 object-contain brightness-0 invert" 
+                />
+                <div className="h-6 w-px bg-white/30" />
+                <span className="text-xl font-black text-white tracking-tighter">GPI</span>
+              </div>
             </div>
             <div className="flex items-center justify-center gap-2 mb-2">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 21 21">
@@ -99,7 +153,32 @@ export default function LoginPage() {
 
           <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden">
             <div className="px-4 py-3 bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-700">
-              <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Colaboradores Detran-SP</p>
+              <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Acesso Seguro</p>
+            </div>
+            
+            <div className="p-6 space-y-4">
+              <button 
+                onClick={() => signIn("azure-ad")}
+                disabled={status === "loading" || !!selecting}
+                className="w-full flex items-center justify-center gap-3 py-3 px-4 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg shadow-sm hover:shadow-md hover:bg-slate-50 dark:hover:bg-slate-900 transition-all font-semibold text-slate-700 dark:text-slate-200 group disabled:opacity-50"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 21 21">
+                  <path fill="#f35325" d="M0 0h10v10H0z"/>
+                  <path fill="#81bc06" d="M11 0h10v10H11z"/>
+                  <path fill="#05a6f0" d="M0 11h10v10H0z"/>
+                  <path fill="#ffba08" d="M11 11h10v10H11z"/>
+                </svg>
+                {status === "loading" ? "Conectando..." : "Entrar com Conta Microsoft"}
+              </button>
+              
+              <div className="relative">
+                <div className="absolute inset-0 flex items-center"><span className="w-full border-t border-slate-200 dark:border-slate-800"></span></div>
+                <div className="relative flex justify-center text-[10px] uppercase"><span className="bg-white dark:bg-slate-900 px-2 text-slate-400 font-bold tracking-widest">ou acesso rápido (DEV)</span></div>
+              </div>
+            </div>
+
+            <div className="px-4 py-2 bg-slate-50/50 dark:bg-slate-800/30 border-y border-slate-100 dark:border-slate-800">
+              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Colaboradores Detran-SP</p>
             </div>
             {loading ? (
               <div className="flex items-center justify-center py-12">
