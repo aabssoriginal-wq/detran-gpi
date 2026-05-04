@@ -3,8 +3,8 @@ import { getToken } from "next-auth/jwt";
 import type { NextRequest } from "next/server";
 
 export async function middleware(request: NextRequest) {
-  // Em desenvolvimento, permitir acesso livre (login mocado via localStorage)
-  if (process.env.NODE_ENV === "development") {
+  // Permitir acesso livre em desenvolvimento ou se explicitamente liberado para testes online
+  if (process.env.NODE_ENV === "development" || process.env.NEXT_PUBLIC_ALLOW_MOCK_LOGIN === "true") {
     return NextResponse.next();
   }
 
