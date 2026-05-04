@@ -62,6 +62,11 @@ export default function LoginPage() {
     }
   }, [session, status, usuario, login, router]);
 
+  const FALLBACK_USERS = [
+    { id: 'u000', nome: 'Anderson', email: 'anderson@detran.sp.gov.br', cargo: 'Admin Total', papel: 'admin_total', departamento: 'Diretoria de Tecnologia da Informação' },
+    { id: 'u001', nome: 'Luiz Wanderley', email: 'luiz.wanderley@detran.sp.gov.br', cargo: 'Diretor de TI', papel: 'admin_master', departamento: 'Diretoria de Tecnologia da Informação' }
+  ];
+
   useEffect(() => {
     if (usuario) {
       router.replace("/dashboard");
@@ -69,8 +74,15 @@ export default function LoginPage() {
     }
     fetch("/api/users")
       .then(res => res.json())
-      .then(data => { setUsers(Array.isArray(data) ? data : []); setLoading(false); })
-      .catch(() => setLoading(false));
+      .then(data => { 
+        const validData = Array.isArray(data) && data.length > 0 ? data : FALLBACK_USERS;
+        setUsers(validData); 
+        setLoading(false); 
+      })
+      .catch(() => {
+        setUsers(FALLBACK_USERS);
+        setLoading(false);
+      });
   }, [usuario, router]);
 
   const handleSelect = (u: any) => {
