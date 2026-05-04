@@ -99,14 +99,19 @@ const CACHE_TTL = 5000; // 5 seconds
 const initUsersDB = () => {
   // Se estiver no Azure, gerenciar persistência e sincronização
   if (process.env.WEBSITE_INSTANCE_ID !== undefined) {
-    const packageUsersPath = path.join(process.cwd(), 'users.json');
+    const possiblePaths = [
+      path.join(process.cwd(), 'users.json'),
+      path.join(process.cwd(), '..', 'users.json'),
+      path.join(process.cwd(), '..', '..', 'users.json')
+    ];
+    let packageUsersPath = possiblePaths.find(p => fs.existsSync(p));
     const forceSync = process.env.SYNC_DATA_NOW === 'true';
 
-    if ((!fs.existsSync(usersFilePath) || forceSync) && fs.existsSync(packageUsersPath)) {
+    if ((!fs.existsSync(usersFilePath) || forceSync) && packageUsersPath) {
       try {
         const initialContent = fs.readFileSync(packageUsersPath, 'utf-8');
         fs.writeFileSync(usersFilePath, initialContent);
-        console.log("Usuários sincronizados/inicializados com sucesso.");
+        console.log(`USUÁRIOS SINCRONIZADOS COM SUCESSO de ${packageUsersPath}`);
       } catch (e) {
         console.error("Erro ao sincronizar usuários:", e);
       }

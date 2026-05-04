@@ -10,7 +10,14 @@ const getFilePath = (fileName: string) => {
   if (isAzure) {
     const azureDataDir = '/home/site/data';
     const targetPath = path.join(azureDataDir, fileName);
-    const sourcePath = path.join(process.cwd(), fileName);
+    // Caminhos possíveis para os arquivos fonte no deploy do Azure
+    const possiblePaths = [
+      path.join(process.cwd(), fileName),
+      path.join(process.cwd(), '..', fileName),
+      path.join(process.cwd(), '..', '..', fileName)
+    ];
+    
+    let sourcePath = possiblePaths.find(p => fs.existsSync(p));
 
     // Garantir que o diretório persistente exista
     if (!fs.existsSync(azureDataDir)) {
@@ -19,10 +26,10 @@ const getFilePath = (fileName: string) => {
 
     // Se o arquivo não existe OU se pedirmos sincronização forçada
     const forceSync = process.env.SYNC_DATA_NOW === 'true';
-    if ((!fs.existsSync(targetPath) || forceSync) && fs.existsSync(sourcePath)) {
+    if ((!fs.existsSync(targetPath) || forceSync) && sourcePath) {
       try { 
         fs.copyFileSync(sourcePath, targetPath); 
-        console.log(`Dados sincronizados: ${fileName}`);
+        console.log(`DADOS SINCRONIZADOS COM SUCESSO: ${fileName} de ${sourcePath}`);
       } catch(e) {
         console.error(`Erro ao sincronizar ${fileName}:`, e);
       }
