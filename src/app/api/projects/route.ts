@@ -15,8 +15,8 @@ export async function GET(request: Request) {
     const session = await getServerSession(authOptions);
     
     // Fallback para parâmetros (suporte ao login mocado/DEV)
-    const userDept = session?.user?.departamento || searchParams.get('dept');
     const papel = session?.user?.papel || searchParams.get('role');
+    const userDept = (papel === 'admin_total') ? undefined : (session?.user?.departamento || searchParams.get('dept'));
     const userName = session?.user?.nome || searchParams.get('userName');
 
     let projetos = getProjetos(userDept || undefined, papel || undefined);

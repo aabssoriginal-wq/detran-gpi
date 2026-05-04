@@ -17,7 +17,7 @@ export async function GET(request: Request) {
     
     // Prioridade para a sessão, mas aceita parâmetros para o modo mocado/DEV
     const role = session?.user?.papel || searchParams.get('role');
-    const dept = session?.user?.departamento || searchParams.get('dept');
+    const dept = (role === 'admin_total') ? null : (session?.user?.departamento || searchParams.get('dept'));
 
     let usuarios = getUsuarios();
 
