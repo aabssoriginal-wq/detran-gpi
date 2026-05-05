@@ -4,6 +4,8 @@ import { getProjetos, updateTarefas, updateResponsavel } from '@/lib/db';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 
+export const dynamic = 'force-dynamic';
+
 const HIERARCHY = { 'admin_total': 4, 'admin_master': 3, 'usuario_master': 2, 'usuario': 1 };
 
 export async function GET(request: Request) {
