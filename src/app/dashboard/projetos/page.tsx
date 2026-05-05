@@ -268,7 +268,7 @@ export default function ProjetosPage() {
                                 });
                                 if (res.ok) {
                                   const updated = await res.json();
-                                  setProjetosRaw(prev => prev.map(p => p.id === updated.id ? { ...p, favoritos: updated.favoritos } : p));
+                                  setProjetosRaw(prev => prev.map((p: any) => p.id === updated.id ? { ...p, favoritos: updated.favoritos } : p));
                                 }
                               }}
                               className={`p-1 rounded-full transition-all ${projeto.favoritos?.includes(usuario?.nome) ? 'text-amber-500 bg-amber-50' : 'text-slate-300 hover:text-amber-400'}`}
@@ -351,16 +351,18 @@ export default function ProjetosPage() {
                               <div className="flex justify-end gap-2">
                                 <TooltipProvider>
                                   <Tooltip>
-                                    <TooltipTrigger asChild>
-                                      <Button 
-                                        variant="ghost" 
-                                        size="icon" 
-                                        className="h-8 w-8 text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50 dark:hover:bg-emerald-900/20"
-                                        onClick={() => handleRestore(projeto.id)}
-                                      >
-                                        <RefreshCcw className="h-4 w-4" />
-                                      </Button>
-                                    </TooltipTrigger>
+                                    <TooltipTrigger
+                                      render={
+                                        <Button 
+                                          variant="ghost" 
+                                          size="icon" 
+                                          className="h-8 w-8 text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50 dark:hover:bg-emerald-900/20"
+                                          onClick={() => handleRestore(projeto.id)}
+                                        >
+                                          <RefreshCcw className="h-4 w-4" />
+                                        </Button>
+                                      }
+                                    />
                                     <TooltipContent>Restaurar Projeto</TooltipContent>
                                   </Tooltip>
                                 </TooltipProvider>
@@ -368,16 +370,18 @@ export default function ProjetosPage() {
                                 {isAdmin && (
                                   <TooltipProvider>
                                     <Tooltip>
-                                      <TooltipTrigger asChild>
-                                        <Button 
-                                          variant="ghost" 
-                                          size="icon" 
-                                          className="h-8 w-8 text-rose-600 hover:text-rose-700 hover:bg-rose-50 dark:hover:bg-rose-900/20"
-                                          onClick={() => handlePermanentDelete(projeto.id, projeto.nome)}
-                                        >
-                                          <Trash2 className="h-4 w-4" />
-                                        </Button>
-                                      </TooltipTrigger>
+                                      <TooltipTrigger
+                                        render={
+                                          <Button 
+                                            variant="ghost" 
+                                            size="icon" 
+                                            className="h-8 w-8 text-rose-600 hover:text-rose-700 hover:bg-rose-50 dark:hover:bg-rose-900/20"
+                                            onClick={() => handlePermanentDelete(projeto.id, projeto.nome)}
+                                          >
+                                            <Trash2 className="h-4 w-4" />
+                                          </Button>
+                                        }
+                                      />
                                       <TooltipContent>Excluir Permanentemente</TooltipContent>
                                     </Tooltip>
                                   </TooltipProvider>

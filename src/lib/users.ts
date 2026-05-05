@@ -101,7 +101,7 @@ export const getUsuarios = (): Usuario[] => {
     return data.sort((a: any, b: any) => a.nome.localeCompare(b.nome));
   } catch (e) {
     console.error("Erro ao ler banco de usuários, usando fallback direto do pacote:", e);
-    const fallbackData = Array.isArray(packageUsers) ? packageUsers : [...initialUsers];
+    const fallbackData = Array.isArray(packageUsers) ? (packageUsers as any[]) : [...initialUsers];
     return fallbackData.sort((a: any, b: any) => a.nome.localeCompare(b.nome));
   }
 };

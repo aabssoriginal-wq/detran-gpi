@@ -1340,7 +1340,7 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                       disabled={isBlocked}
                     />
                     <datalist id="contatos-parceira">
-                      {contatosGlobais.filter(c => c.tipo === 'Parceira').map(c => <option key={c.id} value={c.nome}>{c.email} ({c.empresa})</option>)}
+                      {contatosGlobais.filter((c: any) => c.tipo === 'Parceira').map((c: any) => <option key={c.id} value={c.nome}>{c.email} ({c.empresa})</option>)}
                     </datalist>
                   </div>
                   <div className="space-y-2">
