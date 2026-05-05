@@ -36,6 +36,7 @@ jobs:
           cp -r .next/static .next/standalone/.next/static
           cp data.json .next/standalone/data.json || true
           cp users.json .next/standalone/users.json || true
+          cp contatos_terceiros.json .next/standalone/contatos_terceiros.json || true
           # Criar um zip do bundle standalone
           cd .next/standalone
           zip -r ../../site.zip .
@@ -64,4 +65,4 @@ jobs:
         with:
           app-name: det-gpi-dev
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: site.zip# Force trigger: 2026-05-05 12:21
+          package: site.zip
