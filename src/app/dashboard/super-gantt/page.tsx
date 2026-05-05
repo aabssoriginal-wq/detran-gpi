@@ -273,13 +273,11 @@ export default function SuperGanttPage() {
                         {repactuacoes.length > 0 && <Badge className="bg-amber-100 text-amber-700 text-[8px] h-4 px-1.5 font-black">{repactuacoes.length}x</Badge>}
                         <TooltipProvider>
                           <Tooltip>
-                            <TooltipTrigger
-                              render={
-                                <Link href={`/dashboard/projetos/${p.id}`} className="font-bold text-xs text-slate-800 dark:text-slate-100 truncate hover:text-blue-600 transition-colors">
-                                  {p.nome}
-                                </Link>
-                              }
-                            />
+                            <TooltipTrigger asChild>
+                              <Link href={`/dashboard/projetos/${p.id}`} className="font-bold text-xs text-slate-800 dark:text-slate-100 truncate hover:text-blue-600 transition-colors">
+                                {p.nome}
+                              </Link>
+                            </TooltipTrigger>
                             <TooltipContent className="max-w-[300px] p-3 bg-white dark:bg-slate-900 border shadow-xl">
                               <div className="space-y-1.5">
                                 <p className="text-[10px] font-bold text-blue-600 uppercase tracking-wider">Escopo do Projeto</p>

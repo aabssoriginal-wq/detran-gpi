@@ -351,18 +351,16 @@ export default function ProjetosPage() {
                               <div className="flex justify-end gap-2">
                                 <TooltipProvider>
                                   <Tooltip>
-                                    <TooltipTrigger
-                                      render={
-                                        <Button 
-                                          variant="ghost" 
-                                          size="icon" 
-                                          className="h-8 w-8 text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50 dark:hover:bg-emerald-900/20"
-                                          onClick={() => handleRestore(projeto.id)}
-                                        >
-                                          <RefreshCcw className="h-4 w-4" />
-                                        </Button>
-                                      }
-                                    />
+                                    <TooltipTrigger asChild>
+                                      <Button 
+                                        variant="ghost" 
+                                        size="icon" 
+                                        className="h-8 w-8 text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50 dark:hover:bg-emerald-900/20"
+                                        onClick={() => handleRestore(projeto.id)}
+                                      >
+                                        <RefreshCcw className="h-4 w-4" />
+                                      </Button>
+                                    </TooltipTrigger>
                                     <TooltipContent>Restaurar Projeto</TooltipContent>
                                   </Tooltip>
                                 </TooltipProvider>
@@ -370,18 +368,16 @@ export default function ProjetosPage() {
                                 {isAdmin && (
                                   <TooltipProvider>
                                     <Tooltip>
-                                      <TooltipTrigger
-                                        render={
-                                          <Button 
-                                            variant="ghost" 
-                                            size="icon" 
-                                            className="h-8 w-8 text-rose-600 hover:text-rose-700 hover:bg-rose-50 dark:hover:bg-rose-900/20"
-                                            onClick={() => handlePermanentDelete(projeto.id, projeto.nome)}
-                                          >
-                                            <Trash2 className="h-4 w-4" />
-                                          </Button>
-                                        }
-                                      />
+                                      <TooltipTrigger asChild>
+                                        <Button 
+                                          variant="ghost" 
+                                          size="icon" 
+                                          className="h-8 w-8 text-rose-600 hover:text-rose-700 hover:bg-rose-50 dark:hover:bg-rose-900/20"
+                                          onClick={() => handlePermanentDelete(projeto.id, projeto.nome)}
+                                        >
+                                          <Trash2 className="h-4 w-4" />
+                                        </Button>
+                                      </TooltipTrigger>
                                       <TooltipContent>Excluir Permanentemente</TooltipContent>
                                     </Tooltip>
                                   </TooltipProvider>

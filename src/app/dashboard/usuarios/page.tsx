@@ -264,14 +264,12 @@ export default function UsuariosPage() {
 
         {canManageUsers && (
           <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-            <DialogTrigger 
-              render={
-                <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium transition-all shadow-sm">
-                  <UserPlus className="h-4 w-4" />
-                  Adicionar Usuário
-                </button>
-              }
-            />
+            <DialogTrigger asChild>
+              <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium transition-all shadow-sm">
+                <UserPlus className="h-4 w-4" />
+                Adicionar Usuário
+              </button>
+            </DialogTrigger>
             <DialogContent className="sm:max-w-md">
               <DialogHeader>
                 <DialogTitle className="flex items-center gap-2">
@@ -535,18 +533,16 @@ export default function UsuariosPage() {
 
                       return (
                         <AlertDialog>
-                          <AlertDialogTrigger
-                            render={
-                              <button
-                                disabled={isDeleting}
-                                title="Remover usuário do sistema"
-                                className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium border border-rose-200 text-rose-600 bg-rose-50 hover:bg-rose-100 dark:bg-rose-900/20 dark:text-rose-400 transition-all disabled:opacity-50 shrink-0"
-                              >
-                                {isDeleting ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Trash2 className="h-3.5 w-3.5" />}
-                                Remover
-                              </button>
-                            }
-                          />
+                          <AlertDialogTrigger asChild>
+                            <button
+                              disabled={isDeleting}
+                              title="Remover usuário do sistema"
+                              className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium border border-rose-200 text-rose-600 bg-rose-50 hover:bg-rose-100 dark:bg-rose-900/20 dark:text-rose-400 transition-all disabled:opacity-50 shrink-0"
+                            >
+                              {isDeleting ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Trash2 className="h-3.5 w-3.5" />}
+                              Remover
+                            </button>
+                          </AlertDialogTrigger>
                           <AlertDialogContent>
                             <AlertDialogHeader>
                               <AlertDialogTitle>Remover {u.nome}?</AlertDialogTitle>
