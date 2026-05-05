@@ -553,7 +553,7 @@ export default function DashboardPage() {
                             </Tooltip>
                           </TooltipProvider>
                           {projeto.departamento && (
-                            <span className="text-[9px] font-black bg-blue-50 text-blue-600 px-1.5 py-0.5 rounded border border-blue-100 uppercase tracking-tighter">
+                            <span className="text-[8px] font-bold bg-slate-100/50 dark:bg-slate-800/40 text-slate-500 dark:text-slate-400 px-1.5 py-0.5 rounded border border-slate-200 dark:border-slate-700 uppercase tracking-tighter">
                               {projeto.departamento.replace("Diretoria de ", "")}
                             </span>
                           )}

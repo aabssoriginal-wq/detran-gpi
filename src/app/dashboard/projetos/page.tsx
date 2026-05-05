@@ -283,7 +283,7 @@ export default function ProjetosPage() {
                           </Link>
                         </TableCell>
                         <TableCell>
-                          <Badge variant="outline" className="text-[10px] bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-900/20 dark:text-blue-400 dark:border-blue-800">
+                          <Badge variant="outline" className="text-[8px] font-bold bg-slate-50/50 dark:bg-slate-800/40 text-slate-500 dark:text-slate-400 border-slate-200 dark:border-slate-700 uppercase tracking-tighter">
                             {projeto.departamento?.replace("Diretoria de ", "")}
                           </Badge>
                         </TableCell>
