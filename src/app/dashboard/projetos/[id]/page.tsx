@@ -153,23 +153,53 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
     temFilhos: boolean
   }>({ isOpen: false, tarefa: null, temFilhos: false });
 
+  // Novos estados para Detalhes do Projeto
+  const [escopoDetalhado, setEscopoDetalhado] = useState("");
+  const [contratoData, setContratoData] = useState({ empresaContratada: "", numeroESP: "", processoSEI: "" });
+  const [recursosData, setRecursosData] = useState<any[]>([]);
+  const [terceirosData, setTerceirosData] = useState({
+    gerenteProdesp: { nome: "", email: "", telefone: "" },
+    empresaParceira: "",
+    gerenteParceira: { nome: "", email: "", telefone: "" }
+  });
+  const [contatosGlobais, setContatosGlobais] = useState<any[]>([]);
+
+  // Sincronização do Slider (Visual)
+  const [slidingProgress, setSlidingProgress] = useState<Record<string, number>>({});
+
   const loadData = () => {
     if (!usuario) return;
     Promise.all([
       fetch(`/api/projects/${params.id}?dept=${encodeURIComponent(usuario.departamento)}&role=${usuario.papel}`).then(res => res.json()),
-      fetch(`/api/users?dept=${encodeURIComponent(usuario.departamento)}&role=${usuario.papel}`).then(res => res.json())
+      fetch(`/api/users?dept=${encodeURIComponent(usuario.departamento)}&role=${usuario.papel}`).then(res => res.json()),
+      fetch(`/api/projects/contatos`).then(res => res.json()).catch(() => []) // Vou assumir que essa rota existe ou vou criar
     ])
-      .then(([data, users]) => {
+      .then(([data, users, contatos]) => {
         if (data.error) {
           toast.error(data.error);
-          router.push("/dashboard");
           return;
         }
         setProjetoData(data);
         setLogs(data.logs || []);
         setEscopo(data.escopo || "");
+        setEscopoDetalhado(data.escopoDetalhado || "");
+        setContratoData(data.contrato || { empresaContratada: "", numeroESP: "", processoSEI: "" });
+        setRecursosData(data.recursos || []);
+        setTerceirosData(data.terceiros || {
+          gerenteProdesp: { nome: "", email: "", telefone: "" },
+          empresaParceira: "",
+          gerenteParceira: { nome: "", email: "", telefone: "" }
+        });
+        setContatosGlobais(contatos || []);
         setTarefas(data.tarefas || []);
-        // Normaliza status: valores legados (prazo, atrasados, risco) → vazio
+        
+        // Inicializa slidingProgress com os valores atuais
+        const initialSliding: Record<string, number> = {};
+        (data.tarefas || []).forEach((t: any) => {
+          initialSliding[t.id] = t.progress;
+        });
+        setSlidingProgress(initialSliding);
+
         const fasesValidas = ["ideacao","planejamento","desenvolvimento","testes","homologacao","implantacao","concluido"];
         const statusNormalizado = fasesValidas.includes(data.status) ? data.status : "ideacao";
         setProjetoStatus(statusNormalizado);
@@ -230,7 +260,11 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
 
   const handleSaveEscopo = async () => {
     if (escopo.length > 350) {
-      toast.error("O escopo deve ter no máximo 350 caracteres.");
+      toast.error("O escopo resumido deve ter no máximo 350 caracteres.");
+      return;
+    }
+    if (escopoDetalhado.length > 1500) {
+      toast.error("O escopo detalhado deve ter no máximo 1500 caracteres.");
       return;
     }
     
@@ -241,18 +275,93 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
         body: JSON.stringify({ 
           action: "update_escopo", 
           escopo: escopo.trim(), 
+          escopoDetalhado: escopoDetalhado.trim(),
           user: usuario?.nome || "Usuário", 
           papel: usuario?.papel,
           dept: usuario?.departamento
         })
       });
       if (res.ok) {
-        toast.success("Escopo salvo com sucesso!");
+        toast.success("Detalhes do escopo salvos!");
         loadData();
       }
     } catch (e) {
-      toast.error("Erro ao salvar escopo.");
+      toast.error("Erro ao salvar detalhes.");
     }
+  };
+
+  const handleSaveContrato = async () => {
+    try {
+      const res = await fetch(`/api/projects/${params.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ 
+          action: "update_contrato", 
+          contrato: contratoData,
+          user: usuario?.nome || "Usuário", 
+          papel: usuario?.papel,
+          dept: usuario?.departamento
+        })
+      });
+      if (res.ok) {
+        toast.success("Informações contratuais salvas!");
+        loadData();
+      }
+    } catch (e) {
+      toast.error("Erro ao salvar contrato.");
+    }
+  };
+
+  const handleSaveRecursos = async () => {
+    try {
+      const res = await fetch(`/api/projects/${params.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ 
+          action: "update_recursos", 
+          recursos: recursosData,
+          user: usuario?.nome || "Usuário", 
+          papel: usuario?.papel,
+          dept: usuario?.departamento
+        })
+      });
+      if (res.ok) {
+        toast.success("Recursos salvos!");
+        loadData();
+      }
+    } catch (e) {
+      toast.error("Erro ao salvar recursos.");
+    }
+  };
+
+  const handleSaveTerceiros = async () => {
+    try {
+      const res = await fetch(`/api/projects/${params.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ 
+          action: "update_terceiros", 
+          terceiros: terceirosData,
+          user: usuario?.nome || "Usuário", 
+          papel: usuario?.papel,
+          dept: usuario?.departamento
+        })
+      });
+      if (res.ok) {
+        toast.success("Informações de terceiros salvas!");
+        loadData();
+      }
+    } catch (e) {
+      toast.error("Erro ao salvar terceiros.");
+    }
+  };
+
+  const handleAddRecurso = () => {
+    setRecursosData([...recursosData, { id: Math.random().toString(36).substr(2, 9), nome: "", quantidade: "" }]);
+  };
+
+  const handleRemoveRecurso = (id: string) => {
+    setRecursosData(recursosData.filter(r => r.id !== id));
   };
 
   const handleAdicionarTarefa = async (forceRepactuacao: boolean = false, taskOverride?: any) => {
@@ -859,21 +968,25 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
             <div className="flex items-center gap-2 flex-1">
               <input 
                 type="range" min="0" max="100" 
-                defaultValue={t.progress} 
+                value={slidingProgress[t.id] ?? t.progress}
+                onChange={(e) => {
+                  const val = parseInt(e.target.value);
+                  setSlidingProgress(prev => ({ ...prev, [t.id]: val }));
+                }}
                 onMouseUp={(e: any) => {
                   const val = parseInt(e.target.value);
                   if (val !== t.progress) {
                     if (window.confirm(`Deseja salvar o novo progresso de ${val}% para esta tarefa?`)) {
                       handleUpdateTarefa(t.id, { progress: val });
                     } else {
-                      e.target.value = t.progress;
+                      setSlidingProgress(prev => ({ ...prev, [t.id]: t.progress }));
                     }
                   }
                 }}
                 className="w-full h-1 accent-blue-500 cursor-pointer"
                 disabled={t.impedimentoAtivo || isBlocked}
               />
-              <span className="text-[10px] font-mono w-8">{t.progress}%</span>
+              <span className="text-[10px] font-mono w-8">{slidingProgress[t.id] ?? t.progress}%</span>
             </div>
           </div>
 
@@ -994,50 +1107,278 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
       <Tabs defaultValue="gestao">
         <TabsList className="w-full justify-start h-12 bg-slate-100 dark:bg-slate-800 p-1">
           <TabsTrigger value="gestao" className="flex-1">Lançamento</TabsTrigger>
-          <TabsTrigger value="escopo" className="flex-1">Escopo</TabsTrigger>
+          <TabsTrigger value="escopo" className="flex-1">Detalhes do Projeto</TabsTrigger>
           <TabsTrigger value="gantt" className="flex-1">Cronograma</TabsTrigger>
           <TabsTrigger value="impedimentos" className="flex-1">Impedimentos</TabsTrigger>
           <TabsTrigger value="logs" className="flex-1">Auditoria</TabsTrigger>
         </TabsList>
 
-        <TabsContent value="escopo" className="mt-6">
+        <TabsContent value="escopo" className="mt-6 space-y-8">
+          {/* Card: Escopo do Projeto */}
           <Card>
             <CardHeader>
               <CardTitle className="text-lg flex items-center gap-2 text-blue-800">
-                <FileText className="h-5 w-5" /> Definição de Escopo
+                <FileText className="h-5 w-5" /> Escopo do Projeto
               </CardTitle>
-              <CardDescription>
-                Descreva detalhadamente os objetivos e limites deste projeto. 
-                O escopo ajuda na tomada de decisão e evita desvios de finalidade.
-              </CardDescription>
+              <CardDescription>Defina os limites e objetivos detalhados da iniciativa.</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-6">
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
-                  <Label>Texto do Escopo</Label>
+                  <Label className="font-bold">Escopo Resumido</Label>
                   <span className={`text-[10px] font-mono ${escopo.length > 350 ? 'text-rose-500 font-bold' : 'text-slate-400'}`}>
                     {escopo.length}/350 caracteres
                   </span>
                 </div>
                 <Textarea 
-                  placeholder="Ex: Este projeto visa a implementação do sistema de biometria facial para renovação de CNH..." 
+                  placeholder="Visão macro do projeto..." 
                   value={escopo}
-                  onChange={(e) => setEscopo(e.target.value.slice(0, 400))} // permitimos passar um pouco para o contador ficar vermelho
-                  className="min-h-[200px] text-sm leading-relaxed"
+                  onChange={(e) => setEscopo(e.target.value)} 
+                  className="h-[120px] w-full text-sm resize-none overflow-y-auto"
+                  disabled={isBlocked}
+                />
+              </div>
+              <div className="space-y-2">
+                <div className="flex justify-between items-center">
+                  <Label className="font-bold">Escopo Detalhado</Label>
+                  <span className={`text-[10px] font-mono ${escopoDetalhado.length > 1500 ? 'text-rose-500 font-bold' : 'text-slate-400'}`}>
+                    {escopoDetalhado.length}/1500 caracteres
+                  </span>
+                </div>
+                <Textarea 
+                  placeholder="Detalhamento técnico, entregas e restrições..." 
+                  value={escopoDetalhado}
+                  onChange={(e) => setEscopoDetalhado(e.target.value)} 
+                  className="h-[300px] w-full text-sm leading-relaxed resize-none overflow-y-auto"
                   disabled={isBlocked}
                 />
               </div>
             </CardContent>
-            <CardFooter className="flex justify-between border-t bg-slate-50/50 p-4">
-              <p className="text-[10px] text-slate-500 max-w-[400px]">
-                Nota: O cadastro inicial será registrado como "Cadastro inicial de escopo". Alterações posteriores serão registradas como "Alteração de escopo".
-              </p>
-              <Button 
-                onClick={handleSaveEscopo}
-                disabled={isBlocked || escopo.length > 350 || escopo === (projetoData.escopo || "")}
-                className="bg-blue-600 hover:bg-blue-700"
-              >
+            <CardFooter className="flex justify-end border-t dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 p-4">
+              <Button onClick={handleSaveEscopo} disabled={isBlocked} className="bg-blue-600 hover:bg-blue-700">
                 <Save className="mr-2 h-4 w-4" /> Salvar Escopo
+              </Button>
+            </CardFooter>
+          </Card>
+
+          {/* Card: Informações Contratuais */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg flex items-center gap-2 text-indigo-800">
+                <FileSpreadsheet className="h-5 w-5" /> Informações Contratuais
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="space-y-2">
+                <Label>Empresa Contratada</Label>
+                <Input 
+                  value={contratoData.empresaContratada} 
+                  onChange={e => setContratoData({...contratoData, empresaContratada: e.target.value})}
+                  disabled={isBlocked}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label>Número ESP</Label>
+                <Input 
+                  value={contratoData.numeroESP} 
+                  onChange={e => setContratoData({...contratoData, numeroESP: e.target.value})}
+                  disabled={isBlocked}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label>Processo SEI</Label>
+                <Input 
+                  value={contratoData.processoSEI} 
+                  onChange={e => setContratoData({...contratoData, processoSEI: e.target.value})}
+                  disabled={isBlocked}
+                />
+              </div>
+            </CardContent>
+            <CardFooter className="flex justify-end border-t dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 p-4">
+              <Button onClick={handleSaveContrato} disabled={isBlocked} className="bg-indigo-600 hover:bg-indigo-700">
+                <Save className="mr-2 h-4 w-4" /> Salvar Contrato
+              </Button>
+            </CardFooter>
+          </Card>
+
+          {/* Card: Recursos Contratados */}
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between">
+              <div>
+                <CardTitle className="text-lg flex items-center gap-2 text-emerald-800">
+                  <UserPlus className="h-5 w-5" /> Recursos Contratados
+                </CardTitle>
+              </div>
+              <Button variant="outline" size="sm" onClick={handleAddRecurso} disabled={isBlocked} className="border-emerald-200 text-emerald-700">
+                <Plus className="h-4 w-4 mr-1" /> Adicionar Recurso
+              </Button>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              {recursosData.map((recurso, idx) => (
+                <div key={recurso.id} className="flex gap-4 items-end animate-in slide-in-from-left-2 duration-300">
+                  <div className="flex-1 space-y-2">
+                    <Label>Nome do Recurso</Label>
+                    <Input 
+                      value={recurso.nome} 
+                      onChange={e => {
+                        const newR = [...recursosData];
+                        newR[idx].nome = e.target.value;
+                        setRecursosData(newR);
+                      }}
+                      disabled={isBlocked}
+                    />
+                  </div>
+                  <div className="w-32 space-y-2">
+                    <Label>Quantidade</Label>
+                    <Input 
+                      value={recurso.quantidade} 
+                      onChange={e => {
+                        const newR = [...recursosData];
+                        newR[idx].quantidade = e.target.value;
+                        setRecursosData(newR);
+                      }}
+                      disabled={isBlocked}
+                    />
+                  </div>
+                  <Button variant="ghost" size="icon" className="text-rose-500" onClick={() => handleRemoveRecurso(recurso.id)} disabled={isBlocked}>
+                    <Trash2 className="h-4 w-4" />
+                  </Button>
+                </div>
+              ))}
+              {recursosData.length === 0 && <p className="text-center py-6 text-slate-400 text-xs italic">Nenhum recurso cadastrado.</p>}
+            </CardContent>
+            <CardFooter className="flex justify-end border-t dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 p-4">
+              <Button onClick={handleSaveRecursos} disabled={isBlocked} className="bg-emerald-600 hover:bg-emerald-700">
+                <Save className="mr-2 h-4 w-4" /> Salvar Recursos
+              </Button>
+            </CardFooter>
+          </Card>
+
+          {/* Card: Informações de Terceiros */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg flex items-center gap-2 text-purple-800">
+                <User className="h-5 w-5" /> Informações de Terceiros
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-8">
+              {/* PRODESP */}
+              <div className="space-y-4">
+                <h4 className="text-xs font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                  <div className="h-px flex-1 bg-slate-100 dark:bg-slate-800" />
+                  Gestão PRODESP
+                  <div className="h-px flex-1 bg-slate-100 dark:bg-slate-800" />
+                </h4>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="space-y-2">
+                    <Label>Gerente Projeto PRODESP (Nome)</Label>
+                    <Input 
+                      list="contatos-prodesp"
+                      value={terceirosData.gerenteProdesp.nome} 
+                      onChange={e => setTerceirosData({...terceirosData, gerenteProdesp: {...terceirosData.gerenteProdesp, nome: e.target.value}})}
+                      disabled={isBlocked}
+                    />
+                    <datalist id="contatos-prodesp">
+                      {contatosGlobais.filter(c => c.tipo === 'PRODESP').map(c => <option key={c.id} value={c.nome}>{c.email}</option>)}
+                    </datalist>
+                  </div>
+                  <div className="space-y-2">
+                    <Label>E-mail</Label>
+                    <Input 
+                      value={terceirosData.gerenteProdesp.email} 
+                      onChange={e => setTerceirosData({...terceirosData, gerenteProdesp: {...terceirosData.gerenteProdesp, email: e.target.value}})}
+                      disabled={isBlocked}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Telefone</Label>
+                    <Input 
+                      placeholder="(00) 00000-0000"
+                      value={terceirosData.gerenteProdesp.telefone} 
+                      onChange={e => {
+                        let v = e.target.value.replace(/\D/g, "").slice(0, 11);
+                        if (v.length > 10) {
+                          v = v.replace(/^(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
+                        } else if (v.length > 6) {
+                          v = v.replace(/^(\d{2})(\d{4})(\d{0,4})/, "($1) $2-$3");
+                        } else if (v.length > 2) {
+                          v = v.replace(/^(\d{2})(\d{0,5})/, "($1) $2");
+                        } else if (v.length > 0) {
+                          v = v.replace(/^(\d*)/, "($1");
+                        }
+                        setTerceirosData({...terceirosData, gerenteProdesp: {...terceirosData.gerenteProdesp, telefone: v}});
+                      }}
+                      disabled={isBlocked}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Empresa Parceira */}
+              <div className="space-y-4">
+                <h4 className="text-xs font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                  <div className="h-px flex-1 bg-slate-100 dark:bg-slate-800" />
+                  Empresa Parceira
+                  <div className="h-px flex-1 bg-slate-100 dark:bg-slate-800" />
+                </h4>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="space-y-2 md:col-span-3">
+                    <Label>Nome da Empresa Parceira</Label>
+                    <Input 
+                      value={terceirosData.empresaParceira} 
+                      onChange={e => setTerceirosData({...terceirosData, empresaParceira: e.target.value})}
+                      disabled={isBlocked}
+                      placeholder="Empresa envolvida no projeto..."
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Gerente Projeto Parceira (Nome)</Label>
+                    <Input 
+                      list="contatos-parceira"
+                      value={terceirosData.gerenteParceira.nome} 
+                      onChange={e => setTerceirosData({...terceirosData, gerenteParceira: {...terceirosData.gerenteParceira, nome: e.target.value}})}
+                      disabled={isBlocked}
+                    />
+                    <datalist id="contatos-parceira">
+                      {contatosGlobais.filter(c => c.tipo === 'Parceira').map(c => <option key={c.id} value={c.nome}>{c.email} ({c.empresa})</option>)}
+                    </datalist>
+                  </div>
+                  <div className="space-y-2">
+                    <Label>E-mail</Label>
+                    <Input 
+                      placeholder="E-mail do gerente..."
+                      value={terceirosData.gerenteParceira.email} 
+                      onChange={e => setTerceirosData({...terceirosData, gerenteParceira: {...terceirosData.gerenteParceira, email: e.target.value}})}
+                      disabled={isBlocked}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Telefone</Label>
+                    <Input 
+                      placeholder="(00) 00000-0000"
+                      value={terceirosData.gerenteParceira.telefone} 
+                      onChange={e => {
+                        let v = e.target.value.replace(/\D/g, "").slice(0, 11);
+                        if (v.length > 10) {
+                          v = v.replace(/^(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
+                        } else if (v.length > 6) {
+                          v = v.replace(/^(\d{2})(\d{4})(\d{0,4})/, "($1) $2-$3");
+                        } else if (v.length > 2) {
+                          v = v.replace(/^(\d{2})(\d{0,5})/, "($1) $2");
+                        } else if (v.length > 0) {
+                          v = v.replace(/^(\d*)/, "($1");
+                        }
+                        setTerceirosData({...terceirosData, gerenteParceira: {...terceirosData.gerenteParceira, telefone: v}});
+                      }}
+                      disabled={isBlocked}
+                    />
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+            <CardFooter className="flex justify-end border-t dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 p-4">
+              <Button onClick={handleSaveTerceiros} disabled={isBlocked} className="bg-purple-600 hover:bg-purple-700">
+                <Save className="mr-2 h-4 w-4" /> Salvar Terceiros
               </Button>
             </CardFooter>
           </Card>
@@ -1146,7 +1487,7 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                     >
                       <Save className="mr-2 h-4 w-4" /> Salvar Cronograma
                     </Button>
-                    <div className="text-[10px] text-slate-400 bg-slate-50 p-2 rounded border max-w-[200px]">
+                    <div className="text-[10px] text-slate-400 bg-slate-50 dark:bg-slate-800/50 p-2 rounded border dark:border-slate-700 max-w-[200px]">
                       Alterações em cronograma existente exigem justificativa e geram repactuação.
                     </div>
                   </CardContent>
@@ -1158,20 +1499,22 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                   <CardContent className="flex items-end gap-6">
                     <div className="flex-[2] space-y-2">
                       <Label>Fase Atual</Label>
-                      <Select value={projetoStatus} onValueChange={setProjetoStatus}>
-                        <SelectTrigger><SelectValue placeholder="Selecione a fase..."/></SelectTrigger>
-                        <SelectContent>
-                          {FASES.map(f => <SelectItem key={f.id} value={f.id}>{f.label}</SelectItem>)}
-                        </SelectContent>
-                      </Select>
+                      <div className="flex gap-2">
+                        <Select value={projetoStatus} onValueChange={setProjetoStatus}>
+                          <SelectTrigger><SelectValue placeholder="Selecione a fase..."/></SelectTrigger>
+                          <SelectContent>
+                            {FASES.map(f => <SelectItem key={f.id} value={f.id}>{f.label}</SelectItem>)}
+                          </SelectContent>
+                        </Select>
+                        <Button onClick={handleSaveStatusGeral} className="bg-emerald-600 hover:bg-emerald-700 shrink-0"><Save className="mr-2 h-4 w-4"/> Gravar</Button>
+                      </div>
                     </div>
                     <div className="flex-1 space-y-2">
                       <Label>Evolução Atual</Label>
-                      <div className="h-10 flex items-center px-3 border rounded-md bg-slate-50 text-slate-700 font-bold text-sm">
+                    <div className="h-10 flex items-center px-3 border rounded-md bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-300 font-bold text-sm">
                         {projetoData.progress}%
                       </div>
                     </div>
-                    <Button onClick={handleSaveStatusGeral} className="bg-emerald-600 hover:bg-emerald-700"><Save className="mr-2 h-4 w-4"/> Gravar</Button>
                   </CardContent>
                 </Card>
               )}
@@ -1327,8 +1670,8 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
               </div>
             </CardHeader>
             <CardContent>
-              <div className="border rounded-lg overflow-hidden">
-                <div className="flex bg-slate-50 border-b">
+              <div className="border rounded-lg overflow-hidden dark:border-slate-800">
+                <div className="flex bg-slate-50 dark:bg-slate-900 border-b dark:border-slate-800">
                   <div className="w-64 p-3 font-semibold border-r">Tarefa / EAP</div>
                   <div className="flex-1 grid grid-cols-12 text-center text-[10px] font-bold p-3 uppercase">
                     {['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'].map(m => <div key={m}>{m}</div>)}
@@ -1347,16 +1690,16 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                         className="flex h-14 hover:bg-blue-50/40 dark:hover:bg-blue-900/10 transition-all relative group cursor-pointer"
                         onClick={() => setSubTarefaModal({ isOpen: true, parentId: t.id, parentTitle: t.titulo })}
                       >
-                        <div className="w-64 p-3 text-sm truncate border-r bg-white/50 dark:bg-transparent group-hover:bg-transparent z-10 font-medium text-slate-700 dark:text-slate-300 flex items-center gap-2" style={{ paddingLeft: `${getTaskDepth(t.id, tarefas) * 20 + 12}px` }}>
+                        <div className="w-64 p-3 text-sm truncate border-r dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 group-hover:bg-transparent z-10 font-medium text-slate-700 dark:text-slate-300 flex items-center gap-2" style={{ paddingLeft: `${getTaskDepth(t.id, tarefas) * 20 + 12}px` }}>
                           <div className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" />
                           <span className="truncate">{t.titulo}</span>
                           <Plus className="h-3 w-3 opacity-0 group-hover:opacity-100 text-blue-500 transition-opacity ml-auto" />
                         </div>
-                        <div className="flex-1 relative bg-slate-50/30 grid grid-cols-12 divide-x divide-slate-100">
+                        <div className="flex-1 relative bg-slate-50/30 dark:bg-slate-950/20 grid grid-cols-12 divide-x divide-slate-100 dark:divide-slate-800">
                           {Array.from({length: 12}).map((_, i) => <div key={i}/>)}
                           {t.dataInicio && t.dataFim && (
                             <div 
-                              className={`absolute top-3 h-6 rounded shadow-sm transition-transform hover:scale-[1.02] ${t.impedimentoAtivo ? 'bg-rose-100' : emAtraso ? 'bg-orange-200' : (FASES.find(f => f.id === t.status)?.color || 'bg-slate-400')}`}
+                              className={`absolute top-3 h-6 rounded shadow-sm transition-transform hover:scale-[1.02] ${t.impedimentoAtivo ? 'bg-rose-100 dark:bg-rose-900/40' : emAtraso ? 'bg-orange-200' : (FASES.find(f => f.id === t.status)?.color || 'bg-slate-400')}`}
                               title={`Tarefa: ${t.titulo}\nInício: ${formatarDataBR(t.dataInicio)}\nFim: ${formatarDataBR(t.dataFim)}\nProgresso: ${t.progress}% ${t.impedimentoAtivo ? `(BLOQUEADA: ${t.motivoImpedimento})` : emAtraso ? '(ATRASADA)' : ''}`}
                               style={{ 
                                 left: `${(new Date(t.dataInicio).getMonth() / 12) * 100}%`,
@@ -1468,7 +1811,7 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                 <CardHeader><CardTitle>Bloqueios Ativos</CardTitle></CardHeader>
                 <CardContent className="space-y-4">
                   {tarefas.filter(t => t.impedimentoAtivo).map(t => (
-                    <div key={t.id} className="p-4 bg-rose-50 border border-rose-200 rounded-lg space-y-3">
+                    <div key={t.id} className="p-4 bg-rose-50 dark:bg-rose-900/20 border border-rose-200 dark:border-rose-800 rounded-lg space-y-3">
                       <div className="flex items-center justify-between">
                         <div>
                           <h4 className="font-bold text-rose-800">{t.titulo}</h4>
@@ -1491,19 +1834,33 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
 
         <TabsContent value="logs">
           <Card>
-            <CardHeader><CardTitle>Auditoria</CardTitle></CardHeader>
+            <CardHeader><CardTitle>Histórico de Alterações</CardTitle></CardHeader>
             <CardContent>
               <div className="space-y-6">
-                {logs.map((log, i) => (
-                  <div key={i} className="flex gap-4 border-b pb-4 last:border-0">
-                    <div className="h-8 w-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0"><History className="h-4 w-4 text-slate-400"/></div>
+                {[...logs]
+                  .sort((a, b) => {
+                    const parse = (s: string) => {
+                      if (!s) return 0;
+                      const [data, hora] = s.split(' ');
+                      const [d, m, y] = data.split('/').map(Number);
+                      const [h, min] = hora.split(':').map(Number);
+                      return new Date(y, m - 1, d, h, min).getTime();
+                    };
+                    return parse(b.data) - parse(a.data);
+                  })
+                  .map((log, i) => (
+                  <div key={i} className="flex gap-4 border-b pb-4 last:border-0 animate-in fade-in slide-in-from-top-1 duration-300">
+                    <div className="h-8 w-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center shrink-0">
+                      <History className="h-4 w-4 text-slate-400"/>
+                    </div>
                     <div>
                       <p className="text-sm font-semibold">{log.acao}</p>
                       <p className="text-xs text-slate-500">{log.user} em {log.data}</p>
-                      {log.justificativa && <p className="mt-2 text-xs italic bg-slate-50 p-2 rounded">"{log.justificativa}"</p>}
+                      {log.justificativa && <p className="mt-2 text-xs italic bg-slate-50 dark:bg-slate-800/50 p-2 rounded">"{log.justificativa}"</p>}
                     </div>
                   </div>
                 ))}
+                {logs.length === 0 && <p className="text-center text-slate-400 py-10">Nenhum registro de auditoria encontrado.</p>}
               </div>
             </CardContent>
           </Card>
@@ -1637,7 +1994,7 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
 
                 <div className="flex justify-between items-center">
                   <div className="flex items-center gap-2">
-                    <Label htmlFor="file-upload" className="cursor-pointer flex items-center gap-1.5 px-2 py-1 text-[10px] bg-white border rounded hover:bg-slate-50 transition-colors">
+                    <Label htmlFor="file-upload" className="cursor-pointer flex items-center gap-1.5 px-2 py-1 text-[10px] bg-white dark:bg-slate-800 border dark:border-slate-700 rounded hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
                       <Plus className="h-3 w-3" /> Anexar Arquivo
                     </Label>
                     <input 

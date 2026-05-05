@@ -90,7 +90,9 @@
     "avatar": "https://i.pravatar.cc/150?u=u033",
     "papel": "usuario",
     "departamento": "Diretoria de Tecnologia da Informação",
-    "projetosAtribuidos": []
+    "projetosAtribuidos": [
+      5001
+    ]
   },
   {
     "id": "u005",

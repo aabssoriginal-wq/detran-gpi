@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
-import { getProjetoById, renameProjeto, deleteProjeto, restoreProjeto, addLogToProjeto, createLog, updateBaseline, updateTarefas, updateProjetoStatus, updateEscopo, updateResponsavel, updateProjetoDepartamento, toggleFavorite } from '@/lib/db';
+import { getProjetoById, renameProjeto, deleteProjeto, restoreProjeto, permanentlyDeleteProjeto, addLogToProjeto, createLog, updateBaseline, updateTarefas, updateProjetoStatus, updateEscopo, updateResponsavel, updateProjetoDepartamento, toggleFavorite, updateContrato, updateRecursos, updateTerceiros } from '@/lib/db';
+
+export const dynamic = 'force-dynamic';
 
 export async function GET(request: Request, context: any) {
   try {
@@ -73,6 +75,12 @@ export async function PUT(request: Request, context: any) {
       return NextResponse.json({ success: true });
     }
 
+    if (action === "permanently_delete") {
+      if (!isAdmin) return NextResponse.json({ error: "Apenas Admin Total ou Admin Master podem excluir permanentemente." }, { status: 403 });
+      permanentlyDeleteProjeto(id);
+      return NextResponse.json({ success: true });
+    }
+
     if (action === 'toggle_favorite') {
       const { user } = body;
       const updated = toggleFavorite(id, user);
@@ -126,14 +134,33 @@ export async function PUT(request: Request, context: any) {
     }
 
     if (action === "update_escopo") {
-      const { escopo, user } = body;
+      const { escopo, escopoDetalhado, user } = body;
       if (escopo === undefined) return NextResponse.json({ error: "Escopo é obrigatório" }, { status: 400 });
-      const proj = updateEscopo(id, escopo, user || "Usuário");
+      const proj = updateEscopo(id, escopo, user || "Usuário", escopoDetalhado);
+      return NextResponse.json(proj);
+    }
+
+    if (action === "update_contrato") {
+      const { contrato, user } = body;
+      const proj = updateContrato(id, contrato, user || "Usuário");
+      return NextResponse.json(proj);
+    }
+
+    if (action === "update_recursos") {
+      const { recursos, user } = body;
+      const proj = updateRecursos(id, recursos, user || "Usuário");
+      return NextResponse.json(proj);
+    }
+
+    if (action === "update_terceiros") {
+      const { terceiros, user } = body;
+      const proj = updateTerceiros(id, terceiros, user || "Usuário");
       return NextResponse.json(proj);
     }
 
     // Default action é rename
     if (!nome || !justificativa) {
+      if (action) return NextResponse.json({ error: `Ação desconhecida: ${action}` }, { status: 400 });
       return NextResponse.json({ error: "Nome e justificativa são obrigatórios" }, { status: 400 });
     }
     

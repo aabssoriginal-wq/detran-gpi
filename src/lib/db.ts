@@ -76,6 +76,18 @@ export interface Tarefa {
   responsavelTecnico?: string;
 }
 
+export interface RecursoProjeto {
+  id: string;
+  nome: string;
+  quantidade: string;
+}
+
+export interface ContatoTerceiro {
+  nome: string;
+  email: string;
+  telefone: string;
+}
+
 export interface BaselineData {
   inicio: string;
   fim: string;
@@ -98,7 +110,19 @@ export interface Projeto {
   logs: LogEntry[];
   baselineData: BaselineData;
   tarefas: Tarefa[];
-  escopo?: string;
+  escopo?: string; // Escopo Resumido
+  escopoDetalhado?: string;
+  contrato?: {
+    empresaContratada?: string;
+    numeroESP?: string;
+    processoSEI?: string;
+  };
+  recursos?: RecursoProjeto[];
+  terceiros?: {
+    gerenteProdesp?: ContatoTerceiro;
+    empresaParceira?: string;
+    gerenteParceira?: ContatoTerceiro;
+  };
   favoritos: string[];
 }
 
@@ -175,6 +199,14 @@ export const createLog = (acao: string, justificativa: string = "Nenhuma", user:
   const pad = (n: number) => n.toString().padStart(2, '0');
   const dataFormatada = `${pad(now.getDate())}/${pad(now.getMonth()+1)}/${now.getFullYear()} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
   return { acao, justificativa, data: dataFormatada, user };
+};
+
+// Auxiliar para converter data BR para objeto Date (para ordenação)
+const parseDataBR = (s: string): Date => {
+  const [data, hora] = s.split(' ');
+  const [d, m, y] = data.split('/').map(Number);
+  const [h, min] = hora.split(':').map(Number);
+  return new Date(y, m - 1, d, h, min);
 };
 
 const statusMap: Record<string, { text: string; indicator: string; icon: string; iconColor: string }> = {
@@ -274,7 +306,13 @@ export const getAuditoria = (userDept?: string, papel?: string): any[] => {
       allLogs.push({ ...l, projetoId: p.id, projetoNome: p.nome, departamento: p.departamento });
     });
   });
-  return allLogs.sort((a, b) => b.data.localeCompare(a.data));
+  return allLogs.sort((a, b) => {
+    try {
+      return parseDataBR(b.data).getTime() - parseDataBR(a.data).getTime();
+    } catch (e) {
+      return b.data.localeCompare(a.data);
+    }
+  });
 };
 
 export const getProjetoById = (id: number, userDept?: string, papel?: string): Projeto => {
@@ -327,6 +365,12 @@ export const restoreProjeto = (id: number, justificativa: string, user: string =
   }
 };
 
+export const permanentlyDeleteProjeto = (id: number): void => {
+  const db = getDB();
+  db.projetos = db.projetos.filter(p => p.id !== id);
+  saveFullDB(db);
+};
+
 export const updateBaseline = (id: number, inicio: string, fim: string, justificativa: string = "Ajuste", user: string = "Usuário"): Projeto => {
   const projetos = getProjetos();
   const idx = projetos.findIndex(p => p.id === id);
@@ -369,14 +413,79 @@ export const updateProjetoStatus = (id: number, status: string, justificativa: s
   return projetos[idx];
 };
 
-export const updateEscopo = (id: number, escopo: string, user: string = "Usuário"): Projeto => {
+export const updateEscopo = (id: number, escopo: string, user: string = "Usuário", detalhado?: string): Projeto => {
   const projetos = getProjetos();
   const idx = projetos.findIndex(p => p.id === id);
   if (idx === -1) throw new Error("Projeto não encontrado.");
   projetos[idx].escopo = escopo;
-  projetos[idx].logs.unshift(createLog("Atualização de Escopo", "Edição manual", user));
+  if (detalhado !== undefined) projetos[idx].escopoDetalhado = detalhado;
+  projetos[idx].logs.unshift(createLog("Atualização de Detalhes (Escopo)", "Edição manual", user));
   saveDB(projetos);
   return projetos[idx];
+};
+
+export const updateContrato = (id: number, contrato: any, user: string = "Usuário"): Projeto => {
+  const projetos = getProjetos();
+  const idx = projetos.findIndex(p => p.id === id);
+  if (idx === -1) throw new Error("Projeto não encontrado.");
+  projetos[idx].contrato = contrato;
+  projetos[idx].logs.unshift(createLog("Atualização de Informações Contratuais", "Edição manual", user));
+  saveDB(projetos);
+  return projetos[idx];
+};
+
+export const updateRecursos = (id: number, recursos: RecursoProjeto[], user: string = "Usuário"): Projeto => {
+  const projetos = getProjetos();
+  const idx = projetos.findIndex(p => p.id === id);
+  if (idx === -1) throw new Error("Projeto não encontrado.");
+  projetos[idx].recursos = recursos;
+  projetos[idx].logs.unshift(createLog("Atualização de Recursos Contratados", "Edição manual", user));
+  saveDB(projetos);
+  return projetos[idx];
+};
+
+export const updateTerceiros = (id: number, terceiros: any, user: string = "Usuário"): Projeto => {
+  const projetos = getProjetos();
+  const idx = projetos.findIndex(p => p.id === id);
+  if (idx === -1) throw new Error("Projeto não encontrado.");
+  projetos[idx].terceiros = terceiros;
+  projetos[idx].logs.unshift(createLog("Atualização de Informações de Terceiros", "Edição manual", user));
+  
+  // Salva no banco de contatos para replicação futura
+  saveContatoGlobal(terceiros.gerenteProdesp, 'PRODESP');
+  saveContatoGlobal(terceiros.gerenteParceira, 'Parceira', terceiros.empresaParceira);
+
+  saveDB(projetos);
+  return projetos[idx];
+};
+
+const saveContatoGlobal = (contato: any, tipo: string, empresa?: string) => {
+  if (!contato || !contato.nome) return;
+  const dataDir = getDataDirectory();
+  const filePath = path.join(dataDir, 'contatos_terceiros.json');
+  let contatos: any[] = [];
+  try {
+    if (fs.existsSync(filePath)) {
+      contatos = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+    }
+  } catch (e) {}
+
+  const exists = contatos.find(c => c.nome === contato.nome || (c.email && c.email === contato.email));
+  if (!exists) {
+    contatos.push({ ...contato, tipo, empresa: empresa || (tipo === 'PRODESP' ? 'PRODESP' : ''), id: Math.random().toString(36).substr(2, 9) });
+    fs.writeFileSync(filePath, JSON.stringify(contatos, null, 2));
+  }
+};
+
+export const getContatosGlobais = () => {
+  const dataDir = getDataDirectory();
+  const filePath = path.join(dataDir, 'contatos_terceiros.json');
+  try {
+    if (fs.existsSync(filePath)) {
+      return JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+    }
+  } catch (e) {}
+  return [];
 };
 
 export const updateResponsavel = (id: number, userId: string, nome: string, user: string = "Usuário"): Projeto => {

@@ -156,7 +156,7 @@ export default function SuperGanttPage() {
 
   const getTaskBarColor = (t: any) => {
     if (t.progress === 100) return "bg-emerald-500";
-    if (t.impedimentoAtivo) return "bg-rose-100"; // Base clara para o bloqueio
+    if (t.impedimentoAtivo) return "bg-rose-100 dark:bg-rose-900/30"; // Base clara para o bloqueio
     const hoje = new Date();
     const dataFim = t.dataFim ? new Date(t.dataFim) : null;
     if (dataFim && hoje > dataFim && t.progress < 100) return "bg-amber-500";
@@ -314,7 +314,7 @@ export default function SuperGanttPage() {
           <div 
             ref={rightAreaRef}
             onScroll={handleRightScroll}
-            className="flex-1 overflow-auto scrollbar-thin scrollbar-thumb-slate-200 bg-slate-50/30"
+            className="flex-1 overflow-auto scrollbar-thin scrollbar-thumb-slate-200 bg-slate-50/30 dark:bg-slate-900/20"
             style={{ maxWidth: '1200px' }}
           >
             <div className="w-[4800px] min-h-full flex flex-col relative">
@@ -361,7 +361,7 @@ export default function SuperGanttPage() {
                         const tEnd = calculatePosition(t.dataFim);
                         const tWidth = Math.max(0, tEnd - tStart);
                         return (
-                          <div key={`task-timeline-${p.id}-${t.id}`} className="h-12 flex items-center relative bg-white/40 border-t border-slate-100/50">
+                          <div key={`task-timeline-${p.id}-${t.id}`} className="h-12 flex items-center relative bg-white/40 dark:bg-slate-900/40 border-t border-slate-100/50 dark:border-slate-800/50">
                             {tStart >= 0 && (
                               <div className="absolute z-10 flex items-center gap-1.5 pointer-events-none" style={{ left: `${tStart}%` }}>
                                 <span className="text-[10px] font-bold text-slate-500 bg-white/90 px-1 py-0.5 rounded shadow-sm translate-y-[-18px] whitespace-nowrap">{t.titulo}</span>

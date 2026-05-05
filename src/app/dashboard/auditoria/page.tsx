@@ -104,7 +104,7 @@ export default function AuditoriaTotalPage() {
                     <tr key={i} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
                       <td className="px-6 py-4 whitespace-nowrap text-slate-500 font-medium">{log.data}</td>
                       <td className="px-6 py-4">
-                        <span className="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-1.5 py-0.5 rounded uppercase">
+                        <span className="text-[10px] font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/30 px-1.5 py-0.5 rounded uppercase">
                           {log.departamento?.replace('Diretoria de ', '')}
                         </span>
                       </td>

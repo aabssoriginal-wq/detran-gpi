@@ -6,7 +6,7 @@
       "status": "desenvolvimento",
       "andamento": true,
       "progress": 0,
-      "delta": 6,
+      "delta": 7,
       "text": "Impedimentos",
       "indicator": "bg-rose-600",
       "icon": "ShieldAlert",
@@ -190,7 +190,7 @@
       "status": "desenvolvimento",
       "andamento": true,
       "progress": 99,
-      "delta": 35,
+      "delta": 36,
       "text": "Atrasados",
       "indicator": "bg-rose-500",
       "icon": "AlertCircle",
@@ -213,7 +213,7 @@
       "tarefas": [],
       "escopo": "Migração do AVA Moodle para a nuvem do DETRAN para ampliar o controle e a governança da infraestrutura.",
       "healthStatus": "atrasados",
-      "healthReason": "Projeto atrasado há 35 dias.",
+      "healthReason": "Projeto atrasado há 36 dias.",
       "favorito": true,
       "favoritos": [
         "Bruno Zaia Boneto"
@@ -354,56 +354,12 @@
       "favoritos": []
     },
     {
-      "id": 5001,
-      "nome": "CGTI - Teste",
-      "status": "planejamento",
-      "andamento": true,
-      "progress": 0,
-      "delta": 0,
-      "text": "Prazo",
-      "indicator": "bg-indigo-400",
-      "icon": "Clock",
-      "iconColor": "text-indigo-400",
-      "responsavel": "Carla Pozitano Paiva Carnauba",
-      "departamento": "Diretoria de Tecnologia da Informação",
-      "excluido": false,
-      "logs": [
-        {
-          "acao": "Atualização de Escopo",
-          "justificativa": "Edição manual",
-          "data": "30/04/2026 16:58",
-          "user": "Carla Pozitano Paiva Carnauba"
-        },
-        {
-          "acao": "Alteração de Fase para planejamento",
-          "justificativa": "a",
-          "data": "30/04/2026 16:50",
-          "user": "Carla Pozitano Paiva Carnauba"
-        },
-        {
-          "acao": "Criação do Projeto",
-          "justificativa": "Nenhuma",
-          "data": "30/04/2026 16:37",
-          "user": "Usuário"
-        }
-      ],
-      "baselineData": {
-        "inicio": "",
-        "fim": ""
-      },
-      "tarefas": [],
-      "favoritos": [],
-      "healthStatus": "prazo",
-      "healthReason": "No prazo.",
-      "escopo": "testee"
-    },
-    {
       "id": 1000,
       "nome": "CNH Paulista",
       "status": "desenvolvimento",
       "andamento": true,
       "progress": 82,
-      "delta": 5,
+      "delta": 6,
       "text": "Atrasados",
       "indicator": "bg-rose-500",
       "icon": "AlertCircle",
@@ -520,7 +476,7 @@
       ],
       "escopo": "",
       "healthStatus": "atrasados",
-      "healthReason": "Projeto atrasado há 5 dias.",
+      "healthReason": "Projeto atrasado há 6 dias.",
       "favorito": true,
       "favoritos": []
     },
@@ -530,7 +486,7 @@
       "status": "desenvolvimento",
       "andamento": true,
       "progress": 49,
-      "delta": 212,
+      "delta": 213,
       "text": "Atrasados",
       "indicator": "bg-rose-500",
       "icon": "AlertCircle",
@@ -553,7 +509,7 @@
       "tarefas": [],
       "escopo": "Adequação dos sistemas do programa CNH Paulista às novas diretrizes estabelecidas pela Resolução CONTRAN nº 1.020/2025.",
       "healthStatus": "atrasados",
-      "healthReason": "Projeto atrasado há 212 dias.",
+      "healthReason": "Projeto atrasado há 213 dias.",
       "favorito": false,
       "favoritos": []
     },
@@ -662,7 +618,7 @@
       "status": "planejamento",
       "andamento": true,
       "progress": 0,
-      "delta": 123,
+      "delta": 124,
       "text": "Atrasados",
       "indicator": "bg-rose-500",
       "icon": "AlertCircle",
@@ -685,7 +641,7 @@
       "tarefas": [],
       "escopo": "Dashboard para análise, insights e suporte à decisões estratégicas sobre exames práticos da CNH.",
       "healthStatus": "atrasados",
-      "healthReason": "Projeto atrasado há 123 dias.",
+      "healthReason": "Projeto atrasado há 124 dias.",
       "favoritos": []
     },
     {
@@ -726,7 +682,7 @@
       "status": "planejamento",
       "andamento": true,
       "progress": 0,
-      "delta": 118,
+      "delta": 119,
       "text": "Atrasados",
       "indicator": "bg-rose-500",
       "icon": "AlertCircle",
@@ -749,7 +705,7 @@
       "tarefas": [],
       "escopo": "Previsão de exames práticos, visando obter o número médio previsto de exames por local nas próximas 4 semanas.",
       "healthStatus": "atrasados",
-      "healthReason": "Projeto atrasado há 118 dias.",
+      "healthReason": "Projeto atrasado há 119 dias.",
       "favoritos": []
     },
     {
@@ -790,7 +746,7 @@
       "status": "planejamento",
       "andamento": true,
       "progress": 0,
-      "delta": 46,
+      "delta": 47,
       "text": "Atrasados",
       "indicator": "bg-rose-500",
       "icon": "AlertCircle",
@@ -813,7 +769,7 @@
       "tarefas": [],
       "escopo": "Ingestão dos dados da LIVE /SN via conector nativo no ambiente Databricks.",
       "healthStatus": "atrasados",
-      "healthReason": "Projeto atrasado há 46 dias.",
+      "healthReason": "Projeto atrasado há 47 dias.",
       "favoritos": []
     },
     {
@@ -951,7 +907,7 @@
       "status": "planejamento",
       "andamento": true,
       "progress": 0,
-      "delta": 2,
+      "delta": 3,
       "text": "Atrasados",
       "indicator": "bg-rose-500",
       "icon": "AlertCircle",
@@ -974,7 +930,7 @@
       "tarefas": [],
       "escopo": "Automatizar o envio de notificações de trânsito via Correios em fluxo digital, com acompanhamento de status e cumprimento de prazos legais no sistema SIM.",
       "healthStatus": "atrasados",
-      "healthReason": "Projeto atrasado há 2 dias.",
+      "healthReason": "Projeto atrasado há 3 dias.",
       "favoritos": []
     },
     {
@@ -1399,7 +1355,7 @@
       "status": "desenvolvimento",
       "andamento": true,
       "progress": 85,
-      "delta": 18,
+      "delta": 19,
       "text": "Atrasados",
       "indicator": "bg-rose-500",
       "icon": "AlertCircle",
@@ -1422,7 +1378,7 @@
       "tarefas": [],
       "escopo": "Aquisição de licenças Gemini e Kiro para suporte ao desenvolvimento em Power Apps e exploração de capacidades de LLM.",
       "healthStatus": "atrasados",
-      "healthReason": "Projeto atrasado há 18 dias.",
+      "healthReason": "Projeto atrasado há 19 dias.",
       "favoritos": []
     },
     {
@@ -1975,7 +1931,7 @@
       "status": "desenvolvimento",
       "andamento": true,
       "progress": 90,
-      "delta": 369,
+      "delta": 370,
       "text": "Atrasados",
       "indicator": "bg-rose-500",
       "icon": "AlertCircle",
@@ -1998,7 +1954,7 @@
       "tarefas": [],
       "escopo": "Adequação de sistemas para permitir a realização de exames práticos em municípios diversos da residência, conforme a Portaria nº 33/2024.",
       "healthStatus": "atrasados",
-      "healthReason": "Projeto atrasado há 369 dias.",
+      "healthReason": "Projeto atrasado há 370 dias.",
       "favoritos": []
     },
     {
@@ -2276,7 +2232,7 @@
       "status": "desenvolvimento",
       "andamento": true,
       "progress": 99,
-      "delta": 106,
+      "delta": 107,
       "text": "Atrasados",
       "indicator": "bg-rose-500",
       "icon": "AlertCircle",
@@ -2299,7 +2255,7 @@
       "tarefas": [],
       "escopo": "Criação de página Wiki para centralização dos aplicativos ativos do Detran-SP, facilitando a consulta e disseminação do conhecimento.",
       "healthStatus": "atrasados",
-      "healthReason": "Projeto atrasado há 106 dias.",
+      "healthReason": "Projeto atrasado há 107 dias.",
       "favoritos": []
     },
     {
@@ -2404,7 +2360,7 @@
       "status": "desenvolvimento",
       "andamento": true,
       "progress": 51,
-      "delta": 4,
+      "delta": 5,
       "text": "Atrasados",
       "indicator": "bg-rose-500",
       "icon": "AlertCircle",
@@ -2427,7 +2383,7 @@
       "tarefas": [],
       "escopo": "Elaboração, implementação e monitoramento das políticas corporativas aplicáveis a todas as unidades organizacionais.",
       "healthStatus": "atrasados",
-      "healthReason": "Projeto atrasado há 4 dias.",
+      "healthReason": "Projeto atrasado há 5 dias.",
       "favoritos": []
     },
     {
@@ -2564,7 +2520,7 @@
       "status": "planejamento",
       "andamento": true,
       "progress": 0,
-      "delta": 29,
+      "delta": 30,
       "text": "Atrasados",
       "indicator": "bg-rose-500",
       "icon": "AlertCircle",
@@ -2587,7 +2543,7 @@
       "tarefas": [],
       "escopo": "Desenvolvimento de Prova Prática (digitalização de exames), Normas (gestão de regras) e SEV (automação de vistorias).",
       "healthStatus": "atrasados",
-      "healthReason": "Projeto atrasado há 29 dias.",
+      "healthReason": "Projeto atrasado há 30 dias.",
       "favoritos": []
     },
     {
@@ -2660,7 +2616,7 @@
       "status": "planejamento",
       "andamento": true,
       "progress": 0,
-      "delta": 26,
+      "delta": 27,
       "text": "Atrasados",
       "indicator": "bg-rose-500",
       "icon": "AlertCircle",
@@ -2683,7 +2639,7 @@
       "tarefas": [],
       "escopo": "",
       "healthStatus": "atrasados",
-      "healthReason": "Projeto atrasado há 26 dias.",
+      "healthReason": "Projeto atrasado há 27 dias.",
       "favoritos": []
     },
     {
@@ -3190,7 +3146,7 @@
       "status": "desenvolvimento",
       "andamento": true,
       "progress": 10,
-      "delta": 112,
+      "delta": 113,
       "text": "Atrasados",
       "indicator": "bg-rose-500",
       "icon": "AlertCircle",
@@ -3213,7 +3169,7 @@
       "tarefas": [],
       "escopo": "Plataforma integrada ao STJ/SEI para automatizar tratamento de processos judiciais via IA, incluindo jurimetria e dashboards para gestão estratégica.",
       "healthStatus": "atrasados",
-      "healthReason": "Projeto atrasado há 112 dias.",
+      "healthReason": "Projeto atrasado há 113 dias.",
       "favoritos": []
     },
     {
@@ -3254,7 +3210,7 @@
       "status": "planejamento",
       "andamento": true,
       "progress": 0,
-      "delta": 4,
+      "delta": 5,
       "text": "Atrasados",
       "indicator": "bg-rose-500",
       "icon": "AlertCircle",
@@ -3277,7 +3233,7 @@
       "tarefas": [],
       "escopo": "Estrutura de monitoramento 24x7 centralizada para detecção e mitigação de ameaças cibernéticas em tempo real.",
       "healthStatus": "atrasados",
-      "healthReason": "Projeto atrasado há 4 dias.",
+      "healthReason": "Projeto atrasado há 5 dias.",
       "favoritos": []
     },
     {
@@ -3350,7 +3306,7 @@
       "status": "desenvolvimento",
       "andamento": true,
       "progress": 99,
-      "delta": 38,
+      "delta": 39,
       "text": "Atrasados",
       "indicator": "bg-rose-500",
       "icon": "AlertCircle",
@@ -3373,7 +3329,7 @@
       "tarefas": [],
       "escopo": "Modernização da conexão sem fio nas Superintendências e unidades Poupatempo.",
       "healthStatus": "atrasados",
-      "healthReason": "Projeto atrasado há 38 dias.",
+      "healthReason": "Projeto atrasado há 39 dias.",
       "favoritos": []
     },
     {
@@ -3450,7 +3406,7 @@
       "status": "planejamento",
       "andamento": true,
       "progress": 0,
-      "delta": 4,
+      "delta": 5,
       "text": "Atrasados",
       "indicator": "bg-rose-500",
       "icon": "AlertCircle",
@@ -3485,7 +3441,7 @@
       "tarefas": [],
       "escopo": "",
       "healthStatus": "atrasados",
-      "healthReason": "Projeto atrasado há 4 dias.",
+      "healthReason": "Projeto atrasado há 5 dias.",
       "favoritos": []
     }
   ],
