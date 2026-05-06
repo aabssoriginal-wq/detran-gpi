@@ -108,8 +108,8 @@ export default function IAConsolePage() {
                   </>
                 ) : (
                   <>
-                    <AvatarImage src="https://i.pravatar.cc/150?img=11" />
-                    <AvatarFallback>UM</AvatarFallback>
+                    <AvatarImage src={usuario?.avatar || ""} />
+                    <AvatarFallback>{usuario?.nome?.substring(0, 2).toUpperCase() || "US"}</AvatarFallback>
                   </>
                 )}
               </Avatar>
