@@ -36,7 +36,7 @@ export default function Sidebar() {
         />
         <div className="h-6 w-px bg-slate-200 dark:bg-slate-700" />
         <span className="font-black text-lg tracking-tighter text-blue-900 dark:text-blue-400">GPI</span>
-        <span className="text-[9px] font-bold text-blue-500/50 italic px-1 bg-blue-50 dark:bg-blue-900/20 rounded ml-auto">v1.0.9</span>
+        <span className="text-[9px] font-bold text-blue-500/50 italic px-1 bg-blue-50 dark:bg-blue-900/20 rounded ml-auto">v1.1.0</span>
       </div>
 
       <nav className="flex-1 overflow-y-auto py-6 px-4 space-y-1.5">
