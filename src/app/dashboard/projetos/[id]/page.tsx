@@ -915,7 +915,7 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                 <input 
                   autoFocus
                   type="text"
-                  className="font-medium bg-blue-50 border-blue-300 border focus:outline-none rounded px-1 flex-1 min-w-0"
+                  className="font-medium bg-blue-50 dark:bg-blue-900/40 border-blue-300 dark:border-blue-700 dark:text-blue-100 border focus:outline-none rounded px-1 flex-1 min-w-0"
                   value={editingTaskName.current}
                   onChange={(e) => setEditingTaskName({...editingTaskName, current: e.target.value})}
                   onBlur={() => {
