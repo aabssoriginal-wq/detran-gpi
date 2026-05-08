@@ -64,7 +64,13 @@ export default function Sidebar() {
       {usuario && (
         <div className="p-4 border-t border-slate-200 dark:border-slate-800 space-y-2">
           <div className="flex items-center gap-3 px-2">
-            <img src={usuario.avatar} alt={usuario.nome} className="h-8 w-8 rounded-full border border-slate-200" />
+            {usuario.avatar ? (
+              <img src={usuario.avatar} alt={usuario.nome} className="h-8 w-8 rounded-full border border-slate-200 object-cover" />
+            ) : (
+              <div className="h-8 w-8 rounded-full border border-slate-200 bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-xs font-bold text-slate-500">
+                {usuario.nome.charAt(0)}
+              </div>
+            )}
             <div className="min-w-0 flex-1">
               <p className="text-xs font-semibold text-slate-700 dark:text-slate-300 truncate">{usuario.nome}</p>
               <p className="text-xs text-slate-400 flex items-center gap-1">

@@ -38,6 +38,8 @@ export async function GET(request: Request) {
   }
 }
 
+import { sendWelcomeEmail } from '@/lib/email';
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -46,6 +48,10 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Todos os campos são obrigatórios.' }, { status: 400 });
     }
     const novo = addUsuario({ nome, email, cargo, papel, departamento });
+    
+    // Notificação por e-mail (Assíncrona)
+    sendWelcomeEmail(novo).catch(console.error);
+
     return NextResponse.json(novo, { status: 201 });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 400 });

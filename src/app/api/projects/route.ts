@@ -51,6 +51,8 @@ export async function GET(request: Request) {
   }
 }
 
+import { sendAssignmentEmail } from '@/lib/email';
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -61,6 +63,16 @@ export async function POST(request: Request) {
     }
     
     const novoProjeto = createProjeto(nome, responsavel || "Não Definido", departamento, dataInicio, dataFim);
+
+    // Notificação por e-mail para o responsável (se houver)
+    if (responsavel && responsavel !== "Não Definido") {
+      const allUsers = getUsuarios();
+      const targetUser = allUsers.find(u => u.nome === responsavel);
+      if (targetUser && targetUser.email) {
+        sendAssignmentEmail(targetUser, novoProjeto).catch(console.error);
+      }
+    }
+
     return NextResponse.json(novoProjeto, { status: 201 });
   } catch (error: any) {
     if (error.message && error.message.includes("já existe")) {

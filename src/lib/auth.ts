@@ -27,13 +27,7 @@ export const authOptions: NextAuthOptions = {
       const userIndex = users.findIndex((u: any) => u.email.toLowerCase() === user.email.toLowerCase());
 
       if (userIndex !== -1) {
-        // Sincroniza o departamento vindo do Entra ID
-        const entraDept = profile?.department || profile?.officeLocation || users[userIndex].departamento;
-        
-        if (entraDept && entraDept !== users[userIndex].departamento) {
-          users[userIndex].departamento = entraDept;
-          fs.writeFileSync(usersPath, JSON.stringify(users, null, 2));
-        }
+        // O departamento agora é gerenciado nativamente pelo sistema e não é mais sincronizado do Entra ID.
         return true;
       }
 

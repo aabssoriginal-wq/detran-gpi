@@ -134,9 +134,12 @@ export default function RelatorioPage() {
             </div>
           </div>
           <div className="text-right">
-            <Badge className="bg-blue-900 text-white hover:bg-blue-900 mb-2">RELATÓRIO EXECUTIVO IA</Badge>
-            <p className="text-xs font-bold text-slate-600">Data de Emissão: {data?.geradoEm || data?.dataGeracao}</p>
-            <p className="text-[10px] text-slate-400 uppercase font-medium">Documento Gerado por {usuario?.nome}</p>
+            <Badge className="bg-blue-900 text-white hover:bg-blue-900 mb-2">
+              {data?.tipo === 'produtivo' ? 'RELATÓRIO PRODUTIVO IA' : data?.tipo === 'resumido' ? 'RELATÓRIO EXECUTIVO RESUMIDO IA' : 'RELATÓRIO EXECUTIVO IA'}
+            </Badge>
+            <p className="text-xs font-bold text-slate-600">Período: {data?.periodo || "Todo o Histórico"}</p>
+            <p className="text-[10px] font-bold text-slate-500">Data de Emissão: {data?.geradoEm || data?.dataGeracao}</p>
+            <p className="text-[10px] text-slate-400 uppercase font-medium">Gerado por {usuario?.nome}</p>
           </div>
         </div>
 
@@ -152,9 +155,9 @@ export default function RelatorioPage() {
               <div 
                 key={i} 
                 className={`rounded-lg border-l-4 p-4 shadow-sm transition-all hover:shadow-md ${
-                  item.nivel === 'alto' ? 'border-blue-900 bg-blue-50/50' : 
-                  item.nivel === 'medio' ? 'border-blue-600 bg-blue-50/30' : 
-                  'border-blue-400 bg-slate-50/50'
+                  item.nivel === 'alto' ? 'border-blue-900 bg-blue-50/50 dark:bg-blue-900/20' : 
+                  item.nivel === 'medio' ? 'border-blue-600 bg-blue-50/30 dark:bg-blue-800/10' : 
+                  'border-blue-400 bg-slate-50/50 dark:bg-slate-800/30'
                 }`}
               >
                 <button 
@@ -162,7 +165,7 @@ export default function RelatorioPage() {
                   className="w-full text-left"
                 >
                   <div className="flex justify-between items-start">
-                    <h4 className="text-xs font-black text-slate-800 uppercase mb-2">{item.titulo}</h4>
+                    <h4 className="text-xs font-black text-slate-800 dark:text-slate-200 uppercase mb-2">{item.titulo}</h4>
                     {expandedPanorama[i] ? <ChevronUp className="h-3 w-3 text-slate-400" /> : <ChevronDown className="h-3 w-3 text-slate-400" />}
                   </div>
                   <p className={`text-xs text-slate-600 dark:text-slate-400 leading-relaxed ${!expandedPanorama[i] && 'line-clamp-2'}`}>
@@ -214,7 +217,7 @@ export default function RelatorioPage() {
                         <h5 className="text-[11px] font-black text-blue-800 uppercase flex items-center gap-1.5">
                           <Info className="h-3.5 w-3.5" /> Análise de Governança (IA)
                         </h5>
-                        <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed text-justify border-l-2 border-blue-100 pl-4">
+                        <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed text-justify border-l-2 border-blue-100 dark:border-blue-900/50 pl-4">
                           {proj.analiseIA}
                         </p>
                         <div className="bg-blue-900 text-white p-4 rounded-lg shadow-inner">
@@ -249,7 +252,7 @@ export default function RelatorioPage() {
                         <div className="space-y-3">
                           {proj.eventosCriticos.map((evento: string, i: number) => (
                             <div key={i} className="flex gap-3">
-                              <div className="h-2 w-2 rounded-full bg-blue-900 mt-1.5 shrink-0" />
+                              <div className="h-2 w-2 rounded-full bg-blue-900 dark:bg-blue-500 mt-1.5 shrink-0" />
                               <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-tight">{evento}</p>
                             </div>
                           ))}
@@ -260,7 +263,7 @@ export default function RelatorioPage() {
                         <h5 className="text-[11px] font-black text-slate-400 uppercase">Saúde Atual</h5>
                         <div className="flex items-center justify-between mb-1">
                           <span className="text-[10px] font-bold text-slate-400">Progresso Geral</span>
-                          <span className="text-[10px] font-bold text-blue-900">{proj.progress}%</span>
+                          <span className="text-[10px] font-bold text-blue-900 dark:text-blue-400">{proj.progress}%</span>
                         </div>
                         <Progress value={proj.progress} className="h-1.5" indicatorColor="bg-blue-900" />
                       </div>
@@ -289,7 +292,7 @@ export default function RelatorioPage() {
                 toast.success("Código da apresentação copiado!");
                 window.open("https://gemini.google.com/canvas?utm_source=sem&utm_medium=paid-media&utm_campaign=canvas_bkws&gclsrc=aw.ds&gad_source=1&gad_campaignid=22919275109&gbraid=0AAAAApk5BhnNf0WjHfOZOdL-95vtPkepy&gclid=Cj0KCQjw2MbPBhCSARIsAP3jP9wxCWAk68MwagpGWq8BNkmB91lHTfuaSGI_DKpCdbRPayyj5lrlMUsaArDxEALw_wcB", "_blank");
               }}
-              className="flex items-center gap-2 px-5 py-2 border border-blue-200 text-blue-900 rounded-lg text-[10px] font-black uppercase tracking-tighter hover:bg-blue-50 transition-all"
+              className="flex items-center gap-2 px-5 py-2 border border-blue-200 dark:border-blue-800 text-blue-900 dark:text-blue-400 rounded-lg text-[10px] font-black uppercase tracking-tighter hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all"
             >
               <ExternalLink className="h-3 w-3" />
               Preparar Edição Externa (Gemini)

@@ -44,6 +44,7 @@ export default function UsuariosPage() {
   const { usuario, impersonate, isImpersonating } = useAuth();
   const router = useRouter();
   const [users, setUsers] = useState<any[]>([]);
+  const [departamentos, setDepartamentos] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [impersonatingId, setImpersonatingId] = useState<string | null>(null);
@@ -55,17 +56,24 @@ export default function UsuariosPage() {
   const [savingUser, setSavingUser] = useState(false);
   const [isSearchingCorporate, setIsSearchingCorporate] = useState(false);
 
+  // Gestão de Departamentos (Admin Total)
+  const [deptoDialogOpen, setDeptoDialogOpen] = useState(false);
+  const [novoDeptoSigla, setNovoDeptoSigla] = useState("");
+  const [novoDeptoNome, setNovoDeptoNome] = useState("");
+
   // Delete em progresso
   const [deletingId, setDeletingId] = useState<string | null>(null);
 
   const fetchUsers = () => {
     if (!usuario) return;
-    fetch(`/api/users?dept=${encodeURIComponent(usuario.departamento)}&role=${usuario.papel}`)
-      .then(r => r.json())
-      .then(u => {
-        setUsers(Array.isArray(u) ? u : []);
-        setLoading(false);
-      });
+    Promise.all([
+      fetch(`/api/users?dept=${encodeURIComponent(usuario.departamento)}&role=${usuario.papel}`).then(r => r.json()),
+      fetch('/api/departamentos').then(r => r.json())
+    ]).then(([u, d]) => {
+      setUsers(Array.isArray(u) ? u : []);
+      setDepartamentos(Array.isArray(d) ? d : []);
+      setLoading(false);
+    });
   };
 
   useEffect(() => { fetchUsers(); }, []);
@@ -239,6 +247,41 @@ export default function UsuariosPage() {
     }
   };
 
+  const handleAddDepto = async () => {
+    if (!novoDeptoSigla || !novoDeptoNome) {
+      toast.error("Preencha a sigla e o nome do departamento.");
+      return;
+    }
+    const nomeCompleto = `${novoDeptoNome} (${novoDeptoSigla})`;
+    try {
+      const res = await fetch('/api/departamentos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: novoDeptoSigla, nome: nomeCompleto })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error);
+      setDepartamentos(prev => [...prev, data.departamento].sort((a, b) => a.nome.localeCompare(b.nome)));
+      setNovoDeptoSigla("");
+      setNovoDeptoNome("");
+      toast.success("Departamento adicionado.");
+    } catch (e: any) {
+      toast.error(e.message);
+    }
+  };
+
+  const handleRemoveDepto = async (id: string) => {
+    if (!window.confirm("Certeza que deseja remover este departamento da lista de validação?")) return;
+    try {
+      const res = await fetch(`/api/departamentos?id=${id}`, { method: 'DELETE' });
+      if (!res.ok) throw new Error("Erro ao remover");
+      setDepartamentos(prev => prev.filter(d => d.id !== id));
+      toast.success("Departamento removido.");
+    } catch (e: any) {
+      toast.error(e.message);
+    }
+  };
+
   if (!canAssignProjects) {
     return (
       <div className="flex flex-col items-center justify-center h-[50vh] space-y-4">
@@ -263,13 +306,58 @@ export default function UsuariosPage() {
         </div>
 
         {canManageUsers && (
-          <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-            <DialogTrigger asChild>
-              <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium transition-all shadow-sm">
-                <UserPlus className="h-4 w-4" />
-                Adicionar Usuário
-              </button>
-            </DialogTrigger>
+          <div className="flex gap-2">
+            {usuario?.papel === 'admin_total' && (
+              <Dialog open={deptoDialogOpen} onOpenChange={setDeptoDialogOpen}>
+                <DialogTrigger asChild>
+                  <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-slate-300 text-sm font-medium transition-all shadow-sm">
+                    <Building2 className="h-4 w-4" />
+                    Gerenciar Departamentos
+                  </button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-xl">
+                  <DialogHeader>
+                    <DialogTitle className="flex items-center gap-2">
+                      <Building2 className="h-5 w-5 text-slate-600" />
+                      Gestão de Departamentos
+                    </DialogTitle>
+                    <DialogDescription>
+                      Gerencie a lista de validação nativa de departamentos do sistema.
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div className="space-y-4 py-4">
+                    <div className="flex gap-2 items-end">
+                      <div className="flex-1 space-y-2">
+                        <Label>Nome do Departamento</Label>
+                        <Input placeholder="Ex: Diretoria Financeira" value={novoDeptoNome} onChange={e => setNovoDeptoNome(e.target.value)} />
+                      </div>
+                      <div className="w-24 space-y-2">
+                        <Label>Sigla</Label>
+                        <Input placeholder="Ex: DIFIN" value={novoDeptoSigla} onChange={e => setNovoDeptoSigla(e.target.value.toUpperCase())} />
+                      </div>
+                      <Button onClick={handleAddDepto} className="bg-blue-600 hover:bg-blue-700">Adicionar</Button>
+                    </div>
+                    <div className="border rounded-md max-h-[300px] overflow-y-auto">
+                      {departamentos.map(d => (
+                        <div key={d.id} className="flex justify-between items-center p-2 border-b last:border-0 hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                          <span className="text-sm font-medium">{d.nome}</span>
+                          <Button variant="ghost" size="icon" className="h-8 w-8 text-rose-500" onClick={() => handleRemoveDepto(d.id)}>
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </DialogContent>
+              </Dialog>
+            )}
+            <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+              <DialogTrigger asChild>
+                <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium transition-all shadow-sm">
+                  <UserPlus className="h-4 w-4" />
+                  Adicionar Usuário
+                </button>
+              </DialogTrigger>
             <DialogContent className="sm:max-w-md">
               <DialogHeader>
                 <DialogTitle className="flex items-center gap-2">
@@ -328,21 +416,20 @@ export default function UsuariosPage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label className="flex items-center gap-1.5"><Building2 className="h-3.5 w-3.5" /> Departamento (Diretoria)</Label>
+                  <Label className="flex items-center gap-1.5"><Building2 className="h-3.5 w-3.5" /> Departamento</Label>
                   {usuario?.papel === 'admin_total' ? (
                     <Select value={novoUsuario.departamento} onValueChange={val => setNovoUsuario({ ...novoUsuario, departamento: val })}>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Selecione a Diretoria" />
+                      <SelectTrigger className="dark:bg-slate-900 dark:border-slate-800">
+                        <SelectValue placeholder="Selecione o Departamento" />
                       </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="Diretoria de Tecnologia da Informação">TI</SelectItem>
-                        <SelectItem value="Diretoria de Fiscalização de Trânsito">Fiscalização</SelectItem>
-                        <SelectItem value="Diretoria de Veículos Automotores">Veículos</SelectItem>
-                        <SelectItem value="Diretoria Administrativa">Administrativa</SelectItem>
+                      <SelectContent className="max-h-[250px]">
+                        {departamentos.map(d => (
+                          <SelectItem key={d.id} value={d.nome}>{d.nome}</SelectItem>
+                        ))}
                       </SelectContent>
                     </Select>
                   ) : (
-                    <div className="px-3 py-2 bg-slate-50 border rounded-md text-sm text-slate-500 font-medium">
+                    <div className="px-3 py-2 bg-slate-50 dark:bg-slate-900 border dark:border-slate-800 rounded-md text-sm text-slate-500 dark:text-slate-400 font-medium">
                       {usuario?.departamento}
                     </div>
                   )}
@@ -350,7 +437,7 @@ export default function UsuariosPage() {
                 <div className="space-y-2">
                   <Label>Perfil de Acesso</Label>
                   <Select value={novoUsuario.papel} onValueChange={val => setNovoUsuario({ ...novoUsuario, papel: val as Papel })}>
-                    <SelectTrigger>
+                    <SelectTrigger className="capitalize">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -383,6 +470,7 @@ export default function UsuariosPage() {
               </DialogFooter>
             </DialogContent>
           </Dialog>
+          </div>
         )}
       </div>
 

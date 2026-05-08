@@ -44,6 +44,12 @@ export default function ProjetosPage() {
     return `${day}/${month}/${year}`;
   };
 
+  const extractSigla = (nome?: string) => {
+    if (!nome) return "";
+    const match = nome.match(/\(([^)]+)\)/);
+    return match ? match[1] : nome.replace("Diretoria de ", "");
+  };
+
   const loadProjetos = () => {
     if (!usuario) return;
     setLoading(true);
@@ -238,13 +244,13 @@ export default function ProjetosPage() {
                 <TableHeader className="bg-slate-50 dark:bg-slate-900">
                   <TableRow>
                     {isMaster && <TableHead className="text-center w-[60px]">Fav</TableHead>}
-                    <TableHead className="w-[280px]">Nome do Projeto</TableHead>
-                    <TableHead>Diretoria</TableHead>
-                    <TableHead>Responsável</TableHead>
+                    <TableHead className="w-[300px] text-left">Nome do Projeto</TableHead>
+                    <TableHead className="text-center">Departamento</TableHead>
+                    <TableHead className="text-center">Responsável</TableHead>
                     <TableHead className="text-center">Início</TableHead>
                     <TableHead className="text-center">Fim</TableHead>
                     <TableHead className="text-center">Status</TableHead>
-                    <TableHead className="text-right">Progresso</TableHead>
+                    <TableHead className="text-center">Progresso</TableHead>
                     <TableHead className="text-right">Ação</TableHead>
                   </TableRow>
                 </TableHeader>
@@ -277,25 +283,48 @@ export default function ProjetosPage() {
                             </button>
                           </TableCell>
                         )}
-                        <TableCell className="font-medium">
-                          <Link href={`/dashboard/projetos/${projeto.id}`} className="hover:underline text-blue-600 dark:text-blue-400">
-                            {projeto.nome}
-                          </Link>
+                        <TableCell className="text-left font-medium">
+                          <TooltipProvider>
+                            <Tooltip>
+                              <TooltipTrigger asChild>
+                                <Link href={`/dashboard/projetos/${projeto.id}`} className="hover:underline text-blue-600 dark:text-blue-400">
+                                  {projeto.nome}
+                                </Link>
+                              </TooltipTrigger>
+                              <TooltipContent className="max-w-[300px] p-3 bg-white dark:bg-slate-900 border shadow-xl">
+                                <div className="space-y-1.5">
+                                  <p className="text-[10px] font-bold text-blue-600 uppercase tracking-wider">Escopo do Projeto</p>
+                                  <p className="text-xs leading-relaxed text-slate-600 dark:text-slate-300">
+                                    {projeto.escopo || "Nenhum escopo cadastrado."}
+                                  </p>
+                                </div>
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
                         </TableCell>
-                        <TableCell>
-                          <Badge variant="outline" className="text-[8px] font-bold bg-slate-50/50 dark:bg-slate-800/40 text-slate-500 dark:text-slate-400 border-slate-200 dark:border-slate-700 uppercase tracking-tighter">
-                            {projeto.departamento?.replace("Diretoria de ", "")}
-                          </Badge>
+                        <TableCell className="text-center">
+                          <TooltipProvider>
+                            <Tooltip>
+                              <TooltipTrigger className="cursor-help">
+                                <Badge variant="outline" className="text-[8px] font-bold bg-slate-50/50 dark:bg-slate-800/40 text-slate-500 dark:text-slate-400 border-slate-200 dark:border-slate-700 uppercase tracking-tighter">
+                                  {extractSigla(projeto.departamento)}
+                                </Badge>
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                <p>{projeto.departamento}</p>
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
                         </TableCell>
-                        <TableCell>{projeto.responsavel}</TableCell>
+                        <TableCell className="text-center">{projeto.responsavel}</TableCell>
                         <TableCell className="text-center text-xs text-slate-500">{formatarDataDisplay(projeto.baselineData?.inicio)}</TableCell>
                         <TableCell className="text-center text-xs text-slate-500">{formatarDataDisplay(projeto.baselineData?.fim)}</TableCell>
                         <TableCell className="text-center">
-                          <Badge variant="outline" className="bg-slate-50 text-slate-700 border-slate-200 dark:bg-slate-900/20 dark:text-slate-400">
+                          <Badge variant="outline" className="bg-slate-50 text-slate-700 border-slate-200 dark:bg-slate-900/20 dark:text-slate-400 capitalize">
                             {projeto.status}
                           </Badge>
                         </TableCell>
-                        <TableCell className="text-right font-medium">{projeto.progress}%</TableCell>
+                        <TableCell className="text-center font-medium">{projeto.progress}%</TableCell>
                         <TableCell className="text-right">
                           <Link href={`/dashboard/projetos/${projeto.id}`} className="text-xs font-medium px-3 py-1.5 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
                             Detalhes
@@ -317,9 +346,9 @@ export default function ProjetosPage() {
                 <Table>
                   <TableHeader className="bg-rose-50/50 dark:bg-rose-950/20">
                     <TableRow>
-                      <TableHead className="w-[280px]">Nome do Projeto</TableHead>
-                      <TableHead>Diretoria</TableHead>
-                      <TableHead>Responsável</TableHead>
+                      <TableHead className="w-[300px] text-left">Nome do Projeto</TableHead>
+                      <TableHead className="text-center">Departamento</TableHead>
+                      <TableHead className="text-center">Responsável</TableHead>
                       <TableHead className="text-center">Excluído por</TableHead>
                       <TableHead className="text-right">Ação</TableHead>
                     </TableRow>
@@ -334,13 +363,38 @@ export default function ProjetosPage() {
                         const lastLog = [...(projeto.logs || [])].find(l => l.acao === "Excluído");
                         return (
                           <TableRow key={projeto.id} className="hover:bg-rose-50/30 dark:hover:bg-rose-900/10">
-                            <TableCell className="font-medium text-slate-500 italic line-through">
-                              {projeto.nome}
+                            <TableCell className="text-left font-medium text-slate-500 italic line-through">
+                              <TooltipProvider>
+                                <Tooltip>
+                                  <TooltipTrigger asChild>
+                                    <span className="cursor-help">{projeto.nome}</span>
+                                  </TooltipTrigger>
+                                  <TooltipContent className="max-w-[300px] p-3 bg-white dark:bg-slate-900 border shadow-xl">
+                                    <div className="space-y-1.5">
+                                      <p className="text-[10px] font-bold text-rose-600 uppercase tracking-wider">Escopo do Projeto</p>
+                                      <p className="text-xs leading-relaxed text-slate-600 dark:text-slate-300">
+                                        {projeto.escopo || "Nenhum escopo cadastrado."}
+                                      </p>
+                                    </div>
+                                  </TooltipContent>
+                                </Tooltip>
+                              </TooltipProvider>
                             </TableCell>
-                            <TableCell className="text-slate-400 text-xs">
-                              {projeto.departamento?.replace("Diretoria de ", "")}
+                            <TableCell className="text-center text-slate-400 text-xs">
+                              <TooltipProvider>
+                                <Tooltip>
+                                  <TooltipTrigger className="cursor-help">
+                                    <Badge variant="outline" className="text-[8px] font-bold bg-rose-50 dark:bg-rose-900/20 text-rose-500 border-rose-200 dark:border-rose-800 uppercase tracking-tighter">
+                                      {extractSigla(projeto.departamento)}
+                                    </Badge>
+                                  </TooltipTrigger>
+                                  <TooltipContent>
+                                    <p>{projeto.departamento}</p>
+                                  </TooltipContent>
+                                </Tooltip>
+                              </TooltipProvider>
                             </TableCell>
-                            <TableCell className="text-slate-400">{projeto.responsavel}</TableCell>
+                            <TableCell className="text-center text-slate-400">{projeto.responsavel}</TableCell>
                             <TableCell className="text-center text-xs">
                               <div className="flex flex-col">
                                 <span className="font-bold text-rose-600">{lastLog?.user || "Sincronização"}</span>
@@ -416,14 +470,14 @@ export default function ProjetosPage() {
               />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="depto">Departamento (Diretoria)</Label>
+              <Label htmlFor="depto">Departamento</Label>
               <Input 
                 id="depto" 
                 value={usuario?.departamento || "Diretoria de Tecnologia da Informação"} 
                 disabled
                 className="bg-slate-50 text-slate-500"
               />
-              <p className="text-[10px] text-slate-400">O projeto será vinculado à sua diretoria atual.</p>
+              <p className="text-[10px] text-slate-400">O projeto será vinculado ao seu departamento atual.</p>
             </div>
             <div className="grid gap-2">
               <Label htmlFor="resp">Responsável Principal</Label>

@@ -65,13 +65,7 @@ export default function Header() {
           <Menu className="h-5 w-5" />
           <span className="sr-only">Menu</span>
         </Button>
-        <div className="hidden md:flex items-center relative">
-          <Search className="h-4 w-4 absolute left-3 text-slate-400" />
-          <Input 
-            placeholder="Buscar projetos..." 
-            className="pl-9 w-64 bg-slate-50 border-slate-200 dark:bg-slate-800 dark:border-slate-700 focus-visible:ring-indigo-500 h-9" 
-          />
-        </div>
+
       </div>
 
       <div className="flex items-center gap-4">
@@ -86,7 +80,7 @@ export default function Header() {
           <DropdownMenu>
             <DropdownMenuTrigger className="relative h-9 w-9 rounded-full overflow-hidden border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-blue-500">
               <Avatar className="h-9 w-9">
-                <AvatarImage src={usuario.avatar} alt={usuario.nome} />
+                <AvatarImage src={usuario.avatar || undefined} alt={usuario.nome} />
                 <AvatarFallback>{usuario.nome.charAt(0)}</AvatarFallback>
               </Avatar>
             </DropdownMenuTrigger>
@@ -151,7 +145,7 @@ export default function Header() {
                 className="w-full flex items-center gap-4 px-6 py-4 hover:bg-blue-50 dark:hover:bg-slate-800 transition-colors group text-left"
               >
                 <Avatar className="h-10 w-10 border border-slate-200 dark:border-slate-700">
-                  <AvatarImage src={u.avatar} />
+                  <AvatarImage src={u.avatar || undefined} />
                   <AvatarFallback>{u.nome.charAt(0)}</AvatarFallback>
                 </Avatar>
                 <div className="flex-1 min-w-0">

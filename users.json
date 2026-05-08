@@ -6,7 +6,7 @@
     "cargo": "Assistente Técnico III",
     "avatar": "https://i.pravatar.cc/150?u=u049",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -16,7 +16,7 @@
     "cargo": "Assistente Técnico III",
     "avatar": "https://i.pravatar.cc/150?u=u015",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -26,7 +26,7 @@
     "cargo": "Chefe de Divisão",
     "avatar": "https://i.pravatar.cc/150?u=u018",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": [
       39
     ]
@@ -38,7 +38,7 @@
     "cargo": "Chefe de Divisão",
     "avatar": "https://i.pravatar.cc/150?u=u052",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": [
       5000,
       4000,
@@ -60,7 +60,7 @@
     "cargo": "Assistente Técnico III",
     "avatar": "https://i.pravatar.cc/150?u=u003",
     "papel": "admin_total",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": [
       82
     ]
@@ -72,7 +72,7 @@
     "cargo": "Diretor",
     "avatar": "https://i.pravatar.cc/150?u=u669774",
     "papel": "admin_master",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": [
       61,
       42,
@@ -89,7 +89,7 @@
     "cargo": "Assistente Técnico III",
     "avatar": "https://i.pravatar.cc/150?u=u033",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": [
       5001
     ]
@@ -101,7 +101,7 @@
     "cargo": "Coordenador",
     "avatar": "https://i.pravatar.cc/150?u=u005",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": [
       80,
       38,
@@ -118,7 +118,7 @@
     "cargo": "Coordenador Geral",
     "avatar": "https://i.pravatar.cc/150?u=u010",
     "papel": "usuario_master",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": [
       94,
       96,
@@ -141,7 +141,7 @@
     "cargo": "Coordenador",
     "avatar": "https://i.pravatar.cc/150?u=u009",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": [
       66,
       50,
@@ -159,7 +159,7 @@
     "cargo": "Assistente Técnico III",
     "avatar": "https://i.pravatar.cc/150?u=u050",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -169,7 +169,7 @@
     "cargo": "Coordenador",
     "avatar": "https://i.pravatar.cc/150?u=u006",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": [
       44,
       54,
@@ -189,7 +189,7 @@
     "cargo": "Assistente Técnico III",
     "avatar": "https://i.pravatar.cc/150?u=u021",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -199,7 +199,7 @@
     "cargo": "Assistente IV",
     "avatar": "https://i.pravatar.cc/150?u=u004",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -209,7 +209,7 @@
     "cargo": "Assistente Técnico III",
     "avatar": "https://i.pravatar.cc/150?u=u028",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -219,7 +219,7 @@
     "cargo": "Coordenador Geral",
     "avatar": "https://i.pravatar.cc/150?u=u007",
     "papel": "usuario_master",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": [
       37,
       14,
@@ -240,7 +240,7 @@
     "cargo": "Coordenador",
     "avatar": "https://i.pravatar.cc/150?u=u008",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": [
       98,
       81,
@@ -256,7 +256,7 @@
     "cargo": "Chefe de Divisão",
     "avatar": "https://i.pravatar.cc/150?u=u037",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -266,7 +266,7 @@
     "cargo": "Chefe de Divisão",
     "avatar": "https://i.pravatar.cc/150?u=u026",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -276,7 +276,7 @@
     "cargo": "Chefe de Divisão",
     "avatar": "https://i.pravatar.cc/150?u=u039",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": [
       15
     ]
@@ -288,7 +288,7 @@
     "cargo": "Chefe de Divisão",
     "avatar": "https://i.pravatar.cc/150?u=u031",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -298,7 +298,7 @@
     "cargo": "Assistente Técnico III",
     "avatar": "https://i.pravatar.cc/150?u=u043",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -308,7 +308,7 @@
     "cargo": "Assistente Técnico III",
     "avatar": "https://i.pravatar.cc/150?u=u030",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -318,7 +318,7 @@
     "cargo": "Chefe de Divisão",
     "avatar": "https://i.pravatar.cc/150?u=u020",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -328,7 +328,7 @@
     "cargo": "Chefe de Divisão",
     "avatar": "https://i.pravatar.cc/150?u=u027",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -338,7 +338,7 @@
     "cargo": "Assistente Técnico III",
     "avatar": "https://i.pravatar.cc/150?u=u056",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": [
       43
     ]
@@ -350,7 +350,7 @@
     "cargo": "Assistente Técnico III",
     "avatar": "https://i.pravatar.cc/150?u=u040",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -360,7 +360,7 @@
     "cargo": "Assistente Técnico III",
     "avatar": "https://i.pravatar.cc/150?u=u002",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": [
       62,
       85,
@@ -375,7 +375,7 @@
     "cargo": "Assistente Técnico III",
     "avatar": "https://i.pravatar.cc/150?u=u023",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -385,7 +385,7 @@
     "cargo": "Assistente Técnico III",
     "avatar": "https://i.pravatar.cc/150?u=u036",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": [
       59,
       26,
@@ -400,7 +400,7 @@
     "cargo": "Assistente Técnico III",
     "avatar": "https://i.pravatar.cc/150?u=u032",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -410,7 +410,7 @@
     "cargo": "Chefe de Divisão",
     "avatar": "https://i.pravatar.cc/150?u=u024",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -420,7 +420,7 @@
     "cargo": "Assistente Técnico III",
     "avatar": "https://i.pravatar.cc/150?u=u017",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -430,7 +430,7 @@
     "cargo": "Assessor Especial II",
     "avatar": "https://i.pravatar.cc/150?u=u001",
     "papel": "admin_master",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": [
       72,
       16,
@@ -446,7 +446,7 @@
     "cargo": "Assistente Técnico III",
     "avatar": "https://i.pravatar.cc/150?u=u053",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -456,7 +456,7 @@
     "cargo": "Assistente Técnico III",
     "avatar": "https://i.pravatar.cc/150?u=u038",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -466,7 +466,7 @@
     "cargo": "Chefe de Divisão",
     "avatar": "https://i.pravatar.cc/150?u=u048",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": [
       21
     ]
@@ -478,7 +478,7 @@
     "cargo": "Chefe de Divisão",
     "avatar": "https://i.pravatar.cc/150?u=u044",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": [
       5,
       49,
@@ -492,7 +492,7 @@
     "cargo": "Chefe de Divisão",
     "avatar": "https://i.pravatar.cc/150?u=u034",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -502,7 +502,7 @@
     "cargo": "Assistente Técnico III",
     "avatar": "https://i.pravatar.cc/150?u=u035",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -512,7 +512,7 @@
     "cargo": "Assistente Técnico III",
     "avatar": "https://i.pravatar.cc/150?u=u025",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -522,7 +522,7 @@
     "cargo": "Assistente Técnico III",
     "avatar": "https://i.pravatar.cc/150?u=u047",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -532,7 +532,7 @@
     "cargo": "Chefe de Divisão",
     "avatar": "https://i.pravatar.cc/150?u=u012",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -542,7 +542,7 @@
     "cargo": "Chefe de Divisão",
     "avatar": "https://i.pravatar.cc/150?u=u013",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -552,7 +552,7 @@
     "cargo": "Chefe de Divisão",
     "avatar": "https://i.pravatar.cc/150?u=u054",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": [
       25
     ]
@@ -564,7 +564,7 @@
     "cargo": "Chefe de Divisão",
     "avatar": "https://i.pravatar.cc/150?u=u051",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -574,7 +574,7 @@
     "cargo": "Chefe de Divisão",
     "avatar": "https://i.pravatar.cc/150?u=u029",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -584,7 +584,7 @@
     "cargo": "Coordenador",
     "avatar": "https://i.pravatar.cc/150?u=u011",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": [
       30,
       22,
@@ -599,7 +599,7 @@
     "cargo": "Assistente Técnico III",
     "avatar": "https://i.pravatar.cc/150?u=u041",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -609,7 +609,7 @@
     "cargo": "Assistente Técnico III",
     "avatar": "https://i.pravatar.cc/150?u=u045",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -619,7 +619,7 @@
     "cargo": "Assistente Técnico III",
     "avatar": "https://i.pravatar.cc/150?u=u046",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": [
       23
     ]
@@ -631,7 +631,7 @@
     "cargo": "Assistente Técnico III",
     "avatar": "https://i.pravatar.cc/150?u=u016",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -641,7 +641,7 @@
     "cargo": "Chefe de Divisão",
     "avatar": "https://i.pravatar.cc/150?u=u022",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -651,7 +651,7 @@
     "cargo": "Chefe de Divisão",
     "avatar": "https://i.pravatar.cc/150?u=u014",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -661,7 +661,7 @@
     "cargo": "Assistente Técnico III",
     "avatar": "https://i.pravatar.cc/150?u=u019",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -671,7 +671,7 @@
     "cargo": "Diretor",
     "avatar": "https://i.pravatar.cc/150?u=u362909",
     "papel": "admin_master",
-    "departamento": "Diretoria de Veículos Automotores",
+    "departamento": "Diretoria de Veículos Automotores (DVA)",
     "projetosAtribuidos": []
   },
   {
@@ -681,7 +681,7 @@
     "cargo": "Chefe de Divisão",
     "avatar": "https://i.pravatar.cc/150?u=u042",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": []
   },
   {
@@ -691,7 +691,7 @@
     "cargo": "Assistente Técnico III",
     "avatar": "https://i.pravatar.cc/150?u=u055",
     "papel": "usuario",
-    "departamento": "Diretoria de Tecnologia da Informação",
+    "departamento": "Diretoria de Tecnologia da Informação (DTI)",
     "projetosAtribuidos": [
       77,
       76

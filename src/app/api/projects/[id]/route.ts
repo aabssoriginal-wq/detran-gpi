@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getProjetoById, renameProjeto, deleteProjeto, restoreProjeto, permanentlyDeleteProjeto, addLogToProjeto, createLog, updateBaseline, updateTarefas, updateProjetoStatus, updateEscopo, updateResponsavel, updateProjetoDepartamento, toggleFavorite, updateContrato, updateRecursos, updateTerceiros } from '@/lib/db';
+import { sendAssignmentEmail } from '@/lib/email';
+import { getUsuarios } from '@/lib/users';
 
 export const dynamic = 'force-dynamic';
 
@@ -126,10 +128,15 @@ export async function PUT(request: Request, context: any) {
       const { responsavelId, responsavelNome, user: currentUser } = body;
       if (!responsavelId || !responsavelNome) return NextResponse.json({ error: "Responsável é obrigatório" }, { status: 400 });
       
-      // 1. Encontrar o responsável antigo para removê-lo (opcional, mas bom para consistência)
-      // Nota: o sistema usa 'nome' para o campo responsavel no projeto.
-      
       const proj = updateResponsavel(id, responsavelId, responsavelNome, currentUser || "Usuário");
+
+      // Notificação por e-mail
+      const allUsers = getUsuarios();
+      const targetUser = allUsers.find(u => u.id === responsavelId);
+      if (targetUser && targetUser.email) {
+        sendAssignmentEmail(targetUser, proj).catch(console.error);
+      }
+
       return NextResponse.json(proj);
     }
 

@@ -10,6 +10,10 @@ export async function GET(request: Request) {
     const apiKey = process.env.GEMINI_API_KEY;
     const reportId = searchParams.get("id");
 
+    const tipo = searchParams.get("tipo") || "completo";
+    const inicioStr = searchParams.get("inicio");
+    const fimStr = searchParams.get("fim");
+
     // SEGURANÇA: Obter dados da sessão do servidor quando disponível
     const session = await getServerSession(authOptions);
     const role = session?.user?.papel || searchParams.get("role");
@@ -34,38 +38,127 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: "Nenhum projeto favoritado encontrado." }, { status: 404 });
     }
 
-    // Preparar dados enriquecidos para a IA
-    const dadosParaIA = favoritos.map(p => ({
-      nome: p.nome,
-      escopo: p.escopo,
-      status: p.status,
-      progresso: p.progress,
-      atraso: p.delta,
-      baselineInicio: p.baselineData?.inicio,
-      baselineFim: p.baselineData?.fim,
-      logs: (p.logs || []).slice(0, 5).map(l => `${l.data}: ${l.acao}`),
-      tarefas: (p.tarefas || []).map(t => ({
-        titulo: t.titulo,
-        status: t.status,
-        progresso: t.progress,
-        inicio: t.dataInicio,
-        fim: t.dataFim,
-        notas: t.notas, // Anotações
-        numLancamentos: t.lancamentos?.length || 0,
-        ultimosLancamentos: (t.lancamentos || []).slice(0, 3).map((l: any) => l.texto)
-      }))
-    }));
+    // Helper para conversão de datas (DD/MM/YYYY para timestamp)
+    const parseDataBR = (str: string) => {
+      if (!str) return 0;
+      const match = str.match(/(\d{2})\/(\d{2})\/(\d{4})/);
+      if (match) {
+        return new Date(`${match[3]}-${match[2]}-${match[1]}T00:00:00`).getTime();
+      }
+      return 0;
+    };
+    
+    let inicioTime = 0;
+    let fimTime = Infinity;
+    if (inicioStr && fimStr) {
+      inicioTime = new Date(`${inicioStr}T00:00:00`).getTime();
+      fimTime = new Date(`${fimStr}T23:59:59`).getTime();
+    }
 
-    const prompt = `Gere um JSON para um Relatório Executivo do DETRAN-SP.
+    // Cálculo da média de interações do departamento (apenas para relatório produtivo)
+    let mediaDepartamento = 0;
+    if (tipo === "produtivo") {
+      const projetosDept = todosProjetos.filter(p => p.departamento === userDept && !p.excluido);
+      let totalInteracoes = 0;
+      projetosDept.forEach(p => {
+        const logsCount = (p.logs || []).filter((l:any) => !inicioStr || (parseDataBR(l.data) >= inicioTime && parseDataBR(l.data) <= fimTime)).length;
+        const lancCount = (p.tarefas || []).reduce((acc: number, t: any) => {
+          return acc + (t.lancamentos || []).filter((l:any) => !inicioStr || (parseDataBR(l.data) >= inicioTime && parseDataBR(l.data) <= fimTime)).length;
+        }, 0);
+        totalInteracoes += (logsCount + lancCount);
+      });
+      mediaDepartamento = projetosDept.length > 0 ? (totalInteracoes / projetosDept.length) : 0;
+    }
+
+    // Preparar dados enriquecidos para a IA com filtros aplicados
+    const dadosParaIA = favoritos.map(p => {
+      // Filtrar logs
+      const logsFiltrados = (p.logs || []).filter((l: any) => {
+        if (!inicioStr) return true;
+        const time = parseDataBR(l.data);
+        return time >= inicioTime && time <= fimTime;
+      });
+
+      // Filtrar tarefas e lançamentos
+      const tarefasMapeadas = (p.tarefas || []).map((t: any) => {
+        const lancamentosFiltrados = (t.lancamentos || []).filter((l: any) => {
+          if (!inicioStr) return true;
+          const time = parseDataBR(l.data);
+          return time >= inicioTime && time <= fimTime;
+        });
+
+        return {
+          titulo: t.titulo,
+          status: t.status,
+          progresso: t.progress,
+          inicio: t.dataInicio,
+          fim: t.dataFim,
+          notas: t.notas,
+          impedimentoAtivo: t.impedimentoAtivo,
+          motivoImpedimento: t.motivoImpedimento,
+          numLancamentosNoPeriodo: lancamentosFiltrados.length,
+          lancamentos: lancamentosFiltrados.map((l: any) => `[${l.data}] ${l.autor || 'Sistema'}: ${l.texto}`)
+        };
+      });
+
+      return {
+        nome: p.nome,
+        escopo: p.escopo,
+        status: p.status,
+        progresso: p.progress,
+        atraso: p.delta,
+        departamento: p.departamento,
+        responsavel: p.responsavel,
+        baselineInicio: p.baselineData?.inicio,
+        baselineFim: p.baselineData?.fim,
+        contrato: p.contrato || "N/A", // caso exista futuramente
+        recursos: p.recursos || "N/A", // caso exista futuramente
+        fornecedor: p.fornecedor || "N/A",
+        totalLogsNoPeriodo: logsFiltrados.length,
+        logs: logsFiltrados.slice(-50).map((l: any) => `[${l.data}] ${l.user || 'Sistema'}: ${l.acao}`), // limite alto para contexto da IA
+        tarefas: tarefasMapeadas
+      };
+    });
+
+    let instrucoesTipo = "";
+    if (tipo === "completo") {
+      instrucoesTipo = `
+      FOCO DO RELATÓRIO: EXECUTIVO COMPLETO.
+      Seja formal, analítico e profundo.
+      Analise o escopo, contrato (se houver), atrasos, justificativas e notas das tarefas.
+      Traga recomendações de mitigação de riscos estruturados.
+      Mantenha total impessoalidade.`;
+    } else if (tipo === "resumido") {
+      instrucoesTipo = `
+      FOCO DO RELATÓRIO: EXECUTIVO RESUMIDO.
+      Seja extremamente direto, curto e objetivo.
+      Use bullet points.
+      Foque na saúde atual, percentual de progresso e viabilidade de conclusão no prazo.
+      Mantenha total impessoalidade.`;
+    } else if (tipo === "produtivo") {
+      instrucoesTipo = `
+      FOCO DO RELATÓRIO: PRODUTIVO E ENGAJAMENTO.
+      MUITO IMPORTANTE: ABANDONE A IMPESSOALIDADE! Este relatório avalia a equipe.
+      Analise a interatividade dos usuários com base nos 'logs' e 'lancamentos' do período.
+      Cite nomes de usuários que registraram atualizações relevantes (ex: "O usuário X realizou várias atualizações...").
+      Compare explicitamente o total de interações (logs + lançamentos) destes projetos favoritados com a 'MÉDIA DO DEPARTAMENTO' (que foi de ${mediaDepartamento.toFixed(1)} interações por projeto neste período).
+      Julgue de forma engajadora se a equipe deste projeto está ativa ou se o projeto está sem interações (sem logs recentes).`;
+    }
+
+    const periodoTexto = inicioStr ? `PERÍODO DE ANÁLISE DOS LOGS: ${inicioStr} até ${fimStr}` : "PERÍODO DE ANÁLISE DOS LOGS: Todo o histórico.";
+
+    const prompt = `Gere um JSON para um Relatório do DETRAN-SP.
+    ${periodoTexto}
+    
+    ${instrucoesTipo}
+
     PROJETOS FAVORITADOS: ${JSON.stringify(dadosParaIA)}
     
-    INSTRUÇÕES IMPORTANTES:
+    INSTRUÇÕES OBRIGATÓRIAS:
     1. Analise as datas de 'baselineInicio' e 'baselineFim' do projeto.
-    2. Verifique as 'notas' e 'ultimosLancamentos' das tarefas.
-    3. No campo 'eventosCriticos', destaque tarefas com atraso real.
-    4. Se houver anotações importantes, cite-as na 'analiseIA'.
-    5. No campo 'panorama', crie 3 itens destacando: (a) Saúde Geral das Datas, (b) Tarefas Críticas/Notas e (c) Próximos Passos.
-    6. COPIE obrigatoria e exatamente as datas de 'baselineInicio' e 'baselineFim' para os respectivos campos no JSON de saída.
+    2. No campo 'eventosCriticos', destaque eventos relevantes baseados no foco escolhido.
+    3. No campo 'panorama', crie 3 itens criativos destacando aspectos centrais do foco do relatório.
+    4. COPIE obrigatoria e exatamente as datas de 'baselineInicio' e 'baselineFim' para os respectivos campos no JSON de saída.
     
     ESTRUTURA DO JSON ESPERADA:
     {
@@ -79,8 +172,8 @@ export async function GET(request: Request) {
           "nome": "string",
           "progress": number,
           "departamento": "string",
-          "analiseIA": "string (resumo executivo do status)",
-          "conclusao": "string (recomendação)",
+          "analiseIA": "string (texto detalhado e rico seguindo as instruções de foco)",
+          "conclusao": "string (recomendação ou constatação final)",
           "eventosCriticos": ["string"],
           "baselineInicio": "string (YYYY-MM-DD)",
           "baselineFim": "string (YYYY-MM-DD)"
@@ -125,11 +218,19 @@ export async function GET(request: Request) {
     // SALVAR NO HISTÓRICO
     const agora = new Date();
     const pad = (n: number) => n.toString().padStart(2, '0');
-    const nomeFormatado = `Relatório_${agora.getFullYear()}_${pad(agora.getMonth() + 1)}_${pad(agora.getDate())}_${pad(agora.getHours())}_${pad(agora.getMinutes())}_${pad(agora.getSeconds())}_${userName?.toUpperCase().replace(/\s+/g, '_')}`;
+    
+    let prefixoSigla = "Relatório";
+    if (tipo === "completo") prefixoSigla = "REC";
+    else if (tipo === "resumido") prefixoSigla = "RER";
+    else if (tipo === "produtivo") prefixoSigla = "RP";
+
+    const nomeFormatado = `${prefixoSigla}_${agora.getFullYear()}_${pad(agora.getMonth() + 1)}_${pad(agora.getDate())}_${pad(agora.getHours())}_${pad(agora.getMinutes())}_${pad(agora.getSeconds())}_${userName?.toUpperCase().replace(/\s+/g, '_')}`;
 
     const novoRelatorio = {
       id: `REL-${Date.now()}`,
       nome: nomeFormatado,
+      tipo: tipo,
+      periodo: inicioStr ? `${inicioStr} a ${fimStr}` : "Todo o Período",
       geradoEm: agora.toLocaleString('pt-BR'),
       dataGeracao: agora.toLocaleString('pt-BR'),
       autor: userName || "Sistema",

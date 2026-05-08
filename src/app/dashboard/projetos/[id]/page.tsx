@@ -163,6 +163,7 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
     gerenteParceira: { nome: "", email: "", telefone: "" }
   });
   const [contatosGlobais, setContatosGlobais] = useState<any[]>([]);
+  const [departamentos, setDepartamentos] = useState<any[]>([]);
 
   // Sincronização do Slider (Visual)
   const [slidingProgress, setSlidingProgress] = useState<Record<string, number>>({});
@@ -172,9 +173,10 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
     Promise.all([
       fetch(`/api/projects/${params.id}?dept=${encodeURIComponent(usuario.departamento)}&role=${usuario.papel}`).then(res => res.json()),
       fetch(`/api/users?dept=${encodeURIComponent(usuario.departamento)}&role=${usuario.papel}`).then(res => res.json()),
-      fetch(`/api/projects/contatos`).then(res => res.json()).catch(() => []) // Vou assumir que essa rota existe ou vou criar
+      fetch(`/api/projects/contatos`).then(res => res.json()).catch(() => []), // Vou assumir que essa rota existe ou vou criar
+      fetch('/api/departamentos').then(res => res.json()).catch(() => [])
     ])
-      .then(([data, users, contatos]) => {
+      .then(([data, users, contatos, deptos]) => {
         if (data.error) {
           toast.error(data.error);
           return;
@@ -191,6 +193,7 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
           gerenteParceira: { nome: "", email: "", telefone: "" }
         });
         setContatosGlobais(contatos || []);
+        setDepartamentos(deptos || []);
         setTarefas(data.tarefas || []);
         
         // Inicializa slidingProgress com os valores atuais
@@ -1554,20 +1557,20 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                     <Card className="border-purple-200 bg-purple-50/20">
                       <CardHeader className="pb-3">
                         <CardTitle className="text-lg flex items-center gap-2 text-purple-800">
-                          <RotateCcw className="h-5 w-5" /> Alterar Diretoria
+                          <RotateCcw className="h-5 w-5" /> Alterar Departamento
                         </CardTitle>
                         <CardDescription>Transfira este projeto para outro departamento.</CardDescription>
                       </CardHeader>
                       <CardContent className="flex items-end gap-4">
                         <div className="flex-1 space-y-2">
-                          <Label>Nova Diretoria</Label>
+                          <Label>Novo Departamento</Label>
                           <Select 
                             value={projetoData.departamento} 
                             onValueChange={(val) => {
                               if (val === projetoData.departamento) return;
                               setJustificativaDialog({
                                 isOpen: true,
-                                title: "Alterar Diretoria do Projeto",
+                                title: "Alterar Departamento do Projeto",
                                 description: `Você está movendo o projeto de "${projetoData.departamento}" para "${val}". Isso mudará quem tem acesso ao projeto. Justifique:`,
                                 value: "",
                                 onConfirm: async (just) => {
@@ -1585,10 +1588,10 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                                       })
                                     });
                                     if (res.ok) {
-                                      toast.success("Diretoria atualizada!");
+                                      toast.success("Departamento atualizado!");
                                       loadData();
                                     }
-                                  } catch { toast.error("Erro ao alterar diretoria"); }
+                                  } catch { toast.error("Erro ao alterar departamento"); }
                                 }
                               });
                             }}
@@ -1596,11 +1599,10 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                             <SelectTrigger className="bg-white">
                               <SelectValue />
                             </SelectTrigger>
-                            <SelectContent>
-                              <SelectItem value="Diretoria de Tecnologia da Informação">Diretoria de Tecnologia da Informação</SelectItem>
-                              <SelectItem value="Diretoria de Fiscalização de Trânsito">Diretoria de Fiscalização de Trânsito</SelectItem>
-                              <SelectItem value="Diretoria de Veículos Automotores">Diretoria de Veículos Automotores</SelectItem>
-                              <SelectItem value="Diretoria Administrativa">Diretoria Administrativa</SelectItem>
+                            <SelectContent className="max-h-[250px]">
+                              {departamentos.map(d => (
+                                <SelectItem key={d.id} value={d.nome}>{d.nome}</SelectItem>
+                              ))}
                             </SelectContent>
                           </Select>
                         </div>
@@ -1663,10 +1665,17 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
 
         <TabsContent value="gantt">
           <Card>
-            <CardHeader className="flex flex-row items-center justify-between">
+            <CardHeader className="flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div>
                 <CardTitle>Gráfico de Gantt</CardTitle>
                 <CardDescription>Clique em uma linha para criar uma subtarefa.</CardDescription>
+              </div>
+              <div className="flex flex-wrap items-center gap-3 text-[10px] uppercase font-bold text-slate-500">
+                <span className="flex items-center gap-1.5"><div className="w-3 h-3 rounded-full bg-slate-400"></div> Planejado</span>
+                <span className="flex items-center gap-1.5"><div className="w-3 h-3 rounded-full bg-blue-600"></div> No Prazo</span>
+                <span className="flex items-center gap-1.5"><div className="w-3 h-3 rounded-full bg-emerald-500"></div> Concluído</span>
+                <span className="flex items-center gap-1.5"><div className="w-3 h-3 rounded-full bg-amber-500"></div> Atrasado</span>
+                <span className="flex items-center gap-1.5"><div className="w-3 h-3 rounded-full bg-slate-900 dark:bg-black dark:border dark:border-rose-900"></div> Bloqueado</span>
               </div>
             </CardHeader>
             <CardContent>
@@ -1708,9 +1717,9 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                             >
                               <div className="h-full bg-black/20" style={{ width: `${t.progress}%` }}/>
                               {t.impedimentoAtivo && (
-                                <div className="absolute h-full bg-black right-0" style={{ width: `${100 - t.progress}%`, borderRadius: '0 4px 4px 0' }} />
+                                <div className="absolute h-full bg-slate-900 dark:bg-black dark:border-y dark:border-r dark:border-rose-900 right-0" style={{ width: `${100 - t.progress}%`, borderRadius: '0 4px 4px 0' }} />
                               )}
-                              {(emAtraso || t.impedimentoAtivo) && <div className={`absolute inset-0 border-2 ${t.impedimentoAtivo ? 'border-black' : 'border-orange-500'} rounded animate-pulse pointer-events-none`}/>}
+                              {(emAtraso || t.impedimentoAtivo) && <div className={`absolute inset-0 border-2 ${t.impedimentoAtivo ? 'border-slate-900 dark:border-rose-800' : 'border-orange-500'} rounded animate-pulse pointer-events-none`}/>}
                             </div>
                           )}
                         </div>
@@ -1789,8 +1798,12 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                       value={impedimentoData.tarefaId} 
                       onValueChange={val => setImpedimentoData({...impedimentoData, tarefaId: val})}
                     >
-                      <SelectTrigger className="w-full min-w-[250px] bg-white">
-                        <SelectValue placeholder="Selecione a tarefa..." />
+                      <SelectTrigger className="w-full min-w-[250px] bg-white text-left">
+                        <SelectValue placeholder="Selecione a tarefa...">
+                          {impedimentoData.tarefaId 
+                            ? tarefas.find(t => t.id === impedimentoData.tarefaId)?.titulo 
+                            : "Selecione a tarefa..."}
+                        </SelectValue>
                       </SelectTrigger>
                       <SelectContent>
                         {tarefas.map(t => (

@@ -39,6 +39,14 @@ export default function DashboardPage() {
   const [history, setHistory] = useState<any[]>([]);
   const [loadingHistory, setLoadingHistory] = useState(false);
 
+  const [reportModal, setReportModal] = useState({
+    isOpen: false,
+    tipo: 'completo',
+    periodo: 'todo',
+    inicio: '',
+    fim: ''
+  });
+
   const fetchHistory = async () => {
     if (!usuario) return;
     setLoadingHistory(true);
@@ -85,6 +93,12 @@ export default function DashboardPage() {
     const [year, month, day] = dataIso.split("-");
     if (!day || !month || !year) return "";
     return `${day}/${month}/${year}`;
+  };
+
+  const extractSigla = (nome?: string) => {
+    if (!nome) return "";
+    const match = nome.match(/\(([^)]+)\)/);
+    return match ? match[1] : nome.replace("Diretoria de ", "");
   };
 
   const loadProjetos = () => {
@@ -356,7 +370,14 @@ export default function DashboardPage() {
                   variant="default" 
                   size="sm" 
                   className="bg-blue-600 text-white hover:bg-blue-700 hover:text-white border-none flex gap-2"
-                  onClick={() => router.push(`/dashboard/relatorio?dept=${encodeURIComponent(usuario?.departamento || "")}`)}
+                  onClick={() => {
+                    const hasFavorites = projetos.some(p => p.favoritos?.includes(usuario?.nome) && !p.excluido);
+                    if (!hasFavorites) {
+                      toast.error("Adicione ao menos um projeto como favorito para gerar o relatório.");
+                      return;
+                    }
+                    setReportModal({ ...reportModal, isOpen: true });
+                  }}
                 >
                   <TrendingUp className="h-4 w-4" />
                   Gerar Relatório
@@ -553,9 +574,18 @@ export default function DashboardPage() {
                             </Tooltip>
                           </TooltipProvider>
                           {projeto.departamento && (
-                            <span className="text-[8px] font-bold bg-slate-100/50 dark:bg-slate-800/40 text-slate-500 dark:text-slate-400 px-1.5 py-0.5 rounded border border-slate-200 dark:border-slate-700 uppercase tracking-tighter">
-                              {projeto.departamento.replace("Diretoria de ", "")}
-                            </span>
+                            <TooltipProvider>
+                              <Tooltip>
+                                <TooltipTrigger className="cursor-help">
+                                  <span className="text-[8px] font-bold bg-slate-100/50 dark:bg-slate-800/40 text-slate-500 dark:text-slate-400 px-1.5 py-0.5 rounded border border-slate-200 dark:border-slate-700 uppercase tracking-tighter">
+                                    {extractSigla(projeto.departamento)}
+                                  </span>
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                  <p>{projeto.departamento}</p>
+                                </TooltipContent>
+                              </Tooltip>
+                            </TooltipProvider>
                           )}
                           {projeto.responsavel && <span className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-500 px-2 py-0.5 rounded font-normal hidden sm:inline-block">({projeto.responsavel})</span>}
                         </span>
@@ -731,6 +761,105 @@ export default function DashboardPage() {
           </div>
         </div>
       )}
+      {/* Modal de Configuração de Relatório */}
+      <Dialog open={reportModal.isOpen} onOpenChange={(open) => setReportModal({ ...reportModal, isOpen: open })}>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2">
+              <TrendingUp className="h-5 w-5 text-blue-600" />
+              Gerar Relatório Inteligente
+            </DialogTitle>
+            <DialogDescription>
+              Configure o formato e o período do relatório para a análise da Inteligência Artificial.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-6 py-4">
+            <div className="space-y-3">
+              <Label className="text-xs font-bold text-slate-500 uppercase">Modelo do Relatório</Label>
+              <div className="space-y-2">
+                <div 
+                  className={`p-3 border rounded-lg cursor-pointer transition-all ${reportModal.tipo === 'completo' ? 'border-blue-500 bg-blue-50/50 dark:bg-blue-900/20' : 'border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600'}`}
+                  onClick={() => setReportModal({ ...reportModal, tipo: 'completo' })}
+                >
+                  <div className="flex items-center gap-2 mb-1">
+                    <div className={`h-3 w-3 rounded-full border ${reportModal.tipo === 'completo' ? 'bg-blue-600 border-blue-600' : 'border-slate-300 dark:border-slate-600'}`} />
+                    <span className="text-sm font-bold text-slate-700 dark:text-slate-300">Executivo Completo</span>
+                  </div>
+                  <p className="text-[10px] text-slate-500 ml-5">Análise profunda de governança, riscos e todos os marcos.</p>
+                </div>
+                <div 
+                  className={`p-3 border rounded-lg cursor-pointer transition-all ${reportModal.tipo === 'resumido' ? 'border-blue-500 bg-blue-50/50 dark:bg-blue-900/20' : 'border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600'}`}
+                  onClick={() => setReportModal({ ...reportModal, tipo: 'resumido' })}
+                >
+                  <div className="flex items-center gap-2 mb-1">
+                    <div className={`h-3 w-3 rounded-full border ${reportModal.tipo === 'resumido' ? 'bg-blue-600 border-blue-600' : 'border-slate-300 dark:border-slate-600'}`} />
+                    <span className="text-sm font-bold text-slate-700 dark:text-slate-300">Executivo Resumido</span>
+                  </div>
+                  <p className="text-[10px] text-slate-500 ml-5">Leitura rápida, focado em percentuais de saúde e viabilidade.</p>
+                </div>
+                <div 
+                  className={`p-3 border rounded-lg cursor-pointer transition-all ${reportModal.tipo === 'produtivo' ? 'border-blue-500 bg-blue-50/50 dark:bg-blue-900/20' : 'border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600'}`}
+                  onClick={() => setReportModal({ ...reportModal, tipo: 'produtivo' })}
+                >
+                  <div className="flex items-center gap-2 mb-1">
+                    <div className={`h-3 w-3 rounded-full border ${reportModal.tipo === 'produtivo' ? 'bg-blue-600 border-blue-600' : 'border-slate-300 dark:border-slate-600'}`} />
+                    <span className="text-sm font-bold text-slate-700 dark:text-slate-300">Produtivo (Engajamento)</span>
+                  </div>
+                  <p className="text-[10px] text-slate-500 ml-5">Foco em interatividade, quem lançou tarefas e volume de entregas.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              <Label className="text-xs font-bold text-slate-500 uppercase">Período de Análise</Label>
+              <select 
+                className="flex h-10 w-full rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-sm ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 dark:focus-visible:ring-slate-400 disabled:cursor-not-allowed disabled:opacity-50"
+                value={reportModal.periodo}
+                onChange={(e) => setReportModal({ ...reportModal, periodo: e.target.value })}
+              >
+                <option value="todo">Todo o Período Histórico</option>
+                <option value="especifico">Data Específica</option>
+              </select>
+
+              {reportModal.periodo === 'especifico' && (
+                <div className="grid grid-cols-2 gap-4 mt-2 p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-100 dark:border-slate-700">
+                  <div className="space-y-1.5">
+                    <Label className="text-[10px] font-bold text-slate-400">Data Inicial</Label>
+                    <Input type="date" className="h-8 text-xs bg-white dark:bg-slate-900 dark:border-slate-700" value={reportModal.inicio} onChange={(e) => setReportModal({ ...reportModal, inicio: e.target.value })} />
+                  </div>
+                  <div className="space-y-1.5">
+                    <Label className="text-[10px] font-bold text-slate-400">Data Final</Label>
+                    <Input type="date" className="h-8 text-xs bg-white dark:bg-slate-900 dark:border-slate-700" value={reportModal.fim} onChange={(e) => setReportModal({ ...reportModal, fim: e.target.value })} />
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+          <div className="flex justify-end gap-2">
+            <Button variant="outline" onClick={() => setReportModal({ ...reportModal, isOpen: false })}>Cancelar</Button>
+            <Button 
+              className="bg-blue-600 hover:bg-blue-700" 
+              onClick={() => {
+                if (reportModal.periodo === 'especifico' && (!reportModal.inicio || !reportModal.fim)) {
+                  toast.error("Preencha a data inicial e final.");
+                  return;
+                }
+                const q = new URLSearchParams();
+                q.set("dept", usuario?.departamento || "");
+                q.set("tipo", reportModal.tipo);
+                if (reportModal.periodo === 'especifico') {
+                  q.set("inicio", reportModal.inicio);
+                  q.set("fim", reportModal.fim);
+                }
+                setReportModal({ ...reportModal, isOpen: false });
+                router.push(`/dashboard/relatorio?${q.toString()}`);
+              }}
+            >
+              Gerar Relatório
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

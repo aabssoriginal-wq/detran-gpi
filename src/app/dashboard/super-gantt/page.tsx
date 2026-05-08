@@ -22,6 +22,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 export default function SuperGanttPage() {
   const { usuario } = useAuth();
   const [projetos, setProjetos] = useState<any[]>([]);
+  const [departamentos, setDepartamentos] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [expandedProjects, setExpandedProjects] = useState<Record<number, boolean>>({});
   const [search, setSearch] = useState("");
@@ -39,20 +40,21 @@ export default function SuperGanttPage() {
   useEffect(() => {
     if (!usuario) return;
     setLoading(true);
-    fetch(`/api/projects?dept=${encodeURIComponent(usuario.departamento)}&role=${usuario.papel}`)
-      .then(res => res.json())
-      .then(data => {
-        if (Array.isArray(data)) {
-          const detailedPromises = data.map(p => fetch(`/api/projects/${p.id}?dept=${encodeURIComponent(usuario.departamento)}&role=${usuario.papel}`).then(r => r.json()));
-          Promise.all(detailedPromises).then(details => {
-            setProjetos(details);
-            setLoading(false);
-          });
-        } else {
+    Promise.all([
+      fetch(`/api/projects?dept=${encodeURIComponent(usuario.departamento)}&role=${usuario.papel}`).then(r => r.json()),
+      fetch('/api/departamentos').then(r => r.json()).catch(() => [])
+    ]).then(([data, deptos]) => {
+      setDepartamentos(Array.isArray(deptos) ? deptos : []);
+      if (Array.isArray(data)) {
+        const detailedPromises = data.map((p: any) => fetch(`/api/projects/${p.id}?dept=${encodeURIComponent(usuario.departamento)}&role=${usuario.papel}`).then(r => r.json()));
+        Promise.all(detailedPromises).then(details => {
+          setProjetos(details);
           setLoading(false);
-        }
-      })
-      .catch(() => setLoading(false));
+        });
+      } else {
+        setLoading(false);
+      }
+    }).catch(() => setLoading(false));
   }, [usuario]);
 
   // Sync Vertical Scroll
@@ -181,70 +183,90 @@ export default function SuperGanttPage() {
 
       {/* Filtros */}
       <Card className="shadow-sm border-slate-200 dark:border-slate-800">
-        <CardContent className="py-4 flex flex-wrap gap-3">
-          <div className="w-[220px] space-y-1">
-            <label className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Iniciativa</label>
-            <Input placeholder="Nome..." className="h-9 text-sm" value={filterNome} onChange={e => setFilterNome(e.target.value)} />
-          </div>
-          
-          {usuario?.papel === 'admin_total' && (
-            <div className="w-[200px] space-y-1">
-              <label className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Diretoria</label>
-              <Select value={filterDept} onValueChange={setFilterDept}>
-                <SelectTrigger className="h-9 text-sm"><SelectValue /></SelectTrigger>
+        <CardContent className="py-4 space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="space-y-1 w-full">
+              <label className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Iniciativa</label>
+              <Input placeholder="Nome..." className="h-9 text-sm" value={filterNome} onChange={e => setFilterNome(e.target.value)} />
+            </div>
+            
+            {usuario?.papel === 'admin_total' && (
+              <div className="space-y-1 w-full">
+                <label className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Departamento</label>
+                <Select value={filterDept} onValueChange={setFilterDept}>
+                  <SelectTrigger className="h-9 text-sm w-full overflow-hidden">
+                    <span className="truncate block text-left">
+                      <SelectValue placeholder="Selecione" />
+                    </span>
+                  </SelectTrigger>
+                  <SelectContent className="max-h-[250px]">
+                    <SelectItem value="all">Todos os Departamentos</SelectItem>
+                    {departamentos.map(d => (
+                      <SelectItem key={d.id} value={d.nome}>{d.nome}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            )}
+
+            <div className="space-y-1 w-full">
+              <label className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Fase</label>
+              <Select value={filterStatus} onValueChange={setFilterStatus}>
+                <SelectTrigger className="h-9 text-sm w-full"><SelectValue /></SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="all">Todas as Diretorias</SelectItem>
-                  <SelectItem value="Diretoria de Tecnologia da Informação">TI</SelectItem>
-                  <SelectItem value="Diretoria de Fiscalização de Trânsito">Fiscalização</SelectItem>
-                  <SelectItem value="Diretoria de Veículos Automotores">Veículos</SelectItem>
-                  <SelectItem value="Diretoria Administrativa">Administrativa</SelectItem>
+                  <SelectItem value="all">Todas as Fases</SelectItem>
+                  <SelectItem value="ideacao">Ideação</SelectItem>
+                  <SelectItem value="planejamento">Planejamento</SelectItem>
+                  <SelectItem value="desenvolvimento">Desenvolvimento</SelectItem>
+                  <SelectItem value="concluido">Concluído</SelectItem>
                 </SelectContent>
               </Select>
             </div>
-          )}
 
-          <div className="w-[140px] space-y-1">
-            <label className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Fase</label>
-            <Select value={filterStatus} onValueChange={setFilterStatus}>
-              <SelectTrigger className="h-9 text-sm"><SelectValue /></SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">Todas as Fases</SelectItem>
-                <SelectItem value="ideacao">Ideação</SelectItem>
-                <SelectItem value="planejamento">Planejamento</SelectItem>
-                <SelectItem value="desenvolvimento">Desenvolvimento</SelectItem>
-                <SelectItem value="concluido">Concluído</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="w-[180px] space-y-1">
-            <label className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Responsável</label>
-            <Select value={filterResp} onValueChange={setFilterResp}>
-              <SelectTrigger className="h-9 text-sm"><SelectValue /></SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">Todos os Líderes</SelectItem>
-                {Array.from(new Set(projetos.map(p => p.responsavel).filter(Boolean))).sort().map(r => (
-                  <SelectItem key={String(r)} value={String(r)}>{String(r)}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-          <Button variant="outline" className="h-9 mt-5 gap-2 text-xs font-bold" onClick={() => {setFilterNome(""); setFilterStatus("all"); setFilterResp("all"); setFilterDept("all"); setShowOnlyFavorites(false);}}>
-            <Filter className="h-3 w-3" /> Limpar
-          </Button>
-
-          {(usuario?.papel === "admin_total" || usuario?.papel === "admin_master" || usuario?.papel === "usuario_master") && (
-            <div className="flex items-center space-x-2 bg-white dark:bg-slate-900 px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm mt-4 ml-auto">
-              <Star className={`h-4 w-4 ${showOnlyFavorites ? 'text-amber-500 fill-amber-500' : 'text-slate-400'}`} />
-              <Label htmlFor="fav-filter-gantt" className="text-xs font-bold cursor-pointer">Favoritos</Label>
-              <Switch 
-                id="fav-filter-gantt" 
-                checked={showOnlyFavorites} 
-                onCheckedChange={setShowOnlyFavorites}
-              />
+            <div className="space-y-1 w-full">
+              <label className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Responsável</label>
+              <Select value={filterResp} onValueChange={setFilterResp}>
+                <SelectTrigger className="h-9 text-sm w-full overflow-hidden">
+                  <span className="truncate block text-left"><SelectValue /></span>
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">Todos os Líderes</SelectItem>
+                  {Array.from(new Set(projetos.map(p => p.responsavel).filter(Boolean))).sort().map(r => (
+                    <SelectItem key={String(r)} value={String(r)}>{String(r)}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
-          )}
+          </div>
+
+          <div className="flex flex-wrap items-center justify-end gap-3 pt-2 border-t border-slate-100 dark:border-slate-800">
+            <Button variant="outline" className="h-9 gap-2 text-xs font-bold" onClick={() => {setFilterNome(""); setFilterStatus("all"); setFilterResp("all"); setFilterDept("all"); setShowOnlyFavorites(false);}}>
+              <Filter className="h-3 w-3" /> Limpar Filtros
+            </Button>
+
+            {(usuario?.papel === "admin_total" || usuario?.papel === "admin_master" || usuario?.papel === "usuario_master") && (
+              <div className="flex items-center space-x-2 bg-slate-50 dark:bg-slate-900 px-3 h-9 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm">
+                <Star className={`h-4 w-4 ${showOnlyFavorites ? 'text-amber-500 fill-amber-500' : 'text-slate-400'}`} />
+                <Label htmlFor="fav-filter-gantt" className="text-xs font-bold cursor-pointer">Apenas Favoritos</Label>
+                <Switch 
+                  id="fav-filter-gantt" 
+                  checked={showOnlyFavorites} 
+                  onCheckedChange={setShowOnlyFavorites}
+                />
+              </div>
+            )}
+          </div>
         </CardContent>
       </Card>
+      {/* Legenda do Super Gantt */}
+      <div className="flex flex-wrap items-center gap-3 text-[10px] uppercase font-bold text-slate-500 mb-2 px-1">
+        <span className="flex items-center gap-1.5"><div className="w-3 h-3 rounded-full bg-slate-400"></div> Planejado</span>
+        <span className="flex items-center gap-1.5"><div className="w-3 h-3 rounded-full bg-blue-600"></div> No Prazo</span>
+        <span className="flex items-center gap-1.5"><div className="w-3 h-3 rounded-full bg-emerald-500"></div> Concluído</span>
+        <span className="flex items-center gap-1.5"><div className="w-3 h-3 rounded-full bg-amber-500"></div> Tarefa Atrasada</span>
+        <span className="flex items-center gap-1.5"><div className="w-3 h-3 rounded-full bg-rose-500"></div> Projeto Atrasado</span>
+        <span className="flex items-center gap-1.5"><div className="w-3 h-3 rounded-full bg-slate-900 dark:bg-black dark:border dark:border-rose-900"></div> Bloqueado</span>
+      </div>
 
       {/* Gantt Viewport Único */}
       <Card className="shadow-lg border-slate-200 dark:border-slate-800 overflow-hidden bg-white dark:bg-slate-950">
@@ -375,7 +397,7 @@ export default function SuperGanttPage() {
                                 >
                                 <div className="h-full bg-black/10" style={{ width: `${t.progress}%` }} />
                                 {t.impedimentoAtivo && (
-                                  <div className="absolute h-full bg-black right-0 top-0" style={{ width: `${100 - t.progress}%` }} />
+                                  <div className="absolute h-full bg-slate-900 dark:bg-black dark:border-y dark:border-r dark:border-rose-900 right-0 top-0" style={{ width: `${100 - t.progress}%` }} />
                                 )}
                               </div>
                             )}
@@ -399,50 +421,50 @@ export default function SuperGanttPage() {
               Histórico de Repactuação
             </DialogTitle>
             <DialogDescription>
-              Cronologia de alterações de datas para: <span className="font-bold text-slate-900">{selectedProjectRepacts?.nome}</span>
+              Cronologia de alterações de datas para: <span className="font-bold text-slate-900 dark:text-slate-100">{selectedProjectRepacts?.nome}</span>
             </DialogDescription>
           </DialogHeader>
           
           <div className="space-y-4 py-4">
             {selectedProjectRepacts?.logs.map((log: any, idx: number) => (
-              <div key={idx} className="relative pl-6 pb-6 border-l-2 border-amber-100 last:pb-0">
-                <div className="absolute left-[-9px] top-0 h-4 w-4 rounded-full bg-amber-500 border-4 border-white shadow-sm" />
+              <div key={idx} className="relative pl-6 pb-6 border-l-2 border-amber-100 dark:border-amber-900/50 last:pb-0">
+                <div className="absolute left-[-9px] top-0 h-4 w-4 rounded-full bg-amber-500 border-4 border-white dark:border-slate-900 shadow-sm" />
                 <div className="space-y-2">
                   <div className="flex justify-between items-start">
                     <span className="text-[10px] font-bold text-slate-400 uppercase">{log.data}</span>
-                    <Badge variant="outline" className="text-[9px] border-amber-200 text-amber-700 bg-amber-50">
+                    <Badge variant="outline" className="text-[9px] border-amber-200 dark:border-amber-800 text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/20">
                       Alterado por {log.user}
                     </Badge>
                   </div>
                   
                   {log.novoInicio || log.novoFim ? (
                     <div className="grid grid-cols-2 gap-2">
-                      <div className="bg-slate-50 p-2 rounded border border-slate-100">
+                      <div className="bg-slate-50 dark:bg-slate-800/50 p-2 rounded border border-slate-100 dark:border-slate-700">
                         <p className="text-[9px] text-slate-400 uppercase font-black">Novo Início</p>
-                        <p className="text-xs font-bold text-slate-700">{formatarDataBR(log.novoInicio)}</p>
+                        <p className="text-xs font-bold text-slate-700 dark:text-slate-300">{formatarDataBR(log.novoInicio)}</p>
                       </div>
-                      <div className="bg-slate-50 p-2 rounded border border-slate-100">
+                      <div className="bg-slate-50 dark:bg-slate-800/50 p-2 rounded border border-slate-100 dark:border-slate-700">
                         <p className="text-[9px] text-slate-400 uppercase font-black">Novo Fim</p>
-                        <p className="text-xs font-bold text-slate-700">{formatarDataBR(log.novoFim)}</p>
+                        <p className="text-xs font-bold text-slate-700 dark:text-slate-300">{formatarDataBR(log.novoFim)}</p>
                       </div>
                     </div>
                   ) : (
-                    <div className="bg-slate-50 p-2 rounded border border-slate-100 border-l-amber-500 border-l-4">
+                    <div className="bg-slate-50 dark:bg-slate-800/50 p-2 rounded border border-slate-100 dark:border-slate-700 border-l-amber-500 border-l-4">
                       <p className="text-[9px] text-slate-400 uppercase font-black">Detalhes da Alteração</p>
-                      <p className="text-xs text-slate-600 font-medium leading-relaxed">{log.acaoOriginal}</p>
+                      <p className="text-xs text-slate-600 dark:text-slate-300 font-medium leading-relaxed">{log.acaoOriginal}</p>
                     </div>
                   )}
 
                   {log.tarefaOrigem && (
-                    <div className="flex items-center gap-1.5 text-[10px] font-bold text-indigo-600 bg-indigo-50 px-2 py-1 rounded w-fit">
+                    <div className="flex items-center gap-1.5 text-[10px] font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/20 px-2 py-1 rounded w-fit">
                       <ShieldAlert className="h-3 w-3" />
                       Origem: Tarefa "{log.tarefaOrigem}"
                     </div>
                   )}
 
-                  <div className="bg-amber-50/50 p-3 rounded-lg border border-amber-100">
-                    <p className="text-[11px] font-semibold text-amber-900 mb-1">Motivo da Repactuação:</p>
-                    <p className="text-xs text-amber-800 italic leading-relaxed">"{log.justificativa}"</p>
+                  <div className="bg-amber-50/50 dark:bg-amber-900/20 p-3 rounded-lg border border-amber-100 dark:border-amber-900/50">
+                    <p className="text-[11px] font-semibold text-amber-900 dark:text-amber-500 mb-1">Motivo da Repactuação:</p>
+                    <p className="text-xs text-amber-800 dark:text-amber-200/80 italic leading-relaxed">"{log.justificativa}"</p>
                   </div>
                 </div>
               </div>
