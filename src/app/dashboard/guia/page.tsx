@@ -26,7 +26,7 @@ const SECOES = [
     icon: LayoutList,
     color: "text-indigo-600",
     conteudo: [
-      { t: "Escopo Multinível", d: "Divisão entre Escopo Resumido (350 chars) para visão executiva e Escopo Detalhado (1500 chars) para documentação técnica." },
+      { t: "Escopo Multinível", d: "Divisão entre Escopo Resumido (350 chars) para visão executiva e Escopo Detalhado (5000 chars) para documentação técnica." },
       { t: "Gestão Contratual", d: "Módulo para registro de Empresa Contratada, Número ESP e Processo SEI vinculados diretamente ao projeto." },
       { t: "Recursos e Terceiros", d: "Cadastro dinâmico de recursos e gestão de contatos de gerentes PRODESP e empresas parceiras." },
       { t: "Banco de Contatos", d: "O sistema replica globalmente contatos de terceiros, sugerindo nomes e e-mails já cadastrados em outros projetos." }

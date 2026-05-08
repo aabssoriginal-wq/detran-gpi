@@ -266,8 +266,8 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
       toast.error("O escopo resumido deve ter no máximo 350 caracteres.");
       return;
     }
-    if (escopoDetalhado.length > 1500) {
-      toast.error("O escopo detalhado deve ter no máximo 1500 caracteres.");
+    if (escopoDetalhado.length > 5000) {
+      toast.error("O escopo detalhado deve ter no máximo 5000 caracteres.");
       return;
     }
     
@@ -1144,8 +1144,8 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
                   <Label className="font-bold">Escopo Detalhado</Label>
-                  <span className={`text-[10px] font-mono ${escopoDetalhado.length > 1500 ? 'text-rose-500 font-bold' : 'text-slate-400'}`}>
-                    {escopoDetalhado.length}/1500 caracteres
+                  <span className={`text-[10px] font-mono ${escopoDetalhado.length > 5000 ? 'text-rose-500 font-bold' : 'text-slate-400'}`}>
+                    {escopoDetalhado.length}/5000 caracteres
                   </span>
                 </div>
                 <Textarea 
