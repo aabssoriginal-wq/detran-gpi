@@ -7,7 +7,7 @@ export async function GET(request: Request) {
     const dept = searchParams.get("dept");
     const role = searchParams.get("role");
 
-    const relatorios = getRelatorios(dept || undefined, role || undefined);
+    const relatorios = await getRelatorios(dept || undefined, role || undefined);
     return NextResponse.json(relatorios);
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });

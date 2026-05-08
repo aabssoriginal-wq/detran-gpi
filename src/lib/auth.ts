@@ -1,6 +1,5 @@
 import AzureADProvider from "next-auth/providers/azure-ad";
-import fs from 'fs';
-import path from 'path';
+import { prisma } from "./prisma";
 import type { NextAuthOptions } from "next-auth";
 
 export const authOptions: NextAuthOptions = {
@@ -18,27 +17,26 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    async signIn({ user, profile }: any) {
+    async signIn({ user }: any) {
       if (!user.email) return false;
 
-      const usersPath = path.join(process.cwd(), 'users.json');
-      const users = JSON.parse(fs.readFileSync(usersPath, 'utf8'));
-      
-      const userIndex = users.findIndex((u: any) => u.email.toLowerCase() === user.email.toLowerCase());
+      const dbUser = await prisma.user.findUnique({
+        where: { email: user.email.toLowerCase() }
+      });
 
-      if (userIndex !== -1) {
-        // O departamento agora é gerenciado nativamente pelo sistema e não é mais sincronizado do Entra ID.
+      if (dbUser) {
         return true;
       }
 
       // Se não encontrar o usuário na base local, bloqueia o acesso (Segurança)
       return false; 
     },
-    async session({ session, token }: any) {
-      // Adiciona os dados do users.json na sessão do NextAuth
-      const usersPath = path.join(process.cwd(), 'users.json');
-      const users = JSON.parse(fs.readFileSync(usersPath, 'utf8'));
-      const dbUser = users.find((u: any) => u.email.toLowerCase() === session.user.email.toLowerCase());
+    async session({ session }: any) {
+      if (!session.user?.email) return session;
+
+      const dbUser = await prisma.user.findUnique({
+        where: { email: session.user.email.toLowerCase() }
+      });
 
       if (dbUser) {
         session.user.id = dbUser.id;

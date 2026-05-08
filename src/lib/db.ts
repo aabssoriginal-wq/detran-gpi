@@ -1,48 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+import { prisma } from './prisma';
 import { formatarDataBR } from "./utils";
-import packageData from '../../data.json';
-
-// Lógica de persistência universal
-const getDataDirectory = () => {
-  // Tenta usar o diretório persistente do Azure se possível, senão usa a pasta atual
-  const azureDir = '/home/site/data';
-  try {
-    if (fs.existsSync('/home/site')) {
-      if (!fs.existsSync(azureDir)) {
-        fs.mkdirSync(azureDir, { recursive: true });
-      }
-      return azureDir;
-    }
-  } catch (e) {}
-  return process.cwd();
-};
-
-const getFilePath = (fileName: string) => {
-  const dataDir = getDataDirectory();
-  const targetPath = path.join(dataDir, fileName);
-
-  // Força a sincronização se a variável de ambiente estiver ativada
-  const forceSync = process.env.SYNC_DATA_NOW === 'true';
-
-  // Se o arquivo não existir ou se forçarmos a sincronização, recriamos com os dados embutidos (packageData)
-  if (!fs.existsSync(targetPath) || forceSync) {
-    try {
-      const dataToSync = fileName === 'data.json' ? packageData : undefined;
-      if (dataToSync) {
-        fs.writeFileSync(targetPath, JSON.stringify(dataToSync, null, 2));
-        console.log(`DADOS SINCRONIZADOS COM SUCESSO A PARTIR DO BUNDLE: ${targetPath}`);
-      }
-    } catch (e) {
-      console.error(`Erro ao sincronizar ${fileName}:`, e);
-    }
-  }
-
-  return targetPath;
-};
-
-const dataFilePath = getFilePath('data.json');
-const usersFilePath = getFilePath('users.json');
 
 export interface LogEntry {
   acao: string;
@@ -110,7 +67,7 @@ export interface Projeto {
   logs: LogEntry[];
   baselineData: BaselineData;
   tarefas: Tarefa[];
-  escopo?: string; // Escopo Resumido
+  escopo?: string;
   escopoDetalhado?: string;
   contrato?: {
     empresaContratada?: string;
@@ -130,69 +87,12 @@ export interface Relatorio {
   id: string;
   nome: string;
   dataGeracao: string;
-  geradoEm?: string; // Para exibição no documento
+  geradoEm?: string;
   autor: string;
   diretoria: string;
   panorama: any[]; 
   detalhes: any[]; 
 }
-
-export interface DB {
-  projetos: Projeto[];
-  relatorios: Relatorio[];
-}
-
-const initializeDB = () => {
-  if (!fs.existsSync(dataFilePath)) {
-    const initialData: DB = {
-      projetos: [
-        { id: 1, nome: "Identidade Digital (SSO)", status: "prazo", andamento: true, progress: 85, delta: 0, text: "No Prazo", indicator: "bg-emerald-500", icon: "CheckCircle2", iconColor: "text-emerald-500", responsavel: "Luiz Wanderley", departamento: "Diretoria de Tecnologia da Informação", excluido: false, logs: [], baselineData: { inicio: "2026-05-01", fim: "2026-12-15" }, tarefas: [], favoritos: [] },
-      ],
-      relatorios: []
-    };
-    fs.writeFileSync(dataFilePath, JSON.stringify(initialData, null, 2));
-  }
-};
-
-const getDB = (): DB => {
-  initializeDB();
-  try {
-    const fileData = fs.readFileSync(dataFilePath, 'utf-8');
-    if (!fileData || fileData.trim() === "") {
-      throw new Error("Arquivo de dados vazio");
-    }
-    let data = JSON.parse(fileData);
-    if (Array.isArray(data)) {
-      return { projetos: data, relatorios: [] };
-    }
-    return {
-      projetos: data.projetos || [],
-      relatorios: data.relatorios || []
-    };
-  } catch (e) {
-    console.error("Erro ao ler banco de dados, usando fallback direto do pacote:", e);
-    
-    // Fallback: garante a estrutura correta baseada no packageData (que vem do JSON completo)
-    let fallbackData = packageData as any;
-    if (Array.isArray(fallbackData)) {
-      return { projetos: fallbackData, relatorios: [] };
-    }
-    return {
-      projetos: fallbackData.projetos || [],
-      relatorios: fallbackData.relatorios || []
-    };
-  }
-};
-
-const saveFullDB = (db: DB) => {
-  fs.writeFileSync(dataFilePath, JSON.stringify(db, null, 2));
-};
-
-const saveDB = (projetos: Projeto[]) => {
-  const db = getDB();
-  db.projetos = projetos;
-  saveFullDB(db);
-};
 
 export const createLog = (acao: string, justificativa: string = "Nenhuma", user: string = "Usuário"): LogEntry => {
   const now = new Date();
@@ -201,7 +101,6 @@ export const createLog = (acao: string, justificativa: string = "Nenhuma", user:
   return { acao, justificativa, data: dataFormatada, user };
 };
 
-// Auxiliar para converter data BR para objeto Date (para ordenação)
 const parseDataBR = (s: string): Date => {
   const [data, hora] = s.split(' ');
   const [d, m, y] = data.split('/').map(Number);
@@ -219,20 +118,27 @@ const statusMap: Record<string, { text: string; indicator: string; icon: string;
   concluido:    { text: "Concluído",     indicator: "bg-emerald-600", icon: "CheckCircle2", iconColor: "text-emerald-600" },
 };
 
-export const getProjetos = (userDept?: string, papel?: string): Projeto[] => {
-  const db = getDB();
-  const data = db.projetos;
+export const getProjetos = async (userDept?: string, papel?: string): Promise<Projeto[]> => {
+  const data = await prisma.project.findMany({
+    include: {
+      tarefas: true,
+      logs: {
+        orderBy: { createdAt: 'desc' }
+      }
+    }
+  });
+
   const hoje = new Date();
   hoje.setHours(0, 0, 0, 0);
 
   let list = data.map((p: any) => {
-    const proj = {
+    const baseline = (p.baselineData as any) || { inicio: "", fim: "" };
+    
+    const proj: any = {
       ...p,
-      departamento: p.departamento || "Diretoria de Tecnologia da Informação",
-      excluido: p.excluido || false,
-      logs: p.logs || [],
-      baselineData: p.baselineData || { inicio: "", fim: "" },
-      tarefas: p.tarefas || [],
+      baselineData: baseline,
+      logs: p.logs.map((l: any) => ({ acao: l.acao, data: l.data, justificativa: l.justificativa, user: l.user })),
+      tarefas: p.tarefas.map((t: any) => ({ ...t, lancamentos: (t.lancamentos as any) || [] })),
       favoritos: p.favoritos || []
     };
     
@@ -244,8 +150,8 @@ export const getProjetos = (userDept?: string, papel?: string): Projeto[] => {
     let finalDelta = 0;
     let finalReason = "No prazo.";
 
-    if (proj.baselineData.fim && proj.progress < 100) {
-      const parts = proj.baselineData.fim.split("-");
+    if (baseline.fim && proj.progress < 100) {
+      const parts = baseline.fim.split("-");
       const dFim = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
       dFim.setHours(0,0,0,0);
       if (dFim < hoje) {
@@ -258,10 +164,7 @@ export const getProjetos = (userDept?: string, papel?: string): Projeto[] => {
       }
     }
 
-    let temImped = false;
-    for (const t of proj.tarefas) {
-      if (t.impedimentoAtivo) temImped = true;
-    }
+    let temImped = proj.tarefas.some((t: any) => t.impedimentoAtivo);
 
     if (temImped) {
       finalHealth = "impedimentos";
@@ -292,14 +195,14 @@ export const getProjetos = (userDept?: string, papel?: string): Projeto[] => {
   });
 
   if (papel && papel !== 'admin_total') {
-    list = list.filter((p: Projeto) => p.departamento === userDept);
+    list = list.filter((p: any) => p.departamento === userDept);
   }
 
-  return list.sort((a, b) => a.nome.localeCompare(b.nome));
+  return list.sort((a: any, b: any) => a.nome.localeCompare(b.nome));
 };
 
-export const getAuditoria = (userDept?: string, papel?: string): any[] => {
-  const projetos = getProjetos(userDept, papel);
+export const getAuditoria = async (userDept?: string, papel?: string): Promise<any[]> => {
+  const projetos = await getProjetos(userDept, papel);
   const allLogs: any[] = [];
   projetos.forEach(p => {
     p.logs.forEach(l => {
@@ -315,237 +218,418 @@ export const getAuditoria = (userDept?: string, papel?: string): any[] => {
   });
 };
 
-export const getProjetoById = (id: number, userDept?: string, papel?: string): Projeto => {
-  const projetos = getProjetos(userDept, papel);
+export const getProjetoById = async (id: number, userDept?: string, papel?: string): Promise<Projeto> => {
+  const projetos = await getProjetos(userDept, papel);
   const projeto = projetos.find(p => p.id === id);
   if (!projeto) throw new Error("Projeto não encontrado.");
   return projeto;
 };
 
-export const createProjeto = (nome: string, responsavel: string, departamento: string = "Diretoria de Tecnologia da Informação", inicio: string = "", fim: string = ""): Projeto => {
-  const projetos = getProjetos(); 
-  const novoId = projetos.length > 0 ? Math.max(...projetos.map(p => p.id)) + 1 : 1;
-  const novoProjeto: Projeto = {
-    id: novoId, nome, status: "ideacao", andamento: true, progress: 0, delta: 0, text: "Ideação",
-    indicator: "bg-blue-400", icon: "FolderKanban", iconColor: "text-blue-400", responsavel, departamento,
-    excluido: false, logs: [createLog("Criação do Projeto")], baselineData: { inicio, fim }, tarefas: [], favoritos: []
-  };
-  projetos.unshift(novoProjeto);
-  saveDB(projetos);
-  return novoProjeto;
+export const createProjeto = async (nome: string, responsavel: string, departamento: string = "Diretoria de Tecnologia da Informação", inicio: string = "", fim: string = ""): Promise<Projeto> => {
+  const novoProjeto = await prisma.project.create({
+    data: {
+      nome,
+      status: "ideacao",
+      responsavel,
+      departamento,
+      baselineData: { inicio, fim },
+      logs: {
+        create: [
+          {
+            acao: "Criação do Projeto",
+            data: createLog("Criação do Projeto").data,
+            user: "Sistema"
+          }
+        ]
+      }
+    },
+    include: { tarefas: true, logs: true }
+  });
+  return await getProjetoById(novoProjeto.id);
 };
 
-export const renameProjeto = (id: number, novoNome: string, justificativa: string, user: string = "Usuário"): Projeto => {
-  const projetos = getProjetos();
-  const idx = projetos.findIndex(p => p.id === id);
-  if (idx === -1) throw new Error("Projeto não encontrado.");
-  projetos[idx].nome = novoNome;
-  projetos[idx].logs.unshift(createLog(`Renomeado`, justificativa, user));
-  saveDB(projetos);
-  return projetos[idx];
+export const renameProjeto = async (id: number, novoNome: string, justificativa: string, user: string = "Usuário"): Promise<Projeto> => {
+  const log = createLog("Renomeado", justificativa, user);
+  await prisma.project.update({
+    where: { id },
+    data: {
+      nome: novoNome,
+      logs: {
+        create: {
+          acao: log.acao,
+          data: log.data,
+          justificativa: log.justificativa,
+          user: log.user
+        }
+      }
+    }
+  });
+  return await getProjetoById(id);
 };
 
-export const deleteProjeto = (id: number, justificativa: string, user: string = "Usuário"): void => {
-  const projetos = getProjetos();
-  const idx = projetos.findIndex(p => p.id === id);
-  if (idx !== -1) {
-    projetos[idx].excluido = true;
-    projetos[idx].logs.unshift(createLog("Excluído", justificativa, user));
-    saveDB(projetos);
-  }
+export const deleteProjeto = async (id: number, justificativa: string, user: string = "Usuário"): Promise<void> => {
+  const log = createLog("Excluído", justificativa, user);
+  await prisma.project.update({
+    where: { id },
+    data: {
+      excluido: true,
+      logs: {
+        create: {
+          acao: log.acao,
+          data: log.data,
+          justificativa: log.justificativa,
+          user: log.user
+        }
+      }
+    }
+  });
 };
 
-export const restoreProjeto = (id: number, justificativa: string, user: string = "Usuário"): void => {
-  const projetos = getProjetos();
-  const idx = projetos.findIndex(p => p.id === id);
-  if (idx !== -1) {
-    projetos[idx].excluido = false;
-    projetos[idx].logs.unshift(createLog("Restaurado", justificativa, user));
-    saveDB(projetos);
-  }
+export const restoreProjeto = async (id: number, justificativa: string, user: string = "Usuário"): Promise<void> => {
+  const log = createLog("Restaurado", justificativa, user);
+  await prisma.project.update({
+    where: { id },
+    data: {
+      excluido: false,
+      logs: {
+        create: {
+          acao: log.acao,
+          data: log.data,
+          justificativa: log.justificativa,
+          user: log.user
+        }
+      }
+    }
+  });
 };
 
-export const permanentlyDeleteProjeto = (id: number): void => {
-  const db = getDB();
-  db.projetos = db.projetos.filter(p => p.id !== id);
-  saveFullDB(db);
+export const permanentlyDeleteProjeto = async (id: number): Promise<void> => {
+  await prisma.project.delete({ where: { id } });
 };
 
-export const updateBaseline = (id: number, inicio: string, fim: string, justificativa: string = "Ajuste", user: string = "Usuário"): Projeto => {
-  const projetos = getProjetos();
-  const idx = projetos.findIndex(p => p.id === id);
-  if (idx === -1) throw new Error("Projeto não encontrado.");
-  projetos[idx].baselineData = { inicio, fim };
-  projetos[idx].logs.unshift(createLog(`Repactuação: ${formatarDataBR(inicio)} - ${formatarDataBR(fim)}`, justificativa, user));
-  saveDB(projetos);
-  return projetos[idx];
+export const updateBaseline = async (id: number, inicio: string, fim: string, justificativa: string = "Ajuste", user: string = "Usuário"): Promise<Projeto> => {
+  const log = createLog(`Repactuação: ${formatarDataBR(inicio)} - ${formatarDataBR(fim)}`, justificativa, user);
+  await prisma.project.update({
+    where: { id },
+    data: {
+      baselineData: { inicio, fim },
+      logs: {
+        create: {
+          acao: log.acao,
+          data: log.data,
+          justificativa: log.justificativa,
+          user: log.user
+        }
+      }
+    }
+  });
+  return await getProjetoById(id);
 };
 
-export const updateTarefas = (id: number, tarefas: Tarefa[], user: string = "Usuário", acao?: string, just?: string): Projeto => {
-  const projetos = getProjetos();
-  const idx = projetos.findIndex(p => p.id === id);
-  if (idx === -1) throw new Error("Projeto não encontrado.");
-  projetos[idx].tarefas = tarefas;
-  projetos[idx].logs.unshift(createLog(acao || "Atualização de EAP", just || "Alteração de tarefas", user));
-  
-  if (tarefas.length > 0) {
-    let totalPond = 0, totalDias = 0;
-    tarefas.forEach(t => {
-      const i = t.dataInicio ? new Date(t.dataInicio) : new Date();
-      const f = t.dataFim ? new Date(t.dataFim) : i;
-      const d = Math.ceil(Math.abs(f.getTime() - i.getTime()) / (1000 * 3600 * 24)) + 1;
-      totalPond += (t.progress || 0) * d;
-      totalDias += d;
+export const updateTarefas = async (id: number, tarefas: Tarefa[], user: string = "Usuário", acao?: string, just?: string): Promise<Projeto> => {
+  // Cálculo de progresso ponderado
+  let totalPond = 0, totalDias = 0;
+  tarefas.forEach(t => {
+    const i = t.dataInicio ? new Date(t.dataInicio) : new Date();
+    const f = t.dataFim ? new Date(t.dataFim) : i;
+    const d = Math.ceil(Math.abs(f.getTime() - i.getTime()) / (1000 * 3600 * 24)) + 1;
+    totalPond += (t.progress || 0) * d;
+    totalDias += d;
+  });
+  const newProgress = totalDias > 0 ? Math.round(totalPond / totalDias) : 0;
+
+  const log = createLog(acao || "Atualização de EAP", just || "Alteração de tarefas", user);
+
+  // No Prisma, para atualizar tarefas de forma atômica (substituir todas), podemos deletar e recriar ou usar upsert
+  // Como as tarefas têm IDs estáveis vindos do front, vamos usar upsert
+  await prisma.$transaction(async (tx) => {
+    // 1. Atualiza o progresso e log do projeto
+    await tx.project.update({
+      where: { id },
+      data: {
+        progress: newProgress,
+        logs: {
+          create: {
+            acao: log.acao,
+            data: log.data,
+            justificativa: log.justificativa,
+            user: log.user
+          }
+        }
+      }
     });
-    projetos[idx].progress = totalDias > 0 ? Math.round(totalPond / totalDias) : 0;
-  }
-  saveDB(projetos);
-  return projetos[idx];
+
+    // 2. Remove tarefas que não estão mais na lista
+    const tarefaIds = tarefas.map(t => t.id);
+    await tx.task.deleteMany({
+      where: {
+        projectId: id,
+        id: { notIn: tarefaIds }
+      }
+    });
+
+    // 3. Upsert das tarefas enviadas
+    for (const t of tarefas) {
+      await tx.task.upsert({
+        where: { id: t.id },
+        update: {
+          titulo: t.titulo,
+          status: t.status,
+          progress: t.progress,
+          responsavel: t.responsavel,
+          dataInicio: t.dataInicio,
+          dataFim: t.dataFim,
+          parentId: t.parentId,
+          notas: t.notas,
+          impedimentoAtivo: t.impedimentoAtivo,
+          motivoImpedimento: t.motivoImpedimento,
+          justificativaResolucao: t.justificativaResolucao,
+          responsavelTecnico: t.responsavelTecnico,
+          lancamentos: t.lancamentos || []
+        },
+        create: {
+          id: t.id,
+          titulo: t.titulo,
+          status: t.status,
+          progress: t.progress,
+          responsavel: t.responsavel,
+          dataInicio: t.dataInicio,
+          dataFim: t.dataFim,
+          parentId: t.parentId,
+          notas: t.notas,
+          impedimentoAtivo: t.impedimentoAtivo,
+          motivoImpedimento: t.motivoImpedimento,
+          justificativaResolucao: t.justificativaResolucao,
+          responsavelTecnico: t.responsavelTecnico,
+          lancamentos: t.lancamentos || [],
+          projectId: id
+        }
+      });
+    }
+  });
+
+  return await getProjetoById(id);
 };
 
-export const updateProjetoStatus = (id: number, status: string, justificativa: string, user: string = "Usuário"): Projeto => {
-  const projetos = getProjetos();
-  const idx = projetos.findIndex(p => p.id === id);
-  if (idx === -1) throw new Error("Projeto não encontrado.");
-  projetos[idx].status = status;
-  projetos[idx].logs.unshift(createLog(`Alteração de Fase para ${status}`, justificativa, user));
-  saveDB(projetos);
-  return projetos[idx];
+export const updateProjetoStatus = async (id: number, status: string, justificativa: string, user: string = "Usuário"): Promise<Projeto> => {
+  const log = createLog(`Alteração de Fase para ${status}`, justificativa, user);
+  await prisma.project.update({
+    where: { id },
+    data: {
+      status,
+      logs: {
+        create: {
+          acao: log.acao,
+          data: log.data,
+          justificativa: log.justificativa,
+          user: log.user
+        }
+      }
+    }
+  });
+  return await getProjetoById(id);
 };
 
-export const updateEscopo = (id: number, escopo: string, user: string = "Usuário", detalhado?: string): Projeto => {
-  const projetos = getProjetos();
-  const idx = projetos.findIndex(p => p.id === id);
-  if (idx === -1) throw new Error("Projeto não encontrado.");
-  projetos[idx].escopo = escopo;
-  if (detalhado !== undefined) projetos[idx].escopoDetalhado = detalhado;
-  projetos[idx].logs.unshift(createLog("Atualização de Detalhes (Escopo)", "Edição manual", user));
-  saveDB(projetos);
-  return projetos[idx];
+export const updateEscopo = async (id: number, escopo: string, user: string = "Usuário", detalhado?: string): Promise<Projeto> => {
+  const log = createLog("Atualização de Detalhes (Escopo)", "Edição manual", user);
+  await prisma.project.update({
+    where: { id },
+    data: {
+      escopo,
+      escopoDetalhado: detalhado !== undefined ? detalhado : undefined,
+      logs: {
+        create: {
+          acao: log.acao,
+          data: log.data,
+          justificativa: log.justificativa,
+          user: log.user
+        }
+      }
+    }
+  });
+  return await getProjetoById(id);
 };
 
-export const updateContrato = (id: number, contrato: any, user: string = "Usuário"): Projeto => {
-  const projetos = getProjetos();
-  const idx = projetos.findIndex(p => p.id === id);
-  if (idx === -1) throw new Error("Projeto não encontrado.");
-  projetos[idx].contrato = contrato;
-  projetos[idx].logs.unshift(createLog("Atualização de Informações Contratuais", "Edição manual", user));
-  saveDB(projetos);
-  return projetos[idx];
+export const updateContrato = async (id: number, contrato: any, user: string = "Usuário"): Promise<Projeto> => {
+  const log = createLog("Atualização de Informações Contratuais", "Edição manual", user);
+  await prisma.project.update({
+    where: { id },
+    data: {
+      contrato,
+      logs: {
+        create: {
+          acao: log.acao,
+          data: log.data,
+          justificativa: log.justificativa,
+          user: log.user
+        }
+      }
+    }
+  });
+  return await getProjetoById(id);
 };
 
-export const updateRecursos = (id: number, recursos: RecursoProjeto[], user: string = "Usuário"): Projeto => {
-  const projetos = getProjetos();
-  const idx = projetos.findIndex(p => p.id === id);
-  if (idx === -1) throw new Error("Projeto não encontrado.");
-  projetos[idx].recursos = recursos;
-  projetos[idx].logs.unshift(createLog("Atualização de Recursos Contratados", "Edição manual", user));
-  saveDB(projetos);
-  return projetos[idx];
+export const updateRecursos = async (id: number, recursos: RecursoProjeto[], user: string = "Usuário"): Promise<Projeto> => {
+  const log = createLog("Atualização de Recursos Contratados", "Edição manual", user);
+  await prisma.project.update({
+    where: { id },
+    data: {
+      recursos: recursos as any,
+      logs: {
+        create: {
+          acao: log.acao,
+          data: log.data,
+          justificativa: log.justificativa,
+          user: log.user
+        }
+      }
+    }
+  });
+  return await getProjetoById(id);
 };
 
-export const updateTerceiros = (id: number, terceiros: any, user: string = "Usuário"): Projeto => {
-  const projetos = getProjetos();
-  const idx = projetos.findIndex(p => p.id === id);
-  if (idx === -1) throw new Error("Projeto não encontrado.");
-  projetos[idx].terceiros = terceiros;
-  projetos[idx].logs.unshift(createLog("Atualização de Informações de Terceiros", "Edição manual", user));
+export const updateTerceiros = async (id: number, terceiros: any, user: string = "Usuário"): Promise<Projeto> => {
+  const log = createLog("Atualização de Informações de Terceiros", "Edição manual", user);
+  await prisma.project.update({
+    where: { id },
+    data: {
+      terceiros,
+      logs: {
+        create: {
+          acao: log.acao,
+          data: log.data,
+          justificativa: log.justificativa,
+          user: log.user
+        }
+      }
+    }
+  });
   
-  // Salva no banco de contatos para replicação futura
-  saveContatoGlobal(terceiros.gerenteProdesp, 'PRODESP');
-  saveContatoGlobal(terceiros.gerenteParceira, 'Parceira', terceiros.empresaParceira);
+  if (terceiros.gerenteProdesp) await saveContatoGlobal(terceiros.gerenteProdesp, 'PRODESP');
+  if (terceiros.gerenteParceira) await saveContatoGlobal(terceiros.gerenteParceira, 'Parceira', terceiros.empresaParceira);
 
-  saveDB(projetos);
-  return projetos[idx];
+  return await getProjetoById(id);
 };
 
-const saveContatoGlobal = (contato: any, tipo: string, empresa?: string) => {
+const saveContatoGlobal = async (contato: any, tipo: string, empresa?: string) => {
   if (!contato || !contato.nome) return;
-  const dataDir = getDataDirectory();
-  const filePath = path.join(dataDir, 'contatos_terceiros.json');
-  let contatos: any[] = [];
-  try {
-    if (fs.existsSync(filePath)) {
-      contatos = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+  await prisma.thirdPartyContact.upsert({
+    where: { id: contato.nome + (contato.email || '') }, // Fallback para ID
+    update: {
+      email: contato.email,
+      telefone: contato.telefone,
+      tipo,
+      empresa: empresa || (tipo === 'PRODESP' ? 'PRODESP' : '')
+    },
+    create: {
+      nome: contato.nome,
+      email: contato.email,
+      telefone: contato.telefone,
+      tipo,
+      empresa: empresa || (tipo === 'PRODESP' ? 'PRODESP' : '')
     }
-  } catch (e) {}
-
-  const exists = contatos.find(c => c.nome === contato.nome || (c.email && c.email === contato.email));
-  if (!exists) {
-    contatos.push({ ...contato, tipo, empresa: empresa || (tipo === 'PRODESP' ? 'PRODESP' : ''), id: Math.random().toString(36).substr(2, 9) });
-    fs.writeFileSync(filePath, JSON.stringify(contatos, null, 2));
-  }
+  });
 };
 
-export const getContatosGlobais = () => {
-  const dataDir = getDataDirectory();
-  const filePath = path.join(dataDir, 'contatos_terceiros.json');
-  try {
-    if (fs.existsSync(filePath)) {
-      return JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+export const getContatosGlobais = async () => {
+  return await prisma.thirdPartyContact.findMany();
+};
+
+export const updateResponsavel = async (id: number, userId: string, nome: string, user: string = "Usuário"): Promise<Projeto> => {
+  const log = createLog(`Responsável alterado para ${nome}`, "Atribuição", user);
+  await prisma.project.update({
+    where: { id },
+    data: {
+      responsavel: nome,
+      logs: {
+        create: {
+          acao: log.acao,
+          data: log.data,
+          justificativa: log.justificativa,
+          user: log.user
+        }
+      }
     }
-  } catch (e) {}
-  return [];
+  });
+  return await getProjetoById(id);
 };
 
-export const updateResponsavel = (id: number, userId: string, nome: string, user: string = "Usuário"): Projeto => {
-  const projetos = getProjetos();
-  const idx = projetos.findIndex(p => p.id === id);
-  if (idx === -1) throw new Error("Projeto não encontrado.");
-  projetos[idx].responsavel = nome;
-  projetos[idx].logs.unshift(createLog(`Responsável alterado para ${nome}`, "Atribuição", user));
-  saveDB(projetos);
-  return projetos[idx];
+export const updateProjetoDepartamento = async (id: number, novoDept: string, justificativa: string, user: string = "Usuário"): Promise<Projeto> => {
+  const proj = await prisma.project.findUnique({ where: { id } });
+  const antigo = proj?.departamento || "Não definido";
+  const log = createLog(`Diretoria alterada: ${antigo} → ${novoDept}`, justificativa, user);
+  await prisma.project.update({
+    where: { id },
+    data: {
+      departamento: novoDept,
+      logs: {
+        create: {
+          acao: log.acao,
+          data: log.data,
+          justificativa: log.justificativa,
+          user: log.user
+        }
+      }
+    }
+  });
+  return await getProjetoById(id);
 };
 
-export const updateProjetoDepartamento = (id: number, novoDept: string, justificativa: string, user: string = "Usuário"): Projeto => {
-  const projetos = getProjetos();
-  const idx = projetos.findIndex(p => p.id === id);
-  if (idx === -1) throw new Error("Projeto não encontrado.");
-  const antigo = projetos[idx].departamento;
-  projetos[idx].departamento = novoDept;
-  projetos[idx].logs.unshift(createLog(`Diretoria alterada: ${antigo} → ${novoDept}`, justificativa, user));
-  saveDB(projetos);
-  return projetos[idx];
+export const addLogToProjeto = async (id: number, log: LogEntry): Promise<void> => {
+  await prisma.log.create({
+    data: {
+      acao: log.acao,
+      data: log.data,
+      justificativa: log.justificativa,
+      user: log.user,
+      projectId: id
+    }
+  });
 };
 
-export const addLogToProjeto = (id: number, log: LogEntry): void => {
-  const projetos = getProjetos();
-  const index = projetos.findIndex(p => p.id === id);
-  if (index !== -1) {
-    projetos[index].logs.unshift(log);
-    saveDB(projetos);
-  }
+export const toggleFavorite = async (id: number, userName: string): Promise<Projeto> => {
+  const proj = await prisma.project.findUnique({ where: { id } });
+  if (!proj) throw new Error("Projeto não encontrado.");
+  let favoritos = proj.favoritos || [];
+  const favIndex = favoritos.indexOf(userName);
+  if (favIndex === -1) favoritos.push(userName);
+  else favoritos.splice(favIndex, 1);
+  
+  await prisma.project.update({
+    where: { id },
+    data: { favoritos }
+  });
+  return await getProjetoById(id);
 };
 
-export const toggleFavorite = (id: number, userName: string): Projeto => {
-  const projetos = getProjetos();
-  const idx = projetos.findIndex(p => p.id === id);
-  if (idx === -1) throw new Error("Projeto não encontrado.");
-  if (!projetos[idx].favoritos) projetos[idx].favoritos = [];
-  const favIndex = projetos[idx].favoritos.indexOf(userName);
-  if (favIndex === -1) projetos[idx].favoritos.push(userName);
-  else projetos[idx].favoritos.splice(favIndex, 1);
-  saveDB(projetos);
-  return projetos[idx];
+export const saveRelatorio = async (relatorio: Relatorio) => {
+  await prisma.report.create({
+    data: {
+      id: relatorio.id,
+      nome: relatorio.nome,
+      dataGeracao: relatorio.dataGeracao,
+      geradoEm: relatorio.geradoEm,
+      autor: relatorio.autor,
+      diretoria: relatorio.diretoria,
+      panorama: relatorio.panorama,
+      detalhes: relatorio.detalhes
+    }
+  });
 };
 
-export const saveRelatorio = (relatorio: Relatorio) => {
-  const db = getDB();
-  db.relatorios.unshift(relatorio);
-  saveFullDB(db);
-};
-
-export const getRelatorios = (userDept?: string, papel?: string): Relatorio[] => {
-  const db = getDB();
-  let list = db.relatorios || [];
+export const getRelatorios = async (userDept?: string, papel?: string): Promise<Relatorio[]> => {
+  let where: any = {};
   if (papel && papel !== 'admin_total') {
-    list = list.filter(r => r.diretoria === userDept);
+    where.diretoria = userDept;
   }
-  return list;
+  const data = await prisma.report.findMany({
+    where,
+    orderBy: { createdAt: 'desc' }
+  });
+  return data as any;
 };
 
-export const getRelatorioById = (id: string): Relatorio | undefined => {
-  const db = getDB();
-  return db.relatorios.find(r => r.id === id);
+export const getRelatorioById = async (id: string): Promise<Relatorio | null> => {
+  const data = await prisma.report.findUnique({ where: { id } });
+  return data as any;
 };

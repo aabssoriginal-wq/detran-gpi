@@ -22,7 +22,7 @@ export default function AuditoriaTotalPage() {
     fetch(`/api/projects/auditoria?dept=${encodeURIComponent(usuario.departamento)}&role=${usuario.papel}`)
       .then(res => res.json())
       .then(data => {
-        setLogs(data);
+        setLogs(Array.isArray(data) ? data : []);
         setLoading(false);
       })
       .catch(() => setLoading(false));

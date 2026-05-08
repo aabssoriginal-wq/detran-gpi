@@ -7,7 +7,7 @@ export async function GET(request: Request) {
     const userDept = searchParams.get('dept') || undefined;
     const papel = searchParams.get('role') || undefined;
 
-    const logs = getAuditoria(userDept, papel);
+    const logs = await getAuditoria(userDept, papel);
     return NextResponse.json(logs);
   } catch (error: any) {
     console.error("Erro ao buscar auditoria:", error);

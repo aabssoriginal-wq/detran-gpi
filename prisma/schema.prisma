@@ -1,0 +1,116 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id                 String   @id
+  nome               String
+  email              String   @unique
+  cargo              String
+  avatar             String?
+  papel              String
+  departamento       String
+  projetosAtribuidos Int[]    // Mantendo como array de IDs para simplificar a migração inicial
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+model Project {
+  id              Int       @id @default(autoincrement())
+  nome            String
+  status          String
+  andamento       Boolean   @default(true)
+  progress        Int       @default(0)
+  text            String?
+  responsavel     String?
+  departamento    String?
+  excluido        Boolean   @default(false)
+  escopo          String?   @db.Text
+  escopoDetalhado String?   @db.Text
+  
+  // Relações
+  logs            Log[]
+  tarefas         Task[]
+  
+  // JSON fields for complex structures that don't need separate tables yet
+  baselineData    Json?     // { inicio: string, fim: string }
+  contrato        Json?     // { empresaContratada: string, numeroESP: string, processoSEI: string }
+  recursos        Json?     // List of resources
+  terceiros       Json?     // Third party info
+  favoritos       String[]  // User names who favorited
+
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+model Task {
+  id                     String   @id
+  titulo                 String
+  status                 String
+  progress               Int      @default(0)
+  responsavel            String?
+  dataInicio             String?
+  dataFim                String?
+  parentId               String?
+  notas                  String?  @db.Text
+  impedimentoAtivo       Boolean  @default(false)
+  motivoImpedimento      String?  @db.Text
+  justificativaResolucao String?  @db.Text
+  responsavelTecnico     String?
+  
+  // Lançamentos/Anotações como JSON para simplificar
+  lancamentos            Json?    // Array de objetos NotaTarefa
+  
+  projectId              Int
+  project                Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+}
+
+model Log {
+  id            Int      @id @default(autoincrement())
+  acao          String
+  data          String   // Mantendo string para compatibilidade com o formato BR atual
+  justificativa String?  @db.Text
+  user          String
+  
+  projectId     Int
+  project       Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  createdAt     DateTime @default(now())
+}
+
+model Report {
+  id           String   @id
+  nome         String
+  dataGeracao  String
+  geradoEm     String?
+  autor        String
+  diretoria    String
+  panorama     Json     // Dados complexos do relatório
+  detalhes     Json     // Dados complexos do relatório
+  
+  createdAt    DateTime @default(now())
+}
+
+model Department {
+  id   String @id
+  nome String
+}
+
+model ThirdPartyContact {
+  id       String  @id @default(cuid())
+  nome     String
+  email    String?
+  telefone String?
+  tipo     String? // PRODESP, Parceira, etc
+  empresa  String?
+}

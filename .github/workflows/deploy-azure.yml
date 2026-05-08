@@ -23,17 +23,20 @@ jobs:
         with:
           node-version: '20.x'
 
-      - name: npm install, build
+      - name: npm install, prisma generate, build
         run: |
           npm install
+          npx prisma generate
           npm run build
         env:
           NEXT_PRIVATE_STANDALONE: true
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
       - name: Prepare Standalone Bundle
         run: |
           cp -r public .next/standalone/public
           cp -r .next/static .next/standalone/.next/static
+          cp -r prisma .next/standalone/prisma || true
           cp data.json .next/standalone/data.json || true
           cp users.json .next/standalone/users.json || true
           cp contatos_terceiros.json .next/standalone/contatos_terceiros.json || true

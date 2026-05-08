@@ -3,7 +3,7 @@ import { getContatosGlobais } from '@/lib/db';
 
 export async function GET() {
   try {
-    const contatos = getContatosGlobais();
+    const contatos = await getContatosGlobais();
     return NextResponse.json(contatos);
   } catch (error) {
     return NextResponse.json([]);

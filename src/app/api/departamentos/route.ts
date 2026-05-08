@@ -1,34 +1,16 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
-
-const dbPath = path.join(process.cwd(), 'departamentos.json');
-
-function getDepartamentos() {
-  try {
-    if (!fs.existsSync(dbPath)) return [];
-    return JSON.parse(fs.readFileSync(dbPath, 'utf8'));
-  } catch (error) {
-    console.error('Error reading departamentos:', error);
-    return [];
-  }
-}
-
-function saveDepartamentos(data: any) {
-  try {
-    fs.writeFileSync(dbPath, JSON.stringify(data, null, 2));
-    return true;
-  } catch (error) {
-    console.error('Error writing departamentos:', error);
-    return false;
-  }
-}
+import { prisma } from '@/lib/prisma';
 
 export async function GET() {
-  const data = getDepartamentos();
-  // Sort alphabetically
-  data.sort((a: any, b: any) => a.nome.localeCompare(b.nome));
-  return NextResponse.json(data);
+  try {
+    const data = await prisma.department.findMany({
+      orderBy: { nome: 'asc' }
+    });
+    return NextResponse.json(data);
+  } catch (error) {
+    console.error('Error fetching departments:', error);
+    return NextResponse.json({ error: 'Erro ao buscar departamentos' }, { status: 500 });
+  }
 }
 
 export async function POST(request: Request) {
@@ -38,15 +20,24 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "ID e Nome são obrigatórios" }, { status: 400 });
     }
 
-    const data = getDepartamentos();
-    if (data.find((d: any) => d.id === id || d.nome === nome)) {
+    const jaExiste = await prisma.department.findFirst({
+      where: {
+        OR: [
+          { id },
+          { nome }
+        ]
+      }
+    });
+
+    if (jaExiste) {
       return NextResponse.json({ error: "Departamento já existe" }, { status: 400 });
     }
 
-    data.push({ id, nome });
-    saveDepartamentos(data);
+    const novo = await prisma.department.create({
+      data: { id, nome }
+    });
 
-    return NextResponse.json({ success: true, departamento: { id, nome } });
+    return NextResponse.json({ success: true, departamento: novo });
   } catch (e: any) {
     return NextResponse.json({ error: e.message }, { status: 500 });
   }
@@ -61,9 +52,9 @@ export async function DELETE(request: Request) {
       return NextResponse.json({ error: "ID é obrigatório" }, { status: 400 });
     }
 
-    let data = getDepartamentos();
-    data = data.filter((d: any) => d.id !== id);
-    saveDepartamentos(data);
+    await prisma.department.delete({
+      where: { id }
+    });
 
     return NextResponse.json({ success: true });
   } catch (e: any) {

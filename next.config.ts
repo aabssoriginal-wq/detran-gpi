@@ -13,8 +13,8 @@ const nextConfig: NextConfig = {
   compress: true,
   // Garante que os arquivos JSON raiz sejam incluídos no build standalone do Azure
   outputFileTracingIncludes: {
-    '/api/**/*': ['./data.json', './users.json'],
-    '/*': ['./data.json', './users.json'],
+    '/api/**/*': ['./data.json', './users.json', './departamentos.json', './models.json', './contatos_terceiros.json'],
+    '/*': ['./data.json', './users.json', './departamentos.json', './models.json', './contatos_terceiros.json'],
   },
   // Headers de Segurança
   async headers() {

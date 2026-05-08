@@ -16,7 +16,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "GEMINI_API_KEY não configurada no servidor." }, { status: 500 });
     }
 
-    const projetosData = getProjetos();
+    const projetosData = await getProjetos();
     const projetosAtivos = projetosData.filter(p => !p.excluido);
 
     const portfolioInfo = JSON.stringify(projetosAtivos.map(p => ({
@@ -96,12 +96,12 @@ Caso contrário, responda em texto normal Markdown.`;
         
         if (Array.isArray(parsedArray)) {
           let sucesso: string[] = [];
-          parsedArray.forEach(item => {
+          for (const item of parsedArray) {
             if (item.action === "create_project") {
-              createProjeto(item.nome, item.responsavel);
+              await createProjeto(item.nome, item.responsavel);
               sucesso.push(item.nome);
             }
-          });
+          }
           return NextResponse.json({ reply: `Projetos criados: ${sucesso.join(", ")}` });
         }
       } catch (e) {}

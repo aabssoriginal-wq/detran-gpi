@@ -11,3 +11,5 @@ yarn-error.log*
 backups/
 *.zip
 *.rar
+
+/src/generated/prisma

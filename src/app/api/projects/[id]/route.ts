@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { getProjetoById, renameProjeto, deleteProjeto, restoreProjeto, permanentlyDeleteProjeto, addLogToProjeto, createLog, updateBaseline, updateTarefas, updateProjetoStatus, updateEscopo, updateResponsavel, updateProjetoDepartamento, toggleFavorite, updateContrato, updateRecursos, updateTerceiros } from '@/lib/db';
 import { sendAssignmentEmail } from '@/lib/email';
 import { getUsuarios } from '@/lib/users';
+import { prisma } from '@/lib/prisma';
 
 export const dynamic = 'force-dynamic';
 
@@ -13,7 +14,7 @@ export async function GET(request: Request, context: any) {
 
     const params = await context.params;
     const id = parseInt(params.id);
-    const projeto = getProjetoById(id, userDept, papel);
+    const projeto = await getProjetoById(id, userDept, papel);
     return NextResponse.json(projeto);
   } catch (error: any) {
     return NextResponse.json({ error: error.message || "Acesso negado" }, { status: 403 });
@@ -31,12 +32,15 @@ export async function PUT(request: Request, context: any) {
     
     let finalDept = dept;
     if (!finalDept && user) {
-      const fs = require('fs');
-      const path = require('path');
-      const usersPath = path.join(process.cwd(), 'users.json');
       try {
-        const users = JSON.parse(fs.readFileSync(usersPath, 'utf8'));
-        const found = users.find(u => u.nome === user || u.email === user);
+        const found = await prisma.user.findFirst({
+          where: {
+            OR: [
+              { nome: user },
+              { email: user }
+            ]
+          }
+        });
         if (found) {
           finalDept = found.departamento;
           console.log(`Dept recuperado do banco para ${user}: [${finalDept}]`);
@@ -47,8 +51,8 @@ export async function PUT(request: Request, context: any) {
     }
 
     // Carrega o projeto para verificar permissões básicas
-    const projetoAtual = getProjetoById(id, finalDept, papel);
-    console.log(`Projeto encontrado! Dept no banco: [${projetoAtual.departamento}] (len: ${projetoAtual.departamento?.length})`);
+    const projetoAtual = await getProjetoById(id, finalDept, papel);
+    console.log(`Projeto encontrado! Dept no banco: [${projetoAtual.departamento}]`);
     
     const isPowerUser = papel === "admin_total" || papel === "admin_master" || papel === "usuario_master";
     const isAdmin = papel === "admin_total" || papel === "admin_master";
@@ -73,19 +77,19 @@ export async function PUT(request: Request, context: any) {
 
     if (action === "restore") {
       if (!justificativa) return NextResponse.json({ error: "Justificativa obrigatória" }, { status: 400 });
-      restoreProjeto(id, justificativa, user || "Usuário");
+      await restoreProjeto(id, justificativa, user || "Usuário");
       return NextResponse.json({ success: true });
     }
 
     if (action === "permanently_delete") {
       if (!isAdmin) return NextResponse.json({ error: "Apenas Admin Total ou Admin Master podem excluir permanentemente." }, { status: 403 });
-      permanentlyDeleteProjeto(id);
+      await permanentlyDeleteProjeto(id);
       return NextResponse.json({ success: true });
     }
 
     if (action === 'toggle_favorite') {
       const { user } = body;
-      const updated = toggleFavorite(id, user);
+      const updated = await toggleFavorite(id, user);
       return NextResponse.json(updated);
     }
 
@@ -93,34 +97,34 @@ export async function PUT(request: Request, context: any) {
       const { novoDept } = body;
       if (papel !== "admin_total") return NextResponse.json({ error: "Apenas Admin Total pode alterar Diretorias" }, { status: 403 });
       if (!novoDept) return NextResponse.json({ error: "Nova Diretoria é obrigatória" }, { status: 400 });
-      const proj = updateProjetoDepartamento(id, novoDept, justificativa || "Alteração Organizacional", user || "Usuário");
+      const proj = await updateProjetoDepartamento(id, novoDept, justificativa || "Alteração Organizacional", user || "Usuário");
       return NextResponse.json(proj);
     }
 
     if (action === "add_log") {
       const { acao } = body;
       if (!acao) return NextResponse.json({ error: "Ação é obrigatória" }, { status: 400 });
-      addLogToProjeto(id, createLog(acao, justificativa || "Sem justificativa", user || "Usuário"));
+      await addLogToProjeto(id, createLog(acao, justificativa || "Sem justificativa", user || "Usuário"));
       return NextResponse.json({ success: true });
     }
 
     if (action === "update_baseline") {
       const { inicio, fim } = body;
-      const proj = updateBaseline(id, inicio || "", fim || "", justificativa || "Ajuste de Cronograma", user || "Usuário");
+      const proj = await updateBaseline(id, inicio || "", fim || "", justificativa || "Ajuste de Cronograma", user || "Usuário");
       return NextResponse.json(proj);
     }
 
     if (action === "update_tarefas") {
       const { tarefas, user, acao, justificativa: justUpdate } = body;
       if (!tarefas) return NextResponse.json({ error: "Lista de tarefas é obrigatória" }, { status: 400 });
-      const proj = updateTarefas(id, tarefas, user || "Usuário", acao, justUpdate);
+      const proj = await updateTarefas(id, tarefas, user || "Usuário", acao, justUpdate);
       return NextResponse.json(proj);
     }
 
     if (action === "update_status") {
       const { status, user } = body;
       if (!status) return NextResponse.json({ error: "Status é obrigatório" }, { status: 400 });
-      const proj = updateProjetoStatus(id, status, justificativa || "Atualização de status", user || "Usuário");
+      const proj = await updateProjetoStatus(id, status, justificativa || "Atualização de status", user || "Usuário");
       return NextResponse.json(proj);
     }
 
@@ -128,10 +132,10 @@ export async function PUT(request: Request, context: any) {
       const { responsavelId, responsavelNome, user: currentUser } = body;
       if (!responsavelId || !responsavelNome) return NextResponse.json({ error: "Responsável é obrigatório" }, { status: 400 });
       
-      const proj = updateResponsavel(id, responsavelId, responsavelNome, currentUser || "Usuário");
+      const proj = await updateResponsavel(id, responsavelId, responsavelNome, currentUser || "Usuário");
 
       // Notificação por e-mail
-      const allUsers = getUsuarios();
+      const allUsers = await getUsuarios();
       const targetUser = allUsers.find(u => u.id === responsavelId);
       if (targetUser && targetUser.email) {
         sendAssignmentEmail(targetUser, proj).catch(console.error);
@@ -143,25 +147,25 @@ export async function PUT(request: Request, context: any) {
     if (action === "update_escopo") {
       const { escopo, escopoDetalhado, user } = body;
       if (escopo === undefined) return NextResponse.json({ error: "Escopo é obrigatório" }, { status: 400 });
-      const proj = updateEscopo(id, escopo, user || "Usuário", escopoDetalhado);
+      const proj = await updateEscopo(id, escopo, user || "Usuário", escopoDetalhado);
       return NextResponse.json(proj);
     }
 
     if (action === "update_contrato") {
       const { contrato, user } = body;
-      const proj = updateContrato(id, contrato, user || "Usuário");
+      const proj = await updateContrato(id, contrato, user || "Usuário");
       return NextResponse.json(proj);
     }
 
     if (action === "update_recursos") {
       const { recursos, user } = body;
-      const proj = updateRecursos(id, recursos, user || "Usuário");
+      const proj = await updateRecursos(id, recursos, user || "Usuário");
       return NextResponse.json(proj);
     }
 
     if (action === "update_terceiros") {
       const { terceiros, user } = body;
-      const proj = updateTerceiros(id, terceiros, user || "Usuário");
+      const proj = await updateTerceiros(id, terceiros, user || "Usuário");
       return NextResponse.json(proj);
     }
 
@@ -171,7 +175,7 @@ export async function PUT(request: Request, context: any) {
       return NextResponse.json({ error: "Nome e justificativa são obrigatórios" }, { status: 400 });
     }
     
-    const projetoEditado = renameProjeto(id, nome, justificativa, user || "Usuário");
+    const projetoEditado = await renameProjeto(id, nome, justificativa, user || "Usuário");
     return NextResponse.json(projetoEditado);
   } catch (error: any) {
     if (error.message && error.message.includes("já existe")) {
@@ -187,9 +191,8 @@ export async function DELETE(request: Request, context: any) {
     const params = await context.params;
     const id = parseInt(params.id);
     
-    // Ler o corpo do DELETE para capturar a justificativa e papel
     const body = await request.json();
-    const { justificativa, user, papel, dept } = body;
+    const { justificativa, user, papel } = body;
 
     const isAdmin = papel === "admin_total" || papel === "admin_master";
     if (!isAdmin) {
@@ -200,7 +203,7 @@ export async function DELETE(request: Request, context: any) {
       return NextResponse.json({ error: "Justificativa obrigatória para exclusão" }, { status: 400 });
     }
 
-    deleteProjeto(id, justificativa, user || "Usuário");
+    await deleteProjeto(id, justificativa, user || "Usuário");
     return new NextResponse(null, { status: 204 }); 
   } catch (error: any) {
     console.error(`Erro ao excluir projeto:`, error);

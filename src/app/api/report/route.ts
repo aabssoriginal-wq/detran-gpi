@@ -22,7 +22,7 @@ export async function GET(request: Request) {
 
     // Caso seja busca por ID (Histórico)
     if (reportId) {
-      const salvo = getRelatorioById(reportId);
+      const salvo = await getRelatorioById(reportId);
       if (salvo) return NextResponse.json(salvo);
       return NextResponse.json({ error: "Relatório não encontrado" }, { status: 404 });
     }
@@ -31,7 +31,7 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: "Acesso negado. Apenas Admin Master e Admin Total podem gerar relatórios." }, { status: 403 });
     }
 
-    const todosProjetos = getProjetos();
+    const todosProjetos = await getProjetos();
     const favoritos = todosProjetos.filter(p => p.favoritos?.includes(userName || "") && !p.excluido);
 
     if (favoritos.length === 0) {
@@ -244,7 +244,7 @@ export async function GET(request: Request) {
         }
       }))
     };
-    saveRelatorio(novoRelatorio);
+    await saveRelatorio(novoRelatorio);
 
     return NextResponse.json(novoRelatorio);
   } catch (error: any) {

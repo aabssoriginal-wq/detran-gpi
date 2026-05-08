@@ -11,7 +11,7 @@ import {
   Save, History, FileSpreadsheet, Calendar as CalendarIcon, ArrowLeft, 
   ShieldAlert, FileText, Lock, Plus, UserPlus, User, Trash2, Loader2, 
   CheckCircle2, AlertCircle, Clock, FolderKanban, RotateCcw, PenLine, 
-  ChevronRight, ChevronDown, MessageSquare
+  ChevronRight, ChevronDown, MessageSquare, Minus, Download
 } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 import Link from "next/link";
@@ -187,10 +187,10 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
         setEscopoDetalhado(data.escopoDetalhado || "");
         setContratoData(data.contrato || { empresaContratada: "", numeroESP: "", processoSEI: "" });
         setRecursosData(data.recursos || []);
-        setTerceirosData(data.terceiros || {
-          gerenteProdesp: { nome: "", email: "", telefone: "" },
-          empresaParceira: "",
-          gerenteParceira: { nome: "", email: "", telefone: "" }
+        setTerceirosData({
+          gerenteProdesp: data.terceiros?.gerenteProdesp || { nome: "", email: "", telefone: "" },
+          empresaParceira: data.terceiros?.empresaParceira || "",
+          gerenteParceira: data.terceiros?.gerenteParceira || { nome: "", email: "", telefone: "" }
         });
         setContatosGlobais(contatos || []);
         setDepartamentos(deptos || []);
@@ -947,8 +947,15 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                   type="text"
                   placeholder="Responsável..."
                   className="bg-transparent border-none focus:outline-none focus:ring-1 focus:ring-blue-200 rounded px-1 w-32 transition-all placeholder:italic"
-                  value={t.responsavel || ""}
-                  onChange={(e) => handleUpdateTarefa(t.id, { responsavel: e.target.value })}
+                  defaultValue={t.responsavel || ""}
+                  onBlur={(e) => {
+                    if (e.target.value !== (t.responsavel || "")) {
+                      handleUpdateTarefa(t.id, { responsavel: e.target.value });
+                    }
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') e.currentTarget.blur();
+                  }}
                   disabled={isBlocked}
                 />
               </div>
@@ -968,7 +975,21 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                 {FASES.map(f => <SelectItem key={f.id} value={f.id}>{f.label}</SelectItem>)}
               </SelectContent>
             </Select>
-            <div className="flex items-center gap-2 flex-1">
+            <div className="flex items-center gap-1 flex-1">
+              <button 
+                onClick={() => {
+                  const curr = slidingProgress[t.id] ?? t.progress;
+                  const val = Math.max(0, curr - 5);
+                  if (window.confirm(`Deseja alterar o progresso de "${t.titulo}" para ${val}%?`)) {
+                    setSlidingProgress(prev => ({ ...prev, [t.id]: val }));
+                    handleUpdateTarefa(t.id, { progress: val });
+                  }
+                }}
+                disabled={t.impedimentoAtivo || isBlocked}
+                className="h-6 w-6 flex items-center justify-center rounded hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500"
+              >
+                <Minus className="h-3 w-3" />
+              </button>
               <input 
                 type="range" min="0" max="100" 
                 value={slidingProgress[t.id] ?? t.progress}
@@ -989,6 +1010,20 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                 className="w-full h-1 accent-blue-500 cursor-pointer"
                 disabled={t.impedimentoAtivo || isBlocked}
               />
+              <button 
+                onClick={() => {
+                  const curr = slidingProgress[t.id] ?? t.progress;
+                  const val = Math.min(100, curr + 5);
+                  if (window.confirm(`Deseja alterar o progresso de "${t.titulo}" para ${val}%?`)) {
+                    setSlidingProgress(prev => ({ ...prev, [t.id]: val }));
+                    handleUpdateTarefa(t.id, { progress: val });
+                  }
+                }}
+                disabled={t.impedimentoAtivo || isBlocked}
+                className="h-6 w-6 flex items-center justify-center rounded hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500"
+              >
+                <Plus className="h-3 w-3" />
+              </button>
               <span className="text-[10px] font-mono w-8">{slidingProgress[t.id] ?? t.progress}%</span>
             </div>
           </div>
@@ -1277,8 +1312,8 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                     <Label>Gerente Projeto PRODESP (Nome)</Label>
                     <Input 
                       list="contatos-prodesp"
-                      value={terceirosData.gerenteProdesp.nome} 
-                      onChange={e => setTerceirosData({...terceirosData, gerenteProdesp: {...terceirosData.gerenteProdesp, nome: e.target.value}})}
+                      value={terceirosData?.gerenteProdesp?.nome || ""} 
+                      onChange={e => setTerceirosData({...terceirosData, gerenteProdesp: { ...(terceirosData?.gerenteProdesp || {}), nome: e.target.value }})}
                       disabled={isBlocked}
                     />
                     <datalist id="contatos-prodesp">
@@ -1288,8 +1323,8 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                   <div className="space-y-2">
                     <Label>E-mail</Label>
                     <Input 
-                      value={terceirosData.gerenteProdesp.email} 
-                      onChange={e => setTerceirosData({...terceirosData, gerenteProdesp: {...terceirosData.gerenteProdesp, email: e.target.value}})}
+                      value={terceirosData?.gerenteProdesp?.email || ""} 
+                      onChange={e => setTerceirosData({...terceirosData, gerenteProdesp: { ...(terceirosData?.gerenteProdesp || {}), email: e.target.value }})}
                       disabled={isBlocked}
                     />
                   </div>
@@ -1309,7 +1344,7 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                         } else if (v.length > 0) {
                           v = v.replace(/^(\d*)/, "($1");
                         }
-                        setTerceirosData({...terceirosData, gerenteProdesp: {...terceirosData.gerenteProdesp, telefone: v}});
+                        setTerceirosData({...terceirosData, gerenteProdesp: { ...(terceirosData?.gerenteProdesp || {}), telefone: v }});
                       }}
                       disabled={isBlocked}
                     />
@@ -1338,8 +1373,8 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                     <Label>Gerente Projeto Parceira (Nome)</Label>
                     <Input 
                       list="contatos-parceira"
-                      value={terceirosData.gerenteParceira.nome} 
-                      onChange={e => setTerceirosData({...terceirosData, gerenteParceira: {...terceirosData.gerenteParceira, nome: e.target.value}})}
+                      value={terceirosData?.gerenteParceira?.nome || ""} 
+                      onChange={e => setTerceirosData({...terceirosData, gerenteParceira: { ...(terceirosData?.gerenteParceira || {}), nome: e.target.value }})}
                       disabled={isBlocked}
                     />
                     <datalist id="contatos-parceira">
@@ -1350,8 +1385,8 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                     <Label>E-mail</Label>
                     <Input 
                       placeholder="E-mail do gerente..."
-                      value={terceirosData.gerenteParceira.email} 
-                      onChange={e => setTerceirosData({...terceirosData, gerenteParceira: {...terceirosData.gerenteParceira, email: e.target.value}})}
+                      value={terceirosData?.gerenteParceira?.email || ""} 
+                      onChange={e => setTerceirosData({...terceirosData, gerenteParceira: { ...(terceirosData?.gerenteParceira || {}), email: e.target.value }})}
                       disabled={isBlocked}
                     />
                   </div>
@@ -1371,7 +1406,7 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                         } else if (v.length > 0) {
                           v = v.replace(/^(\d*)/, "($1");
                         }
-                        setTerceirosData({...terceirosData, gerenteParceira: {...terceirosData.gerenteParceira, telefone: v}});
+                        setTerceirosData({...terceirosData, gerenteParceira: { ...(terceirosData?.gerenteParceira || {}), telefone: v }});
                       }}
                       disabled={isBlocked}
                     />
@@ -1679,55 +1714,120 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
               </div>
             </CardHeader>
             <CardContent>
-              <div className="border rounded-lg overflow-hidden dark:border-slate-800">
-                <div className="flex bg-slate-50 dark:bg-slate-900 border-b dark:border-slate-800">
-                  <div className="w-64 p-3 font-semibold border-r">Tarefa / EAP</div>
-                  <div className="flex-1 grid grid-cols-12 text-center text-[10px] font-bold p-3 uppercase">
-                    {['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'].map(m => <div key={m}>{m}</div>)}
-                  </div>
-                </div>
-                <div className="divide-y max-h-[500px] overflow-y-auto">
-                  {getSortedTarefas(tarefas).map(t => {
-                    const hoje = new Date();
-                    hoje.setHours(0,0,0,0);
-                    const dataFimTarefa = t.dataFim ? new Date(t.dataFim) : null;
-                    const emAtraso = dataFimTarefa && dataFimTarefa < hoje && t.progress < 100;
+                  {(() => {
+                    // Lógica para calcular o range de meses do Gantt
+                    const dInicioProj = projetoData.baselineData?.inicio ? new Date(projetoData.baselineData.inicio) : null;
+                    const dFimProj = projetoData.baselineData?.fim ? new Date(projetoData.baselineData.fim) : null;
+                    
+                    if (!dInicioProj || !dFimProj) {
+                      return <div className="p-12 text-center text-slate-400 italic">Defina as datas de Início e Fim do projeto para visualizar o Cronograma.</div>;
+                    }
+
+                    // Normalizar para o primeiro dia do mês de início e último dia do mês de fim para visualização
+                    const startGantt = new Date(dInicioProj.getFullYear(), dInicioProj.getMonth(), 1);
+                    const endGantt = new Date(dFimProj.getFullYear(), dFimProj.getMonth(), 1);
+                    
+                    const ganttMonths: { label: string, year: number, month: number }[] = [];
+                    let curr = new Date(startGantt);
+                    while (curr <= endGantt) {
+                      const monthNames = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+                      ganttMonths.push({ 
+                        label: monthNames[curr.getMonth()], 
+                        year: curr.getFullYear(),
+                        month: curr.getMonth()
+                      });
+                      curr.setMonth(curr.getMonth() + 1);
+                    }
+
+                    const totalMonths = ganttMonths.length;
+                    const columnWidth = 100 / totalMonths;
 
                     return (
-                      <div 
-                        key={t.id} 
-                        className="flex h-14 hover:bg-blue-50/40 dark:hover:bg-blue-900/10 transition-all relative group cursor-pointer"
-                        onClick={() => setSubTarefaModal({ isOpen: true, parentId: t.id, parentTitle: t.titulo })}
-                      >
-                        <div className="w-64 p-3 text-sm truncate border-r dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 group-hover:bg-transparent z-10 font-medium text-slate-700 dark:text-slate-300 flex items-center gap-2" style={{ paddingLeft: `${getTaskDepth(t.id, tarefas) * 20 + 12}px` }}>
-                          <div className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" />
-                          <span className="truncate">{t.titulo}</span>
-                          <Plus className="h-3 w-3 opacity-0 group-hover:opacity-100 text-blue-500 transition-opacity ml-auto" />
-                        </div>
-                        <div className="flex-1 relative bg-slate-50/30 dark:bg-slate-950/20 grid grid-cols-12 divide-x divide-slate-100 dark:divide-slate-800">
-                          {Array.from({length: 12}).map((_, i) => <div key={i}/>)}
-                          {t.dataInicio && t.dataFim && (
-                            <div 
-                              className={`absolute top-3 h-6 rounded shadow-sm transition-transform hover:scale-[1.02] ${t.impedimentoAtivo ? 'bg-rose-100 dark:bg-rose-900/40' : emAtraso ? 'bg-orange-200' : (FASES.find(f => f.id === t.status)?.color || 'bg-slate-400')}`}
-                              title={`Tarefa: ${t.titulo}\nInício: ${formatarDataBR(t.dataInicio)}\nFim: ${formatarDataBR(t.dataFim)}\nProgresso: ${t.progress}% ${t.impedimentoAtivo ? `(BLOQUEADA: ${t.motivoImpedimento})` : emAtraso ? '(ATRASADA)' : ''}`}
-                              style={{ 
-                                left: `${(new Date(t.dataInicio).getMonth() / 12) * 100}%`,
-                                width: `${((new Date(t.dataFim).getMonth() - new Date(t.dataInicio).getMonth() + 1) / 12) * 100}%`
-                              }}
-                            >
-                              <div className="h-full bg-black/20" style={{ width: `${t.progress}%` }}/>
-                              {t.impedimentoAtivo && (
-                                <div className="absolute h-full bg-slate-900 dark:bg-black dark:border-y dark:border-r dark:border-rose-900 right-0" style={{ width: `${100 - t.progress}%`, borderRadius: '0 4px 4px 0' }} />
-                              )}
-                              {(emAtraso || t.impedimentoAtivo) && <div className={`absolute inset-0 border-2 ${t.impedimentoAtivo ? 'border-slate-900 dark:border-rose-800' : 'border-orange-500'} rounded animate-pulse pointer-events-none`}/>}
+                      <div className="border rounded-lg overflow-hidden dark:border-slate-800 bg-white dark:bg-slate-950 flex flex-col">
+                        <div className="overflow-x-auto overflow-y-hidden border-b dark:border-slate-800 bg-slate-50 dark:bg-slate-900 sticky top-0 z-20" id="gantt-header-container">
+                          <div className="flex" style={{ width: `${Math.max(100, totalMonths * 10)}%`, minWidth: '100%' }}>
+                            <div className="w-64 p-3 font-semibold border-r shrink-0 bg-slate-50 dark:bg-slate-900 sticky left-0 z-30">Tarefa / EAP</div>
+                            <div className="flex-1 flex">
+                              {ganttMonths.map((m, i) => (
+                                <div key={i} className="flex-1 text-center text-[10px] font-bold p-3 uppercase border-r dark:border-slate-800 last:border-0 min-w-[80px]">
+                                  {m.label}/{String(m.year).slice(2)}
+                                </div>
+                              ))}
                             </div>
-                          )}
+                          </div>
+                        </div>
+                        
+                        <div className="max-h-[600px] overflow-auto" onScroll={(e: any) => {
+                          const header = document.getElementById('gantt-header-container');
+                          if (header) header.scrollLeft = e.target.scrollLeft;
+                        }}>
+                          <div className="flex flex-col" style={{ width: `${Math.max(100, totalMonths * 10)}%`, minWidth: '100%' }}>
+                            {getSortedTarefas(tarefas).map(t => {
+                              const hoje = new Date();
+                              hoje.setHours(0,0,0,0);
+                              const dataFimTarefa = t.dataFim ? new Date(t.dataFim) : null;
+                              const emAtraso = dataFimTarefa && dataFimTarefa < hoje && t.progress < 100;
+
+                              // Cálculo de posição
+                              let barStyle = {};
+                              if (t.dataInicio && t.dataFim) {
+                                const dIni = new Date(t.dataInicio);
+                                const dFim = new Date(t.dataFim);
+                                
+                                const startMonthIdx = (dIni.getFullYear() - startGantt.getFullYear()) * 12 + (dIni.getMonth() - startGantt.getMonth());
+                                const endMonthIdx = (dFim.getFullYear() - startGantt.getFullYear()) * 12 + (dFim.getMonth() - startGantt.getMonth());
+                                
+                                const left = (startMonthIdx / totalMonths) * 100;
+                                const width = ((endMonthIdx - startMonthIdx + 1) / totalMonths) * 100;
+                                
+                                barStyle = { 
+                                  left: `${left}%`, 
+                                  width: `${width}%`,
+                                  minWidth: '4px'
+                                };
+                              }
+
+                              return (
+                                <div 
+                                  key={t.id} 
+                                  className="flex h-14 hover:bg-blue-50/40 dark:hover:bg-blue-900/10 transition-all relative group cursor-pointer border-b dark:border-slate-800 last:border-0"
+                                  onClick={() => setSubTarefaModal({ isOpen: true, parentId: t.id, parentTitle: t.titulo })}
+                                >
+                                  <div className="w-64 p-3 text-sm truncate border-r dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 group-hover:bg-transparent z-10 font-medium text-slate-700 dark:text-slate-300 flex items-center gap-2 shrink-0 sticky left-0 shadow-[2px_0_5px_rgba(0,0,0,0.05)]" style={{ paddingLeft: `${getTaskDepth(t.id, tarefas) * 20 + 12}px` }}>
+                                    <div className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" />
+                                    <span className="truncate">{t.titulo}</span>
+                                    <Plus className="h-3 w-3 opacity-0 group-hover:opacity-100 text-blue-500 transition-opacity ml-auto" />
+                                  </div>
+                                  
+                                  <div className="flex-1 relative bg-slate-50/30 dark:bg-slate-950/20">
+                                    {/* Grid de fundo */}
+                                    <div className="absolute inset-0 flex">
+                                      {ganttMonths.map((_, i) => <div key={i} className="flex-1 border-r dark:border-slate-800 last:border-0" />)}
+                                    </div>
+                                    
+                                    {/* Barra da Tarefa */}
+                                    {t.dataInicio && t.dataFim && (
+                                      <div 
+                                        className={`absolute top-4 h-6 rounded shadow-sm transition-transform hover:scale-[1.01] z-10 ${t.impedimentoAtivo ? 'bg-rose-100 dark:bg-rose-900/40' : emAtraso ? 'bg-orange-200' : (FASES.find(f => f.id === t.status)?.color || 'bg-slate-400')}`}
+                                        title={`Tarefa: ${t.titulo}\nInício: ${formatarDataBR(t.dataInicio)}\nFim: ${formatarDataBR(t.dataFim)}\nProgresso: ${t.progress}% ${t.impedimentoAtivo ? `(BLOQUEADA: ${t.motivoImpedimento})` : emAtraso ? '(ATRASADA)' : ''}`}
+                                        style={barStyle}
+                                      >
+                                        <div className="h-full bg-black/20" style={{ width: `${t.progress}%`, borderRadius: t.progress === 100 ? '4px' : '4px 0 0 4px' }}/>
+                                        {t.impedimentoAtivo && (
+                                          <div className="absolute h-full bg-slate-900 dark:bg-black dark:border-y dark:border-r dark:border-rose-900 right-0" style={{ width: `${100 - t.progress}%`, borderRadius: '0 4px 4px 0' }} />
+                                        )}
+                                        {(emAtraso || t.impedimentoAtivo) && <div className={`absolute inset-0 border-2 ${t.impedimentoAtivo ? 'border-slate-900 dark:border-rose-800' : 'border-orange-500'} rounded animate-pulse pointer-events-none`}/>}
+                                      </div>
+                                    )}
+                                  </div>
+                                </div>
+                              );
+                            })}
+                          </div>
                         </div>
                       </div>
                     );
-                  })}
-                </div>
-              </div>
+                  })()}
             </CardContent>
           </Card>
 
@@ -2048,14 +2148,32 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                     {l.texto}
                   </p>
                   {l.arquivoUrl && (
-                    <div className="mt-2 border rounded p-1 inline-block bg-slate-50">
+                    <div className="mt-2 border dark:border-slate-700 rounded p-1 inline-block bg-slate-50 dark:bg-slate-800/50">
                       {l.arquivoUrl.startsWith('data:image') ? (
-                        <img src={l.arquivoUrl} alt="Anexo" className="max-w-full max-h-[300px] rounded" />
-                      ) : (
-                        <div className="flex items-center gap-2 p-2">
-                          <FileText className="h-4 w-4 text-blue-500" />
-                          <span className="text-[10px]">Arquivo Anexo</span>
+                        <div className="relative group/img">
+                          <img src={l.arquivoUrl} alt="Anexo" className="max-w-full max-h-[300px] rounded" />
+                          <a 
+                            href={l.arquivoUrl} 
+                            download={`imagem_${l.id}.png`}
+                            className="absolute top-2 right-2 bg-black/60 text-white p-2 rounded-full opacity-0 group-hover/img:opacity-100 transition-opacity"
+                            title="Download Imagem"
+                          >
+                            <Download className="h-4 w-4" />
+                          </a>
                         </div>
+                      ) : (
+                        <a 
+                          href={l.arquivoUrl} 
+                          download={`anexo_${l.id}`}
+                          className="flex items-center gap-2 p-2 hover:bg-white dark:hover:bg-slate-800 rounded transition-colors"
+                        >
+                          <FileText className="h-4 w-4 text-blue-500" />
+                          <div className="flex flex-col">
+                            <span className="text-[10px] font-medium">Arquivo Anexo</span>
+                            <span className="text-[9px] text-blue-500">Clique para baixar</span>
+                          </div>
+                          <Download className="h-3.5 w-3.5 text-slate-400 ml-2" />
+                        </a>
                       )}
                     </div>
                   )}

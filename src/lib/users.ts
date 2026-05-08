@@ -1,27 +1,4 @@
-import fs from 'fs';
-import path from 'path';
-import packageUsers from '../../users.json';
-
-// Lógica de persistência universal
-const getDataDirectory = () => {
-  const azureDir = '/home/site/data';
-  try {
-    if (fs.existsSync('/home/site')) {
-      if (!fs.existsSync(azureDir)) {
-        fs.mkdirSync(azureDir, { recursive: true });
-      }
-      return azureDir;
-    }
-  } catch (e) {}
-  return process.cwd();
-};
-
-const getUsersPath = () => {
-  const dataDir = getDataDirectory();
-  return path.join(dataDir, 'users.json');
-};
-
-const usersFilePath = getUsersPath();
+import { prisma } from './prisma';
 
 export type Papel = 'admin_total' | 'admin_master' | 'usuario_master' | 'usuario';
 
@@ -36,122 +13,78 @@ export interface Usuario {
   projetosAtribuidos: number[];
 }
 
-const initialUsers: Usuario[] = [
-  {
-    id: 'u000',
-    nome: 'Anderson',
-    email: 'anderson@detran.sp.gov.br',
-    cargo: 'Administrador de Sistemas',
-    avatar: 'https://i.pravatar.cc/150?img=33',
-    papel: 'admin_total',
-    departamento: 'Diretoria de Tecnologia da Informação',
-    projetosAtribuidos: []
-  },
-  {
-    id: 'u001',
-    nome: 'Luiz Wanderley',
-    email: 'luiz.wanderley@detran.sp.gov.br',
-    cargo: 'Diretor de TI',
-    avatar: 'https://i.pravatar.cc/150?img=11',
-    papel: 'admin_master',
-    departamento: 'Diretoria de Tecnologia da Informação',
-    projetosAtribuidos: []
-  }
-];
-
-let cachedUsuarios: Usuario[] | null = null;
-let lastReadTime: number = 0;
-const CACHE_TTL = 5000; // 5 seconds
-
-const initUsersDB = () => {
-  const forceSync = process.env.SYNC_DATA_NOW === 'true';
-
-  // Se o arquivo não existir ou se forçarmos a sincronização, recriamos com os dados embutidos
-  if (!fs.existsSync(usersFilePath) || forceSync) {
-    try {
-      fs.writeFileSync(usersFilePath, JSON.stringify(packageUsers, null, 2));
-      console.log(`USUÁRIOS SINCRONIZADOS COM SUCESSO A PARTIR DO BUNDLE: ${usersFilePath}`);
-    } catch (e) {
-      console.error("Erro ao sincronizar usuários:", e);
-    }
-  }
+export const getUsuarios = async (): Promise<Usuario[]> => {
+  const data = await prisma.user.findMany({
+    orderBy: { nome: 'asc' }
+  });
+  return data.map(u => ({
+    ...u,
+    papel: u.papel as Papel,
+    avatar: u.avatar || `https://i.pravatar.cc/150?u=${u.id}`
+  }));
 };
 
-const saveUsersDB = (usuarios: Usuario[]) => {
-  fs.writeFileSync(usersFilePath, JSON.stringify(usuarios, null, 2));
-  cachedUsuarios = usuarios;
-  lastReadTime = Date.now();
-};
-
-export const getUsuarios = (): Usuario[] => {
-  const now = Date.now();
-  if (cachedUsuarios && (now - lastReadTime < CACHE_TTL)) {
-    return cachedUsuarios;
-  }
-
-  initUsersDB();
-  try {
-    const fileContent = fs.readFileSync(usersFilePath, 'utf-8');
-    if (!fileContent || fileContent.trim() === "") {
-      throw new Error("Arquivo de usuários vazio");
-    }
-    const data = JSON.parse(fileContent);
-    cachedUsuarios = data;
-    lastReadTime = now;
-    return data.sort((a: any, b: any) => a.nome.localeCompare(b.nome));
-  } catch (e) {
-    console.error("Erro ao ler banco de usuários, usando fallback direto do pacote:", e);
-    const fallbackData = Array.isArray(packageUsers) ? (packageUsers as any[]) : [...initialUsers];
-    return fallbackData.sort((a: any, b: any) => a.nome.localeCompare(b.nome));
-  }
-};
-
-export const getUsuarioById = (id: string): Usuario | undefined => {
-  return getUsuarios().find(u => u.id === id);
-};
-
-export const updateUsuarioPapel = (id: string, papel: Papel): Usuario => {
-  const usuarios = getUsuarios();
-  const idx = usuarios.findIndex(u => u.id === id);
-  if (idx === -1) throw new Error('Usuário não encontrado');
-  usuarios[idx].papel = papel;
-  saveUsersDB(usuarios);
-  return usuarios[idx];
-};
-
-export const updateUsuarioProjetosAtribuidos = (id: string, projetosAtribuidos: number[]): Usuario => {
-  const usuarios = getUsuarios();
-  const idx = usuarios.findIndex(u => u.id === id);
-  if (idx === -1) throw new Error('Usuário não encontrado');
-  usuarios[idx].projetosAtribuidos = projetosAtribuidos;
-  saveUsersDB(usuarios);
-  return usuarios[idx];
-};
-
-export const addUsuario = (dados: Omit<Usuario, 'id' | 'projetosAtribuidos'>): Usuario => {
-  const usuarios = getUsuarios();
-  const jaExiste = usuarios.find(u => u.email.toLowerCase() === dados.email.toLowerCase());
-  if (jaExiste) throw new Error(`Já existe um usuário com o e-mail "${dados.email}".`);
-  const novoId = `u${String(Date.now()).slice(-6)}`;
-  const novoUsuario: Usuario = {
-    id: novoId,
-    nome: dados.nome,
-    email: dados.email,
-    cargo: dados.cargo,
-    avatar: `https://i.pravatar.cc/150?u=${novoId}`,
-    papel: dados.papel,
-    departamento: dados.departamento,
-    projetosAtribuidos: []
+export const getUsuarioById = async (id: string): Promise<Usuario | undefined> => {
+  const u = await prisma.user.findUnique({ where: { id } });
+  if (!u) return undefined;
+  return {
+    ...u,
+    papel: u.papel as Papel,
+    avatar: u.avatar || `https://i.pravatar.cc/150?u=${u.id}`
   };
-  usuarios.push(novoUsuario);
-  saveUsersDB(usuarios);
-  return novoUsuario;
 };
 
-export const removeUsuario = (id: string): void => {
-  const usuarios = getUsuarios();
-  const idx = usuarios.findIndex(u => u.id === id);
-  if (idx === -1) throw new Error('Usuário não encontrado');
-  usuarios.splice(idx, 1);
-  saveUsersDB(usuarios);
+export const updateUsuarioPapel = async (id: string, papel: Papel): Promise<Usuario> => {
+  const u = await prisma.user.update({
+    where: { id },
+    data: { papel }
+  });
+  return {
+    ...u,
+    papel: u.papel as Papel,
+    avatar: u.avatar || `https://i.pravatar.cc/150?u=${u.id}`
+  };
+};
+
+export const updateUsuarioProjetosAtribuidos = async (id: string, projetosAtribuidos: number[]): Promise<Usuario> => {
+  const u = await prisma.user.update({
+    where: { id },
+    data: { projetosAtribuidos }
+  });
+  return {
+    ...u,
+    papel: u.papel as Papel,
+    avatar: u.avatar || `https://i.pravatar.cc/150?u=${u.id}`
+  };
+};
+
+export const addUsuario = async (dados: Omit<Usuario, 'id' | 'projetosAtribuidos'>): Promise<Usuario> => {
+  const jaExiste = await prisma.user.findUnique({
+    where: { email: dados.email.toLowerCase() }
+  });
+  if (jaExiste) throw new Error(`Já existe um usuário com o e-mail "${dados.email}".`);
+  
+  const novoId = `u${String(Date.now()).slice(-6)}`;
+  const u = await prisma.user.create({
+    data: {
+      id: novoId,
+      nome: dados.nome,
+      email: dados.email.toLowerCase(),
+      cargo: dados.cargo,
+      avatar: dados.avatar || `https://i.pravatar.cc/150?u=${novoId}`,
+      papel: dados.papel,
+      departamento: dados.departamento,
+      projetosAtribuidos: []
+    }
+  });
+  
+  return {
+    ...u,
+    papel: u.papel as Papel,
+    avatar: u.avatar || `https://i.pravatar.cc/150?u=${u.id}`
+  };
+};
+
+export const removeUsuario = async (id: string): Promise<void> => {
+  await prisma.user.delete({ where: { id } });
 };
