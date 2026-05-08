@@ -1137,7 +1137,7 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                   placeholder="Visão macro do projeto..." 
                   value={escopo}
                   onChange={(e) => setEscopo(e.target.value)} 
-                  className="h-[120px] w-full text-sm resize-none overflow-y-auto"
+                  className="h-[120px] w-full max-w-full text-sm resize-none overflow-y-auto break-words"
                   disabled={isBlocked}
                 />
               </div>
@@ -1152,7 +1152,7 @@ export default function ProjetoDetalhePage(props: { params: Promise<{ id: string
                   placeholder="Detalhamento técnico, entregas e restrições..." 
                   value={escopoDetalhado}
                   onChange={(e) => setEscopoDetalhado(e.target.value)} 
-                  className="h-[300px] w-full text-sm leading-relaxed resize-none overflow-y-auto"
+                  className="h-[300px] w-full max-w-full text-sm leading-relaxed resize-none overflow-y-auto break-words"
                   disabled={isBlocked}
                 />
               </div>
